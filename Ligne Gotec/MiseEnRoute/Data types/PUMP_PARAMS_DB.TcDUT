@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="PUMP_PARAMS_DB" Id="{7b56965b-7ebb-423c-b050-eee6c1a20dc7}">
+    <Declaration><![CDATA[TYPE PUMP_PARAMS_DB :
+STRUCT
+
+
+	VAC_ENABLE:REAL					;				(*Enable Test*)
+	VAC_PUMPING_TIME:REAL			; 				(*Pumping delay to prepare the pump for the suction test *)
+	VAC_MEASUREMENT_TIME:REAL		; 				(*Measurement time for the sunction pressure *)
+	VAC_PRESSURE_LIMIT:REAL			; 				(*Vacuum pressure Limit Higher than this parameter -> NO GOOD [bar]*)
+
+	Q1_ENABLE:REAL					;				(*Enable Test*)
+	Q1_PUMPING_TIME:REAL				; 				(*Pumping delay to prepare the pump for the flow rate test *)
+	Q1_MEASUREMENT_TIME:REAL		; 				(*Measurement time for the flow rate*)
+	Q1_FLOW_TARGET:REAL				; 				(*Flow rate target [ml/min]*)
+	Q1_FLOW_LIMIT_UP:REAL				; 				(*Flow rate Uper limit. Q>This limit -> NO GOOD [ml/min]*)
+	Q1_FLOW_LIMIT_DOWN:REAL			; 				(*Flow rate Lower limit. Q<This limit -> NO GOOD [ml/min]*)
+	Q1_PRESSURE_TARGET:REAL		; 				(*Pressure target [bar]*)
+	Q1_PRESSURE_LIMIT_UP:REAL		; 				(*Pressure Uper limit. p>This limit -> NO GOOD [bar]*)
+	Q1_PRESSURE_LIMIT_DOWN:REAL	;	 			(*Pressure Lower limit. p<This limit -> NO GOOD [bar]*)
+	Q1_MAX_FLOW:REAL					;				(*Use the max flow bypass*)
+
+	Q2_ENABLE:REAL					;				(*Enable Test*)
+	Q2_PUMPING_TIME:REAL				; 				(*Pumping delay to prepare the pump for the flow rate test *)
+	Q2_MEASUREMENT_TIME:REAL		; 				(*Measurement time for the flow rate*)
+	Q2_FLOW_TARGET:REAL				; 				(*Flow rate target [ml/min]*)
+	Q2_FLOW_LIMIT_UP:REAL				; 				(*Flow rate Uper limit. Q>This limit -> NO GOOD [ml/min]*)
+	Q2_FLOW_LIMIT_DOWN:REAL			; 				(*Flow rate Lower limit. Q<This limit -> NO GOOD [ml/min]*)
+	Q2_PRESSURE_TARGET:REAL		; 				(*Pressure target [bar]*)
+	Q2_PRESSURE_LIMIT_UP:REAL		; 				(*Pressure Uper limit. p>This limit -> NO GOOD [bar]*)
+	Q2_PRESSURE_LIMIT_DOWN:REAL	;	 			(*Pressure Lower limit. p<This limit -> NO GOOD [bar]*)
+	Q2_MAX_FLOW:REAL					;				(*Use the max flow bypass*)
+
+	PMAX_ENABLE:REAL					;				(*Enable Test*)
+	PMAX_PUMPING_TIME:REAL			; 				(*Pumping delay to prepare the pump for the max pressure test *)
+	PMAX_MEASUREMENT_TIME:REAL	; 				(*Measurement time for the max pressure test *)
+	PMAX_PRESSURE_LIMIT:REAL		; 				(*Max pressure lower than this parameter -> NO GOOD [bar]*)
+
+	PRINT_ENABLE:REAL				;				(*Enable Test*)
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

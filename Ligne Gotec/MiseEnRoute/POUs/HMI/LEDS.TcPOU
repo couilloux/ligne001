@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="LEDS" Id="{4e318463-5c45-4977-bbfa-e9bfc8e43650}">
+    <Declaration><![CDATA[PROGRAM LEDS
+VAR
+	M1_FB_GetPositionIs: FB_GetPositionIs;
+	M1_FB_GetEnableState: FB_GetEnableState;
+
+	M2_FB_GetPositionIs: FB_GetPositionIs;
+	M2_FB_GetEnableState: FB_GetEnableState;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(****************************************************************************************************
+*
+* Gestion des lumières sur l'armoire de commande 
+*
+****************************************************************************************************)
+
+IF GEMMA.STEP='D1' THEN
+	POW_DO.HMI_LED_BLUE:=FALSE;
+	POW_DO.HMI_LED_RED:=TRUE;
+	POW_DO.HMI_LED_ORANGE:=FALSE;
+	POW_DO.HMI_LED_GREEN:=FALSE;
+ELSIF GEMMA.STEP='A6' THEN
+	POW_DO.HMI_LED_BLUE:=FALSE;
+	POW_DO.HMI_LED_RED:=FALSE;
+	POW_DO.HMI_LED_ORANGE:=TRUE;
+	POW_DO.HMI_LED_GREEN:=FALSE;
+ELSIF GEMMA.STEP='A1' THEN
+	POW_DO.HMI_LED_BLUE:= NOT POW_DO.HMI_LED_BLUE;
+	POW_DO.HMI_LED_RED:=FALSE;
+	POW_DO.HMI_LED_ORANGE:=FALSE;
+	POW_DO.HMI_LED_GREEN:=FALSE;
+ELSIF GEMMA.STEP='F1' THEN
+	POW_DO.HMI_LED_BLUE:=FALSE;
+	POW_DO.HMI_LED_RED:=FALSE;
+	POW_DO.HMI_LED_ORANGE:=FALSE;
+	POW_DO.HMI_LED_GREEN:=TRUE;
+ELSIF GEMMA.STEP='F4' THEN
+	POW_DO.HMI_LED_BLUE:=FALSE;
+	POW_DO.HMI_LED_RED:=FALSE;
+	POW_DO.HMI_LED_ORANGE:=TRUE;
+	POW_DO.HMI_LED_GREEN:=TRUE;
+ELSE
+    	POW_DO.HMI_LED_BLUE:=FALSE;
+	POW_DO.HMI_LED_RED:=FALSE;
+	POW_DO.HMI_LED_ORANGE:=FALSE;
+	POW_DO.HMI_LED_GREEN:=FALSE;
+END_IF;
+
+(*INFO Moteur*)
+M1_FB_GetPositionIs(
+	ADSNetId:= '10.0.0.31.6.1',
+	NodeId:= 1,
+	Read:= TRUE
+	);
+
+M1_FB_GetEnableState(
+	ADSNetId:= '10.0.0.31.6.1',
+	NodeId:= 1,
+	Read:= TRUE);
+
+
+M2_FB_GetPositionIs(
+	ADSNetId:= '10.0.0.31.8.1',
+	NodeId:= 1,
+	Read:= TRUE
+	);
+
+M2_FB_GetEnableState(
+	ADSNetId:= '10.0.0.31.8.1',
+	NodeId:= 1,
+	Read:= TRUE);
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

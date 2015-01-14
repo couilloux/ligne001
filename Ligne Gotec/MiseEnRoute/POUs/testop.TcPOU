@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="testop" Id="{07fe1564-6dc3-4698-8b9b-e040f4090194}">
+    <Declaration><![CDATA[PROGRAM testop
+VAR
+	TP_OP: TON;
+	START: BOOL:=FALSE;
+	TP_OP2: TON;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+IF(GEMMA.STEP='F1') AND RUN_CG THEN
+
+IF(NOT(TP_OP.Q ) AND NOT(TP_OP2.Q)) THEN
+START:=TRUE;
+ELSIF(TP_OP.Q AND TP_OP2.Q) THEN
+START:=FALSE;
+END_IF
+
+TP_OP(IN:= START, PT:= CG_DELAY);
+
+TP_OP2(IN:= TP_OP.Q, PT:= T#30s);
+
+VAC_DO.WAGON_OPERATOR1:= NOT(TP_OP.Q);
+
+VAC_DO.WAGON_OPERATOR2:=FALSE;
+
+
+END_IF
+;]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

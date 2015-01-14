@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="ETHERCAT" Id="{878db2b0-63c0-4ad0-ace4-9143e293067e}">
+    <Declaration><![CDATA[TYPE ETHERCAT :
+STRUCT
+
+	POW_COUPLER_STATUS:UINT;
+	VAC_COUPLER_STATUS:UINT;
+	Q1_COUPLER_STATUS:UINT;
+	Q2_COUPLER_STATUS:UINT;
+	PMAX_COUPLER_STATUS:UINT;
+	PRINT_COUPLER_STATUS:UINT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

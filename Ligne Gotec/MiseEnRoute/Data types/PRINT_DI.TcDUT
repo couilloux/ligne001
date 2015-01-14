@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="PRINT_DI" Id="{cfc6c669-1ac1-4e92-9fac-1716a79eeb7d}">
+    <Declaration><![CDATA[(************************************************************************************************
+*
+*Printer DI
+*
+***********************************************************************************************)
+
+
+TYPE PRINT_DI :
+STRUCT
+
+	WAGON_WAITING:BOOL;
+	WAGON_PRESENT:BOOL;
+	WAGON_AWAY:BOOL;
+	Q3_OK:BOOL; 					(*Alim pompe*)
+	WATER_TANK_HIGH:BOOL;
+	WATER_TANK_LOW:BOOL;
+	ASK_RELEASE_JIG_OP1:BOOL;
+	ASK_RELEASE_JIG_OP2:BOOL;
+	GRIPPER_OPEN:BOOL;
+	GRIPPER_CLOSED:BOOL;
+	X_IN:BOOL;
+	X_OUT:BOOL;
+	Z_UP:BOOL;
+	Z_DOWN:BOOL;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

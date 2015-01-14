@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="CHECK_VALVES_SENSORS" Id="{a03e83f3-92ad-4c3e-8533-eac9a87ff01d}">
+    <Declaration><![CDATA[FUNCTION_BLOCK CHECK_VALVES_SENSORS
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	STEP: INT := 0;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(**************************************************************
+*
+*
+* Check Valves sensors
+*
+*
+***************************************************************)
+CASE STEP OF
+
+0: (*Init*)
+	STEP := STEP+1;
+
+1: (*Initialise valves and variables*)
+;
+ELSE
+    ;
+END_CASE;
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

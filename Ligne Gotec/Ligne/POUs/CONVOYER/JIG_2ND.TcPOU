@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="JIG_2ND" Id="{70db4bd5-5703-4848-88cf-3786c238a4cb}">
+    <Declaration><![CDATA[FUNCTION_BLOCK JIG_2ND
+VAR
+	STEP: INT := 0; (* Internal program step *)
+	TIMER_STOP: TON;
+	R_TRIG1:R_TRIG;
+	START_RELEASE_TIMER:BOOL:=FALSE;
+	STATUS: BOOL := 0;
+END_VAR
+
+VAR_INPUT
+	CARRIER_PRESENT:BOOL; (*CARRIER IS PRESENT *)
+	CARRIER_PRESENT_MAIN_JIG:BOOL;
+	JIG_STATUS:BOOL;
+END_VAR
+
+VAR_OUTPUT
+	CYLINDER_WAIT: BOOL :=TRUE; (* STOP the carrier at this position *)
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(************************************************************************************************************************************
+*
+* Gère le posage d'attente pour une station (Palette et convoyeur)
+*
+*
+************************************************************************************************************************************)
+IF GEMMA.STEP='A6' THEN
+	STEP:=0;
+END_IF;
+
+CASE STEP OF
+
+0: (*Init*)
+	STEP:=STEP+1;
+	STATUS:=0;
+	START_RELEASE_TIMER:=FALSE;
+	CYLINDER_WAIT:=FALSE;
+
+1: (*Wait for a carrier*)
+	IF  JIG_STATUS=0 THEN
+		CYLINDER_WAIT:=0;
+		STEP:=STEP+1;
+	END_IF;
+
+2: (*start lock delay*)
+	IF  R_TRIG1.Q THEN
+		START_RELEASE_TIMER:=1;
+		STEP:=STEP+1;
+	END_IF;
+
+3: (*Wait the delay before stop the next carrier*)
+	IF TIMER_STOP.Q THEN
+		CYLINDER_WAIT:=1;
+		STEP:=1;
+	END_IF;
+
+
+ELSE 
+    ;
+END_CASE;
+
+(* TIMERS*)
+TIMER_STOP(IN:=START_RELEASE_TIMER,PT:=CARRIER_STOP_DELAY);
+R_TRIG1(CLK:= CARRIER_PRESENT_MAIN_JIG);]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

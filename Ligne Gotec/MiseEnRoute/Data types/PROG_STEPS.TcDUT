@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="PROG_STEPS" Id="{3527081a-deb7-4f80-9971-0053b3b68c31}">
+    <Declaration><![CDATA[TYPE PROG_STEPS :
+STRUCT
+
+	VAC_STEP:INT;
+	Q1_STEP:INT;
+	Q2_STEP:INT;
+	PMAX_STEP:INT;
+	PRINT_STEP:INT;
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

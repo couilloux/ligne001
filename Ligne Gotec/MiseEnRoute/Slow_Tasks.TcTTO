@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <Task Name="Slow_Tasks" Id="{50d844a5-ebb9-43a8-ab8e-dc697c2d5e1b}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>200000</CycleTime>
+    <Priority>22</Priority>
+    <PouCall>
+      <Name>USB</Name>
+    </PouCall>
+    <TaskFBGuid>{f283a70d-9cb2-4147-9f77-000417431375}</TaskFBGuid>
+    <Fb_init>{0d033076-ce87-4424-8e0d-48260763e660}</Fb_init>
+    <Fb_exit>{d9e2e3c9-dba1-48f3-8c0a-51abf406ed48}</Fb_exit>
+    <CycleUpdate>{a0ef4173-cfa0-4b35-83e2-c8ebf893a5a9}</CycleUpdate>
+    <PostCycleUpdate>{b1834224-fb83-42c4-8f54-bcecdcc542c9}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <GVL Name="Constant_Variables" Id="{ff0b3272-6d28-4b02-8961-a1802b01a609}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL CONSTANT
+	(********************
+	*
+	* Times
+	*
+	************************)
+
+	CARRIER_RELEASE_DELAY						:TIME:= t#1s;			(*Delay between the release of the carrier on the main jig and the output of the CYLINDER_STOP*)
+	CARRIER_STOP_DELAY							:TIME:= t#100ms;		(*Delay between the release of the carrier on the second jig and the output of the CYLINDER_WAIT*)
+	PULSE_RELEASE_JIG_OP						:TIME:= T#250MS;		(*Duration of the pulse to release a carrier on the Operators jig*)
+	DELAY_EJECT_CARRIERS						:TIME:= t#30s;			(*Time for release all the carriers present in the tunel during the initialisation *)
+	TIMEOUT_WATER_TANK							:TIME:= t#500s;			(*Delay before an alarm during the fullfil of a watertank*)
+	DRY_DELAY									:TIME:= T#1S;
+
+	(********************
+	*
+	* Motor
+	*
+	************************)
+	MOTOR_Q1_INITIAL_POS						:DINT:=10000;			(*Initial position of the motor*)
+	MOTOR_Q1_POSITION_MAX						:DINT:=38000;		(*Butée soft du moteur*)
+	MOTOR_Q2_INITIAL_POS						:DINT:=15000;			(*Initial position of the motor*)
+	MOTOR_Q2_POSITION_MAX						:DINT:=36000;		(*Butée soft du moteur*)
+
+END_VAR
+
+VAR_GLOBAL
+
+	(********************
+	*
+	* Config
+	*
+	************************)
+
+	PUMP_PARAMS 									: PUMP_PARAMS;		(*Paramètre de test qu viennent depuis Labview*)
+
+
+
+END_VAR
+]]></Declaration>
+    <ObjectProperties />
+  </GVL>
+</TcPlcObject>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="PRINT_DO" Id="{591c62d4-bdcb-4eaf-b6f3-ffa83e9c99a6}">
+    <Declaration><![CDATA[(************************************************************************************************
+*
+*Printer DO
+*
+***********************************************************************************************)
+
+TYPE PRINT_DO :
+STRUCT
+
+	WAGON_WAIT_CYLINDER:BOOL;
+	WAGON_LOCK_CYLINDER:BOOL;
+	WAGON_STOP_CYLINDER:BOOL;
+	EJECTION_CYLINDER_X:BOOL;
+	EJECTION_CYLINDER_Z:BOOL;
+	EJECTION_GRIPPER:BOOL;
+	Y7:BOOL;
+	Y8:BOOL;
+	PUMP_POWER:BOOL;
+	WATER_TANK_VALVE:BOOL;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="Q1" Id="{43e94018-5a4c-44d5-994b-865ceae7ffb0}">
+    <Declaration><![CDATA[PROGRAM Q1
+VAR
+	STEP: INT := 0;
+	R_TRIG1:R_TRIG;
+	FlowStop_Delay: TON;
+	Start_FlowStop_Delay: BOOL;
+	Pump_Delay: TON;
+	Start_Pump_Delay: BOOL;
+	Start_Suction_Delay: BOOL;
+	Measurement_Delay: TON;
+	Start_Measurement_Delay: BOOL;
+	Init_Mass:REAL;
+
+	FB_FormatString1: FB_FormatString;
+	sInsertString: STRING;
+	bError: BOOL;
+	nErrid: DWORD;
+	bBusyInsert: BOOL;
+	bErrInsert: BOOL;
+	nErridInsert: DWORD;
+	FB_FormatStringDateTime: FB_FormatString;
+	NT_GetTime1: NT_GetTime;
+	tTime: TIMESTRUCT;
+	bTimestart: BOOL:=0;
+	sDateTimeString: T_MaxString;
+	bExec_DBRecordInsert1: BOOL;
+	P_ERREUR: REAL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*******************************************************
+*
+* Program fro the Q1 Test station
+*
+*
+*********************************************************)
+IF GEMMA.STEP='A6' THEN
+	STEP:=0;
+END_IF;
+
+
+CASE STEP OF
+
+0: (*Init*)
+	Start_Pump_Delay:=FALSE;
+	Start_FlowStop_Delay:=FALSE;
+	Start_Measurement_Delay:=FALSE;
+	Q1_DO.MAX_FLOW_VALVE:=FALSE;
+	FLAGS.Q1_STATUS:=0;
+	FLAGS.Q1_RELEASE_CARRIER:=0;
+	Q1_FLOWMETER_CONTROL.SET_TOT:=1; (*Reset mass flow counter*)
+	STEP := STEP+10;
+
+10: (*Wait main JIG Ready*)
+	IF R_TRIG1.Q AND GEMMA.STEP='F1'  THEN
+		FLAGS.Q1_STATUS:=1;
+		Q1_FLOWMETER_CONTROL.SET_TOT:=0; (*Reset mass flow counter*)
+		Q1_CALCULETED_FLOW:=0;
+		STEP := STEP+10;
+	END_IF;
+
+20: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+30: (* Check hydraulique connexion OK*)
+	Q1_DO.HYDRO_CYLINDER_BOT:=TRUE;
+	Q1_DO.HYDRO_CYLINDER_TOP:=TRUE;
+
+
+	STEP := STEP+10;
+
+40: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+50: (* Wait hydraulique connexion OK*)
+	IF Q1_DI.CYLINDER_BOT_OUT AND Q1_DI.CYLINDER_TOP_OUT THEN
+		STEP := STEP+10;
+	END_IF;
+
+60: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+70: (*Close electrical connexion *)
+	Q1_DO.ELECTR_CYLINDER:=TRUE;
+	Q1_DO.MAX_FLOW_VALVE:=TRUE;
+	STEP := STEP+10;
+
+80: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+90:(*Wait electrical connexion closed*)
+	IF Q1_DI.POWER_CYLINDER_OUT THEN
+		Start_Pump_Delay:=TRUE;
+		(*Q1_DO.MAX_FLOW_VALVE:=PUMP_PARAMS.Q1_MAX_FLOW;*)
+		Q1_DO.MAX_FLOW_VALVE:=TRUE;
+		Q1_DO.PUMP_POWER:=TRUE;
+		Q1_DO.FLOW_STOP_VALVE:=TRUE;
+		Q1_DO.FLOW_STOP_BOTT:=TRUE;
+		STEP := STEP+10;
+	END_IF;
+
+100: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+110: (*Pump until end of delay*)
+
+	(*Regulation de la pression pendant le temps d'amorcage et ne bouge plus pendant le temps de mesure*)
+	(* Regulation seulement à +- 20% de la consigne et seulement après X secondes*)
+	IF  Pump_Delay.ET>T#15s AND Q1_FLOWMETER_VALUES.VolumeFlow>50 THEN
+				Q1_DO.MAX_FLOW_VALVE:=FALSE;
+				P_ERREUR:=PUMP_PARAMS.Q1_PRESSURE_TARGET - Q1_PRESSURE_SENSOR_VALUE;
+				FLAGS.MOTOR_Q1_POSITION := FLAGS.MOTOR_Q1_POSITION + REAL_TO_INT(P_ERREUR*7);(* P_ERREUR*GAIN *)
+	END_IF
+
+
+	IF Pump_Delay.Q THEN
+		Start_Pump_Delay:=FALSE;
+		Start_Measurement_Delay:=TRUE;
+		Init_Mass:=Q1_FLOWMETER_VALUES.TotalMass; (*Store the mass at the beginning of the measurement*)
+		STEP := STEP+10;
+	END_IF;
+
+120: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+
+130: (*Measurement delay*)
+
+	(*test*)
+	IF 		(Q1_PRESSURE_SENSOR_VALUE<PUMP_PARAMS.Q1_PRESSURE_TARGET+10)
+			AND (Q1_PRESSURE_SENSOR_VALUE>PUMP_PARAMS.Q1_PRESSURE_TARGET-10)
+			AND Q1_FLOWMETER_VALUES.VolumeFlow>50 THEN
+
+				P_ERREUR:=PUMP_PARAMS.Q1_PRESSURE_TARGET - Q1_PRESSURE_SENSOR_VALUE;
+				FLAGS.MOTOR_Q1_POSITION := FLAGS.MOTOR_Q1_POSITION + REAL_TO_INT(P_ERREUR*7);(* P_ERREUR*GAIN *)
+	END_IF
+	(*end test*)
+
+	IF Measurement_Delay.Q THEN
+		Q1_CALCULETED_FLOW:=CONVERT_MASS_TO_FLOW(Q1_FLOWMETER_VALUES.TotalMass-Init_Mass, PUMP_PARAMS.Q1_MEASUREMENT_TIME); (*Convert mass to massflow*)
+		Q1_DO.HYDRO_CYLINDER_BOT:=FALSE;
+		Q1_DO.MAX_FLOW_VALVE:=TRUE;
+		Start_Measurement_Delay:=FALSE;
+		Start_FlowStop_Delay:=TRUE;
+		STEP := STEP+10;
+	END_IF;
+
+
+140: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+
+150: (*Delay before FLOWSTOP*)
+	IF FlowStop_Delay.Q THEN
+		Q1_DO.FLOW_STOP_VALVE:=FALSE;
+		Q1_DO.MAX_FLOW_VALVE:=FALSE;
+		Q1_DO.FLOW_STOP_BOTT:=FALSE;
+		Q1_DO.PUMP_POWER:=FALSE;
+		Start_FlowStop_Delay:=FALSE;
+		bExec_DBRecordInsert1:=FALSE; (*Deactivate DB Record*)
+		STEP := STEP+10;
+	END_IF;
+
+
+160: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+
+170: (*Release electrical and hydraulic connexion*)
+
+	Q1_DO.ELECTR_CYLINDER:=FALSE;
+	Q1_DO.HYDRO_CYLINDER_TOP:=FALSE;
+
+	STEP := STEP+10;
+
+180: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+190:(*Wait all cylinders IN*)
+	IF Q1_DI.POWER_CYLINDER_IN AND Q1_DI.CYLINDER_TOP_IN AND Q1_DI.CYLINDER_BOT_IN THEN
+		STEP := STEP+10;
+	END_IF;
+
+200: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+210: (*Release carrier*)
+	FLAGS.Q1_RELEASE_CARRIER:=TRUE;
+	STEP:=STEP+10;
+
+220: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+230: (*Wait carrier away*)
+	IF Q1_DI.WAGON_AWAY THEN
+		STEP := 0;
+	END_IF;
+
+
+
+ELSE
+    ;
+END_CASE;
+
+(*FBs*)
+Pump_Delay(IN:= Start_Pump_Delay, PT:= PUMP_PARAMS.Q1_PUMPING_TIME);
+
+Measurement_Delay(IN:= Start_Measurement_Delay, PT:= PUMP_PARAMS.Q1_MEASUREMENT_TIME);
+
+FlowStop_Delay(IN:= Start_FlowStop_Delay, PT:=DRY_DELAY);
+
+R_TRIG1(CLK:= CONVEYOR.JIG_Q1.STATUS);
+
+PROG_STEPS.Q1_STEP:=STEP;]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

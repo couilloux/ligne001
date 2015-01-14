@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <GVL Name="Events_Variables" Id="{0654c623-0fe1-4e80-95db-0fd319b7192f}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+
+	(*EVENT PLC Started*)
+	bSetEvent_1000_1 		:BOOL := FALSE; (*Set to lunch the event*)
+	bQuitEvent_1000_1 		:BOOL := FALSE; (* Status of the confirmation *)
+	LogEvent_1000_1 		:FB_SimpleAdsLogEvent; (* FB pour l'évenement *)
+
+	(*EVENT Initializing*)
+	bSetEvent_1000_2 		:BOOL := FALSE; (*Set to lunch the event*)
+	bQuitEvent_1000_2 		:BOOL := FALSE; (* Status of the confirmation *)
+	LogEvent_1000_2 		:FB_SimpleAdsLogEvent; (* FB pour l'évenement *)
+
+
+END_VAR
+]]></Declaration>
+    <ObjectProperties />
+  </GVL>
+</TcPlcObject>

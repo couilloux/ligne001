@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <GVL Name="TwinCAT_Configuration" Id="{8dab8816-afc0-4378-af7a-864fb24ad20e}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+(* Generated automatically by TwinCAT - (read only) *)
+VAR_CONFIG
+	.SAFETY_IN AT %IB1528 : SAFETY_IN;
+	.SAFETY_OUT AT %QB612 : SAFETY_OUT;
+	.ETHERCAT AT %IB1512 : ETHERCAT;
+	.KEY1 AT %IX1552.0 : BOOL;	(*  ~ {LinkedWith:TIID^Device 1 (USB)^Box 0 (CPX8XX)^Term 1 (CPx9xx-12)^Channel 1^Key 1} *)
+	.LED1 AT %QX624.0 : BOOL;	(*  ~ {LinkedWith:TIID^Device 1 (USB)^Box 0 (CPX8XX)^Term 1 (CPx9xx-12)^Channel 1^LED 1} *)
+	.CAN_OPEN_Q1_DIAGAT AT %IX1524.0 : BOOL;	(*  ~ {LinkedWith:TIID^CanOPEN Q1 (EL6751)^Entrées^DiagFlag} *)
+	.CAN_OPEN_Q2_DIAGAT AT %IX1540.0 : BOOL;	(*  ~ {LinkedWith:TIID^CanOPEN Q2 (EL6751)^Entrées^DiagFlag} *)
+	.Q1_Multimeter_mode AT %QB620 : SINT;	(*  ~ {LinkedWith:TIID^I/O (Ethercat)^Q1 (EK1101)^Terme 41 (EL3681)^SAI Range^Mode} *)
+	.Q2_Multimeter_mode AT %QB621 : SINT;	(*  ~ {LinkedWith:TIID^I/O (Ethercat)^Q2 (EK1101)^Terme 114 (EL3681)^SAI Range^Control^Mode} *)
+	.Q1_Multimeter_range AT %QB622 : SINT;	(*  ~ {LinkedWith:TIID^I/O (Ethercat)^Q1 (EK1101)^Terme 41 (EL3681)^SAI Range^Range} *)
+	.Q2_Multimeter_range AT %QB623 : SINT;	(*  ~ {LinkedWith:TIID^I/O (Ethercat)^Q2 (EK1101)^Terme 114 (EL3681)^SAI Range^Control^Range} *)
+	.Q1_Multimeter_value AT %IB1544 : DINT;	(*  ~ {LinkedWith:TIID^I/O (Ethercat)^Q1 (EK1101)^Terme 41 (EL3681)^SAI Inputs^Value} *)
+	.Q2_Multimeter_value AT %IB1548 : DINT;	(*  ~ {LinkedWith:TIID^I/O (Ethercat)^Q2 (EK1101)^Terme 114 (EL3681)^SAI Inputs^Value} *)
+END_VAR]]></Declaration>
+    <ObjectProperties />
+  </GVL>
+</TcPlcObject>

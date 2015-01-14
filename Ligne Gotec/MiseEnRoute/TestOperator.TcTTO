@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <Task Name="TestOperator" Id="{752b9f12-a83a-4eda-bdb4-10649c996909}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>100000</CycleTime>
+    <Priority>21</Priority>
+    <PouCall>
+      <Name>testop</Name>
+    </PouCall>
+    <TaskFBGuid>{9c90ac49-8786-453e-bf66-72bd083af1ff}</TaskFBGuid>
+    <Fb_init>{13d3c78c-8fb6-46b5-8c1e-a12aa99f2b02}</Fb_init>
+    <Fb_exit>{5e990326-054a-4f11-be03-01505447f9fd}</Fb_exit>
+    <CycleUpdate>{1024bf7f-1f45-4b8c-a6a7-a25935222c68}</CycleUpdate>
+    <PostCycleUpdate>{d4449a53-c6b0-47bf-a6cb-9d17a529de3b}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

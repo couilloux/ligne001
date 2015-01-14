@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <TextList Name="GlobalTextList" Id="{19ecad34-6b56-4909-bbc9-6b639bc4c56a}">
+    <XmlArchive>
+      <Data>
+        <o xml:space="preserve" t="GlobalTextListObject">
+          <l n="TextList" t="ArrayList" />
+          <l n="Languages" t="ArrayList" />
+          <v n="GuidInit">{9836dccd-685e-4f8f-8c1b-637cf9d4d5aa}</v>
+          <v n="GuidReInit">{6bded060-f9ac-4cd2-86d3-c5afc521ac76}</v>
+          <v n="GuidExitX">{1df6531d-2e1f-4258-8da4-937bd2543877}</v>
+        </o>
+      </Data>
+      <TypeList>
+        <Type n="ArrayList">System.Collections.ArrayList</Type>
+        <Type n="GlobalTextListObject">{63784cbb-9ba0-45e6-9d69-babf3f040511}</Type>
+        <Type n="Guid">System.Guid</Type>
+      </TypeList>
+    </XmlArchive>
+  </TextList>
+</TcPlcObject>

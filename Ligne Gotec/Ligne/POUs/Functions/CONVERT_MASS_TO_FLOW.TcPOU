@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="CONVERT_MASS_TO_FLOW" Id="{a63d694c-a9df-481c-9da5-a534eed52d1b}">
+    <Declaration><![CDATA[FUNCTION CONVERT_MASS_TO_FLOW : REAL
+VAR_INPUT
+	Mass:REAL; (*in gramme*)
+	Delay:TIME; (*in ms*)
+END_VAR
+VAR
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CONVERT_MASS_TO_FLOW:=Mass/TIME_TO_DWORD(Delay)*60000;]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <GVL Name="Flag_Variables" Id="{4f7f6aef-c1d3-4cc8-92dc-1f1f0073eaea}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+
+	FLAGS 				AT%M*: FLAGS;
+
+
+	SAFETY_IN 			AT%I*: SAFETY_IN;
+	SAFETY_OUT 			AT%Q*: SAFETY_OUT;
+
+	ETHERCAT 			AT%I*:ETHERCAT;
+
+	RUN_CG				:BOOL:=FALSE;
+	CG_DELAY			:TIME:=T#15m;
+
+(*
+Status code for ETHERCAT coupler state
+
+0x___1 = Slave in 'INIT' state
+0x___2 = Slave in 'PREOP' state
+0x___3 = Slave in 'BOOT' state
+0x___4 = Slave in 'SAFEOP' state
+0x___8 = Slave in 'OP' state
+0x001_ = Slave signals error
+0x002_ = Invalid vendorId, productCode... read
+0x004_ = Initialization error occurred
+0x008_ = Slave disabled
+0x010_ = Slave not present
+0x020_ = Slave signals link error
+0x040_ = Slave signals missing link
+0x080_ = Slave signals unexpected link
+0x100_ = Communication port A
+0x200_ = Communication port B
+0x400_ = Communication port C
+0x800_ = Communication port D
+
+*)
+
+
+
+END_VAR
+
+]]></Declaration>
+    <ObjectProperties />
+  </GVL>
+</TcPlcObject>

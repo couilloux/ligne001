@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="PRESSURE_SENSOR" Id="{e76a60e6-067f-4eb6-ac18-b44132ee2db7}">
+    <Declaration><![CDATA[
+(************************************************************************************************
+*
+*Variables structure for WIKA pressure sensor
+*
+***********************************************************************************************)
+
+TYPE PRESSURE_SENSOR :
+STRUCT
+
+	VALUE :ARRAY [0..7] OF USINT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

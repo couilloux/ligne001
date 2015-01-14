@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="AIS" Id="{75ad5bf3-4957-40cf-be29-57f6f4c96494}">
+    <Declaration><![CDATA[PROGRAM AIS
+VAR
+	VAC_SENSOR_VAC_CONVERT: WIKA_GET_VALUES;
+	P_SENSOR_Q1_CONVERT: WIKA_GET_VALUES;
+	FLOW_SENSOR_Q1_CONVERT: EH_FLOMETER;
+	P_SENSOR_Q2_CONVERT: WIKA_GET_VALUES;
+	P_SENSOR_PMAX_CONVERT: WIKA_GET_VALUES;
+	FLOW_SENSOR_Q2_CONVERT: EH_FLOMETER;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(**********************************************************************
+*
+*Conversion des entrées analogiques
+*
+*
+*************************************************************************)
+
+(*VAC***************************************************************************)
+VAC_SENSOR_VAC_CONVERT(
+INPUTS:= VAC_VACUUM_SENSOR.VALUE,
+Pressure=> VAC_VACUMM_SENSOR_VALUE);
+
+
+(*Q1***************************************************************************)
+FLOW_SENSOR_Q1_CONVERT(
+	AI1:= Q1_FLOWMETER.A1,
+	AI2:= Q1_FLOWMETER.A2,
+	AI3:= Q1_FLOWMETER.A3,
+	AI4:= Q1_FLOWMETER.A4,
+	AI5:= Q1_FLOWMETER.A5,
+	AI6:= Q1_FLOWMETER.A6,
+	TOT:= Q1_FLOWMETER.TOT,
+	MassFlow=> Q1_FLOWMETER_VALUES.MassFlow,
+	VolumeFlow=> Q1_FLOWMETER_VALUES.VolumeFlow,
+	CorrectedVolueFLow=> Q1_FLOWMETER_VALUES.CorrectedVolueFLow,
+	Density=> Q1_FLOWMETER_VALUES.Density,
+	ReferenceDensity=> Q1_FLOWMETER_VALUES.ReferenceDensity,
+	Temperature=> Q1_FLOWMETER_VALUES.Temperature,
+	TotalMass=>Q1_FLOWMETER_VALUES.TotalMass);
+
+P_SENSOR_Q1_CONVERT(
+INPUTS:= Q1_PRESSURE_SENSOR.VALUE,
+Pressure=> Q1_PRESSURE_SENSOR_VALUE);
+
+Q1_CURRENT:=Q1_Multimeter_value/1000.0;
+
+(*Q2***************************************************************************)
+FLOW_SENSOR_Q2_CONVERT(
+	AI1:= Q2_FLOWMETER.A1,
+	AI2:= Q2_FLOWMETER.A2,
+	AI3:= Q2_FLOWMETER.A3,
+	AI4:= Q2_FLOWMETER.A4,
+	AI5:= Q2_FLOWMETER.A5,
+	AI6:= Q2_FLOWMETER.A6,
+	TOT:= Q2_FLOWMETER.TOT,
+	MassFlow=> Q2_FLOWMETER_VALUES.MassFlow,
+	VolumeFlow=> Q2_FLOWMETER_VALUES.VolumeFlow,
+	CorrectedVolueFLow=> Q2_FLOWMETER_VALUES.CorrectedVolueFLow,
+	Density=> Q2_FLOWMETER_VALUES.Density,
+	ReferenceDensity=> Q2_FLOWMETER_VALUES.ReferenceDensity,
+	Temperature=> Q2_FLOWMETER_VALUES.Temperature,
+	TotalMass=>Q2_FLOWMETER_VALUES.TotalMass);
+
+P_SENSOR_Q2_CONVERT(
+INPUTS:= Q2_PRESSURE_SENSOR.VALUE,
+Pressure=> Q2_PRESSURE_SENSOR_VALUE);
+
+Q2_CURRENT:=Q2_Multimeter_value/1000.0;
+
+(*PMAX***************************************************************************)
+
+P_SENSOR_PMAX_CONVERT(
+INPUTS:= PMAX_PRESSURE_SENSOR.VALUE,
+Pressure=> PMAX_PRESSURE_SENSOR_VALUE);]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

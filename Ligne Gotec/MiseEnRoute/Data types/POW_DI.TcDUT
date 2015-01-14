@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="POW_DI" Id="{b1b849b7-45cf-4ba0-9f5a-13241bd91e1f}">
+    <Declaration><![CDATA[
+(************************************************************************************************
+*
+*Variables structure for the digitals intputs of the POWER module
+*
+***********************************************************************************************)
+
+
+TYPE POW_DI :
+STRUCT
+
+	Q5_OK:BOOL; 		(* Disjoncteur Alimentation Chroma OK*)
+	Q6_OK:BOOL;		(* Disjoncteur Alimentation Stations OK*)
+	Q7_OK:BOOL;			(* Disjoncteur Moteurs L1L2L3 OK*)
+	Q8_OK:BOOL;		(* Protection moteur 1 OK *)
+	Q9_OK:BOOL;		(* Protection moteur 2 OK*)
+	Q10_OK:BOOL;		(* Protection moteur 3 OK*)
+	Q11_OK:BOOL;		(* Protection moteur 4 OK*)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

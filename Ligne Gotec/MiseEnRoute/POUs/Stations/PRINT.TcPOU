@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="PRINT" Id="{f4524dab-e16b-4c67-80de-24df10bf8b7c}">
+    <Declaration><![CDATA[PROGRAM PRINT
+VAR
+	STEP: INT := 0;
+	R_TRIG1:R_TRIG;
+	Suction_Delay: TON;
+	FlowStop_Delay: TON;
+	Start_FlowStop_Delay: BOOL;
+	Pump_Delay: TON;
+	Start_Pump_Delay: BOOL;
+	Start_Suction_Delay: BOOL;
+	Start_Step20_Delay: BOOL;
+	TON_Step20: TON;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*******************************************************
+*
+* Program fro the VACUUM Test station
+*
+*
+*********************************************************)
+IF GEMMA.STEP='A6' THEN
+	STEP:=0;
+END_IF;
+
+
+CASE STEP OF
+
+0: (*Init*)
+	Start_Pump_Delay:=FALSE;
+	Start_Suction_Delay:=FALSE;
+	Start_FlowStop_Delay:=FALSE;
+	Start_Step20_Delay:=FALSE;
+	FLAGS.PRINT_STATUS:=0;
+	FLAGS.PRINT_RELEASE_CARRIER:=0;
+	STEP := STEP+10;
+
+10: (*Wait main JIG Ready*)
+	IF R_TRIG1.Q AND GEMMA.STEP='F1'  THEN
+		FLAGS.PRINT_STATUS:=1;
+		Start_Step20_Delay:=TRUE;
+		STEP := STEP+10;
+
+	END_IF;
+
+20: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 AND TON_Step20.Q THEN
+		STEP := STEP+10;
+	END_IF;
+
+	(*Ajouter un délai de 1 secondes*******************************************************************3*)
+
+30: (* Check hydraulique connexion OK*)
+	IF PRINT_PUMP_STATUS=FALSE AND NOT(RUN_CG) THEN
+		STEP := STEP+10;
+	ELSE
+		STEP:= 210;
+	END_IF
+
+(*************)
+40: (* Open Gripper and go down to pick the part*)
+	PRINT_DO.EJECTION_GRIPPER:=TRUE;
+	PRINT_DO.EJECTION_CYLINDER_Z:=TRUE;
+	STEP := STEP+10;
+
+50: (* Wait movement*)
+	IF PRINT_DI.GRIPPER_OPEN AND PRINT_DI.Z_DOWN THEN
+		PRINT_DO.EJECTION_GRIPPER:=FALSE;
+		STEP := STEP+10;
+	END_IF
+
+60: (* Wait gripper CLOSED and move UP*)
+	IF NOT(PRINT_DI.GRIPPER_OPEN) THEN
+		PRINT_DO.EJECTION_CYLINDER_Z:=FALSE;
+		STEP := STEP+10;
+	END_IF
+
+70: (* Wait movement and move X out*)
+	IF PRINT_DI.Z_UP THEN
+		PRINT_DO.EJECTION_CYLINDER_X:=TRUE;
+		STEP := STEP+10;
+	END_IF
+
+80: (* Wait movement and move Z down*)
+	IF PRINT_DI.X_OUT THEN
+		PRINT_DO.EJECTION_CYLINDER_Z:=TRUE;
+		STEP := STEP+10;
+	END_IF
+
+90: (* Wait movement and release gripper*)
+	IF PRINT_DI.Z_DOWN THEN
+		PRINT_DO.EJECTION_GRIPPER:=TRUE;
+		STEP := STEP+10;
+	END_IF
+
+100: (* Wait gripper open*)
+	IF PRINT_DI.GRIPPER_OPEN THEN
+		PRINT_DO.EJECTION_CYLINDER_Z:=FALSE;
+		STEP := STEP+10;
+	END_IF
+
+110: (* Wait movement and go X IN*)
+	IF PRINT_DI.Z_UP THEN
+		PRINT_DO.EJECTION_CYLINDER_X:=FALSE;
+		STEP := STEP + 10;
+	END_IF
+
+120: (* Wait movement and go X IN*)
+	IF PRINT_DI.X_IN THEN
+		STEP := 210;
+	END_IF
+
+
+(**************)
+
+210: (*Release carrier*)
+	FLAGS.PRINT_RELEASE_CARRIER:=TRUE;
+	STEP:=STEP+10;
+
+220: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+230: (*Wait carrier away*)
+		STEP := 0;
+
+
+
+
+ELSE
+    ;
+END_CASE;
+
+PROG_STEPS.PRINT_STEP:=STEP;
+
+(*FBs*)
+
+R_TRIG1(CLK:= CONVEYOR.JIG_PRINT.STATUS);
+TON_Step20(IN:= Start_Step20_Delay, PT:=T#2s);
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

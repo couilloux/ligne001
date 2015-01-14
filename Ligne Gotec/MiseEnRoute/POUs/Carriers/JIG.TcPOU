@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="JIG" Id="{affefc3e-03ac-4676-8962-4ad65dda32ba}">
+    <Declaration><![CDATA[FUNCTION_BLOCK JIG
+VAR
+	STEP: INT := 0; (* Internal program step *)
+	TIMER_RELEASE: TON;
+	START_RELEASE_TIMER:BOOL:=FALSE;
+END_VAR
+
+VAR_INPUT
+	NEXT_JIG_STATUS:BOOL; (*Status of the next jig*)
+	CARRIER_PRESENT:BOOL; (*CARRIER IS PRESENT *)
+	RELEASE_CARRIER:BOOL; (*Ask the function to release the carrier *)
+END_VAR
+
+VAR_OUTPUT
+	STATUS: BOOL := FALSE; (* 0-> JIG FREE   1-> JIB BUSY *)
+	CYLINDER_STOP: BOOL :=TRUE; (* STOP the carrier at this position *)
+	CYLINDER_LOCK: BOOL:=FALSE; (* LOCK the carrier at this position *)
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(************************************************************************************************************************************
+*
+* Gère le posage principale pour une station (Palette et convoyeur)
+*
+*
+************************************************************************************************************************************)
+IF GEMMA.STEP='A6' OR GEMMA.STEP='D1' THEN
+	STEP:=0;
+
+END_IF;
+
+CASE STEP OF
+
+0: (*Init*)
+	STEP:=STEP+1;
+	STATUS:=0;
+	START_RELEASE_TIMER:=FALSE;
+	CYLINDER_STOP:=TRUE;
+	CYLINDER_LOCK:=FALSE;
+
+1: (*Wait for a carrier*)
+	IF CARRIER_PRESENT THEN
+		CYLINDER_LOCK:=1;
+		STATUS:=1;
+		STEP:=STEP+1;
+	END_IF;
+
+2: (*Release the carrier*)
+	IF RELEASE_CARRIER AND NEXT_JIG_STATUS=0 THEN
+		CYLINDER_LOCK:=0;
+		CYLINDER_STOP:=0;
+		START_RELEASE_TIMER:=1;
+		STEP:=STEP+1;
+	END_IF;
+
+3: (*Delay after release of the carrier*)
+	IF TIMER_RELEASE.Q THEN
+		CYLINDER_STOP:=1;
+		START_RELEASE_TIMER:=0;
+		STATUS:=0;
+		STEP:=1;
+	END_IF;
+
+
+ELSE
+    ;
+END_CASE;
+
+
+(* TIMERS*)
+TIMER_RELEASE(IN:=START_RELEASE_TIMER,PT:=CARRIER_RELEASE_DELAY);
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

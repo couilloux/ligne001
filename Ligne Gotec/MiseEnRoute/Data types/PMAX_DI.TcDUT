@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="PMAX_DI" Id="{c1f176c0-2864-4e49-a483-c48b67f045ca}">
+    <Declaration><![CDATA[(************************************************************************************************
+*
+*Max pressure DI
+*
+***********************************************************************************************)
+
+TYPE PMAX_DI :
+STRUCT
+
+	WAGON_WAITING:BOOL;
+	WAGON_PRESENT:BOOL;
+	WAGON_AWAY:BOOL;
+	CYLINDER_TOP_IN:BOOL;
+	CYLINDER_TOP_OUT:BOOL;
+	CYLINDER_BOT_IN:BOOL;
+	CYLINDER_BOT_OUT:BOOL;
+	POWER_CYLINDER_IN:BOOL;
+	POWER_CYLINDER_OUT:BOOL;
+	Q3_OK:BOOL; 					(*Alim pompe*)
+	WATER_TANK_HIGH:BOOL;
+	WATER_TANK_LOW:BOOL;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

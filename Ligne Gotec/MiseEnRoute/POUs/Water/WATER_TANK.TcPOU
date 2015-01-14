@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="WATER_TANK" Id="{8adebca1-49c8-4b20-9ddd-9e29fd6153e1}">
+    <Declaration><![CDATA[FUNCTION_BLOCK WATER_TANK
+
+VAR_INPUT
+	WATER_TANK_HIGH: BOOL;
+	WATER_TANK_LOW: BOOL;
+END_VAR
+
+VAR_OUTPUT
+	WATER_TANK_VALVE:BOOL;
+	TIMEOUT:BOOL;
+END_VAR
+
+VAR
+	SR1:SR;
+	TON1:TON;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(********************************************************
+*
+* Water Tank
+*
+***********************************************************)
+
+SR1(SET1:= NOT WATER_TANK_LOW , RESET:= WATER_TANK_HIGH );
+
+TON1(IN:= SR1.Q1, PT:= TIMEOUT_WATER_TANK);
+
+TIMEOUT:= TON1.Q;
+
+IF SR1.Q1 AND NOT TIMEOUT THEN
+	WATER_TANK_VALVE:=TRUE;
+ELSE
+	WATER_TANK_VALVE:=FALSE;
+END_IF;
+
+
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

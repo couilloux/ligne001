@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <GVL Name="Flag_Variables" Id="{54eae9c1-1ce7-4cda-bc03-da1b2949b8ba}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+
+	FLAGS 				AT%M*: FLAGS;
+
+
+	SAFETY_IN 			AT%I*: SAFETY_IN;
+	SAFETY_OUT 			AT%Q*: SAFETY_OUT;
+
+
+
+
+END_VAR
+
+]]></Declaration>
+    <ObjectProperties />
+  </GVL>
+</TcPlcObject>

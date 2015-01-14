@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <GVL Name="IOs_Variables" Id="{7cea0666-11e3-408d-b901-4555809d0c3f}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+
+(************************************************************************************************
+*
+*General
+*
+***********************************************************************************************)
+	PROG_STEPS:PROG_STEPS;
+
+(************************************************************************************************
+*
+*Power Cabinet variables
+*
+***********************************************************************************************)
+
+	POW_DI AT%IW100: POW_DI;
+	POW_DO AT%QW100:POW_DO;
+
+	KEY1 AT%I*:BOOL;
+	LED1 AT%Q*:BOOL;
+
+(************************************************************************************************
+*
+*Vacuum station variables
+*
+***********************************************************************************************)
+
+	VAC_DI AT%IW200: VAC_DI;
+	VAC_DO AT%QW200:VAC_DO;
+
+	VAC_VACUUM_SENSOR AT%IW230: PRESSURE_SENSOR; (* Valeurs du capteur *)
+	VAC_VACUMM_SENSOR_VALUE:REAL; (*Valeur réel*)
+
+(************************************************************************************************
+*
+*Q1 station variables
+*
+***********************************************************************************************)
+
+	Q1_DI AT%IW300: Q_DI;
+	Q1_DO AT%QW300:Q_DO;
+
+	Q1_PRESSURE_SENSOR AT%IW330: PRESSURE_SENSOR; (*Valeurs du capteur*)
+	Q1_PRESSURE_SENSOR_VALUE:REAL;(*Valeur réel*)
+	Q1_CALCULETED_FLOW:REAL ;
+
+	Q1_FLOWMETER AT%IW340:FLOWMETER_SENSOR; (*Valeurs du capteur*)
+	Q1_FLOWMETER_VALUES :FLOWMETER_VALUES;(*Valeurs réels*)
+	Q1_FLOWMETER_CONTROL AT%QW350:FLOWMETER_CONTROL;(*Variables de commande du débitmètre*)
+
+	Q1_CURRENT:REAL;
+
+(************************************************************************************************
+*
+*Q2 station variables
+*
+***********************************************************************************************)
+
+	Q2_DI AT%IW400: Q_DI;
+	Q2_DO AT%QW400:Q_DO;
+
+	Q2_PRESSURE_SENSOR AT%IW430: PRESSURE_SENSOR;
+	Q2_PRESSURE_SENSOR_VALUE:REAL;
+	Q2_CALCULETED_FLOW:REAL ;
+
+	Q2_FLOWMETER AT%IW440:FLOWMETER_SENSOR;
+	Q2_FLOWMETER_VALUES :FLOWMETER_VALUES;
+	Q2_FLOWMETER_CONTROL AT%QW450:FLOWMETER_CONTROL;(*Variables de commande du débitmètre*)
+
+	Q2_CURRENT:REAL;
+
+(************************************************************************************************
+*
+*PMAX station variables
+*
+***********************************************************************************************)
+
+	PMAX_DI AT%IW500: PMAX_DI;
+	PMAX_DO AT%QW500: PMAX_DO;
+
+	PMAX_PRESSURE_SENSOR AT%IW530: PRESSURE_SENSOR;
+	PMAX_PRESSURE_SENSOR_VALUE:REAL;
+
+	PMAX_PRESSURE_LOOSE:REAL;
+
+(************************************************************************************************
+*
+*PRINT station variables
+*
+***********************************************************************************************)
+
+	PRINT_DI AT%IW600: PRINT_DI;
+	PRINT_DO AT%QW600: PRINT_DO;
+
+	PRINT_PUMP_STATUS	:BOOL; (*0-> pompe mauvaise / 1-> pompe bonne*)
+
+	CAN_OPEN_Q1_DIAGAT AT%I*:BOOL;
+
+	CAN_OPEN_Q2_DIAGAT AT%I*:BOOL;
+
+(************************************************************************************************
+*
+*Current measurement
+*
+***********************************************************************************************)
+	Q1_Multimeter_mode	AT%Q*:SINT := 3;
+	Q2_Multimeter_mode	AT%Q*:SINT := 3;
+(*
+0 0x00 DC voltage
+1 0x01 AC voltage
+2 0x02 DC current
+3 0x03 AC current
+*)
+
+	Q1_Multimeter_range AT%Q* :SINT := 1;
+	Q2_Multimeter_range AT%Q* :SINT := 1;
+
+(*
+255 0xFF 300 mV / 100 mA
+0 0x00  3 V / 1 A 
+1 0x01 30 V / 10 A 
+2 0x02 300 V (voltage only)  
+*)
+
+	Q1_Multimeter_value AT%I*:DINT;
+	Q2_Multimeter_value AT%I*:DINT;
+
+
+END_VAR
+]]></Declaration>
+    <ObjectProperties />
+  </GVL>
+</TcPlcObject>

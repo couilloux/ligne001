@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="Q_DO" Id="{9c8f38df-02af-47e5-95b3-dce8c1c266c6}">
+    <Declaration><![CDATA[(************************************************************************************************
+*
+*Flowmeter stations DI
+*
+***********************************************************************************************)
+
+TYPE Q_DO :
+STRUCT
+
+
+	WAGON_WAIT_CYLINDER:BOOL;
+	WAGON_LOCK_CYLINDER:BOOL;
+	WAGON_STOP_CYLINDER:BOOL;
+	HYDRO_CYLINDER_TOP:BOOL;
+	HYDRO_CYLINDER_BOT:BOOL;
+	ELECTR_CYLINDER:BOOL;
+	Y7:BOOL;
+	Y8:BOOL;
+	PUMP_POWER:BOOL;
+	MAX_FLOW_VALVE:BOOL;
+	WATER_TANK_VALVE:BOOL;
+	FLOW_STOP_VALVE:BOOL;
+	FLOW_STOP_BOTT:BOOL;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

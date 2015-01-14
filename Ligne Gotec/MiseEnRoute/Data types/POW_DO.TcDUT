@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="POW_DO" Id="{b9181cd3-4ec0-4052-9d23-e9613f7e43c3}">
+    <Declaration><![CDATA[
+(************************************************************************************************
+*
+*Variables structure for the digitals ouputs of the POWER module
+*
+***********************************************************************************************)
+
+TYPE POW_DO :
+STRUCT
+
+	HMI_LED_GREEN:BOOL;
+	HMI_LED_ORANGE:BOOL;
+	HMI_LED_RED:BOOL;
+	HMI_LED_BLUE:BOOL;
+	CONVEYOR_RELAIS:BOOL;
+
+
+END_STRUCT
+END_TYPE
+]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

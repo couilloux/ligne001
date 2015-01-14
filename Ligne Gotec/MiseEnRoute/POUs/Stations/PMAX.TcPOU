@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="PMAX" Id="{482ff334-bbde-41b5-956f-fbe1cc80eeab}">
+    <Declaration><![CDATA[PROGRAM PMAX
+VAR
+	STEP: INT := 0;
+	R_TRIG1:R_TRIG;
+	Presure_Delay: TON;
+	FlowStop_Delay: TON;
+	Start_FlowStop_Delay: BOOL;
+	Pump_Delay: TON;
+	Start_Pump_Delay: BOOL;
+	Start_Presure_Delay: BOOL;
+	Start_Tightness_Delay: BOOL;
+	Tightness_Delay: TON;
+	Tightness_1: REAL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*******************************************************
+*
+* Program fro the PMAX Test station
+*
+*
+*********************************************************)
+IF GEMMA.STEP='A6' THEN
+	STEP:=0;
+END_IF;
+
+
+CASE STEP OF
+
+0: (*Init*)
+	Start_Pump_Delay:=FALSE;
+	Start_Presure_Delay:=FALSE;
+	Start_FlowStop_Delay:=FALSE;
+	FLAGS.PMAX_STATUS:=0;
+	FLAGS.PMAX_RELEASE_CARRIER:=0;
+	STEP := STEP+10;
+
+10: (*Wait main JIG Ready*)
+	IF R_TRIG1.Q AND GEMMA.STEP='F1'  THEN
+		FLAGS.PMAX_STATUS:=1;
+		STEP := STEP+10;
+
+	END_IF;
+
+20: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+30: (* Check hydraulique connexion OK*)
+	PMAX_DO.HYDRO_CYLINDER_BOT:=TRUE;
+	PMAX_DO.HYDRO_CYLINDER_TOP:=TRUE;
+	PMAX_PRESSURE_LOOSE := 0;
+
+	STEP := STEP+10;
+
+40: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+50: (* Wait hydraulique connexion OK*)
+	IF PMAX_DI.CYLINDER_BOT_OUT AND PMAX_DI.CYLINDER_TOP_OUT THEN
+		STEP := STEP+10;
+	END_IF;
+
+60: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+70: (*Close electrical connexion *)
+	PMAX_DO.ELECTR_CYLINDER:=TRUE;
+	STEP := STEP+10;
+
+80: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+90:(*Wait electrical connexion closed*)
+	IF PMAX_DI.POWER_CYLINDER_OUT THEN
+		Start_Pump_Delay:=TRUE;
+		PMAX_DO.PUMP_POWER:=TRUE;
+		PMAX_DO.PRESSURE_VALVE:=FALSE;
+		PMAX_DO.FLOW_STOP_BOTT:=TRUE;
+		STEP := STEP+10;
+	END_IF;
+
+100: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+110: (*Pump until end of delay*)
+	IF Pump_Delay.Q THEN
+		Start_Pump_Delay:=FALSE;
+		PMAX_DO.PRESSURE_VALVE:=TRUE;
+		Start_Presure_Delay:=TRUE;
+		STEP := STEP+10;
+	END_IF;
+
+120: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+
+130: (*Presure until end of delay*)
+	IF Presure_Delay.Q THEN
+		PMAX_DO.HYDRO_CYLINDER_BOT:=FALSE;
+		Start_Presure_Delay:=FALSE;
+		STEP := STEP+10;
+	END_IF;
+
+140: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+150: (*Stop pump for valve tightness*)
+		PMAX_DO.PUMP_POWER:=FALSE;
+		Start_Tightness_Delay:=TRUE;
+		Tightness_1:=PMAX_PRESSURE_SENSOR_VALUE;
+		STEP := STEP+10;
+
+160: (*Wait valve tightness test time*)
+	IF Tightness_Delay.Q THEN
+		PMAX_DO.PRESSURE_VALVE:=FALSE;
+		PMAX_DO.FLOW_STOP_BOTT:=TRUE;
+		PMAX_DO.PUMP_POWER:=TRUE;
+		Start_Tightness_Delay:=FALSE;
+		Start_FlowStop_Delay:=TRUE;
+		PMAX_PRESSURE_LOOSE:=Tightness_1-PMAX_PRESSURE_SENSOR_VALUE;
+		STEP := STEP+10;
+	END_IF;
+
+
+(***MODIFICATION POUR PRESSURE LOOSE TIGHTNESS AVANT CETTE LIGNE *************)
+170: (*Delay before FLOWSTOP*)
+	IF FlowStop_Delay.Q THEN
+		PMAX_DO.FLOW_STOP_BOTT:=FALSE;
+		PMAX_DO.PRESSURE_VALVE:=TRUE;
+		PMAX_DO.PUMP_POWER:=FALSE;
+		Start_FlowStop_Delay:=FALSE;
+		STEP := STEP+10;
+	END_IF;
+
+
+180: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+
+190: (*Release electrical and hydraulic connexion*)
+
+
+	PMAX_DO.HYDRO_CYLINDER_TOP:=FALSE;
+	PMAX_DO.ELECTR_CYLINDER:=FALSE;
+
+	STEP := STEP+10;
+
+200: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+210:(*Wait all cylinders IN*)
+	IF PMAX_DI.POWER_CYLINDER_IN AND PMAX_DI.CYLINDER_BOT_IN AND PMAX_DI.CYLINDER_TOP_IN THEN
+		STEP := STEP+10;
+	END_IF;
+
+220: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+230: (*Release carrier*)
+	FLAGS.PMAX_RELEASE_CARRIER:=TRUE;
+	STEP:=STEP+10;
+
+240: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+250: (*Wait carrier away*)
+	IF PMAX_DI.WAGON_AWAY THEN
+		STEP := 0;
+	END_IF;
+
+
+
+ELSE
+    ;
+END_CASE;
+
+PROG_STEPS.PMAX_STEP:=STEP;
+
+(*FBs*)
+Pump_Delay(IN:= Start_Pump_Delay, PT:= PUMP_PARAMS.PMAX_PUMPING_TIME);
+Presure_Delay(IN:= Start_Presure_Delay, PT:= PUMP_PARAMS.PMAX_MEASUREMENT_TIME);
+FlowStop_Delay(IN:= Start_FlowStop_Delay, PT:= DRY_DELAY);
+Tightness_Delay(IN:= Start_Tightness_Delay, PT:= PUMP_PARAMS.PMAX_PRESSURE_LOOSE_TIME);
+
+R_TRIG1(CLK:= CONVEYOR.JIG_PMAX.STATUS);]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

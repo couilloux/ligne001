@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="FLOWMETER_SENSOR" Id="{921ec35f-9943-4049-bc9b-cd2b3a9197b1}">
+    <Declaration><![CDATA[
+(************************************************************************************************
+*
+*Variables structure for E&H flowmeter PROMAS 83A
+*
+***********************************************************************************************)
+
+
+TYPE FLOWMETER_SENSOR :
+STRUCT
+
+	A1 :ARRAY[0..4] OF USINT;
+	A2 :ARRAY[0..4] OF USINT;
+	A3 :ARRAY[0..4] OF USINT;
+	A4 :ARRAY[0..4] OF USINT;
+	A5 :ARRAY[0..4] OF USINT;
+	A6 :ARRAY[0..4] OF USINT;
+	TOT :ARRAY[0..4] OF USINT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

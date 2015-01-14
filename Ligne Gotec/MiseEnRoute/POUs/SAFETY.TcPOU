@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="SAFETY" Id="{c8dfe731-15df-44f0-b481-db15cce5b1a5}">
+    <Declaration><![CDATA[PROGRAM SAFETY
+VAR
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[SAFETY_OUT.DOORS_RUN:=TRUE;
+
+SAFETY_OUT.DOORS_ErrAck:=SAFETY_OUT.NOT_AUS_RESET;
+
+
+IF SAFETY_IN.NOT_AUS_State=1 THEN
+
+	FLAGS.SAFETY_OK:=TRUE;
+
+ELSE
+
+	FLAGS.SAFETY_OK:=FALSE;
+END_IF;
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

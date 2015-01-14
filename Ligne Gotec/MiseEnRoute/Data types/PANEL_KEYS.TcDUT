@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="PANEL_KEYS" Id="{9d75210c-1afe-46c3-8735-0b2140840109}">
+    <Declaration><![CDATA[TYPE PANEL_KEYS :
+STRUCT
+
+	KEY1:BOOL;
+	KEY2:BOOL;
+	KEY3:BOOL;
+	KEY4:BOOL;
+	KEY5:BOOL;
+	KEY6:BOOL;
+	KEY7:BOOL;
+	KEY8:BOOL;
+	KEY9:BOOL;
+	KEY10:BOOL;
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="GEN_PARAMS" Id="{1bba76c7-d14a-43e0-a99f-4d7340957c9e}">
+    <Declaration><![CDATA[TYPE GEN_PARAMS :
+STRUCT
+
+	USE_JIG_OP2:BOOL:=TRUE; (*Use or not the jig for the operator 2 - Right - *)
+
+END_STRUCT
+	END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

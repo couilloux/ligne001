@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4a9d5ae5-8087-46f4-abec-3a346c9da3be}</ProjectGuid>
+    <Name>MiseEnRoute</Name>
+    <Application>{dddaf2ad-dfa9-4732-acca-d513b9e49cc8}</Application>
+    <TypeSystem>{dcaf26fc-ff69-4015-a956-b46d0dc4cc88}</TypeSystem>
+    <Implicit_Task_Info>{6afc15d3-ba3c-495c-a573-bd32695a7bc3}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{0dc31c36-9483-41b3-9473-7498a3630eb8}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{b6b7f31d-b4cf-4bfa-9707-224cd251d88c}</Implicit_Jitter_Distribution>
+    <FileVersion>0.0.0.0</FileVersion>
+    <LibraryReferences>{2518b378-d765-4904-a695-f546cebd5200}</LibraryReferences>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Data types" />
+    <Folder Include="Global Variables" />
+    <Folder Include="POUs" />
+    <Folder Include="POUs\Carriers" />
+    <Folder Include="POUs\EH" />
+    <Folder Include="POUs\Functions" />
+    <Folder Include="POUs\HMI" />
+    <Folder Include="POUs\Stations" />
+    <Folder Include="POUs\Water" />
+    <Folder Include="POUs\WIKA" />
+    <Folder Include="Visualizations" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Blinking.TcTTO" />
+    <Compile Include="Data types\ETHERCAT.TcDUT" />
+    <Compile Include="Data types\FLAGS.TcDUT" />
+    <Compile Include="Data types\FLOWMETER_CONTROL.TcDUT" />
+    <Compile Include="Data types\FLOWMETER_SENSOR.TcDUT" />
+    <Compile Include="Data types\FLOWMETER_VALUES.TcDUT" />
+    <Compile Include="Data types\GEN_PARAMS.TcDUT" />
+    <Compile Include="Data types\HMI_DB_ADS.TcDUT">
+      <ExcludeFromBuild>True</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="Data types\PANEL_KEYS.TcDUT" />
+    <Compile Include="Data types\PANEL_LEDS.TcDUT" />
+    <Compile Include="Data types\PMAX_DI.TcDUT" />
+    <Compile Include="Data types\PMAX_DO.TcDUT" />
+    <Compile Include="Data types\POW_DI.TcDUT" />
+    <Compile Include="Data types\POW_DO.TcDUT" />
+    <Compile Include="Data types\PRESSURE_SENSOR.TcDUT" />
+    <Compile Include="Data types\PRINT_DI.TcDUT" />
+    <Compile Include="Data types\PRINT_DO.TcDUT" />
+    <Compile Include="Data types\PROG_STEPS.TcDUT" />
+    <Compile Include="Data types\PUMP_PARAMS.TcDUT" />
+    <Compile Include="Data types\PUMP_PARAMS_DB.TcDUT">
+      <ExcludeFromBuild>True</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="Data types\Q_DI.TcDUT" />
+    <Compile Include="Data types\Q_DO.TcDUT" />
+    <Compile Include="Data types\SAFETY_IN.TcDUT" />
+    <Compile Include="Data types\SAFETY_OUT.TcDUT" />
+    <Compile Include="Data types\VAC_DI.TcDUT" />
+    <Compile Include="Data types\VAC_DO.TcDUT" />
+    <Compile Include="Global Variables\Constant_Variables.TcGVL" />
+    <Compile Include="Global Variables\Events_Variables.TcGVL" />
+    <Compile Include="Global Variables\Flag_Variables.TcGVL" />
+    <Compile Include="Global Variables\IOs_Variables.TcGVL" />
+    <Compile Include="Global Variables\TwinCAT_Configuration.TcGVL" />
+    <Compile Include="Global Variables\Variable_Configuration.TcGVL" />
+    <Compile Include="GlobalImagePool.TcIPO" />
+    <Compile Include="GlobalTextList.TcGTLO" />
+    <Compile Include="POUs\AIS.TcPOU" />
+    <Compile Include="POUs\Carriers\CONVEYOR.TcPOU" />
+    <Compile Include="POUs\Carriers\JIG.TcPOU" />
+    <Compile Include="POUs\Carriers\JIG_2ND.TcPOU" />
+    <Compile Include="POUs\CHECK_VALVES_SENSORS.TcPOU" />
+    <Compile Include="POUs\EH\EH_FLOMETER.TcPOU" />
+    <Compile Include="POUs\EH\EH_IEEE754_TO_REAL.TcPOU" />
+    <Compile Include="POUs\EVENTS.TcPOU" />
+    <Compile Include="POUs\Functions\CONVERT_MASS_TO_FLOW.TcPOU" />
+    <Compile Include="POUs\GEMMA.TcPOU" />
+    <Compile Include="POUs\HMI\LEDS.TcPOU" />
+    <Compile Include="POUs\MAIN.TcPOU" />
+    <Compile Include="POUs\Q1_MOTOR.TcPOU" />
+    <Compile Include="POUs\Q2_MOTOR.TcPOU" />
+    <Compile Include="POUs\SAFETY.TcPOU" />
+    <Compile Include="POUs\Stations\PMAX.TcPOU" />
+    <Compile Include="POUs\Stations\PRINT.TcPOU" />
+    <Compile Include="POUs\Stations\Q1.TcPOU" />
+    <Compile Include="POUs\Stations\Q2.TcPOU" />
+    <Compile Include="POUs\Stations\VAC.TcPOU" />
+    <Compile Include="POUs\testop.TcPOU" />
+    <Compile Include="POUs\USB.TcPOU" />
+    <Compile Include="POUs\Water\WATER_TANK.TcPOU" />
+    <Compile Include="POUs\Water\WATER_TANKS.TcPOU" />
+    <Compile Include="POUs\WIKA\WIKA_GET_VALUES.TcPOU" />
+    <Compile Include="Slow_Tasks.TcTTO" />
+    <Compile Include="Standard.TcTTO" />
+    <Compile Include="TestOperator.TcTTO" />
+    <Compile Include="Visualization Manager.TcVMO" />
+    <Compile Include="Visualizations\FLAGS.TcVIS" />
+    <Compile Include="Visualizations\GEMMA.TcVIS" />
+    <Compile Include="Visualizations\Motor.TcVIS" />
+    <Compile Include="Visualizations\P_MAX.TcVIS" />
+    <Compile Include="Visualizations\Q1.TcVIS" />
+    <Compile Include="Visualizations\Q2.TcVIS" />
+    <Compile Include="Visualizations\VAC.TcVIS" />
+  </ItemGroup>
+  <ItemGroup>
+    <LibraryReference Include="Maxon,1.0.0.0,Maxon Motor">
+      <Namespace>Maxon</Namespace>
+      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
+    </LibraryReference>
+    <LibraryReference Include="Tc2_Standard,newest,Beckhoff Automation GmbH">
+      <Namespace>Tc2_Standard</Namespace>
+      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
+    </LibraryReference>
+    <LibraryReference Include="Tc2_System,newest,Beckhoff Automation GmbH">
+      <Namespace>Tc2_System</Namespace>
+      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
+    </LibraryReference>
+    <LibraryReference Include="Tc2_Utilities,newest,Beckhoff Automation GmbH">
+      <Namespace>Tc2_Utilities</Namespace>
+      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
+    </LibraryReference>
+    <LibraryReference Include="Tc3_Interfaces,3.3.0.0,Beckhoff Automation GmbH">
+      <Namespace>Tc3_Interfaces</Namespace>
+      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
+    </LibraryReference>
+    <LibraryReference Include="Tc3_Module,3.3.6.0,Beckhoff Automation GmbH">
+      <Namespace>Tc3_Module</Namespace>
+      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
+    </LibraryReference>
+  </ItemGroup>
+  <ProjectExtensions />
+</Project>

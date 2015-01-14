@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="FLOWMETER_VALUES" Id="{a013a2b7-ddda-4b28-8464-000384e35c04}">
+    <Declaration><![CDATA[TYPE FLOWMETER_VALUES :
+STRUCT
+	MassFlow:REAL;
+	VolumeFlow:REAL;
+	CorrectedVolueFLow:REAL;
+	Density:REAL;
+	ReferenceDensity:REAL;
+	Temperature:REAL;
+	TotalMass:REAL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

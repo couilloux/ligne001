@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <Task Name="Blinking" Id="{68f0abf3-f3f4-4384-abd1-fa4927cb6329}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>450000</CycleTime>
+    <Priority>23</Priority>
+    <PouCall>
+      <Name>LEDS</Name>
+    </PouCall>
+    <TaskFBGuid>{3431468e-4ddc-4038-882e-179eeb6463aa}</TaskFBGuid>
+    <Fb_init>{57240486-e69e-4f34-aa15-4df0261da07a}</Fb_init>
+    <Fb_exit>{2d41c447-7d8b-4e90-b327-b76c628ee2e7}</Fb_exit>
+    <CycleUpdate>{93ebb844-b07b-4f28-92dd-58611c48aeaf}</CycleUpdate>
+    <PostCycleUpdate>{172710be-5fe7-48ac-8eb2-146b23fded30}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

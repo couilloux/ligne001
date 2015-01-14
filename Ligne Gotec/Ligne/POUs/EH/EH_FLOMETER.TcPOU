@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="EH_FLOMETER" Id="{8b39dbc8-6c86-4f15-be60-bfd9b2ffa200}">
+    <Declaration><![CDATA[FUNCTION_BLOCK EH_FLOMETER
+
+VAR_INPUT
+	AI1: ARRAY [0..4] OF USINT;
+	AI2: ARRAY [0..4] OF USINT;
+	AI3: ARRAY [0..4] OF USINT;
+	AI4: ARRAY [0..4] OF USINT;
+	AI5: ARRAY [0..4] OF USINT;
+	AI6: ARRAY [0..4] OF USINT;
+	TOT: ARRAY [0..4] OF USINT;
+END_VAR
+
+VAR_OUTPUT
+	MassFlow: REAL;
+	VolumeFlow: REAL;
+	CorrectedVolueFLow: REAL;
+	Density: REAL;
+	ReferenceDensity:REAL;
+	Temperature:REAL;
+	TotalMass: REAL;
+END_VAR
+
+VAR
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[MassFlow:=EH_IEEE754_TO_REAL(AI1);
+VolumeFlow:=EH_IEEE754_TO_REAL(AI2);
+CorrectedVolueFLow:=EH_IEEE754_TO_REAL(AI3);
+Density:=EH_IEEE754_TO_REAL(AI4);
+ReferenceDensity:=EH_IEEE754_TO_REAL(AI5);
+Temperature:=EH_IEEE754_TO_REAL(AI6);
+TotalMass:=EH_IEEE754_TO_REAL(TOT);]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

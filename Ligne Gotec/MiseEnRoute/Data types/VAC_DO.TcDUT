@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="VAC_DO" Id="{a6018700-5258-4afc-90f7-c329f0b3e021}">
+    <Declaration><![CDATA[(************************************************************************************************
+*
+*Vacuum station DO
+*
+***********************************************************************************************)
+
+TYPE VAC_DO :
+STRUCT
+
+	WAGON_WAIT_CYLINDER:BOOL;
+	WAGON_LOCK_CYLINDER:BOOL;
+	WAGON_STOP_CYLINDER:BOOL;
+	HYDRO_CYLINDER_TOP:BOOL;
+	HYDRO_CYLINDER_BOT:BOOL;
+	ELECTR_CYLINDER:BOOL;
+	WAGON_OPERATOR1:BOOL;
+	WAGON_OPERATOR2:BOOL;
+	PUMP_POWER:BOOL;
+	VACUUM_VALVE:BOOL;
+	WATER_TANK_VALVE:BOOL;
+	AIR_VALVE:BOOL;
+	FLOW_STOP_VALVE:BOOL;
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="PANEL_LEDS" Id="{e9868c0a-3c68-49a3-841c-ab0592b79732}">
+    <Declaration><![CDATA[TYPE PANEL_LEDS :
+STRUCT
+
+	LED1:BOOL;
+	LED2:BOOL;
+	LED3:BOOL;
+	LED4:BOOL;
+	LED5:BOOL;
+	LED6:BOOL;
+	LED7:BOOL;
+	LED8:BOOL;
+	LED9:BOOL;
+	LED10:BOOL;
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

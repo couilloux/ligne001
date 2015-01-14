@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="VAC" Id="{07dc512d-2ac5-4f76-8cd9-3e3b10853e54}">
+    <Declaration><![CDATA[PROGRAM VAC
+VAR
+	STEP: INT := 0;
+	R_TRIG1:R_TRIG;
+	Suction_Delay: TON;
+	FlowStop_Delay: TON;
+	Start_FlowStop_Delay: BOOL;
+	Pump_Delay: TON;
+	Start_Pump_Delay: BOOL;
+	Start_Suction_Delay: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*******************************************************
+*
+* Program fro the PRINT Test station
+*
+*
+*********************************************************)
+IF GEMMA.STEP='A6' THEN
+	STEP:=0;
+END_IF;
+
+
+CASE STEP OF
+
+0: (*Init*)
+	Start_Pump_Delay:=FALSE;
+	Start_Suction_Delay:=FALSE;
+	Start_FlowStop_Delay:=FALSE;
+	FLAGS.VAC_STATUS:=0;
+	FLAGS.VAC_RELEASE_CARRIER:=0;
+	STEP := STEP+10;
+
+10: (*Wait main JIG Ready*)
+	IF R_TRIG1.Q AND GEMMA.STEP='F1'  THEN
+		FLAGS.VAC_STATUS:=1;
+		STEP := STEP+10;
+
+	END_IF;
+
+20: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+30: (* Check hydraulique connexion OK*)
+	VAC_DO.HYDRO_CYLINDER_BOT:=TRUE;
+	VAC_DO.HYDRO_CYLINDER_TOP:=TRUE;
+
+	STEP := STEP+10;
+
+40: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+50: (* Wait hydraulique connexion OK*)
+	IF VAC_DI.CYLINDER_BOT_OUT AND VAC_DI.CYLINDER_TOP_OUT THEN
+		STEP := STEP+10;
+	END_IF;
+
+60: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+70: (*Close electrical connexion *)
+	VAC_DO.ELECTR_CYLINDER:=TRUE;
+	STEP := STEP+10;
+
+80: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+90:(*Wait electrical connexion closed*)
+	IF VAC_DI.POWER_CYLINDER_OUT THEN
+		Start_Pump_Delay:=TRUE;
+		VAC_DO.PUMP_POWER:=TRUE;
+		VAC_DO.FLOW_STOP_VALVE:=TRUE;
+		VAC_DO.VACUUM_VALVE:=TRUE;
+		STEP := STEP+10;
+	END_IF;
+
+100: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+110: (*Pump until end of delay*)
+	IF Pump_Delay.Q THEN
+		VAC_DO.VACUUM_VALVE:=FALSE;
+		Start_Pump_Delay:=FALSE;
+		Start_Suction_Delay:=TRUE;
+		STEP := STEP+10;
+	END_IF;
+
+120: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+
+130: (*Suction until end of delay*)
+	IF Suction_Delay.Q THEN
+		VAC_DO.HYDRO_CYLINDER_BOT:=FALSE;
+		Start_Suction_Delay:=FALSE;
+		Start_FlowStop_Delay:=TRUE;
+		STEP := STEP+10;
+	END_IF;
+
+140: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+150: (*Delay before FLOWSTOP*)
+	IF FlowStop_Delay.Q THEN
+		VAC_DO.FLOW_STOP_VALVE:=FALSE;
+		VAC_DO.PUMP_POWER:=FALSE;
+		Start_FlowStop_Delay:=FALSE;
+		STEP := STEP+10;
+	END_IF;
+
+
+160: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+
+170: (*Release electrical and hydraulic connexion*)
+
+
+	VAC_DO.HYDRO_CYLINDER_TOP:=FALSE;
+	VAC_DO.ELECTR_CYLINDER:=FALSE;
+
+	STEP := STEP+10;
+
+180: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+190:(*Wait all cylinders IN*)
+	IF VAC_DI.POWER_CYLINDER_IN AND VAC_DI.CYLINDER_BOT_IN AND VAC_DI.CYLINDER_TOP_IN THEN
+		STEP := STEP+10;
+	END_IF;
+
+200: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+210: (*Release carrier*)
+	FLAGS.VAC_RELEASE_CARRIER:=TRUE;
+	STEP:=STEP+10;
+
+220: (*Continue if doors closed**************************************************************************)
+	IF FLAGS.DOORS_OPEN=0 THEN
+		STEP := STEP+10;
+	END_IF;
+
+230: (*Wait carrier away*)
+	IF VAC_DI.WAGON_AWAY THEN
+		STEP := 0;
+	END_IF;
+
+
+
+ELSE
+    ;
+END_CASE;
+
+PROG_STEPS.VAC_STEP:=STEP;
+
+(*FBs*)
+Pump_Delay(IN:= Start_Pump_Delay, PT:= PUMP_PARAMS.PMAX_PUMPING_TIME);
+Suction_Delay(IN:= Start_Suction_Delay, PT:= PUMP_PARAMS.PMAX_MEASUREMENT_TIME);
+FlowStop_Delay(IN:= Start_FlowStop_Delay, PT:= DRY_DELAY);
+
+R_TRIG1(CLK:= CONVEYOR.JIG_VAC.STATUS);]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

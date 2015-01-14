@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <DUT Name="SAFETY_OUT" Id="{7e800ad2-39be-43f2-9308-7e2119b7ccf0}">
+    <Declaration><![CDATA[TYPE SAFETY_OUT :
+STRUCT
+
+	DOORS_RUN:BOOL;
+	DOORS_ErrAck:BOOL;
+
+	NOT_AUS_RUN:BOOL;
+	NOT_AUS_ErrAck:BOOL;
+
+	NOT_AUS_RESET:BOOL;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>
