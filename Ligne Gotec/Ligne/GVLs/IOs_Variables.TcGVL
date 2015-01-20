@@ -166,7 +166,7 @@ VAR_GLOBAL
 	ST5_POWER	AT%Q*:BOOL;		(*Alimentation électrique pompe*)
 	ST5_VIDANGE	AT%Q*:BOOL;		(*Vidange balance*)
 	
-	ST5_Niveau_Rervoir 	AT%I*:INT;
+	ST5_Niveau_Reservoir 	AT%I*:INT;
 	
 
 (************************************************************************************************
@@ -232,6 +232,7 @@ VAR_GLOBAL
 	ST8_8V1 	AT%Q*:BOOL;		(*Vérin palette attente*)
 	ST8_8V2 	AT%Q*:BOOL;		(*Vérin palette bloquage*)
 	ST8_8V3 	AT%Q*:BOOL;		(*Vérin palette stop*)
+	ST8_8V4 	AT%Q*:BOOL;		(*Reserve*)
 	
 (************************************************************************************************
 *
@@ -251,6 +252,11 @@ VAR_GLOBAL
 	ST9_9V1 	AT%Q*:BOOL;		(*Vérin palette attente*)
 	ST9_9V2 	AT%Q*:BOOL;		(*Vérin palette bloquage*)
 	ST9_9V3 	AT%Q*:BOOL;		(*Vérin palette stop*)
+	ST9_9V4 	AT%Q*:BOOL;		(*Vérin rodless guide*)
+	ST9_9V5 	AT%Q*:BOOL;		(*Vérin slide table*)
+	ST9_9V6 	AT%Q*:BOOL;		(*Vérin gripper*)
+	ST9_9V7 	AT%Q*:BOOL;		(*Vérin liberateur electrique*)
+	
 	
 (************************************************************************************************
 *
