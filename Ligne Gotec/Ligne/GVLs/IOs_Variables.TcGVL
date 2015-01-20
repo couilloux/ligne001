@@ -11,26 +11,260 @@ VAR_GLOBAL
 *
 ***********************************************************************************************)
 	PROG_STEPS:PROG_STEPS;
-
-
-	VAC_VACUUM_SENSOR AT%I*: PRESSURE_SENSOR; (* Valeurs du capteur *)
-	VAC_VACUMM_SENSOR_VALUE:REAL; (*Valeur réel*)
+	
+	GEN_0B1 				AT%I*:BOOL;		(*Présence AIR*)
+	GEN_PRESENCE_POMPE 		AT%I*:BOOL; (* Une pompe est présente sur la palette à l'entrée du banc*)
+	
+	GEN_1V1 				AT%Q*:BOOL;		(*Vanne AIR*)
+	GEN_CONVOYEUR			AT%Q*:BOOL;		(*Vanne AIR*)
+	
+	
 
 (************************************************************************************************
 *
-*Q1 station variables
+*Pote 1 - Test haute tension
 *
-***********************************************************************************************)
+***********************************************************************************************)	
+	ST1_1B1 	AT%I*:BOOL;		(*Capteur palette en attente*)
+	ST1_1B2 	AT%I*:BOOL;		(*Capteur palette présente*)
+	ST1_1B4 	AT%I*:BOOL;		(*Capteur vérin Hydro TOP*)
+	ST1_1B5 	AT%I*:BOOL;		(*Capteur vérin Hydro BOTTOM*)
+	
+	ST1_1V1 	AT%Q*:BOOL;		(*Vérin palette attente*)
+	ST1_1V2 	AT%Q*:BOOL;		(*Vérin palette bloquage*)
+	ST1_1V3 	AT%Q*:BOOL;		(*Vérin palette stop*)
+	ST1_1V4 	AT%Q*:BOOL;		(*Vérin connexion TOP*)
+	ST1_1V5		AT%Q*:BOOL;		(*Vérin connexion HT*)
+	
+	
+(************************************************************************************************
+*
+*Pote 2 - Aspiration et étanchéité des soupapes
+*
+***********************************************************************************************)	
+	ST2_2B1 	AT%I*:BOOL;		(*Capteur palette en attente*)
+	ST2_2B2 	AT%I*:BOOL;		(*Capteur palette présente*)
+	ST2_2B4 	AT%I*:BOOL;		(*Capteur vérin Hydro TOP*)
+	ST2_2B5 	AT%I*:BOOL;		(*Capteur vérin Hydro BOTTOM*)
+	ST2_2B6 	AT%I*:BOOL;		(*Capteur vérin électrique*)
+	ST2_2B7 	AT%I*:BOOL;		(*Capteur vérin by-pass*)	
+	
+	ST2_2P1		AT%I*:PRESSURE_SENSOR; (* Valeurs du capteur aspiration*)
+	ST2_VACUUM	:REAL; 					(*Pression aspiration*)
+	
+	ST2_2V1 	AT%Q*:BOOL;		(*Vérin palette attente*)
+	ST2_2V2 	AT%Q*:BOOL;		(*Vérin palette bloquage*)
+	ST2_2V3 	AT%Q*:BOOL;		(*Vérin palette stop*)
+	ST2_2V4 	AT%Q*:BOOL;		(*Vérin Hydro TOP*)
+	ST2_2V5		AT%Q*:BOOL;		(*Vérin hydro BOTTOM*)
+	ST2_2V6		AT%Q*:BOOL;		(*Vérin électrique*)
+	ST2_2V7		AT%Q*:BOOL;		(*Vérin by-pass*)
+	
+	ST2_POWER	AT%Q*:BOOL;		(*Alimentation électrique pompe*)
+	
+	
+	
+(************************************************************************************************
+*
+*Pote 3 - Etanchéité
+*
+***********************************************************************************************)	
+	ST3_3B1 	AT%I*:BOOL;		(*Capteur palette en attente*)
+	ST3_3B2 	AT%I*:BOOL;		(*Capteur palette présente*)
+	ST3_3B4 	AT%I*:BOOL;		(*Capteur vérin Hydro TOP*)
+	ST3_3B5 	AT%I*:BOOL;		(*Capteur vérin Hydro BOTTOM*)
+	ST3_3B7 	AT%I*:BOOL;		(*Capteur vérin by-pass*)	
+	
+	ST3_3V1 	AT%Q*:BOOL;		(*Vérin palette attente*)
+	ST3_3V2 	AT%Q*:BOOL;		(*Vérin palette bloquage*)
+	ST3_3V3 	AT%Q*:BOOL;		(*Vérin palette stop*)
+	ST3_3V4 	AT%Q*:BOOL;		(*Vérin Hydro TOP*)
+	ST3_3V5		AT%Q*:BOOL;		(*Vérin hydro BOTTOM*)
+	ST3_3V7		AT%Q*:BOOL;		(*Vérin by-pass*)
+	
+	ST3_3V10 	AT%Q*:BOOL;		(*Vanne avant la pompe*)
+	ST3_3V11 	AT%Q*:BOOL;		(*Vanne après la pompe*)
+	ST3_3V12 	AT%Q*:BOOL;		(*Vanne de blocage d'air pour le DELTA*)
+	
+	ST3_3P1 	AT%I*:INT;		(*Capteur de pression différentiel*)
+	
+(************************************************************************************************
+*
+*Pote 4 - Débit (petit)
+*
+***********************************************************************************************)	
+	ST4_4B1 	AT%I*:BOOL;		(*Capteur palette en attente*)
+	ST4_4B2 	AT%I*:BOOL;		(*Capteur palette présente*)
+	ST4_4B4 	AT%I*:BOOL;		(*Capteur vérin Hydro TOP*)
+	ST4_4B5 	AT%I*:BOOL;		(*Capteur vérin Hydro BOTTOM*)
+	ST4_4B6 	AT%I*:BOOL;		(*Capteur vérin électrique*)
+	ST4_4B7 	AT%I*:BOOL;		(*Capteur vérin by-pass*)	
+	
+	ST4_4P1			AT%I*:PRESSURE_SENSOR; 	(*Valeurs du capteur*)
+	ST4_VACUUM		:REAL; 					(*Pression aspiration*)
+	
+	ST4_4P2			AT%I*:PRESSURE_SENSOR; 	(*Valeurs du capteur*)
+	ST4_PRESSURE	:REAL; 					(*Pression aspiration*)
+	
+	ST4_POIDS 	AT%I*:REAL;		(*Poids balance*)	
+	ST4_DEBIT	:REAL;			(*Débit calculé*)
+	
+	ST4_COURANT	:REAL;			(*Courant*)
+	
+	ST4_4V1 	AT%Q*:BOOL;		(*Vérin palette attente*)
+	ST4_4V2 	AT%Q*:BOOL;		(*Vérin palette bloquage*)
+	ST4_4V3 	AT%Q*:BOOL;		(*Vérin palette stop*)
+	ST4_4V4 	AT%Q*:BOOL;		(*Vérin Hydro TOP*)
+	ST4_4V5		AT%Q*:BOOL;		(*Vérin hydro BOTTOM*)
+	ST4_4V6		AT%Q*:BOOL;		(*Vérin électrique*)
+	ST4_4V7		AT%Q*:BOOL;		(*Vérin by-pass*)
+	
+	ST4_4V10	AT%Q*:BOOL;		(*Vanne avant la pompe*)
+	ST4_4V12	AT%Q*:BOOL;		(*Vanne après la vanne pilotée*)
+	ST4_4V13	AT%Q*:BOOL;		(*Vanne max flow*)
 
-	Q1_PRESSURE_SENSOR AT%IW330: PRESSURE_SENSOR; (*Valeurs du capteur*)
-	Q1_PRESSURE_SENSOR_VALUE:REAL;(*Valeur réel*)
-	Q1_CALCULETED_FLOW:REAL ;
+	ST4_POWER	AT%Q*:BOOL;		(*Alimentation électrique pompe*)
+	ST4_VIDANGE	AT%Q*:BOOL;		(*Vidange balance*)
 
-	Q1_FLOWMETER AT%IW340:FLOWMETER_SENSOR; (*Valeurs du capteur*)
-	Q1_FLOWMETER_VALUES :FLOWMETER_VALUES;(*Valeurs réels*)
-	Q1_FLOWMETER_CONTROL AT%QW350:FLOWMETER_CONTROL;(*Variables de commande du débitmètre*)
+(************************************************************************************************
+*
+*Pote 5 - Débit (grand)
+*
+***********************************************************************************************)	
+	ST5_5B1 	AT%I*:BOOL;		(*Capteur palette en attente*)
+	ST5_5B2 	AT%I*:BOOL;		(*Capteur palette présente*)
+	ST5_5B4 	AT%I*:BOOL;		(*Capteur vérin Hydro TOP*)
+	ST5_5B5 	AT%I*:BOOL;		(*Capteur vérin Hydro BOTTOM*)
+	ST5_5B6 	AT%I*:BOOL;		(*Capteur vérin électrique*)	
+	
+	ST5_5P1			AT%I*:PRESSURE_SENSOR; 	(*Valeurs du capteur*)
+	ST5_VACUUM		:REAL; 					(*Pression aspiration*)
+	
+	ST5_5P2			AT%I*:PRESSURE_SENSOR; 	(*Valeurs du capteur*)
+	ST5_PRESSURE	:REAL; 					(*Pression aspiration*)
+	
+	ST5_POIDS 	AT%I*:REAL;		(*Poids balance*)	
+	ST5_DEBIT	:REAL;			(*Débit calculé*)
+	
+	ST5_COURANT	:REAL;			(*Courant*)
+	
+	ST5_5V1 	AT%Q*:BOOL;		(*Vérin palette attente*)
+	ST5_5V2 	AT%Q*:BOOL;		(*Vérin palette bloquage*)
+	ST5_5V3 	AT%Q*:BOOL;		(*Vérin palette stop*)
+	ST5_5V4 	AT%Q*:BOOL;		(*Vérin Hydro TOP*)
+	ST5_5V5		AT%Q*:BOOL;		(*Vérin hydro BOTTOM*)
+	ST5_5V6		AT%Q*:BOOL;		(*Vérin électrique*)
+	
+	ST5_5V10	AT%Q*:BOOL;		(*Vanne avant la pompe*)
+	ST5_5V12	AT%Q*:BOOL;		(*Vanne après la vanne pilotée*)
+	ST5_5V13	AT%Q*:BOOL;		(*Vanne max flow*)
+	
+	ST5_5V14	AT%Q*:BOOL;		(*Vanne vidange vers égouts ou réservoir*)
+	ST5_5V15	AT%Q*:BOOL;		(*Vanne avant la pompe*)
+	ST5_5V16	AT%Q*:BOOL;		(*Vanne provenance eau du réservoir ou du déminéralisateur*)
+	
+	ST5_POWER	AT%Q*:BOOL;		(*Alimentation électrique pompe*)
+	ST5_VIDANGE	AT%Q*:BOOL;		(*Vidange balance*)
+	
+	ST5_Niveau_Rervoir 	AT%I*:INT;
+	
 
-	Q1_CURRENT:REAL;
+(************************************************************************************************
+*
+*Pote 6 - Pression max
+*
+***********************************************************************************************)	
+	ST6_6B1 	AT%I*:BOOL;		(*Capteur palette en attente*)
+	ST6_6B2 	AT%I*:BOOL;		(*Capteur palette présente*)
+	ST6_6B4 	AT%I*:BOOL;		(*Capteur vérin Hydro TOP*)
+	ST6_6B5 	AT%I*:BOOL;		(*Capteur vérin Hydro BOTTOM*)
+	ST6_6B6 	AT%I*:BOOL;		(*Capteur vérin électrique*)
+	ST6_6B7 	AT%I*:BOOL;		(*Capteur vérin by-pass*)	
+	
+	ST6_6P1			AT%I*:PRESSURE_SENSOR; 	(*Valeurs du capteur*)
+	ST6_PRESSURE	:REAL; 					(*Pression*)
+	
+	ST6_6V1 	AT%Q*:BOOL;		(*Vérin palette attente*)
+	ST6_6V2 	AT%Q*:BOOL;		(*Vérin palette bloquage*)
+	ST6_6V3 	AT%Q*:BOOL;		(*Vérin palette stop*)
+	ST6_6V4 	AT%Q*:BOOL;		(*Vérin Hydro TOP*)
+	ST6_6V5		AT%Q*:BOOL;		(*Vérin hydro BOTTOM*)
+	ST6_6V6		AT%Q*:BOOL;		(*Vérin électrique*)
+	ST6_6V7		AT%Q*:BOOL;		(*Vérin by-pass*)
+	
+	ST6_6V10	AT%Q*:BOOL;		(*Vanne avant la pompe*)
+	ST6_6V11	AT%Q*:BOOL;		(*Vanne après la pompe*)
+	
+	ST6_POWER	AT%Q*:BOOL;		(*Alimentation électrique pompe*)
+	
+(************************************************************************************************
+*
+*Pote 7 - Séchage
+*
+***********************************************************************************************)	
+	ST7_7B1 	AT%I*:BOOL;		(*Capteur palette en attente*)
+	ST7_7B2 	AT%I*:BOOL;		(*Capteur palette présente*)
+	ST7_7B4 	AT%I*:BOOL;		(*Capteur vérin Hydro TOP*)
+	ST7_7B5 	AT%I*:BOOL;		(*Capteur vérin Hydro BOTTOM*)
+	ST7_7B6 	AT%I*:BOOL;		(*Capteur vérin électrique*)
+	ST7_7B7 	AT%I*:BOOL;		(*Capteur vérin by-pass*)	
+	
+	ST7_7V1 	AT%Q*:BOOL;		(*Vérin palette attente*)
+	ST7_7V2 	AT%Q*:BOOL;		(*Vérin palette bloquage*)
+	ST7_7V3 	AT%Q*:BOOL;		(*Vérin palette stop*)
+	ST7_7V4 	AT%Q*:BOOL;		(*Vérin Hydro TOP*)
+	ST7_7V5		AT%Q*:BOOL;		(*Vérin hydro BOTTOM*)
+	ST7_7V6		AT%Q*:BOOL;		(*Vérin électrique*)
+	ST7_7V7		AT%Q*:BOOL;		(*Vérin by-pass*)
+	
+	ST7_7V10	AT%Q*:BOOL;		(*Vanne avant la pompe*)
+	
+	ST7_POWER	AT%Q*:BOOL;		(*Alimentation électrique pompe*)
+
+(************************************************************************************************
+*
+*Pote 8  - Etiquettage
+*
+***********************************************************************************************)	
+	ST8_8B1 	AT%I*:BOOL;		(*Capteur palette en attente*)
+	ST8_8B2 	AT%I*:BOOL;		(*Capteur palette présente*)
+	
+	ST8_8V1 	AT%Q*:BOOL;		(*Vérin palette attente*)
+	ST8_8V2 	AT%Q*:BOOL;		(*Vérin palette bloquage*)
+	ST8_8V3 	AT%Q*:BOOL;		(*Vérin palette stop*)
+	
+(************************************************************************************************
+*
+*Pote 9  - Déchagement
+*
+***********************************************************************************************)	
+	ST9_9B1 	AT%I*:BOOL;		(*Capteur palette en attente*)
+	ST9_9B2 	AT%I*:BOOL;		(*Capteur palette présente*)
+	ST9_9B4 	AT%I*:BOOL;		(*Capteur rodless guide IN*)
+	ST9_9B41 	AT%I*:BOOL;		(*Capteur rodless guide OUT*)
+	ST9_9B5 	AT%I*:BOOL;		(*Capteur slide table IN*)
+	ST9_9B51 	AT%I*:BOOL;		(*Capteur slide table OUT*)
+	ST9_9B6 	AT%I*:BOOL;		(*Capteur gripper CLOSED*)
+	ST9_9B61 	AT%I*:BOOL;		(*Capteur gripper OPENED*)
+	ST9_9B7 	AT%I*:BOOL;		(*Capteur vérin libération connecteurs électriques*)
+	
+	ST9_9V1 	AT%Q*:BOOL;		(*Vérin palette attente*)
+	ST9_9V2 	AT%Q*:BOOL;		(*Vérin palette bloquage*)
+	ST9_9V3 	AT%Q*:BOOL;		(*Vérin palette stop*)
+	
+(************************************************************************************************
+*
+*Convoyeur
+*
+***********************************************************************************************)	
+	ST10_10B1 	AT%I*:BOOL;		(*Opérateur 1 - Palette présente*)
+	ST10_10B2 	AT%I*:BOOL;		(*Opérateur 2 - Palette présente*)
+	ST10_OPERATEUR1_START 	AT%I*:BOOL; (* Pédale pour l'opérateur 1*)
+	ST10_OPERATEUR2_START	AT%I*:BOOL; (* Pédale pour l'opérateur 2*)
+	
+	ST10_10V1 	AT%Q*:BOOL;		(*Opérateur 1 - Vérin carrier stop*)
+	ST10_10V2 	AT%Q*:BOOL;		(*Opérateur 2 - Vérin carrier stop*)
+	
 
 
 (************************************************************************************************
@@ -38,27 +272,24 @@ VAR_GLOBAL
 *Current measurement
 *
 ***********************************************************************************************)
-	Q1_Multimeter_mode	AT%Q*:SINT := 3;
-	Q2_Multimeter_mode	AT%Q*:SINT := 3;
+	ST4_Multimeter_mode	AT%Q*:SINT := 3;
+	ST5_Multimeter_mode	AT%Q*:SINT := 3;
 (*
 0 0x00 DC voltage
 1 0x01 AC voltage
 2 0x02 DC current
 3 0x03 AC current
 *)
-
-	Q1_Multimeter_range AT%Q* :SINT := 1;
-	Q2_Multimeter_range AT%Q* :SINT := 1;
-
+	ST4_Multimeter_range AT%Q* :SINT := 1;
+	ST5_Multimeter_range AT%Q* :SINT := 1;
 (*
 255 0xFF 300 mV / 100 mA
 0 0x00  3 V / 1 A 
 1 0x01 30 V / 10 A 
 2 0x02 300 V (voltage only)  
 *)
-
-	Q1_Multimeter_value AT%I*:DINT;
-	Q2_Multimeter_value AT%I*:DINT;
+	ST4_Multimeter_value AT%I*:DINT;
+	ST5_Multimeter_value AT%I*:DINT;
 
 
 END_VAR
