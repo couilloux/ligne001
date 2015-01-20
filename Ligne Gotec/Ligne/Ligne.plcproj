@@ -124,7 +124,7 @@
       <SystemLibrary>True</SystemLibrary>
       <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
       <Parameters>
-        <Parameter xmlns="">
+        <Parameter>
           <Key>GC_POINTS_PER_POLYGON</Key>
           <Value>100</Value>
         </Parameter>
