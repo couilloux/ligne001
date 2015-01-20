@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TargetSystemConfig>
+  <IsExternalDevice>False</IsExternalDevice>
+  <ItemId>#x03020071</ItemId>
+  <FSOEAddress>1</FSOEAddress>
+  <VersionNumber>1</VersionNumber>
+  <SerialNumber>00569815</SerialNumber>
+  <ProjectCRC>0x0000</ProjectCRC>
+  <MapProjectCRC>False</MapProjectCRC>
+  <MapSerialNumber>False</MapSerialNumber>
+  <AmsNetID>10.10.10.31.3.1</AmsNetID>
+  <AmsPort>1065</AmsPort>
+  <DeviceName>Term 113 (EL6900)</DeviceName>
+  <DipSwitch>1023</DipSwitch>
+  <FieldBusAdress>1065</FieldBusAdress>
+  <SoftwareVersion>05</SoftwareVersion>
+  <BackupRestore Activated="true" Needed="0">
+    <Id>3</Id>
+    <Id>4</Id>
+    <Id>5</Id>
+  </BackupRestore>
+</TargetSystemConfig>

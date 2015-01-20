@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<safetyApplication xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="19a98183-ea90-49e4-a5f9-267c267b43cb" name="" mapState="false" mapDiag="false" groupOrderId="1" diagramWidth="0" diagramHeight="0" xmlns="http://schemas.microsoft.com/dsltools/SafetyApplicationLanguage">
+  <networks>
+    <safetyApplicationHasNetworks Id="6bbfcf39-b406-4733-885e-c00c3e0c2bcb">
+      <Network Id="15142786-88a3-44e4-b2ac-fe4b4ab6f6df" name="Network1" networkName="Network1" intId="1" networkWidth="0" networkHeight="0" networkOrderId="0" xmlid="0">
+        <functionBlocks>
+          <networkHasFunctionBlocks Id="1c94e4d4-176e-4615-8c82-6a817608ef04">
+            <fBAnd Id="9ada1eb8-84ed-4478-9c43-cff06ed6c353" name="FBAnd1" functionName="safeAnd" instanceName="FBAnd1" orderOfExecution="1" mapState="false" mapDiag="false" type="13" xmlid="0">
+              <inPorts>
+                <functioBlockHasInPorts Id="6987fcc2-612c-477f-8381-32e8c167fa5a">
+                  <inPort Id="f80d6ec1-7561-4ff2-adcd-339e8e642f05" name="AndIn1" portName="AndIn1" portNum="2" objectIndex="8" varId="2" filter="3" channelInterface="Deactivated" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="0fd31cd9-0853-4346-93f6-41541d39ec7c">
+                  <inPort Id="995550e4-d945-4425-b422-783731b82cf1" name="AndIn2" portName="AndIn2" portNum="3" objectIndex="9" varId="3" filter="2" channelInterface="Deactivated" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="41b033a9-9b40-4d18-a229-9757d5cf3f84">
+                  <inPort Id="d9053b66-c0f7-4e95-a139-e801867b6670" name="AndIn3" portName="AndIn3" portNum="4" objectIndex="10" varId="4" filter="2" channelInterface="Deactivated" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="d6356df6-1be9-4f47-a4dc-11b1b903bfab">
+                  <inPort Id="3b34c022-7bba-43af-b0e4-6fbac4e1b357" name="AndIn4" portName="AndIn4" portNum="5" objectIndex="11" varId="5" filter="2" channelInterface="Deactivated" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="f7304c35-caa5-4dd6-b013-11ffaa0e4b21">
+                  <inPort Id="967f03c3-0c31-4cfe-aacc-b8647c633519" name="AndIn5" portName="AndIn5" portNum="6" objectIndex="12" varId="6" filter="2" channelInterface="Deactivated" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="7e2a37a1-867d-4af1-8f61-e4cc213b83b9">
+                  <inPort Id="cbc8cd16-1e28-4cc3-952b-78f7f7630cfc" name="AndIn6" portName="AndIn6" portNum="7" objectIndex="13" varId="7" filter="2" channelInterface="Deactivated" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="b2a23464-de1a-464d-9f06-cb4e973ee605">
+                  <inPort Id="0cdfe30e-a529-4910-b4ec-5e465c2070bc" name="AndIn7" portName="AndIn7" portNum="8" objectIndex="14" varId="8" filter="2" channelInterface="Deactivated" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="f76684ae-e83b-44a7-a85c-1846565adb69">
+                  <inPort Id="937e65f0-4873-4ae5-8016-a0df6e169601" name="AndIn8" portName="AndIn8" portNum="9" objectIndex="15" varId="9" filter="2" channelInterface="Deactivated" />
+                </functioBlockHasInPorts>
+              </inPorts>
+              <outPorts>
+                <functionBlockHasOutPorts Id="2f3c5515-c54d-42f8-bf5e-3ecef7c52b6a">
+                  <outPort Id="dc976e6d-5045-46a1-8e33-d5e35f35011c" name="AndOut" portName="AndOut" portNum="8" objectIndex="1" varId="20" filter="7" />
+                </functionBlockHasOutPorts>
+              </outPorts>
+            </fBAnd>
+          </networkHasFunctionBlocks>
+        </functionBlocks>
+      </Network>
+    </safetyApplicationHasNetworks>
+    <safetyApplicationHasNetworks Id="90b59b15-5ac7-46b2-84e0-c280894400d2">
+      <Network Id="8dccc315-0107-4e5c-8d08-d0079c437d06" name="Network2" networkName="Network2" intId="2" networkWidth="0" networkHeight="0" networkOrderId="0" xmlid="0" />
+    </safetyApplicationHasNetworks>
+  </networks>
+  <twinSAFEGroupAliasPorts>
+    <safetyApplicationHasTwinSAFEGroupAliasPort Id="9cf58a8b-197b-44de-8264-295e429ddd30">
+      <twinSAFEGroupAliasPort Id="df7c23db-6152-4def-a52f-be24658717b2" name="ErrAck.SdsId9.ChannelId1" sdsId="9" channelId="1" portName="ErrAck" />
+    </safetyApplicationHasTwinSAFEGroupAliasPort>
+    <safetyApplicationHasTwinSAFEGroupAliasPort Id="5496ab27-0609-4b5c-a645-18f46d4b8b80">
+      <twinSAFEGroupAliasPort Id="028eb376-252a-4cd2-97b9-89e21d891254" name="RunStop.SdsId8.ChannelId1" sdsId="8" channelId="1" portName="RunStop" />
+    </safetyApplicationHasTwinSAFEGroupAliasPort>
+    <safetyApplicationHasTwinSAFEGroupAliasPort Id="a3c2caf4-f50a-4f58-ae27-87cc39f776b1">
+      <twinSAFEGroupAliasPort Id="c7af9ee4-7ca7-4735-ab19-1a915162af39" name="ComErr.SdsId15.ChannelId1" sdsId="15" channelId="1" portName="ComErr" />
+    </safetyApplicationHasTwinSAFEGroupAliasPort>
+    <safetyApplicationHasTwinSAFEGroupAliasPort Id="e0123bbd-00c6-4a8e-bc58-062a8735e6d1">
+      <twinSAFEGroupAliasPort Id="820c6604-dad0-4865-b92f-1e67a8769419" name="FbErr.SdsId14.ChannelId1" sdsId="14" channelId="1" portName="FbErr" />
+    </safetyApplicationHasTwinSAFEGroupAliasPort>
+  </twinSAFEGroupAliasPorts>
+</safetyApplication>
