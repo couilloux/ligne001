@@ -51,7 +51,7 @@
 		<ImageData Id="1007">424de6000000000000007600000028000000100000000e000000010004000000000070000000120b0000120b0000100000001000000000000000000080000080000000808000800000008000800080800000c0c0c000808080000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff005dd55d88888888dd5dd5d577777778dd55d55d77888778dd5d55d577888778dd55d55d77888778dddddddd77777778dddddddd77777778dd9b9b9b77777778ddb9b9b977777778dd9b9b9b77777778ddb9b9b977797778dd9b9b9b77797778ddb9b9b9777a7778dd9b9b9b77777778dd</ImageData>
 		<ImageData Id="1008">424de6000000000000007600000028000000100000000e000000010004000000000070000000ea0e0000ea0e000000000000000000000000000000008000008000000080800080000000800080008080000080808000c0c0c0000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff00777f7f7f77f77f777fff7f7f7ff77f77777f878f77f77f777fff7f7ff7f7ff77777f7f7f77f77f77fffffffffffffffff8888888888888888877777777777777777887888888888777788786ccccc66778788786ccccc6677f78878666666687887ff7fffffffff7ff77777777777777</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{87BF7416-71C1-4F37-8458-587D087BA0EA}">
+	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{7377522F-4C98-4841-A3FE-BD10C2F95BBB}">
 		<System>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350">
@@ -1773,7 +1773,7 @@
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6010" Sub="#x01">
+								<Entry Name="0B1" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -1809,7 +1809,7 @@
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="0B1" Index="#x6010" Sub="#x01">
+								<Entry Name="Input" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -2964,7 +2964,7 @@ Bit1: Value bigger/equal Limit2]]>
 						<EtherCATDeviceName>TIID^Device 2 (EtherCAT)^Grande armoire^Term 89 (EL6751)</EtherCATDeviceName>
 					</Ecat>
 				</AddressInfo>
-				<Image Id="4" AddrType="4" ImageType="3">
+				<Image Id="4" AddrType="2" ImageType="3">
 					<Name>Image</Name>
 				</Image>
 				<Box BoxType="5003" Id="45">
@@ -3121,7 +3121,7 @@ Slave-Mode:
 						<EtherCATDeviceName>TIID^Device 2 (EtherCAT)^Grande armoire^Term 90 (EL6751)</EtherCATDeviceName>
 					</Ecat>
 				</AddressInfo>
-				<Image Id="5" AddrType="4" ImageType="3">
+				<Image Id="5" AddrType="2" ImageType="3">
 					<Name>Image</Name>
 				</Image>
 				<Box BoxType="5003" Id="10">
@@ -3278,7 +3278,7 @@ Slave-Mode:
 						<EtherCATDeviceName>TIID^Device 2 (EtherCAT)^Petite armoire^Term 116 (EL6731)</EtherCATDeviceName>
 					</Ecat>
 				</AddressInfo>
-				<Image Id="3" AddrType="4" ImageType="3">
+				<Image Id="3" AddrType="2" ImageType="3">
 					<Name>Image</Name>
 				</Image>
 				<Box BoxType="1003" Id="4">
@@ -3788,16 +3788,16 @@ Revision: Rev 0.2
 		<OwnerA Name="TIID^Device 2 (EtherCAT)">
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Grande armoire^Term 11 (EL2904)">
 				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionInputs^Message_5 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
-				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionOutputs^Message_5 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 113 (EL6900)">
+				<Link VarA="Grande armoire^Term 11 (EL2904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^Message_5 RxPDO"/>
 				<Link VarA="Petite armoire^Term 114 (EL1904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^Message_24 TxPDO"/>
+				<Link VarA="Petite armoire^Term 115 (EL1904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^Message_4 TxPDO"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 114 (EL1904)">
 				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionOutputs^Message_24 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 115 (EL1904)">
-				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionInputs^Message_4 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
 				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionOutputs^Message_4 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
 			</OwnerB>
 		</OwnerA>
@@ -3872,6 +3872,7 @@ Revision: Rev 0.2
 				<Link VarA="PlcTask Outputs^.ST7_7V5" VarB="Byte 0^Output" Size="1" OffsB="5"/>
 				<Link VarA="PlcTask Outputs^.ST7_7V6" VarB="Byte 0^Output" Size="1" OffsB="6"/>
 				<Link VarA="PlcTask Outputs^.ST7_7V7" VarB="Byte 0^Output" Size="1" OffsB="7"/>
+				<Link VarA="PlcTask Outputs^.ST7_RESERVE" VarB="Byte 0^Output" Size="1"/>
 				<Link VarA="PlcTask Outputs^.ST8_8V1" VarB="Byte 1^Output" Size="1"/>
 				<Link VarA="PlcTask Outputs^.ST8_8V2" VarB="Byte 1^Output" Size="1" OffsB="1"/>
 				<Link VarA="PlcTask Outputs^.ST8_8V3" VarB="Byte 1^Output" Size="1" OffsB="2"/>
@@ -3882,7 +3883,7 @@ Revision: Rev 0.2
 				<Link VarA="PlcTask Outputs^.ST9_9V4" VarB="Byte 1^Output" Size="1" OffsB="7"/>
 				<Link VarA="PlcTask Outputs^.ST9_9V5" VarB="Byte 2^Output" Size="1"/>
 				<Link VarA="PlcTask Outputs^.ST9_9V6" VarB="Byte 2^Output" Size="1" OffsB="1"/>
-				<Link VarA="PlcTask Outputs^.ST9_9V7" VarB="Byte 2^Output" Size="1" OffsB="2"/>
+				<Link VarA="PlcTask Outputs^.ST9_9V7" VarB="Byte 2^Output" Size="1" OffsB="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Grande armoire^Term 51 (EL1002)">
 				<Link VarA="PlcTask Inputs^.ST4_4B1" VarB="Channel 1^4B1"/>
@@ -4020,9 +4021,6 @@ Revision: Rev 0.2
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 100 (EL1002)">
 				<Link VarA="PlcTask Inputs^.GEN_PRESENCE_POMPE" VarB="Channel 1^Présence pompe"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 101 (EL1002)">
-				<Link VarA="PlcTask Inputs^.GEN_0B1" VarB="Channel 2^0B1"/>
-			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 102 (EL1002)">
 				<Link VarA="PlcTask Inputs^.ST10_OPERATEUR1_START" VarB="Channel 1^S1"/>
 				<Link VarA="PlcTask Inputs^.ST10_OPERATEUR2_START" VarB="Channel 2^S2"/>
@@ -4085,6 +4083,7 @@ Revision: Rev 0.2
 				<Link VarA="PlcTask Inputs^.ST3_3B5" VarB="Channel 2^3B5"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 99 (EL1002)">
+				<Link VarA="PlcTask Inputs^.GEN_0B1" VarB="Channel 2^0B1"/>
 				<Link VarA="PlcTask Inputs^.ST3_3B7" VarB="Channel 1^3B7"/>
 			</OwnerB>
 		</OwnerA>

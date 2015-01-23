@@ -16,7 +16,7 @@ END_VAR
 
 VAR_OUTPUT
 	STATUS: BOOL := FALSE; (* 0-> JIG FREE   1-> JIB BUSY *)
-	CYLINDER_STOP: BOOL :=TRUE; (* STOP the carrier at this position *)
+	CYLINDER_STOP: BOOL :=FALSE; (* STOP the carrier at this position *)
 	CYLINDER_LOCK: BOOL:=FALSE; (* LOCK the carrier at this position *)
 END_VAR]]></Declaration>
     <Implementation>
@@ -28,7 +28,6 @@ END_VAR]]></Declaration>
 ************************************************************************************************************************************)
 IF GEMMA.STEP='A6' OR GEMMA.STEP='D1' THEN
 	STEP:=0;
-
 END_IF;
 
 CASE STEP OF
@@ -42,22 +41,22 @@ CASE STEP OF
 
 1: (*Wait for a carrier*)
 	IF CARRIER_PRESENT THEN
-		CYLINDER_LOCK:=1;
+		CYLINDER_LOCK:=TRUE;
 		STATUS:=1;
 		STEP:=STEP+1;
 	END_IF;
 
 2: (*Release the carrier*)
 	IF RELEASE_CARRIER AND NEXT_JIG_STATUS=0 THEN
-		CYLINDER_LOCK:=0;
-		CYLINDER_STOP:=0;
+		CYLINDER_LOCK:=FALSE;
+		CYLINDER_STOP:=FALSE;
 		START_RELEASE_TIMER:=1;
 		STEP:=STEP+1;
 	END_IF;
 
 3: (*Delay after release of the carrier*)
 	IF TIMER_RELEASE.Q THEN
-		CYLINDER_STOP:=1;
+		CYLINDER_STOP:=TRUE;
 		START_RELEASE_TIMER:=0;
 		STATUS:=0;
 		STEP:=1;

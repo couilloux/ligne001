@@ -209,6 +209,7 @@ VAR_GLOBAL
 	ST7_7B6 	AT%I*:BOOL;		(*Capteur vérin électrique*)
 	ST7_7B7 	AT%I*:BOOL;		(*Capteur vérin by-pass*)	
 	
+	ST7_RESERVE	AT%Q*:BOOL;		(*Vanne de réserve*)
 	ST7_7V1 	AT%Q*:BOOL;		(*Vérin palette attente*)
 	ST7_7V2 	AT%Q*:BOOL;		(*Vérin palette bloquage*)
 	ST7_7V3 	AT%Q*:BOOL;		(*Vérin palette stop*)

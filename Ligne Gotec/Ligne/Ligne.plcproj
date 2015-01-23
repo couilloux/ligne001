@@ -65,9 +65,6 @@
     <Compile Include="POUs\CONVOYER\JIG.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\CONVOYER\JIG_2ND.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\EH\EH_FLOMETER.TcPOU">
       <SubType>Code</SubType>
     </Compile>
