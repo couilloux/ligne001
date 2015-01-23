@@ -16,7 +16,7 @@ VAR_GLOBAL
 	GEN_PRESENCE_POMPE 		AT%I*:BOOL; (* Une pompe est présente sur la palette à l'entrée du banc*)
 	
 	GEN_1V1 				AT%Q*:BOOL;		(*Vanne AIR*)
-	GEN_CONVOYEUR			AT%Q*:BOOL;		(*Vanne AIR*)
+	GEN_CONVOYEUR			AT%Q*:BOOL;		(*Relais convoyeur*)
 	
 	
 

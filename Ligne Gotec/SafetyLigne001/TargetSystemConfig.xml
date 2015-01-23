@@ -2,7 +2,7 @@
 <TargetSystemConfig>
   <IsExternalDevice>False</IsExternalDevice>
   <ItemId>#x03020071</ItemId>
-  <FSOEAddress>1</FSOEAddress>
+  <FSOEAddress>1023</FSOEAddress>
   <VersionNumber>1</VersionNumber>
   <SerialNumber>00569815</SerialNumber>
   <ProjectCRC>0x0000</ProjectCRC>
@@ -15,8 +15,7 @@
   <FieldBusAdress>1065</FieldBusAdress>
   <SoftwareVersion>05</SoftwareVersion>
   <BackupRestore Activated="true" Needed="0">
-    <Id>3</Id>
-    <Id>4</Id>
     <Id>5</Id>
+    <Id>4</Id>
   </BackupRestore>
 </TargetSystemConfig>

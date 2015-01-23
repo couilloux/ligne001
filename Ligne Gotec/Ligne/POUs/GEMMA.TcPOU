@@ -2471,62 +2471,118 @@ F2_END:=FALSE;]]></ST>
 ******************************************************************)
 
 	STEP := 'D1';
+	
+	STEP_A6:=0;
 
 	FLAGS.INIT_OK:=FALSE;
 	FLAGS.MOTOR_Q1_INIT_OK:=FALSE;
 	FLAGS.AUTO:=FALSE;
 	FLAGS.MANUAL:=FALSE;
 
+	GEN_1V1 				:=FALSE;	(*Vanne AIR*)
+	GEN_CONVOYEUR			:=FALSE;	(*Relais convoyeur*)	
+	
+	ST1_1V1 	:=FALSE;		(*Vérin palette attente*)
+	ST1_1V2 	:=FALSE;		(*Vérin palette bloquage*)
+	ST1_1V3 	:=FALSE;		(*Vérin palette stop*)
+	ST1_1V4 	:=FALSE;		(*Vérin connexion TOP*)
+	ST1_1V5		:=FALSE;		(*Vérin connexion HT*)
 
-	VAC_DO.AIR_VALVE := FALSE;
-	POW_DO.CONVEYOR_RELAIS:=FALSE;
+	ST2_2V1 	:=FALSE;		(*Vérin palette attente*)
+	ST2_2V2 	:=FALSE;		(*Vérin palette bloquage*)
+	ST2_2V3 	:=FALSE;		(*Vérin palette stop*)
+	ST2_2V4 	:=FALSE;		(*Vérin Hydro TOP*)
+	ST2_2V5		:=FALSE;		(*Vérin hydro BOTTOM*)
+	ST2_2V6		:=FALSE;		(*Vérin électrique*)
+	ST2_2V7		:=FALSE;		(*Vérin by-pass*)
+	
+	ST2_POWER	:=FALSE;		(*Alimentation électrique pompe*)
+	
+	ST3_3V1 	:=FALSE;		(*Vérin palette attente*)
+	ST3_3V2 	:=FALSE;		(*Vérin palette bloquage*)
+	ST3_3V3 	:=FALSE;		(*Vérin palette stop*)
+	ST3_3V4 	:=FALSE;		(*Vérin Hydro TOP*)
+	ST3_3V5		:=FALSE;		(*Vérin hydro BOTTOM*)
+	ST3_3V7		:=FALSE;		(*Vérin by-pass*)
+	
+	ST3_3V10 	:=FALSE;		(*Vanne avant la pompe*)
+	ST3_3V11 	:=FALSE;		(*Vanne après la pompe*)
+	ST3_3V12 	:=FALSE;		(*Vanne de blocage d'air pour le DELTA*)
+	
+	ST4_4V1 	:=FALSE;		(*Vérin palette attente*)
+	ST4_4V2 	:=FALSE;		(*Vérin palette bloquage*)
+	ST4_4V3 	:=FALSE;		(*Vérin palette stop*)
+	ST4_4V4 	:=FALSE;		(*Vérin Hydro TOP*)
+	ST4_4V5		:=FALSE;		(*Vérin hydro BOTTOM*)
+	ST4_4V6		:=FALSE;		(*Vérin électrique*)
+	ST4_4V7		:=FALSE;		(*Vérin by-pass*)
+	
+	ST4_4V10	:=FALSE;		(*Vanne avant la pompe*)
+	ST4_4V12	:=FALSE;		(*Vanne après la vanne pilotée*)
+	ST4_4V13	:=FALSE;		(*Vanne max flow*)
 
-	VAC_DO.ELECTR_CYLINDER := FALSE;
-	VAC_DO.HYDRO_CYLINDER_BOT := FALSE;
-	VAC_DO.HYDRO_CYLINDER_TOP := FALSE;
-	VAC_DO.WAGON_LOCK_CYLINDER := FALSE;
-	VAC_DO.WAGON_STOP_CYLINDER := FALSE;
-	VAC_DO.WAGON_WAIT_CYLINDER := FALSE;
-	VAC_DO.PUMP_POWER:=FALSE;
-	VAC_DO.WAGON_OPERATOR1:=TRUE;
-	VAC_DO.WAGON_OPERATOR2:=FALSE;
-
-	Q1_DO.ELECTR_CYLINDER := FALSE;
-	Q1_DO.HYDRO_CYLINDER_BOT := FALSE;
-	Q1_DO.HYDRO_CYLINDER_TOP := FALSE;
-	Q1_DO.WAGON_LOCK_CYLINDER := FALSE;
-	Q1_DO.WAGON_STOP_CYLINDER := FALSE;
-	Q1_DO.WAGON_WAIT_CYLINDER := FALSE;
-	Q1_DO.PUMP_POWER:=FALSE;
-
-	Q2_DO.ELECTR_CYLINDER := FALSE;
-	Q2_DO.HYDRO_CYLINDER_BOT := FALSE;
-	Q2_DO.HYDRO_CYLINDER_TOP := FALSE;
-	Q2_DO.WAGON_LOCK_CYLINDER := FALSE;
-	Q2_DO.WAGON_STOP_CYLINDER := FALSE;
-	Q2_DO.WAGON_WAIT_CYLINDER := FALSE;
-	Q2_DO.PUMP_POWER:=FALSE;
-
-	PMAX_DO.ELECTR_CYLINDER := FALSE;
-	PMAX_DO.HYDRO_CYLINDER_BOT := FALSE;
-	PMAX_DO.HYDRO_CYLINDER_TOP := FALSE;
-	PMAX_DO.WAGON_LOCK_CYLINDER := FALSE;
-	PMAX_DO.WAGON_STOP_CYLINDER := FALSE;
-	PMAX_DO.WAGON_WAIT_CYLINDER := FALSE;
-	PMAX_DO.PUMP_POWER:=FALSE;
-
-
-	PRINT_DO.WAGON_LOCK_CYLINDER	:= FALSE;
-	PRINT_DO.WAGON_STOP_CYLINDER 	:= FALSE;
-	PRINT_DO.WAGON_WAIT_CYLINDER	:= FALSE;
-	PRINT_DO.EJECTION_CYLINDER_X	:=FALSE;
-	PRINT_DO.EJECTION_CYLINDER_Z	:=FALSE;
-	PRINT_DO.EJECTION_GRIPPER		:=FALSE;
-
-	STEP_A6:=0;
-
-
-	CONVEYOR();]]></ST>
+	ST4_POWER	:=FALSE;		(*Alimentation électrique pompe*)
+	ST4_VIDANGE	:=FALSE;		(*Vidange balance*)
+	
+	ST5_5V1 	:=FALSE;		(*Vérin palette attente*)
+	ST5_5V2 	:=FALSE;		(*Vérin palette bloquage*)
+	ST5_5V3 	:=FALSE;		(*Vérin palette stop*)
+	ST5_5V4 	:=FALSE;		(*Vérin Hydro TOP*)
+	ST5_5V5		:=FALSE;		(*Vérin hydro BOTTOM*)
+	ST5_5V6		:=FALSE;		(*Vérin électrique*)
+	
+	ST5_5V10	:=FALSE;		(*Vanne avant la pompe*)
+	ST5_5V12	:=FALSE;		(*Vanne après la vanne pilotée*)
+	ST5_5V13	:=FALSE;		(*Vanne max flow*)
+	
+	ST5_5V14	:=FALSE;		(*Vanne vidange vers égouts ou réservoir*)
+	ST5_5V15	:=FALSE;			(*Vanne avant la pompe*)
+	ST5_5V16	:=FALSE;		(*Vanne provenance eau du réservoir ou du déminéralisateur*)
+	
+	ST5_POWER	:=FALSE;		(*Alimentation électrique pompe*)
+	ST5_VIDANGE	:=FALSE;		(*Vidange balance*)
+	
+	ST6_6V1 	:=FALSE;		(*Vérin palette attente*)
+	ST6_6V2 	:=FALSE;		(*Vérin palette bloquage*)
+	ST6_6V3 	:=FALSE;		(*Vérin palette stop*)
+	ST6_6V4 	:=FALSE;		(*Vérin Hydro TOP*)
+	ST6_6V5		:=FALSE;		(*Vérin hydro BOTTOM*)
+	ST6_6V6		:=FALSE;		(*Vérin électrique*)
+	ST6_6V7		:=FALSE;		(*Vérin by-pass*)
+	
+	ST6_6V10	:=FALSE;		(*Vanne avant la pompe*)
+	ST6_6V11	:=FALSE;		(*Vanne après la pompe*)
+	
+	ST6_POWER	:=FALSE;		(*Alimentation électrique pompe*)
+	
+	ST7_7V1 	:=FALSE;		(*Vérin palette attente*)
+	ST7_7V2 	:=FALSE;		(*Vérin palette bloquage*)
+	ST7_7V3 	:=FALSE;		(*Vérin palette stop*)
+	ST7_7V4 	:=FALSE;		(*Vérin Hydro TOP*)
+	ST7_7V5		:=FALSE;		(*Vérin hydro BOTTOM*)
+	ST7_7V6		:=FALSE;		(*Vérin électrique*)
+	ST7_7V7		:=FALSE;		(*Vérin by-pass*)
+	
+	ST7_7V10	:=FALSE;		(*Vanne avant la pompe*)
+	
+	ST7_POWER	:=FALSE;		(*Alimentation électrique pompe*)
+	
+	ST8_8V1 	:=FALSE;		(*Vérin palette attente*)
+	ST8_8V2 	:=FALSE;		(*Vérin palette bloquage*)
+	ST8_8V3 	:=FALSE;		(*Vérin palette stop*)
+	ST8_8V4 	:=FALSE;		(*Reserve*)
+	
+	ST9_9V1 	:=FALSE;		(*Vérin palette attente*)
+	ST9_9V2 	:=FALSE;		(*Vérin palette bloquage*)
+	ST9_9V3 	:=FALSE;		(*Vérin palette stop*)
+	ST9_9V4 	:=FALSE;		(*Vérin rodless guide*)
+	ST9_9V5 	:=FALSE;		(*Vérin slide table*)
+	ST9_9V6 	:=FALSE;		(*Vérin gripper*)
+	ST9_9V7 	:=FALSE;		(*Vérin liberateur electrique*)
+	
+	ST10_10V1 	:=FALSE;		(*Opérateur 1 - Vérin carrier stop*)
+	ST10_10V2 	:=FALSE;		(*Opérateur 2 - Vérin carrier stop*)
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="F2_Action" Id="{e2a6bd08-06eb-486c-9ebb-86878540e224}">

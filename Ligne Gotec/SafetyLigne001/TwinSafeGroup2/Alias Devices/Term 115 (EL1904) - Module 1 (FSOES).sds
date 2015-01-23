@@ -149,7 +149,7 @@
     </Param>
     <Param>
       <Name>ConnectionNo</Name>
-      <Value>2</Value>
+      <Value>1</Value>
     </Param>
   </Values>
 </SafetyDeviceDesc>

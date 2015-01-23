@@ -17,7 +17,7 @@
     <Worker>Administrator</Worker>
     <IntProjName>
     </IntProjName>
-    <NextSdsId>22</NextSdsId>
+    <NextSdsId>26</NextSdsId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
@@ -29,19 +29,9 @@
     <None Include="TargetSystemConfig.xml">
       <Visible>false</Visible>
     </None>
-    <None Include="TwinSafeGroup2\Alias Devices\ErrorAcknowledgement.sds" />
-    <None Include="TwinSafeGroup2\Alias Devices\DOORS RUN.sds" />
-    <None Include="TwinSafeGroup2\Alias Devices\DOORS Error Ack.sds" />
     <None Include="TwinSafeGroup2\Alias Devices\NOT AUS RUN.sds" />
     <None Include="TwinSafeGroup2\Alias Devices\NOT AUS Error Ack.sds" />
     <None Include="TwinSafeGroup2\Alias Devices\NOT AUS Reset.sds" />
-    <None Include="TwinSafeGroup2\Alias Devices\DOORS FB Error.sds" />
-    <None Include="TwinSafeGroup2\Alias Devices\DOORS Com Error.sds" />
-    <None Include="TwinSafeGroup2\Alias Devices\DOOR 1 Closed.sds" />
-    <None Include="TwinSafeGroup2\Alias Devices\DOOR 3 Closed.sds" />
-    <None Include="TwinSafeGroup2\Alias Devices\DOOR 2 Closed.sds" />
-    <None Include="TwinSafeGroup2\Alias Devices\NOT AUS FB Error.sds" />
-    <None Include="TwinSafeGroup2\Alias Devices\NOT AUS Com Error.sds" />
     <None Include="TwinSafeGroup2\Alias Devices\Term 11 %28EL2904%29 - Module 1 %28FSOES%29.sds" />
     <None Include="TwinSafeGroup2\Alias Devices\Term 114 %28EL1904%29 - Module 1 %28FSOES%29.sds" />
     <None Include="TwinSafeGroup2\Alias Devices\Term 115 %28EL1904%29 - Module 1 %28FSOES%29.sds" />

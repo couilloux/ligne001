@@ -9,7 +9,7 @@
   <Values>
     <Param>
       <Name>SDSID</Name>
-      <Value>3</Value>
+      <Value>24</Value>
     </Param>
     <Param>
       <Name>IsExternalDevice</Name>
@@ -109,7 +109,7 @@
     </Param>
     <Param>
       <Name>ConnectionId</Name>
-      <Value>1</Value>
+      <Value>4</Value>
     </Param>
     <Param>
       <Name>Watchdog</Name>
@@ -149,7 +149,7 @@
     </Param>
     <Param>
       <Name>ConnectionNo</Name>
-      <Value>1</Value>
+      <Value>3</Value>
     </Param>
   </Values>
 </SafetyDeviceDesc>

@@ -29,6 +29,16 @@
 				<BitOffs>32</BitOffs>
 			</SubItem>
 		</DataType>
+		<DataType>
+			<Name GUID="{A4A52C23-718B-4A53-BB36-F45A7A4D35A9}">INFODATA_FB_1</Name>
+			<BitSize>8</BitSize>
+			<SubItem>
+				<Name>State</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+		</DataType>
 	</DataTypes>
 	<ImageDatas>
 		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
@@ -41,7 +51,7 @@
 		<ImageData Id="1007">424de6000000000000007600000028000000100000000e000000010004000000000070000000120b0000120b0000100000001000000000000000000080000080000000808000800000008000800080800000c0c0c000808080000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff005dd55d88888888dd5dd5d577777778dd55d55d77888778dd5d55d577888778dd55d55d77888778dddddddd77777778dddddddd77777778dd9b9b9b77777778ddb9b9b977777778dd9b9b9b77777778ddb9b9b977797778dd9b9b9b77797778ddb9b9b9777a7778dd9b9b9b77777778dd</ImageData>
 		<ImageData Id="1008">424de6000000000000007600000028000000100000000e000000010004000000000070000000ea0e0000ea0e000000000000000000000000000000008000008000000080800080000000800080008080000080808000c0c0c0000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff00777f7f7f77f77f777fff7f7f7ff77f77777f878f77f77f777fff7f7ff7f7ff77777f7f7f77f77f77fffffffffffffffff8888888888888888877777777777777777887888888888777788786ccccc66778788786ccccc6677f78878666666687887ff7fffffffff7ff77777777777777</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{715EDD2D-49A0-47E2-99BE-CEA30AE37AFF}">
+	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{D83697FD-9194-47B4-9FB8-AD8D3F157622}">
 		<System>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350">
@@ -2480,74 +2490,44 @@ Bit1: Value bigger/equal Limit2]]>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
 							<Pdo Name="ConnectionInputs" Index="#x1a00" Flags="#x2011" SyncMan="3">
-								<Entry Name="Message_3 TxPDO" Index="#x7000" Sub="#x01">
+								<Entry Name="Message_4 TxPDO" Index="#x7000" Sub="#x01">
 									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
 								</Entry>
-								<Entry Name="Message_4 TxPDO" Index="#x7000" Sub="#x02">
+								<Entry Name="Message_5 TxPDO" Index="#x7000" Sub="#x02">
 									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
 								</Entry>
-								<Entry Name="Message_5 TxPDO" Index="#x7000" Sub="#x03">
+								<Entry Name="Message_24 TxPDO" Index="#x7000" Sub="#x03">
 									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="ConnectionOutputs" Index="#x1600" InOut="1" Flags="#x2011" SyncMan="2">
-								<Entry Name="Message_3 RxPDO" Index="#x6000" Sub="#x01">
+								<Entry Name="Message_4 RxPDO" Index="#x6000" Sub="#x01">
 									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
 								</Entry>
-								<Entry Name="Message_4 RxPDO" Index="#x6000" Sub="#x02">
+								<Entry Name="Message_5 RxPDO" Index="#x6000" Sub="#x02">
 									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
 								</Entry>
-								<Entry Name="Message_5 RxPDO" Index="#x6000" Sub="#x03">
+								<Entry Name="Message_24 RxPDO" Index="#x6000" Sub="#x03">
 									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="StandardInputs" Index="#x1bf0" Flags="#x2011" SyncMan="3">
-								<Entry Name="Standard Out Var 11" Index="#x7000" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-								<Entry Name="Standard Out Var 12" Index="#x7000" Sub="#x02">
-									<Type>BIT</Type>
-								</Entry>
-								<Entry Name="Standard Out Var 13" Index="#x7000" Sub="#x03">
-									<Type>BIT</Type>
-								</Entry>
-								<Entry Name="Standard Out Var 14" Index="#x7000" Sub="#x04">
-									<Type>BIT</Type>
-								</Entry>
-								<Entry Name="Standard Out Var 15" Index="#x7000" Sub="#x05">
-									<Type>BIT</Type>
-								</Entry>
-								<Entry Name="Standard Out Var 20" Index="#x7000" Sub="#x06">
-									<Type>BIT</Type>
-								</Entry>
-								<Entry Name="Standard Out Var 21" Index="#x7000" Sub="#x07">
-									<Type>BIT</Type>
-								</Entry>
-								<Entry>
-									<Type>ARRAY [0..0] OF BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="StandardOutputs" Index="#x17f0" InOut="1" Flags="#x2011" SyncMan="2">
-								<Entry Name="Standard In Var 2" Index="#x6000" Sub="#x01">
+								<Entry Name="Standard In Var 8" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Standard In Var 6" Index="#x6000" Sub="#x02">
+								<Entry Name="Standard In Var 9" Index="#x6000" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Standard In Var 7" Index="#x6000" Sub="#x03">
-									<Type>BIT</Type>
-								</Entry>
-								<Entry Name="Standard In Var 8" Index="#x6000" Sub="#x04">
-									<Type>BIT</Type>
-								</Entry>
-								<Entry Name="Standard In Var 9" Index="#x6000" Sub="#x05">
-									<Type>BIT</Type>
-								</Entry>
-								<Entry Name="Standard In Var 10" Index="#x6000" Sub="#x06">
+								<Entry Name="Standard In Var 10" Index="#x6000" Sub="#x03">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry>
-									<Type>ARRAY [0..1] OF BIT</Type>
+									<Type>ARRAY [0..4] OF BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Function Block Info Data" Index="#x1bf0" Flags="#x2011" SyncMan="3">
+								<Entry Name="TwinSafeGroup2.Network1.FBEstop1 Info Data" Index="#x7000" Sub="#x01">
+									<Type GUID="{A4A52C23-718B-4A53-BB36-F45A7A4D35A9}">INFODATA_FB_1</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="DEVICE Inputs" Index="#x1bff" Flags="#x0011" SyncMan="3">
@@ -3811,12 +3791,14 @@ Revision: Rev 0.2
 				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionOutputs^Message_5 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 113 (EL6900)">
-				<Link VarA="Petite armoire^Term 114 (EL1904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^Message_3 RxPDO"/>
-				<Link VarA="Petite armoire^Term 115 (EL1904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^Message_4 TxPDO"/>
-				<Link VarA="Petite armoire^Term 115 (EL1904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^Message_4 RxPDO"/>
+				<Link VarA="Petite armoire^Term 114 (EL1904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^Message_24 TxPDO"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 114 (EL1904)">
-				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionInputs^Message_3 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
+				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionOutputs^Message_24 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 115 (EL1904)">
+				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionInputs^Message_4 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
+				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionOutputs^Message_4 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIPC^Ligne^Ligne Instance">
@@ -4069,15 +4051,7 @@ Revision: Rev 0.2
 				<Link VarA="PlcTask Inputs^.ST5_POIDS" VarB="RMB Value (Real)^5U1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 113 (EL6900)">
-				<Link VarA="PlcTask Inputs^.SAFETY_IN^DOORS_COMerr" VarB="StandardInputs^Standard Out Var 20"/>
-				<Link VarA="PlcTask Inputs^.SAFETY_IN^DOORS_FBerr" VarB="StandardInputs^Standard Out Var 11"/>
-				<Link VarA="PlcTask Inputs^.SAFETY_IN^DOOR_1_CLOSED" VarB="StandardInputs^Standard Out Var 21"/>
-				<Link VarA="PlcTask Inputs^.SAFETY_IN^DOOR_2_CLOSED" VarB="StandardInputs^Standard Out Var 13"/>
-				<Link VarA="PlcTask Inputs^.SAFETY_IN^DOOR_3_CLOSED" VarB="StandardInputs^Standard Out Var 12"/>
-				<Link VarA="PlcTask Inputs^.SAFETY_IN^NOT_AUS_COMerr" VarB="StandardInputs^Standard Out Var 15"/>
-				<Link VarA="PlcTask Inputs^.SAFETY_IN^NOT_AUS_FBerr" VarB="StandardInputs^Standard Out Var 14"/>
-				<Link VarA="PlcTask Outputs^.SAFETY_OUT^DOORS_ErrAck" VarB="StandardOutputs^Standard In Var 7"/>
-				<Link VarA="PlcTask Outputs^.SAFETY_OUT^DOORS_RUN" VarB="StandardOutputs^Standard In Var 6"/>
+				<Link VarA="PlcTask Inputs^.SAFETY_IN^NOT_AUS_State" VarB="Function Block Info Data^TwinSafeGroup2.Network1.FBEstop1 Info Data^State"/>
 				<Link VarA="PlcTask Outputs^.SAFETY_OUT^NOT_AUS_ErrAck" VarB="StandardOutputs^Standard In Var 9"/>
 				<Link VarA="PlcTask Outputs^.SAFETY_OUT^NOT_AUS_RESET" VarB="StandardOutputs^Standard In Var 10"/>
 				<Link VarA="PlcTask Outputs^.SAFETY_OUT^NOT_AUS_RUN" VarB="StandardOutputs^Standard In Var 8"/>
