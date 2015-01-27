@@ -51,7 +51,7 @@
 		<ImageData Id="1007">424de6000000000000007600000028000000100000000e000000010004000000000070000000120b0000120b0000100000001000000000000000000080000080000000808000800000008000800080800000c0c0c000808080000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff005dd55d88888888dd5dd5d577777778dd55d55d77888778dd5d55d577888778dd55d55d77888778dddddddd77777778dddddddd77777778dd9b9b9b77777778ddb9b9b977777778dd9b9b9b77777778ddb9b9b977797778dd9b9b9b77797778ddb9b9b9777a7778dd9b9b9b77777778dd</ImageData>
 		<ImageData Id="1008">424de6000000000000007600000028000000100000000e000000010004000000000070000000ea0e0000ea0e000000000000000000000000000000008000008000000080800080000000800080008080000080808000c0c0c0000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff00777f7f7f77f77f777fff7f7f7ff77f77777f878f77f77f777fff7f7ff7f7ff77777f7f7f77f77f77fffffffffffffffff8888888888888888877777777777777777887888888888777788786ccccc66778788786ccccc6677f78878666666687887ff7fffffffff7ff77777777777777</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{E709A5D6-8FC7-451B-9880-C3B064C7F9FD}">
+	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{1095824C-4FD2-4E76-BE81-51965D49A72D}">
 		<System>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350">
@@ -2964,7 +2964,7 @@ Bit1: Value bigger/equal Limit2]]>
 						<EtherCATDeviceName>TIID^Device 2 (EtherCAT)^Grande armoire^Term 89 (EL6751)</EtherCATDeviceName>
 					</Ecat>
 				</AddressInfo>
-				<Image Id="4" AddrType="2" ImageType="3">
+				<Image Id="4" AddrType="4" ImageType="3">
 					<Name>Image</Name>
 				</Image>
 				<Box BoxType="5003" Id="45">
@@ -3121,7 +3121,7 @@ Slave-Mode:
 						<EtherCATDeviceName>TIID^Device 2 (EtherCAT)^Grande armoire^Term 90 (EL6751)</EtherCATDeviceName>
 					</Ecat>
 				</AddressInfo>
-				<Image Id="5" AddrType="2" ImageType="3">
+				<Image Id="5" AddrType="4" ImageType="3">
 					<Name>Image</Name>
 				</Image>
 				<Box BoxType="5003" Id="10">
@@ -3773,7 +3773,7 @@ Revision: Rev 0.2
 				</Box>
 				<Profibus>
 					<Fcxxxx>
-						<DevSettings NetId="0a0a0a1f0201" EquiCycleTime="40000"/>
+						<DevSettings NetId="0a0a0a1f0201" EquiCycleTime="100000"/>
 						<DevParameter CycleTime="100000" AutoBaudDisabled="true"/>
 					</Fcxxxx>
 					<BusParameter FdlAdd="125" Baudrate="4" TSlot="150" MaxTsdr="100" TQui="0" TSetup="0" Ttr="14888" MaxRetryLimit="1" MinSlaveInterval="100" PollTimeout="0" DataControlTime="36"/>

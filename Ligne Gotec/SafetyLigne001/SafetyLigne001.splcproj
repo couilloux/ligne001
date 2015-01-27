@@ -17,7 +17,7 @@
     <Worker>Administrator</Worker>
     <IntProjName>
     </IntProjName>
-    <NextSdsId>26</NextSdsId>
+    <NextSdsId>27</NextSdsId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
