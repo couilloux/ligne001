@@ -8,7 +8,8 @@ END_VAR
     <Implementation>
       <ST><![CDATA[SAFETY();
 GEMMA();
-CONVEYOR();]]></ST>
+CONVEYOR();
+AIS();]]></ST>
     </Implementation>
     <ObjectProperties />
   </POU>

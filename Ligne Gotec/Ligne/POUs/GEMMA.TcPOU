@@ -5,9 +5,11 @@
 VAR
 	STEP_A6: INT := 0;
 	DELAY_EJECTION_CARRIERS: TON;
+	DELAY_STARTING_AIR: TON;
 	EJECT_CARRIERS: BOOL;
 	F2_END: BOOL;
 	STEP: STRING(20);
+	START_AIR: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
       <SFC>
@@ -2409,21 +2411,28 @@ CASE STEP_A6 OF
 
 	STEP_A6:=STEP_A6+1;
 
-2: (*Start AIR and wait for ejection of all carriers on the conveyor*)
+2: (*Start AIR*)
 
 	GEN_1V1 := TRUE;
-	GEN_CONVOYEUR := TRUE;
-	EJECT_CARRIERS:=TRUE;
-
+	START_AIR := TRUE;
 	STEP_A6:=STEP_A6+1;
 
-3: (* Wait carriers ejection *)
+3: (*Wait AIR then start convoyer and wait ejection of carriers*)
+	
+	IF DELAY_STARTING_AIR.Q THEN
+		GEN_CONVOYEUR := TRUE;
+		START_AIR := FALSE;
+		EJECT_CARRIERS:=TRUE;
+		STEP_A6:=STEP_A6+1;
+	END_IF;
+
+4: (* Wait carriers ejection *)
 
 	IF DELAY_EJECTION_CARRIERS.Q THEN
 		EJECT_CARRIERS:=FALSE;
 		STEP_A6:=STEP_A6+1;
 	END_IF;
-4: (*End of init *)
+5: (*End of init *)
 
 	FLAGS.INIT_OK:=TRUE;
 
@@ -2433,7 +2442,8 @@ ELSE
 END_CASE;
 
 (* FBs *)
-DELAY_EJECTION_CARRIERS(IN:=EJECT_CARRIERS , PT:= DELAY_EJECT_CARRIERS);]]></ST>
+DELAY_EJECTION_CARRIERS(IN:=EJECT_CARRIERS , PT:=DELAY_EJECT_CARRIERS);
+DELAY_STARTING_AIR(IN:=START_AIR , PT:=DELAY_START_AIR);]]></ST>
       </Implementation>
     </Action>
     <Action Name="A1_Action" Id="{9028462a-cc66-4cee-b37e-215f3831f50c}">
