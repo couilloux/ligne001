@@ -12,6 +12,7 @@ VAR_INPUT
 	NEXT_JIG_STATUS:BOOL; (*Status of the next jig*)
 	CARRIER_PRESENT:BOOL; (*CARRIER IS PRESENT *)
 	RELEASE_CARRIER:BOOL; (*Ask the function to release the carrier *)
+	JIG_DISABLED: BOOL; (*Disable the JIG *)
 END_VAR
 
 VAR_OUTPUT
@@ -26,7 +27,7 @@ END_VAR]]></Declaration>
 *
 *
 ************************************************************************************************************************************)
-IF GEMMA.STEP='A6' OR GEMMA.STEP='D1' THEN
+IF GEMMA.STEP='A6' OR GEMMA.STEP='D1' OR JIG_DISABLED THEN
 	STEP:=0;
 END_IF;
 

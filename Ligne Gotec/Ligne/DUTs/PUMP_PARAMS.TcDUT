@@ -3,13 +3,31 @@
   <DUT Name="PUMP_PARAMS" Id="{dcfcedb9-d4fd-45ca-b68e-7214757f8e01}">
     <Declaration><![CDATA[TYPE PUMP_PARAMS :
 STRUCT
+	
+(* Général *******************************************************************************************************************)
 
-	VAC_ENABLE:BOOL					:=FALSE;				(*Enable Test*)
-	VAC_PUMPING_TIME:TIME			:=T#5s; 			(*Pumping delay to prepare the pump for the suction test *)
-	VAC_MEASUREMENT_TIME:TIME		:=T#5s; 			(*Measurement time for the sunction pressure *)
-	VAC_PRESSURE_LIMIT:REAL			:=-0.7; 			(*Vacuum pressure Limit Higher than this parameter -> NO GOOD [bar]*)
+(* Station 1 Haute tension ***************************************************************************************************)
 
-	Q1_ENABLE:BOOL					:=TRUE;				(*Enable Test*)
+(* Station 2 aspiration ******************************************************************************************************)
+
+(* Station 3 étanchéité ******************************************************************************************************)
+
+(* Station 4 Débit petit *****************************************************************************************************)
+
+(* Station 5 Débit Grands*****************************************************************************************************)
+
+(* Station 6 Pmax ************************************************************************************************************)	
+	ST6_PMAX						:REAL:=8;			(*Limite pression max*)
+	ST6_TEMPS_POMPAGE				:TIME:= T#10S;		(*Tampo amorcage de la pompte *)
+	ST6_TEMPS_MESURE				:TIME:= T#5S;		(*Temps séchage pompe station 7 *)
+	
+(* Station 7 Sechage *********************************************************************************************************)
+	ST7_TEMPS_SECHAGE				:TIME:= T#2S;		(*Temps séchage pompe station 7 *)
+
+	
+
+	
+	(*Q1_ENABLE:BOOL				:=TRUE;				(*Enable Test*)
 	Q1_PUMPING_TIME:TIME			:=T#20s; 			(*Pumping delay to prepare the pump for the flow rate test *)
 	Q1_MEASUREMENT_TIME:TIME		:=T#10s; 			(*Measurement time for the flow rate*)
 	Q1_FLOW_TARGET:REAL				:=350; 				(*Flow rate target [ml/min]*)
@@ -18,26 +36,8 @@ STRUCT
 	Q1_PRESSURE_TARGET:REAL			:=8; 				(*Pressure target [bar]*)
 	Q1_PRESSURE_LIMIT_UP:REAL		:=15; 				(*Pressure Uper limit. p>This limit -> NO GOOD [bar]*)
 	Q1_PRESSURE_LIMIT_DOWN:REAL		:=4;	 			(*Pressure Lower limit. p<This limit -> NO GOOD [bar]*)
-	Q1_MAX_FLOW:BOOL				:=FALSE;			(*Use the max flow bypass*)
+	Q1_MAX_FLOW:BOOL				:=FALSE;			(*Use the max flow bypass*)*)
 
-	Q2_ENABLE:BOOL					:=TRUE;				(*Enable Test*)
-	Q2_PUMPING_TIME:TIME			:=T#20s; 			(*Pumping delay to prepare the pump for the flow rate test *)
-	Q2_MEASUREMENT_TIME:TIME		:=T#10s; 			(*Measurement time for the flow rate*)
-	Q2_FLOW_TARGET:REAL				:=350; 				(*Flow rate target [ml/min]*)
-	Q2_FLOW_LIMIT_UP:REAL			:=800; 				(*Flow rate Uper limit. Q>This limit -> NO GOOD [ml/min]*)
-	Q2_FLOW_LIMIT_DOWN:REAL			:=100; 				(*Flow rate Lower limit. Q<This limit -> NO GOOD [ml/min]*)
-	Q2_PRESSURE_TARGET:REAL			:=8; 				(*Pressure target [bar]*)
-	Q2_PRESSURE_LIMIT_UP:REAL		:=15; 				(*Pressure Uper limit. p>This limit -> NO GOOD [bar]*)
-	Q2_PRESSURE_LIMIT_DOWN:REAL		:=4;	 			(*Pressure Lower limit. p<This limit -> NO GOOD [bar]*)
-	Q2_MAX_FLOW:BOOL				:=FALSE;			(*Use the max flow bypass*)
-
-	PMAX_ENABLE:BOOL				:=FALSE;				(*Enable Test*)
-	PMAX_PUMPING_TIME:TIME			:=T#10s; 			(*Pumping delay to prepare the pump for the max pressure test *)
-	PMAX_MEASUREMENT_TIME:TIME		:=T#8s; 			(*Measurement time for the max pressure test *)
-	PMAX_PRESSURE_LIMIT:REAL		:=10; 				(*Max pressure lower than this parameter -> NO GOOD [bar]*)
-	PMAX_PRESSURE_LOOSE_TIME:TIME	:=T#3s;				(*Valves Tightness test duration*)
-
-	PRINT_ENABLE:BOOL				:=TRUE;			(*Enable Test*)
 
 END_STRUCT
 END_TYPE]]></Declaration>

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="ST7_SECHAGE" Id="{fe6ffd4d-a09b-41a8-a18c-ba5f720359ca}">
+    <Declaration><![CDATA[PROGRAM ST7_SECHAGE
+VAR
+	STEP: INT := 0;
+	START_TAMPO_AIR: BOOL;
+	TAMPO_AIR: TON;
+	JIG_STATUS_R_TRIG: R_TRIG;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*******************************************************
+*
+* Station 7 - Séchage
+*
+*
+*********************************************************)
+IF NOT(GEMMA.STEP='F1') THEN
+	STEP:=0;
+END_IF;
+
+
+CASE STEP OF
+
+0: (*Init*)
+
+	ST7_7V4 := FALSE;
+	ST7_7V5 := FALSE;
+	ST7_7V6 := FALSE;
+	ST7_7V7 := FALSE;
+	
+	FLAGS.ST7_RELEASE_CARRIER := FALSE;
+	START_TAMPO_AIR := FALSE;
+	
+	STEP := STEP + 10;
+	
+10: (*Attend une palette / flanc montant du status*)
+
+	IF JIG_STATUS_R_TRIG.Q THEN
+		STEP := STEP + 10;
+	END_IF;
+	
+20: (*Descend le vérin du dessus*)
+
+	ST7_7V4 := TRUE;
+	STEP := STEP + 10;
+	
+30: (*Attend vérin dessus sorti*)
+
+	IF ST7_7B4 THEN
+		STEP := STEP + 10;
+	END_IF;
+
+40: (*Monte le vérin du dessous*)
+
+	ST7_7V5 := TRUE;
+	STEP := STEP + 10;
+	
+50: (*Attend vérin dessus sorti*)
+
+	IF ST7_7B5 THEN
+		STEP := STEP + 10;
+	END_IF;
+	
+60: (*Sort le vérin électrique*)
+
+	ST7_7V6 := TRUE;
+	STEP := STEP + 10;
+	
+70: (*Attend vérin électrique sortie*)
+
+	IF ST7_7B6 THEN
+		STEP := STEP + 10;
+	END_IF;
+
+80: (*Allume la pompe*)
+
+	ST7_POWER := TRUE;
+	STEP := 100;
+	
+(**************************************************************************)
+100: (*ouvre l'air pour le séchage et démarre la tampo*)
+
+	ST7_7V10 := TRUE;
+	START_TAMPO_AIR :=TRUE;
+	STEP := STEP + 10;
+	
+110: (*Attend fin tampo AIR et stop l'air*)
+
+	IF TAMPO_AIR.Q THEN
+		START_TAMPO_AIR := FALSE;
+		ST7_7V10 := FALSE;
+		STEP := 300;
+	END_IF;
+
+(**************************************************************************)	
+
+300: (*Rentre le vérin électrique*)
+
+	ST7_7V6 := FALSE;
+	STEP := STEP + 10;
+	
+310: (*Descend le vérin du dessous*)
+
+	ST7_7V5 := FALSE;
+	STEP := STEP + 10;
+	
+320: (*Monte le vérin du dessus*)
+
+	ST7_7V4 := FALSE;
+	STEP := STEP + 10;
+
+330: (*Libère la palette*)
+
+	FLAGS.ST7_RELEASE_CARRIER := TRUE;
+	STEP := 0;
+
+
+ELSE
+    (*default case*);
+END_CASE;
+
+(*FBs*)
+
+TAMPO_AIR(IN:= START_TAMPO_AIR, PT:= PUMP_PARAMS.ST7_TEMPS_SECHAGE);
+JIG_STATUS_R_TRIG(CLK:= CONVEYOR.JIG_ST7.STATUS);
+PROG_STEPS.ST7:=STEP;]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

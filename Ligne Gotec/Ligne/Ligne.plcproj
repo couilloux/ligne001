@@ -89,6 +89,12 @@
     <Compile Include="POUs\STATIONS\Q1.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\STATIONS\ST7_SECHAGE.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\STATIONS\ST6_PMAX.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\WIKA\WIKA_GET_VALUES.TcPOU">
       <SubType>Code</SubType>
     </Compile>

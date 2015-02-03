@@ -9,13 +9,12 @@ VAR_GLOBAL CONSTANT
 	*
 	************************)
 
-	CARRIER_RELEASE_DELAY						:TIME:= T#1S;			(*Delay between the release of the carrier on the main jig and the output of the CYLINDER_STOP*)
-	CARRIER_STOP_DELAY							:TIME:= T#100MS;		(*Delay between the release of the carrier on the second jig and the output of the CYLINDER_WAIT*)
+	CARRIER_RELEASE_DELAY						:TIME:= T#1S;			(*Temps de rentrée du vérin de blocage des vérins*)
 	PULSE_RELEASE_JIG_OP						:TIME:= T#250MS;		(*Duration of the pulse to release a carrier on the Operators jig*)
 	DELAY_EJECT_CARRIERS						:TIME:= T#5S;			(*Time for release all the carriers present in the tunel during the initialisation *)
-	TIMEOUT_WATER_TANK							:TIME:= T#500S;			(*Delay before an alarm during the fullfil of a watertank*)
-	DRY_DELAY									:TIME:= T#1S;
 	DELAY_START_AIR								:TIME:= T#2S;			(*Time to let air starting before starting convoyer *)
+
+	TEMPS_VIDANGE_POMPE							:TIME:= T#2S;			(*Temps durant lequel on pompe de l'air pour vidanger la pompe*)
 
 	(********************
 	*
@@ -23,9 +22,24 @@ VAR_GLOBAL CONSTANT
 	*
 	************************)
 	MOTOR_Q1_INITIAL_POS						:DINT:=10000;			(*Initial position of the motor*)
-	MOTOR_Q1_POSITION_MAX						:DINT:=38000;		(*Butée soft du moteur*)
+	MOTOR_Q1_POSITION_MAX						:DINT:=38000;			(*Butée soft du moteur*)
 	MOTOR_Q2_INITIAL_POS						:DINT:=15000;			(*Initial position of the motor*)
-	MOTOR_Q2_POSITION_MAX						:DINT:=36000;		(*Butée soft du moteur*)
+	MOTOR_Q2_POSITION_MAX						:DINT:=36000;			(*Butée soft du moteur*)
+	
+	(********************
+	*
+	* Activation des Posages
+	*
+	************************)
+	ST1_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
+	ST2_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
+	ST3_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
+	ST4_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
+	ST5_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
+	ST6_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
+	ST7_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
+	ST8_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
+	ST9_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 
 END_VAR
 
