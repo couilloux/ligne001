@@ -11,8 +11,10 @@ GEMMA();
 CONVEYOR();
 AIS();
 
+(*ST2_ASPIRATION();*)
+ST6_PMAX();
 ST7_SECHAGE();
-ST6_PMAX();]]></ST>
+]]></ST>
     </Implementation>
     <ObjectProperties />
   </POU>

@@ -89,6 +89,12 @@
     <Compile Include="POUs\STATIONS\Q1.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\STATIONS\ST1_HT.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\STATIONS\ST2_ASPIRATION.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\STATIONS\ST7_SECHAGE.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -199,6 +205,9 @@
   <ItemGroup>
     <LibraryReference Include="Maxon,1.0.0.0,Maxon Motor">
       <Namespace>Maxon</Namespace>
+    </LibraryReference>
+    <LibraryReference Include="Tc2_Utilities,3.3.8.0,Beckhoff Automation GmbH">
+      <Namespace>Tc2_Utilities</Namespace>
     </LibraryReference>
   </ItemGroup>
   <ItemGroup>

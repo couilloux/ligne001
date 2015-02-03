@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="ST1_HT" Id="{1b21dc30-9f9c-47a5-bce5-0ea3fc82d56a}">
+    <Declaration><![CDATA[PROGRAM ST1_HT
+VAR
+	STEP: INT := 0;
+	START_TAMPO_AIR: BOOL;
+	TAMPO_AIR: TON;
+	JIG_STATUS_R_TRIG: R_TRIG;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*******************************************************
+*
+* Station 1 - Haute Tension
+*
+*
+*********************************************************)
+IF NOT(GEMMA.STEP='F1') THEN
+	STEP:=0;
+END_IF;
+
+
+CASE STEP OF
+
+0: (*Init*)
+
+	ST1_1V4 := FALSE;
+	ST1_1V5 := FALSE;
+	
+	ST1_HT_CTRLIN 	:=FALSE;	(*Prise de contrôle par le PLC*)
+	ST1_HT_TYPW 	:=FALSE;	(*Type de mesure FALSE: Rigidité dielectrique TRUE:Megomètre*)
+	ST1_HT_N0		:=FALSE;	(*Numéro de programme*)
+	ST1_HT_N1 		:=FALSE;	(*Numéro de programme*)
+	ST1_HT_N2 		:=FALSE;	(*Numéro de programme*)
+	ST1_HT_MES_DCH 	:=FALSE;	(*Passage en mesure / décharge FALSE: Décharge TRUE:Mesure*)
+	
+	FLAGS.ST1_RELEASE_CARRIER := FALSE;
+	
+	STEP := STEP + 10;
+	
+10: (*Attend une palette / flanc montant du status*)
+
+	IF JIG_STATUS_R_TRIG.Q THEN
+		STEP := STEP + 10;
+	END_IF;
+	
+20: (*Descend le vérin du dessus*)
+
+	ST1_1V4 := TRUE;
+	STEP := STEP + 10;
+	
+30: (*Attend vérin dessus sorti*)
+
+	IF ST1_1B4 THEN
+		STEP := STEP + 10;
+	END_IF;
+
+40: (*Sort le vérin électrique*)
+
+	ST1_1V5 := TRUE;
+	STEP := STEP + 10;
+	
+50: (*Attend vérin électrique sortie*)
+
+	IF ST1_1B5 THEN
+		STEP := 100;
+	END_IF;
+
+	
+(**************************************************************************)
+100: (*ACtive la prise en main de HT par le PLC et charge le programme*)
+
+	ST1_HT_CTRLIN 	:= TRUE; 	(*active la communication API vers HT*)
+	ST1_HT_TYPW 	:= FALSE;	(*Type de mesure FALSE: Rigidité dielectrique TRUE:Megomètre*)
+	ST1_HT_N0		:= GETBIT32(inVal32:= INT_TO_DWORD(PUMP_PARAMS.ST1_HT_NO_PROG), bitNo:=0 ) ;	(*Numéro de programme bit 0*)
+	ST1_HT_N1 		:= GETBIT32(inVal32:= INT_TO_DWORD(PUMP_PARAMS.ST1_HT_NO_PROG), bitNo:=1 ) ;	(*Numéro de programme bit 1*)
+	ST1_HT_N2 		:= GETBIT32(inVal32:= INT_TO_DWORD(PUMP_PARAMS.ST1_HT_NO_PROG), bitNo:=2 ) ;	(*Numéro de programme bit 2*)
+	
+	
+	STEP := STEP + 10;
+
+100: (*Démarre la mesure*)
+
+	ST1_HT_MES_DCH 	:=TRUE;	(*Passage en mesure / décharge FALSE: Décharge TRUE:Mesure*)
+	
+	STEP := STEP + 10;	
+
+110: (*Attend la fin du test HT*)
+
+	IF ST1_HT_EOT THEN
+		ST1_HT_OK := ST1_HT_PASS;
+		STEP := STEP + 10;
+	END_IF;
+	
+120: (*Termine le test*)
+
+	ST1_HT_MES_DCH 	:=FALSE;	(*Passage en mesure / décharge FALSE: Décharge TRUE:Mesure*)
+	
+	STEP := 300;	
+
+(**************************************************************************)	
+
+300: (*Rentre le vérin électrique*)
+
+	ST1_1V5 := FALSE;
+	STEP := STEP + 10;
+	
+310: (*Monte le vérin du dessus*)
+
+	ST1_1V4 := FALSE;
+	STEP := STEP + 10;
+
+320: (*Libère la palette*)
+	
+	FLAGS.ST1_RELEASE_CARRIER := TRUE;
+	STEP := 0;
+
+
+ELSE
+    (*default case*);
+END_CASE;
+
+(*FBs*)
+
+JIG_STATUS_R_TRIG(CLK:= CONVEYOR.JIG_ST1.STATUS);
+PROG_STEPS.ST1:=STEP;]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

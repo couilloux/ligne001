@@ -36,6 +36,24 @@ VAR_GLOBAL
 	ST1_1V4 	AT%Q*:BOOL;		(*Vérin connexion TOP*)
 	ST1_1V5		AT%Q*:BOOL;		(*Vérin connexion HT*)
 	
+	ST1_HT_CTRLIN 	AT%Q*:BOOL;	(*Prise de contrôle par le PLC*)
+	ST1_HT_TYPW 	AT%Q*:BOOL;	(*Type de mesure FALSE: Rigidité dielectrique TRUE:Megomètre*)
+	ST1_HT_N0		AT%Q*:BOOL;	(*Numéro de programme*)
+	ST1_HT_N1 		AT%Q*:BOOL;	(*Numéro de programme*)
+	ST1_HT_N2 		AT%Q*:BOOL;	(*Numéro de programme*)
+	ST1_HT_MES_DCH 	AT%Q*:BOOL;	(*Passage en mesure / décharge FALSE: Décharge TRUE:Mesure*)
+	
+	ST1_HT_CTRLOUT 	AT%I*:BOOL;	(*Validation de prise de contrôle par le PLC*)
+	ST1_HT_EOT 		AT%I*:BOOL;	(*Fin de test*)
+	ST1_HT_PASS 	AT%I*:BOOL;	(*Test BON*)
+	ST1_HT_FAIL 	AT%I*:BOOL;	(*Test MAUVAIS*)
+	ST1_HT_ERROR 	AT%I*:BOOL;	(*Erreur*)
+	
+	ST1_HT_OK 		:BOOL;		(*Résultat du test TRUE: Test OK FALSE: Test NOK*)
+	
+	
+	
+	
 	
 (************************************************************************************************
 *
