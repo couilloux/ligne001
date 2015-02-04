@@ -51,7 +51,7 @@
 		<ImageData Id="1007">424de6000000000000007600000028000000100000000e000000010004000000000070000000120b0000120b0000100000001000000000000000000080000080000000808000800000008000800080800000c0c0c000808080000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff005dd55d88888888dd5dd5d577777778dd55d55d77888778dd5d55d577888778dd55d55d77888778dddddddd77777778dddddddd77777778dd9b9b9b77777778ddb9b9b977777778dd9b9b9b77777778ddb9b9b977797778dd9b9b9b77797778ddb9b9b9777a7778dd9b9b9b77777778dd</ImageData>
 		<ImageData Id="1008">424de6000000000000007600000028000000100000000e000000010004000000000070000000ea0e0000ea0e000000000000000000000000000000008000008000000080800080000000800080008080000080808000c0c0c0000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff00777f7f7f77f77f777fff7f7f7ff77f77777f878f77f77f777fff7f7ff7f7ff77777f7f7f77f77f77fffffffffffffffff8888888888888888877777777777777777887888888888777788786ccccc66778788786ccccc6677f78878666666687887ff7fffffffff7ff77777777777777</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{1887ACB9-4402-4D25-8428-BF0F8715A7D4}">
+	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{9ECBC7F2-06A1-4328-9351-E53F472FF0F9}">
 		<System>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350">
@@ -2826,27 +2826,27 @@ Bit1: Value bigger/equal Limit2]]>
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6000" Sub="#x01">
+								<Entry Name="HT_CTRLout" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6010" Sub="#x01">
+								<Entry Name="HT_EOT" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6020" Sub="#x01">
+								<Entry Name="HT_PASS" Index="#x6020" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6030" Sub="#x01">
+								<Entry Name="HT_FAIL" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6040" Sub="#x01">
+								<Entry Name="ERROR" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -2874,32 +2874,32 @@ Bit1: Value bigger/equal Limit2]]>
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7000" Sub="#x01">
+								<Entry Name="HT_CTRLIN" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7010" Sub="#x01">
+								<Entry Name="HT_TYPE" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7020" Sub="#x01">
+								<Entry Name="HT_N0" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7030" Sub="#x01">
+								<Entry Name="HT_N1" Index="#x7030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1604" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7040" Sub="#x01">
+								<Entry Name="HT_N2" Index="#x7040" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 6" Index="#x1605" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7050" Sub="#x01">
+								<Entry Name="HT_MES_DCH" Index="#x7050" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -4004,18 +4004,18 @@ Revision: Rev 0.2
 		<MappingInfo Identifier="{00000000-0011-0101-1000-010130000403}" Id="#x03070020"/>
 		<OwnerA Name="TIID^Device 2 (EtherCAT)">
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Grande armoire^Term 11 (EL2904)">
-				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionInputs^Message_5 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
+				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionOutputs^Message_5 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 113 (EL6900)">
-				<Link VarA="Grande armoire^Term 11 (EL2904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^Message_5 RxPDO"/>
-				<Link VarA="Petite armoire^Term 114 (EL1904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^Message_24 TxPDO"/>
-				<Link VarA="Petite armoire^Term 115 (EL1904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^Message_4 TxPDO"/>
+				<Link VarA="Grande armoire^Term 11 (EL2904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^Message_5 TxPDO"/>
+				<Link VarA="Petite armoire^Term 114 (EL1904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^Message_24 RxPDO"/>
+				<Link VarA="Petite armoire^Term 115 (EL1904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^Message_4 RxPDO"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 114 (EL1904)">
-				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionOutputs^Message_24 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
+				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionInputs^Message_24 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 115 (EL1904)">
-				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionOutputs^Message_4 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
+				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionInputs^Message_4 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIPC^Ligne^Ligne Instance">
@@ -4270,6 +4270,21 @@ Revision: Rev 0.2
 				<Link VarA="PlcTask Outputs^.SAFETY_OUT^NOT_AUS_ErrAck" VarB="StandardOutputs^Standard In Var 9"/>
 				<Link VarA="PlcTask Outputs^.SAFETY_OUT^NOT_AUS_RESET" VarB="StandardOutputs^Standard In Var 10"/>
 				<Link VarA="PlcTask Outputs^.SAFETY_OUT^NOT_AUS_RUN" VarB="StandardOutputs^Standard In Var 8"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 149 (EL1008)">
+				<Link VarA="PlcTask Inputs^.ST1_HT_CTRLOUT" VarB="Channel 1^HT_CTRLout"/>
+				<Link VarA="PlcTask Inputs^.ST1_HT_EOT" VarB="Channel 2^HT_EOT"/>
+				<Link VarA="PlcTask Inputs^.ST1_HT_ERROR" VarB="Channel 5^ERROR"/>
+				<Link VarA="PlcTask Inputs^.ST1_HT_FAIL" VarB="Channel 4^HT_FAIL"/>
+				<Link VarA="PlcTask Inputs^.ST1_HT_PASS" VarB="Channel 3^HT_PASS"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 150 (EL2008)">
+				<Link VarA="PlcTask Outputs^.ST1_HT_CTRLIN" VarB="Channel 1^HT_CTRLIN"/>
+				<Link VarA="PlcTask Outputs^.ST1_HT_MES_DCH" VarB="Channel 6^HT_MES_DCH"/>
+				<Link VarA="PlcTask Outputs^.ST1_HT_N0" VarB="Channel 3^HT_N0"/>
+				<Link VarA="PlcTask Outputs^.ST1_HT_N1" VarB="Channel 4^HT_N1"/>
+				<Link VarA="PlcTask Outputs^.ST1_HT_N2" VarB="Channel 5^HT_N2"/>
+				<Link VarA="PlcTask Outputs^.ST1_HT_TYPW" VarB="Channel 2^HT_TYPE"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 92 (EL1002)">
 				<Link VarA="PlcTask Inputs^.ST1_1B1" VarB="Channel 1^1B1"/>

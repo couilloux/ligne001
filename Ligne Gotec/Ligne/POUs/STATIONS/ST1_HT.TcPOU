@@ -7,6 +7,11 @@ VAR
 	START_TAMPO_AIR: BOOL;
 	TAMPO_AIR: TON;
 	JIG_STATUS_R_TRIG: R_TRIG;
+	START_TAMPO_CTRLIN: BOOL;
+	TAMPO_CTRLIN_TP: TP;
+	asdf: TP;
+	TAMPO_LIBERATION_TON: TON;
+	START_TAMPO_LIBERATION: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(*******************************************************
@@ -27,7 +32,7 @@ CASE STEP OF
 	ST1_1V4 := FALSE;
 	ST1_1V5 := FALSE;
 	
-	ST1_HT_CTRLIN 	:=FALSE;	(*Prise de contrôle par le PLC*)
+	(*ST1_HT_CTRLIN 	:=FALSE;	(*Prise de contrôle par le PLC*)*)
 	ST1_HT_TYPW 	:=FALSE;	(*Type de mesure FALSE: Rigidité dielectrique TRUE:Megomètre*)
 	ST1_HT_N0		:=FALSE;	(*Numéro de programme*)
 	ST1_HT_N1 		:=FALSE;	(*Numéro de programme*)
@@ -35,6 +40,8 @@ CASE STEP OF
 	ST1_HT_MES_DCH 	:=FALSE;	(*Passage en mesure / décharge FALSE: Décharge TRUE:Mesure*)
 	
 	FLAGS.ST1_RELEASE_CARRIER := FALSE;
+	START_TAMPO_CTRLIN := FALSE;
+	START_TAMPO_LIBERATION := FALSE;
 	
 	STEP := STEP + 10;
 	
@@ -76,23 +83,28 @@ CASE STEP OF
 	ST1_HT_N1 		:= GETBIT32(inVal32:= INT_TO_DWORD(PUMP_PARAMS.ST1_HT_NO_PROG), bitNo:=1 ) ;	(*Numéro de programme bit 1*)
 	ST1_HT_N2 		:= GETBIT32(inVal32:= INT_TO_DWORD(PUMP_PARAMS.ST1_HT_NO_PROG), bitNo:=2 ) ;	(*Numéro de programme bit 2*)
 	
-	
 	STEP := STEP + 10;
 
-100: (*Démarre la mesure*)
+110: (*Démarre la mesure*)
 
 	ST1_HT_MES_DCH 	:=TRUE;	(*Passage en mesure / décharge FALSE: Décharge TRUE:Mesure*)
 	
 	STEP := STEP + 10;	
 
-110: (*Attend la fin du test HT*)
+120: (*Attend début du test HT*)
+
+	IF NOT(ST1_HT_EOT) THEN
+		STEP := STEP + 10;
+	END_IF;
+
+130: (*Attend la fin du test HT*)
 
 	IF ST1_HT_EOT THEN
 		ST1_HT_OK := ST1_HT_PASS;
 		STEP := STEP + 10;
 	END_IF;
 	
-120: (*Termine le test*)
+140: (*Termine le test*)
 
 	ST1_HT_MES_DCH 	:=FALSE;	(*Passage en mesure / décharge FALSE: Décharge TRUE:Mesure*)
 	
@@ -122,6 +134,8 @@ END_CASE;
 
 (*FBs*)
 
+TAMPO_CTRLIN_TP(IN:= START_TAMPO_CTRLIN, PT:= T#1S);
+TAMPO_LIBERATION_TON(IN:= START_TAMPO_LIBERATION, PT:= T#1S);
 JIG_STATUS_R_TRIG(CLK:= CONVEYOR.JIG_ST1.STATUS);
 PROG_STEPS.ST1:=STEP;]]></ST>
     </Implementation>
