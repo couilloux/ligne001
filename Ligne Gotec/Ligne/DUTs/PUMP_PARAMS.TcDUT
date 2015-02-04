@@ -26,9 +26,6 @@ STRUCT
 	
 (* Station 7 Sechage *********************************************************************************************************)
 	ST7_TEMPS_SECHAGE				:TIME:= T#2S;		(*Temps séchage pompe station 7 *)
-	
-(* Station 9 Déchargement*****************************************************************************************************)
-	ST9_BOBINE_A_FIL				:BOOL:=TRUE;		(*Si bobine à fil, utilise de vérin de débloquage des fils *)
 
 	
 
