@@ -10,9 +10,10 @@ STRUCT
 	ST1_HT_NO_PROG					:INT:=1;			(*Numéro de programme de l'appareil de test HT*)
 
 (* Station 2 aspiration ******************************************************************************************************)
-	ST2_CONTRE_PRESSION				:BOOL:=0;			(*Contre pression d'air TRUE: avec contre pression FALSE: sans contre pression*)
-	ST2_TEMPS_POMPAGE				:TIME:= T#10S;		(*Temps d'amorcage *)
-	ST2_TEMPS_MESURE				:TIME:= T#5S;		(*Temps de mesure *)
+	ST2_CONTRE_PRESSION						:BOOL:=0;			(*Contre pression d'air TRUE: avec contre pression FALSE: sans contre pression*)
+	ST2_TEMPS_POMPAGE						:TIME:= T#10S;		(*Temps d'amorcage *)
+	ST2_TEMPS_MESURE_ASPIRATION				:TIME:= T#5S;		(*Temps de mesure aspiration*)
+	ST2_TEMPS_MESURE_ETANCHEITE_SOUPAPES	:TIME:= T#5S;		(*Temps de mesure étachéité des soupapes*)
 		
 (* Station 3 étanchéité ******************************************************************************************************)
 
@@ -26,9 +27,6 @@ STRUCT
 	
 (* Station 7 Sechage *********************************************************************************************************)
 	ST7_TEMPS_SECHAGE				:TIME:= T#2S;		(*Temps séchage pompe station 7 *)
-	
-(* Station 9 Déchargement*****************************************************************************************************)
-	ST9_BOBINE_A_FIL				:BOOL:=TRUE;		(*Si bobine à fil, utilise de vérin de débloquage des fils *)
 
 	
 

@@ -5,12 +5,10 @@
 VAR
 	STEP: INT := 0;
 	JIG_STATUS_R_TRIG: R_TRIG;
-	START_TAMPO_AMORCAGE: BOOL;
-	TAMPO_AMORCAGE_TON: TON;
-	START_TAMPO_MESURE: BOOL;
-	TAMPO_MESURE_TON: TON;
-	START_TAMPO_VIDANGE: BOOL;
-	TAMPO_VIDANGE_TON: TON;
+	START_TAMPO_MISE_PRESSION: BOOL;
+	TAMPO_MISE_PRESSION_TON: TON;
+	START_TAMPO_EQUILIBRAGE: BOOL;
+	TAMPO_EQUILIBRAGE: TON;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(*******************************************************
@@ -31,14 +29,15 @@ CASE STEP OF
 	ST6_6V4 := FALSE;
 	ST6_6V5 := FALSE;
 	ST6_6V6 := FALSE;
-	ST6_6V6 := FALSE;
+	ST6_6V7 := FALSE;
+	
 	ST6_6V10 := FALSE;
 	ST6_6V11 := FALSE;
+	ST6_6V12 := FALSE;
 	
 	FLAGS.ST6_RELEASE_CARRIER := FALSE;
-	START_TAMPO_AMORCAGE := FALSE;
-	START_TAMPO_MESURE:= FALSE;
-	START_TAMPO_VIDANGE:= FALSE;
+	START_TAMPO_MISE_PRESSION := FALSE;
+	START_TAMPO_EQUILIBRAGE := FALSE;
 	
 	STEP := STEP + 10;
 	
@@ -78,43 +77,45 @@ CASE STEP OF
 70: (*Attend vérin électrique sortie*)
 
 	IF ST6_6B6 THEN
-		STEP := STEP + 10;
+		STEP := 100;
 	END_IF;
 
-80: (*Allume la pompe*)
 
-	ST6_POWER := TRUE;
-	ST6_6V10 := TRUE;
-	ST6_6V11 := TRUE;
-	STEP := 100;
-	
-	
 (**************************************************************************)
-100: (*Démarre la tampo pour l'amorcage*)
 
-	START_TAMPO_AMORCAGE := TRUE;
+100: (*Démarrage tampo mise sous pression*)
+
+	START_TAMPO_MISE_PRESSION := TRUE;
+	ST3_3V10 := TRUE;
+	ST3_3V12 := TRUE;
 	STEP := STEP + 10;
 	
-110: (*Attend fin tampo amorcage*)
+	
+110: (*Attend fin tampo*)
 
-	IF TAMPO_AMORCAGE_TON.Q THEN
-		START_TAMPO_AMORCAGE := FALSE;
-		STEP := STEP + 10;
+	IF TAMPO_MISE_PRESSION_TON.Q THEN
+		START_TAMPO_MISE_PRESSION := FALSE;
+		ST3_3V10 := TRUE;
+		STEP := 100;
 	END_IF;
 	
-120: (*Démarre la tampo pour la mesure de pression*)
+120: (*Démarrage équilibrage*)
 
-	START_TAMPO_MESURE := TRUE;
-	ST6_6V11 := FALSE; 		(*ferme la vanne après la pompe *)
+	START_TAMPO_EQUILIBRAGE := TRUE;
+	
 	STEP := STEP + 10;
 	
-130: (*Attend fin tampo amorcage - MESURE EN COURT*)
+	
+130: (*Attend fin tampo*)
 
-	IF TAMPO_MESURE_TON.Q THEN
-		START_TAMPO_MESURE := FALSE;
-		ST6_6V11 := TRUE; 		(*re-ouvre la vanne après la pompe *)
-		STEP := 300;
+	IF TAMPO_EQUILIBRAGE.Q THEN
+		START_TAMPO_EQUILIBRAGE := FALSE;
+		ST3_3V12 := FALSE;
+		STEP := 100;
 	END_IF;
+	
+
+
 	
 
 (**************************************************************************)	
@@ -122,34 +123,20 @@ CASE STEP OF
 300: (*Descend le vérin du dessous*)
 
 	ST6_6V5 := FALSE;
-	ST6_6V10 := FALSE;	(* ferme la vanne avant la pompe*)
 	STEP := STEP + 10;
 
-310: (*Démarre la tampo de vidange de la pompe*)
-
-	START_TAMPO_VIDANGE := TRUE;
-	STEP := STEP + 10;
-	
-320: (*Attend fin tampo amorcage*)
-
-	IF TAMPO_VIDANGE_TON.Q THEN
-		START_TAMPO_VIDANGE := FALSE;
-		ST6_6V11 := FALSE; (* ferme la vanne après la pompe*)
-		STEP := STEP + 10;
-	END_IF;
-
-330: (*Rentre le vérin électrique*)
+310: (*Rentre le vérin électrique*)
 
 	ST6_6V6 := FALSE;
 	STEP := STEP + 10;
 	
 	
-340: (*Monte le vérin du dessus*)
+320: (*Monte le vérin du dessus*)
 
 	ST6_6V4 := FALSE;
 	STEP := STEP + 10;
 
-350: (*Libère la palette*)
+330: (*Libère la palette*)
 
 	FLAGS.ST6_RELEASE_CARRIER := TRUE;
 	STEP := 0;
@@ -161,9 +148,8 @@ END_CASE;
 
 (*FBs*)
 
-TAMPO_AMORCAGE_TON(IN:= START_TAMPO_AMORCAGE, PT:= PUMP_PARAMS.ST6_TEMPS_POMPAGE);
-TAMPO_VIDANGE_TON(IN:= START_TAMPO_VIDANGE, PT:= TEMPS_VIDANGE_POMPE);
-TAMPO_MESURE_TON(IN:= START_TAMPO_MESURE, PT:= PUMP_PARAMS.ST6_TEMPS_MESURE);
+TAMPO_MISE_PRESSION_TON(IN:= START_TAMPO_MISE_PRESSION := TRUE, PT:= T#5S);
+TAMPO_EQUILIBRAGE(IN:= START_TAMPO_EQUILIBRAGE, PT:= T#5S);
 JIG_STATUS_R_TRIG(CLK:= CONVEYOR.JIG_ST6.STATUS);
 PROG_STEPS.ST6:=STEP;]]></ST>
     </Implementation>
