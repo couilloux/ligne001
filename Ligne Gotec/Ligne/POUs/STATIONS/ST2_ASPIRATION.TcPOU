@@ -5,6 +5,10 @@
 VAR
 	STEP: INT := 0;
 	JIG_STATUS_R_TRIG: R_TRIG;
+	TAMPO_AMORCAGE_TON: TON;
+	START_TAMPO_AMORCAGE: BOOL;
+	TAMPO_MESURE_TON: TON;
+	START_TAMPO_MESURE: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(*******************************************************
@@ -26,8 +30,11 @@ CASE STEP OF
 	ST2_2V5 := FALSE;
 	ST2_2V6 := FALSE;
 	ST2_2V7 := FALSE;
+	ST2_2V8 := FALSE;
 	
 	FLAGS.ST2_RELEASE_CARRIER := FALSE;
+	START_TAMPO_AMORCAGE := FALSE;
+	START_TAMPO_MESURE := FALSE;
 	
 	STEP := STEP + 10;
 	
@@ -72,13 +79,38 @@ CASE STEP OF
 
 80: (*Allume la pompe*)
 
+	IF PUMP_PARAMS.ST2_CONTRE_PRESSION THEN (*ouvre la vanne de contre pression d'air si nécessaire*)
+		ST2_2V8:=TRUE;
+	END_IF;
+	
 	ST2_POWER := TRUE;
 	STEP := 100;
 	
 (**************************************************************************)
-100: (*ouvre l'air pour le séchage et démarre la tampo*)
+100: (*Démarre la tampo pour l'amorcage*)
 
+	START_TAMPO_AMORCAGE := TRUE;
 	STEP := STEP + 10;
+	
+110: (*Attend fin tampo amorcage*)
+
+	IF TAMPO_AMORCAGE_TON.Q THEN
+		START_TAMPO_AMORCAGE := FALSE;
+		STEP := STEP + 10;
+	END_IF;
+	
+120: (*Démarre la tampo pour la mesure de pression*)
+
+	START_TAMPO_MESURE := TRUE;
+	STEP := STEP + 10;
+	
+130: (*Attend fin tampo amorcage - MESURE EN COURT*)
+
+	IF TAMPO_MESURE_TON.Q THEN
+		START_TAMPO_MESURE := FALSE;
+		ST2_2V8:=FALSE; (*ferme la vanne de contre pression d'air*)
+		STEP := 300;
+	END_IF;
 	
 
 (**************************************************************************)	
@@ -109,7 +141,8 @@ ELSE
 END_CASE;
 
 (*FBs*)
-
+TAMPO_AMORCAGE_TON(IN:= START_TAMPO_AMORCAGE, PT:= PUMP_PARAMS.ST6_TEMPS_POMPAGE);
+TAMPO_MESURE_TON(IN:= START_TAMPO_MESURE, PT:= PUMP_PARAMS.ST6_TEMPS_MESURE);
 JIG_STATUS_R_TRIG(CLK:= CONVEYOR.JIG_ST2.STATUS);
 PROG_STEPS.ST2:=STEP;]]></ST>
     </Implementation>

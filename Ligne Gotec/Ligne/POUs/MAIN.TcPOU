@@ -11,8 +11,8 @@ GEMMA();
 CONVEYOR();
 AIS();
 
-ST1_HT();
-(*ST2_ASPIRATION();*)
+(*ST1_HT();*)
+ST2_ASPIRATION();
 (*ST6_PMAX();*)
 (*ST7_SECHAGE();*)
 ]]></ST>

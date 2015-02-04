@@ -2581,8 +2581,8 @@ STEP := 'A1';
 	ST9_9V6 	:=FALSE;		(*Vérin gripper*)
 	ST9_9V7 	:=FALSE;		(*Vérin liberateur electrique*)
 	
-	ST10_10V1 	:=FALSE;		(*Opérateur 1 - Vérin carrier stop*)
-	ST10_10V2 	:=FALSE;		(*Opérateur 2 - Vérin carrier stop*)
+	ST10_10V1 	:=TRUE;		(*Opérateur 1 - Vérin carrier stop*)
+	ST10_10V2 	:=TRUE;		(*Opérateur 2 - Vérin carrier stop*)
 ]]></ST>
       </Implementation>
     </Action>

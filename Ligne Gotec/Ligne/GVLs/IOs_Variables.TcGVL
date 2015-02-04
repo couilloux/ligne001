@@ -77,6 +77,7 @@ VAR_GLOBAL
 	ST2_2V5		AT%Q*:BOOL;		(*Vérin hydro BOTTOM*)
 	ST2_2V6		AT%Q*:BOOL;		(*Vérin électrique*)
 	ST2_2V7		AT%Q*:BOOL;		(*Vérin by-pass*)
+	ST2_2V8		AT%Q*:BOOL;		(*Vanne contre pression*)
 	
 	ST2_POWER	AT%Q*:BOOL;		(*Alimentation électrique pompe*)
 	

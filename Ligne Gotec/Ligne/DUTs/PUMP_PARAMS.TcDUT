@@ -7,10 +7,13 @@ STRUCT
 (* Général *******************************************************************************************************************)
 
 (* Station 1 Haute tension ***************************************************************************************************)
-	ST1_HT_NO_PROG						:INT:=1;			(*Numéro de programme de l'appareil de test HT*)
+	ST1_HT_NO_PROG					:INT:=1;			(*Numéro de programme de l'appareil de test HT*)
 
 (* Station 2 aspiration ******************************************************************************************************)
-
+	ST2_CONTRE_PRESSION				:BOOL:=0;			(*Contre pression d'air TRUE: avec contre pression FALSE: sans contre pression*)
+	ST2_TEMPS_POMPAGE				:TIME:= T#10S;		(*Temps d'amorcage *)
+	ST2_TEMPS_MESURE				:TIME:= T#5S;		(*Temps de mesure *)
+		
 (* Station 3 étanchéité ******************************************************************************************************)
 
 (* Station 4 Débit petit *****************************************************************************************************)
@@ -18,9 +21,8 @@ STRUCT
 (* Station 5 Débit Grands*****************************************************************************************************)
 
 (* Station 6 Pmax ************************************************************************************************************)	
-	ST6_PMAX						:REAL:=8;			(*Limite pression max*)
-	ST6_TEMPS_POMPAGE				:TIME:= T#10S;		(*Tampo amorcage de la pompte *)
-	ST6_TEMPS_MESURE				:TIME:= T#5S;		(*Temps séchage pompe station 7 *)
+	ST6_TEMPS_POMPAGE				:TIME:= T#10S;		(*Temps amorcage de la pompte *)
+	ST6_TEMPS_MESURE				:TIME:= T#5S;		(*Temps de mesure de Pmax *)
 	
 (* Station 7 Sechage *********************************************************************************************************)
 	ST7_TEMPS_SECHAGE				:TIME:= T#2S;		(*Temps séchage pompe station 7 *)
