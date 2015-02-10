@@ -80,7 +80,7 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\MAXON\Q1_MOTOR.TcPOU">
+    <Compile Include="POUs\MAXON\ST4_MOTOR.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\SAFETY\SAFETY.TcPOU">

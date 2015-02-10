@@ -6,6 +6,11 @@
         <o xml:space="preserve" t="GlobalTextListObject">
           <l n="TextList" t="ArrayList" cet="TextListRow">
             <o>
+              <v n="TextID">"22"</v>
+              <v n="TextDefault">"%d"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"13"</v>
               <v n="TextDefault">"%f"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -63,6 +68,11 @@
             <o>
               <v n="TextID">"12"</v>
               <v n="TextDefault">"ST2_VACUUM"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"21"</v>
+              <v n="TextDefault">"ST4 Position moteur"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
