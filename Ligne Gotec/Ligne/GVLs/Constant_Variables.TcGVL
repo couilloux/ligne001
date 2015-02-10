@@ -21,12 +21,10 @@ VAR_GLOBAL CONSTANT
 	* Motor
 	*
 	************************)
-	ST4_MOTOR_ADDRESS							:STRING:='10.10.10.31.4.1 ';	(*AMSNetID du moteur Station 4*)
-	ST5_MOTOR_ADDRESS							:STRING:='10.10.10.31.5.1';		(*AMSNetID du moteur Station 5*)
-	MOTOR_ST4_INITIAL_POS						:DINT:=10000;					(*Initial position of the motor*)
-	MOTOR_ST4_POSITION_MAX						:DINT:=38000;					(*Butée soft du moteur*)
-	MOTOR_ST5_INITIAL_POS						:DINT:=15000;					(*Initial position of the motor*)
-	MOTOR_ST5_POSITION_MAX						:DINT:=36000;					(*Butée soft du moteur*)
+	MOTOR_Q1_INITIAL_POS						:DINT:=10000;			(*Initial position of the motor*)
+	MOTOR_Q1_POSITION_MAX						:DINT:=38000;			(*Butée soft du moteur*)
+	MOTOR_Q2_INITIAL_POS						:DINT:=15000;			(*Initial position of the motor*)
+	MOTOR_Q2_POSITION_MAX						:DINT:=36000;			(*Butée soft du moteur*)
 	
 	(********************
 	*

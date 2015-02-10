@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
-  <POU Name="ST4_MOTOR" Id="{f755a67c-d6ae-47de-85f7-bd33b247bdee}">
-    <Declaration><![CDATA[PROGRAM ST4_MOTOR
+  <POU Name="Q1_MOTOR" Id="{f755a67c-d6ae-47de-85f7-bd33b247bdee}">
+    <Declaration><![CDATA[PROGRAM Q1_MOTOR
 VAR
 	ClearFault: FB_ClearFault;
 	SetEnableState: FB_SetEnableState;
@@ -3122,10 +3122,10 @@ END_VAR]]></Declaration>
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ST4_MOTOR_ADDRESS"</v>
-                              <v n="Type">"STRING"</v>
+                              <v n="Operand">"'10.0.0.31.6.1'"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
-                              <v n="SymbolComment">"AMSNetID du moteur Station 4"</v>
+                              <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
@@ -3140,7 +3140,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"1"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3157,7 +3157,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3259,10 +3259,10 @@ END_VAR]]></Declaration>
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ST4_MOTOR_ADDRESS"</v>
-                              <v n="Type">"STRING"</v>
+                              <v n="Operand">"'10.0.0.31.6.1'"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
-                              <v n="SymbolComment">"AMSNetID du moteur Station 4"</v>
+                              <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
@@ -3277,7 +3277,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"1"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3294,7 +3294,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3396,10 +3396,10 @@ END_VAR]]></Declaration>
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ST4_MOTOR_ADDRESS"</v>
-                              <v n="Type">"STRING"</v>
+                              <v n="Operand">"'10.0.0.31.6.1'"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
-                              <v n="SymbolComment">"AMSNetID du moteur Station 4"</v>
+                              <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
@@ -3414,7 +3414,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"1"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3431,7 +3431,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3448,7 +3448,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"16#01"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3550,10 +3550,10 @@ END_VAR]]></Declaration>
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ST4_MOTOR_ADDRESS"</v>
-                              <v n="Type">"STRING"</v>
+                              <v n="Operand">"'10.0.0.31.6.1'"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
-                              <v n="SymbolComment">"AMSNetID du moteur Station 4"</v>
+                              <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
@@ -3568,7 +3568,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"1"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3585,7 +3585,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3687,10 +3687,10 @@ END_VAR]]></Declaration>
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ST4_MOTOR_ADDRESS"</v>
-                              <v n="Type">"STRING"</v>
+                              <v n="Operand">"'10.0.0.31.6.1'"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
-                              <v n="SymbolComment">"AMSNetID du moteur Station 4"</v>
+                              <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
@@ -3705,7 +3705,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"1"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3722,7 +3722,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3791,10 +3791,10 @@ END_VAR]]></Declaration>
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ST4_MOTOR_ADDRESS"</v>
-                              <v n="Type">"STRING"</v>
+                              <v n="Operand">"'10.0.0.31.6.1'"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
-                              <v n="SymbolComment">"AMSNetID du moteur Station 4"</v>
+                              <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
@@ -3809,7 +3809,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"1"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3826,7 +3826,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3843,7 +3843,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"10"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3860,7 +3860,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"2600"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3877,7 +3877,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"9000"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3894,7 +3894,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"3"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -3911,7 +3911,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"100"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4013,10 +4013,10 @@ END_VAR]]></Declaration>
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ST4_MOTOR_ADDRESS"</v>
-                              <v n="Type">"STRING"</v>
+                              <v n="Operand">"'10.0.0.31.6.1'"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
-                              <v n="SymbolComment">"AMSNetID du moteur Station 4"</v>
+                              <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
@@ -4031,7 +4031,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"1"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4048,7 +4048,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4065,7 +4065,7 @@ END_VAR]]></Declaration>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"16#06"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4128,17 +4128,17 @@ END_VAR]]></Declaration>
     <Action Name="Step13_Action" Id="{86cf10b8-7a87-4ef2-b969-08524a2ff05f}">
       <Implementation>
         <ST><![CDATA[(*Limitation deplacement Moteur*)
-IF FLAGS.MOTOR_ST4_POSITION>MOTOR_ST4_POSITION_MAX THEN
-	POSITION:=MOTOR_ST4_POSITION_MAX;
-ELSIF FLAGS.MOTOR_ST4_POSITION<0 THEN
+IF FLAGS.MOTOR_Q1_POSITION>MOTOR_Q1_POSITION_MAX THEN
+	POSITION:=MOTOR_Q1_POSITION_MAX;
+ELSIF FLAGS.MOTOR_Q1_POSITION<0 THEN
 	POSITION:=0;
 ELSE
-	POSITION:=FLAGS.MOTOR_ST4_POSITION;
+	POSITION:=FLAGS.MOTOR_Q1_POSITION;
 END_IF
 
 
 MoveToPosition(
-	ADSNetId:= ST4_MOTOR_ADDRESS,
+	ADSNetId:= '10.0.0.31.6.1',
 	NodeId:= 1,
 	Write:= TRUE,
 	TargetPosition:= POSITION,
@@ -4187,10 +4187,10 @@ MoveToPosition(
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ST4_MOTOR_ADDRESS"</v>
-                              <v n="Type">"STRING"</v>
+                              <v n="Operand">"'10.0.0.31.6.1'"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
-                              <v n="SymbolComment">"AMSNetID du moteur Station 4"</v>
+                              <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
@@ -4205,7 +4205,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"1"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4222,7 +4222,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4324,10 +4324,10 @@ MoveToPosition(
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ST4_MOTOR_ADDRESS"</v>
-                              <v n="Type">"STRING"</v>
+                              <v n="Operand">"'10.0.0.31.6.1'"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
-                              <v n="SymbolComment">"AMSNetID du moteur Station 4"</v>
+                              <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
@@ -4342,7 +4342,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"1"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4359,7 +4359,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4376,7 +4376,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"50"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4393,7 +4393,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"50"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4410,7 +4410,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"50"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4427,7 +4427,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"0"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4444,7 +4444,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"800"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4546,10 +4546,10 @@ MoveToPosition(
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ST4_MOTOR_ADDRESS"</v>
-                              <v n="Type">"STRING"</v>
+                              <v n="Operand">"'10.0.0.31.6.1'"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
-                              <v n="SymbolComment">"AMSNetID du moteur Station 4"</v>
+                              <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
@@ -4564,7 +4564,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"1"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4581,7 +4581,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4597,10 +4597,10 @@ MoveToPosition(
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"MOTOR_ST4_INITIAL_POS"</v>
-                              <v n="Type">"DINT"</v>
+                              <v n="Operand">"MOTOR_Q1_INITIAL_POS"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
-                              <v n="SymbolComment">"Initial position of the motor"</v>
+                              <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
@@ -4615,7 +4615,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4717,10 +4717,10 @@ MoveToPosition(
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ST4_MOTOR_ADDRESS"</v>
-                              <v n="Type">"STRING"</v>
+                              <v n="Operand">"'10.0.0.31.6.1'"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
-                              <v n="SymbolComment">"AMSNetID du moteur Station 4"</v>
+                              <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
@@ -4735,7 +4735,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"1"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4752,7 +4752,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4769,7 +4769,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"500"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4786,7 +4786,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"3000"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4803,7 +4803,7 @@ MoveToPosition(
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"3000"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4871,7 +4871,7 @@ MoveToPosition(
 	NodeId:= 1,
 	Write:= TRUE);*)
 
-FLAGS.MOTOR_ST4_INIT_OK:=TRUE;
+FLAGS.MOTOR_Q1_INIT_OK:=TRUE;
 ]]></ST>
       </Implementation>
     </Action>
@@ -4940,10 +4940,10 @@ FLAGS.MOTOR_ST4_INIT_OK:=TRUE;
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ST4_MOTOR_ADDRESS"</v>
-                              <v n="Type">"STRING"</v>
+                              <v n="Operand">"'10.0.0.31.6.1'"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
-                              <v n="SymbolComment">"AMSNetID du moteur Station 4"</v>
+                              <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
@@ -4958,7 +4958,7 @@ FLAGS.MOTOR_ST4_INIT_OK:=TRUE;
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"1"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4975,7 +4975,7 @@ FLAGS.MOTOR_ST4_INIT_OK:=TRUE;
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TRUE"</v>
-                              <v n="Type">"BOOL"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -4992,7 +4992,7 @@ FLAGS.MOTOR_ST4_INIT_OK:=TRUE;
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"-4"</v>
-                              <v n="Type">"INT"</v>
+                              <v n="Type">""</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
