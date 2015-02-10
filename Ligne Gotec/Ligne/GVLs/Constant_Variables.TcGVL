@@ -33,13 +33,13 @@ VAR_GLOBAL CONSTANT
 	************************)
 	ST1_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 	ST2_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
-	ST3_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
+	ST3_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
 	ST4_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 	ST5_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 	ST6_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 	ST7_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 	ST8_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
-	ST9_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
+	ST9_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 
 END_VAR
 

@@ -15,7 +15,10 @@ STRUCT
 	ST2_TEMPS_MESURE				:TIME:= T#5S;		(*Temps de mesure *)
 		
 (* Station 3 étanchéité ******************************************************************************************************)
-
+	ST3_TEMPS_MISE_SOUS_PRESSION	:TIME:= T#5S;		(*Temps de mise sous pression*)
+	ST3_TEMPS_STABILISATION			:TIME:= T#5S;		(*Temps de stabilisation de la pression*)
+	ST3_TEMPS_MESURE				:TIME:= T#5S;		(*Temps de stabilisation de la pression*)
+	
 (* Station 4 Débit petit *****************************************************************************************************)
 
 (* Station 5 Débit Grands*****************************************************************************************************)

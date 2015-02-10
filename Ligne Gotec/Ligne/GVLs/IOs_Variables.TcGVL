@@ -106,6 +106,9 @@ VAR_GLOBAL
 	ST3_3V12 	AT%Q*:BOOL;		(*Vanne de blocage d'air pour le DELTA*)
 	
 	ST3_3P1 	AT%I*:INT;		(*Capteur de pression différentiel*)
+	ST3_PRESSION	:REAL;		(*Capteur de pression différentiel - Valeur réel en mBar*)
+	
+	ST3_DELTA_P	:REAL;			(*Mesure de la chutte de pression*)
 	
 (************************************************************************************************
 *

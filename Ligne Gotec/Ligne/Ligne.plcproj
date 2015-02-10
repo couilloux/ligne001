@@ -95,6 +95,9 @@
     <Compile Include="POUs\STATIONS\ST2_ASPIRATION.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\STATIONS\ST3_ETANCHEITE.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\STATIONS\ST7_SECHAGE.TcPOU">
       <SubType>Code</SubType>
     </Compile>

@@ -23,6 +23,9 @@ ST2_2P1_CONVERT(
 INPUTS:= ST2_2P1.VALUE, 
 Pressure=> ST2_VACUUM,);
 
+(*STATION 3***************************************************************************)
+ST3_PRESSION := ST3_3P1/32768.0*10; (*32768 pour 16 bits bipolair et 10 pour 10mBar*)
+
 (*STATION 4***************************************************************************)
 ST4_4P1_CONVERT(
 INPUTS:= ST4_4P1.VALUE, 
