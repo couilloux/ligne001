@@ -17,7 +17,7 @@ STRUCT
 (* Station 3 étanchéité ******************************************************************************************************)
 	ST3_TEMPS_MISE_SOUS_PRESSION	:TIME:= T#5S;		(*Temps de mise sous pression*)
 	ST3_TEMPS_STABILISATION			:TIME:= T#5S;		(*Temps de stabilisation de la pression*)
-	ST3_TEMPS_MESURE				:TIME:= T#5S;		(*Temps de stabilisation de la pression*)
+	ST3_TEMPS_MESURE				:TIME:= T#10S;		(*Temps de stabilisation de la pression*)
 	
 (* Station 4 Débit petit *****************************************************************************************************)
 
@@ -33,19 +33,6 @@ STRUCT
 (* Station 9 Déchargement*****************************************************************************************************)
 	ST9_BOBINE_A_FIL				:BOOL:=TRUE;		(*Si bobine à fil, utilise de vérin de débloquage des fils *)
 
-	
-
-	
-	(*Q1_ENABLE:BOOL				:=TRUE;				(*Enable Test*)
-	Q1_PUMPING_TIME:TIME			:=T#20s; 			(*Pumping delay to prepare the pump for the flow rate test *)
-	Q1_MEASUREMENT_TIME:TIME		:=T#10s; 			(*Measurement time for the flow rate*)
-	Q1_FLOW_TARGET:REAL				:=350; 				(*Flow rate target [ml/min]*)
-	Q1_FLOW_LIMIT_UP:REAL			:=800; 				(*Flow rate Uper limit. Q>This limit -> NO GOOD [ml/min]*)
-	Q1_FLOW_LIMIT_DOWN:REAL			:=100; 				(*Flow rate Lower limit. Q<This limit -> NO GOOD [ml/min]*)
-	Q1_PRESSURE_TARGET:REAL			:=8; 				(*Pressure target [bar]*)
-	Q1_PRESSURE_LIMIT_UP:REAL		:=15; 				(*Pressure Uper limit. p>This limit -> NO GOOD [bar]*)
-	Q1_PRESSURE_LIMIT_DOWN:REAL		:=4;	 			(*Pressure Lower limit. p<This limit -> NO GOOD [bar]*)
-	Q1_MAX_FLOW:BOOL				:=FALSE;			(*Use the max flow bypass*)*)
 
 
 END_STRUCT

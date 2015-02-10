@@ -83,6 +83,9 @@
     <Compile Include="POUs\MAXON\ST4_MOTOR.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\MAXON\ST5_MOTOR.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\SAFETY\SAFETY.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -96,6 +99,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\STATIONS\ST3_ETANCHEITE.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\STATIONS\ST4_DEBIT_PETIT.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\STATIONS\ST7_SECHAGE.TcPOU">

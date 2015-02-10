@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="ST4_DEBIT_PETIT" Id="{a872d9e6-4499-439d-a878-33aa83e05ee2}">
+    <Declaration><![CDATA[PROGRAM ST4_DEBIT_PETIT
+VAR
+	STEP: INT := 0;
+	JIG_STATUS_R_TRIG: R_TRIG;
+	START_TAMPO_AMORCAGE: BOOL;
+	TAMPO_AMORCAGE_TON: TON;
+	START_TAMPO_MESURE: BOOL;
+	TAMPO_MESURE_TON: TON;
+	START_TAMPO_VIDANGE: BOOL;
+	TAMPO_VIDANGE_TON: TON;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*******************************************************
+*
+* Station 4 - Petits débits
+*
+*
+*********************************************************)
+IF NOT(GEMMA.STEP='F1') THEN
+	STEP:=0;
+END_IF;
+
+
+CASE STEP OF
+
+0: (*Init*)
+
+	ST4_4V4 := FALSE;
+	ST4_4V5 := FALSE;
+	ST4_4V6 := FALSE;
+
+	ST4_4V10 := FALSE;
+	ST4_4V12 := FALSE;
+	ST4_4V13 := FALSE;
+	
+	
+	FLAGS.ST4_RELEASE_CARRIER := FALSE;
+	START_TAMPO_AMORCAGE := FALSE;
+	START_TAMPO_MESURE:= FALSE;
+	START_TAMPO_VIDANGE:= FALSE;
+	
+	STEP := STEP + 10;
+	
+10: (*Attend une palette / flanc montant du status*)
+
+	IF JIG_STATUS_R_TRIG.Q THEN
+		STEP := STEP + 10;
+	END_IF;
+	
+20: (*Descend le vérin du dessus*)
+
+	ST4_4V4 := TRUE;
+	STEP := STEP + 10;
+	
+30: (*Attend vérin dessus sorti*)
+
+	IF ST4_4B4 THEN
+		STEP := STEP + 10;
+	END_IF;
+
+40: (*Monte le vérin du dessous*)
+
+	ST4_4V5 := TRUE;
+	STEP := STEP + 10;
+	
+50: (*Attend vérin dessus sorti*)
+
+	IF ST4_4B5 THEN
+		STEP := STEP + 10;
+	END_IF;
+	
+60: (*Sort le vérin électrique*)
+
+	ST4_4V6 := TRUE;
+	STEP := STEP + 10;
+	
+70: (*Attend vérin électrique sortie*)
+
+	IF ST4_4B6 THEN
+		STEP := STEP + 10;
+	END_IF;
+
+80: (*Allume la pompe*)
+
+	ST4_POWER := TRUE;
+	ST4_4V10 := TRUE;
+	STEP := 100;
+	
+	
+(**************************************************************************)
+100: (*Démarre la tampo pour l'amorcage*)
+
+	START_TAMPO_AMORCAGE := TRUE;
+	STEP := STEP + 10;
+	
+110: (*Attend fin tampo amorcage*)
+
+	IF TAMPO_AMORCAGE_TON.Q THEN
+		START_TAMPO_AMORCAGE := FALSE;
+		STEP := STEP + 10;
+	END_IF;
+	
+120: (*Démarre la tampo pour la mesure de pression*)
+
+	START_TAMPO_MESURE := TRUE;
+	STEP := STEP + 10;
+	
+130: (*Attend fin tampo amorcage - MESURE EN COURT*)
+
+	IF TAMPO_MESURE_TON.Q THEN
+		START_TAMPO_MESURE := FALSE;
+		STEP := 300;
+	END_IF;
+	
+
+(**************************************************************************)	
+
+300: (*Descend le vérin du dessous*)
+
+	ST4_4V5 := FALSE;
+	ST4_4V10 := FALSE;	(* ferme la vanne avant la pompe*)
+	STEP := STEP + 10;
+
+310: (*Démarre la tampo de vidange de la pompe*)
+
+	START_TAMPO_VIDANGE := TRUE;
+	STEP := STEP + 10;
+	
+320: (*Attend fin tampo amorcage*)
+
+	IF TAMPO_VIDANGE_TON.Q THEN
+		START_TAMPO_VIDANGE := FALSE;
+		STEP := STEP + 10;
+	END_IF;
+
+330: (*Rentre le vérin électrique*)
+
+	ST4_4V6 := FALSE;
+	STEP := STEP + 10;
+	
+	
+340: (*Monte le vérin du dessus*)
+
+	ST4_4V4 := FALSE;
+	STEP := STEP + 10;
+
+350: (*Libère la palette*)
+
+	FLAGS.ST4_RELEASE_CARRIER := TRUE;
+	STEP := 0;
+
+
+ELSE
+    (*default case*);
+END_CASE;
+
+(*FBs*)
+
+TAMPO_AMORCAGE_TON(IN:= START_TAMPO_AMORCAGE, PT:= PUMP_PARAMS.ST4_TEMPS_POMPAGE);
+TAMPO_VIDANGE_TON(IN:= START_TAMPO_VIDANGE, PT:= TEMPS_VIDANGE_POMPE);
+TAMPO_MESURE_TON(IN:= START_TAMPO_MESURE, PT:= PUMP_PARAMS.ST4_TEMPS_MESURE);
+JIG_STATUS_R_TRIG(CLK:= CONVEYOR.JIG_ST4.STATUS);
+PROG_STEPS.ST4:=STEP;]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

@@ -10,6 +10,7 @@ VAR
 	ST5_5P2_CONVERT: WIKA_GET_VALUES;
 	ST6_6P1_CONVERT: WIKA_GET_VALUES;
 	ST4_GetPositionIs: FB_GetPositionIs;
+	ST5_GetPositionIs: FB_GetPositionIs;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(**********************************************************************
@@ -55,6 +56,11 @@ Pressure=> ST5_PRESSURE,);
 
 ST5_COURANT:=ST5_Multimeter_value/1000.0;
 
+ST5_GetPositionIs(
+	ADSNetId:= MOTOR_ST4_ADDRESS, 
+	NodeId:= 1, 
+	Read:= TRUE, 
+	PositionIs=> FLAGS.MOTOR_ST5_ACTUAL_POSITION);
 
 (*STATION 6***************************************************************************)
 ST6_6P1_CONVERT(

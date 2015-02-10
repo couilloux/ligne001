@@ -12,6 +12,7 @@ CONVEYOR();
 AIS();
 
 ST4_MOTOR();
+ST5_MOTOR();
 
 (*ST1_HT();*)
 (*ST2_ASPIRATION();*)

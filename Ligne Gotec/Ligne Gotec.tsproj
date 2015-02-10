@@ -51,7 +51,7 @@
 		<ImageData Id="1007">424de6000000000000007600000028000000100000000e000000010004000000000070000000120b0000120b0000100000001000000000000000000080000080000000808000800000008000800080800000c0c0c000808080000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff005dd55d88888888dd5dd5d577777778dd55d55d77888778dd5d55d577888778dd55d55d77888778dddddddd77777778dddddddd77777778dd9b9b9b77777778ddb9b9b977777778dd9b9b9b77777778ddb9b9b977797778dd9b9b9b77797778ddb9b9b9777a7778dd9b9b9b77777778dd</ImageData>
 		<ImageData Id="1008">424de6000000000000007600000028000000100000000e000000010004000000000070000000ea0e0000ea0e000000000000000000000000000000008000008000000080800080000000800080008080000080808000c0c0c0000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff00777f7f7f77f77f777fff7f7f7ff77f77777f878f77f77f777fff7f7ff7f7ff77777f7f7f77f77f77fffffffffffffffff8888888888888888877777777777777777887888888888777788786ccccc66778788786ccccc6677f78878666666687887ff7fffffffff7ff77777777777777</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{1511FCC9-9C36-426B-9FDC-3C33DA4DA085}">
+	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{E6A2BA41-1C33-46FA-965F-C1DC80914FAC}">
 		<System>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350">
@@ -1359,42 +1359,19 @@ Bit1: Value bigger/equal Limit2]]>
 					<Box BoxType="9094" Id="89">
 						<Name>Term 89 (EL6751)</Name>
 						<ImageId>1005</ImageId>
-						<EtherCAT SlaveType="5" AdsServerAddress="0a0a0a1f04011104" PdiType="#x0c08" ExecIo="true" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00000002" ProductCode="#x1a5f3052" RevisionNo="#x00130000" InfoDataAddr="true" InfoDataNetId="true" OwnAddrExtern="true" TimeoutStateChange1="5000" TimeoutStateChange3="10000" TimeoutStateChange4="1000" TimeoutMailbox2="2000" GenerateOwnNetId="true" InitializeOwnNetId="true" PortPhys="51" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6751 CANopen Master" Desc="EL6751" PortABoxInfo="#x0100000b">
+						<EtherCAT SlaveType="5" AdsServerAddress="0a0a0a1f04010000" PdiType="#x0c08" ExecIo="true" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00000002" ProductCode="#x1a5f3052" RevisionNo="#x00130000" InfoDataAddr="true" InfoDataNetId="true" OwnAddrExtern="true" TimeoutStateChange1="5000" TimeoutStateChange3="10000" TimeoutStateChange4="1000" TimeoutMailbox2="2000" GenerateOwnNetId="true" InitializeOwnNetId="true" PortPhys="51" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6751 CANopen Master" Desc="EL6751" PortABoxInfo="#x0100000b">
 							<SyncMan>00182e0226000100010000002800ce052e02001826010000</SyncMan>
 							<SyncMan>2e1a2e0222000100020000002800ce052e022e1a22010000</SyncMan>
-							<SyncMan>00100e002600010003000000000000000000001026010000</SyncMan>
-							<SyncMan>001409002200010004000000000000000000001422010000</SyncMan>
-							<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
+							<SyncMan>001000002600000003000000000000000000001026010000</SyncMan>
+							<SyncMan>001406002200010004000000000000000000001422010000</SyncMan>
+							<Fmmu>0000000000000000000000020000000001000000000000000000000000000000</Fmmu>
 							<Fmmu>0000000000000000001400010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010140200181402</BootStrapData>
 							<SuName>Term 89 (EL6751)</SuName>
 							<DcMode>53796e6368726f6e0000000000000000534d2d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
 							<DcMode>444353594e430000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000090d00300000000070100000000000000000000000000000000000000000000000000000000000000</DcMode>
-							<Pdo Name="Moteur Q1 (EPOS)_IN" Index="#x1a00" Flags="#x0011" SyncMan="3">
-								<Entry Name="TxPDO_1" Index="#x6000" Sub="#x01" Flags="#x00000100">
-									<Type>ARRAY [0..1] OF BYTE</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Moteur Q1 (EPOS)_OUT" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
-								<Entry Name="RxPDO_1" Index="#x7000" Sub="#x01" Flags="#x00000100">
-									<Type>ARRAY [0..1] OF BYTE</Type>
-								</Entry>
-								<Entry Name="RxPDO_2" Index="#x7000" Sub="#x02" Flags="#x00000100">
-									<Type>ARRAY [0..1] OF BYTE</Type>
-								</Entry>
-								<Entry Name="RxPDO_3" Index="#x7000" Sub="#x03" Flags="#x00000100">
-									<Type>ARRAY [0..4] OF BYTE</Type>
-								</Entry>
-								<Entry Name="RxPDO_4" Index="#x7000" Sub="#x04" Flags="#x00000100">
-									<Type>ARRAY [0..4] OF BYTE</Type>
-								</Entry>
-							</Pdo>
 							<Pdo Name="Device 3 (EL6751)" Index="#x1a80" Flags="#x0011" SyncMan="3">
-								<Entry Name="Moteur Q1 (EPOS)_NodeState" Index="#xa000" Sub="#x01" Flags="#x00000100">
-									<DefaultDataMask>1f1f</DefaultDataMask>
-									<Type>USINT</Type>
-								</Entry>
 								<Entry Name="Device 3 (EL6751)_Error" Index="#xf100" Sub="#x01" Flags="#x00000100">
 									<Type>USINT</Type>
 								</Entry>
@@ -1410,11 +1387,8 @@ Bit1: Value bigger/equal Limit2]]>
 								<Entry Name="Device 3 (EL6751)_DiagFlag" Index="#xf100" Sub="#x02" Flags="#x00000100">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Moteur Q1 (EPOS)_DiagFlag" Index="#xa000" Sub="#x02" Flags="#x00000100">
-									<Type>BIT</Type>
-								</Entry>
 								<Entry>
-									<Type>ARRAY [0..5] OF BIT</Type>
+									<Type>ARRAY [0..6] OF BIT</Type>
 								</Entry>
 							</Pdo>
 							<CoeProfile ProfileNo="5001"/>
@@ -1557,39 +1531,16 @@ Bit1: Value bigger/equal Limit2]]>
 						<EtherCAT SlaveType="5" AdsServerAddress="0a0a0a1f05011204" PdiType="#x0c08" ExecIo="true" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00000002" ProductCode="#x1a5f3052" RevisionNo="#x00130000" InfoDataAddr="true" InfoDataNetId="true" OwnAddrExtern="true" TimeoutStateChange1="5000" TimeoutStateChange3="10000" TimeoutStateChange4="1000" TimeoutMailbox2="2000" GenerateOwnNetId="true" InitializeOwnNetId="true" PortPhys="51" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6751 CANopen Master" Desc="EL6751" PortABoxInfo="#x01000059">
 							<SyncMan>00182e0226000100010000002800ce052e02001826010000</SyncMan>
 							<SyncMan>2e1a2e0222000100020000002800ce052e022e1a22010000</SyncMan>
-							<SyncMan>00100e002600010003000000000000000000001026010000</SyncMan>
-							<SyncMan>001409002200010004000000000000000000001422010000</SyncMan>
-							<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
+							<SyncMan>001000002600000003000000000000000000001026010000</SyncMan>
+							<SyncMan>001406002200010004000000000000000000001422010000</SyncMan>
+							<Fmmu>0000000000000000000000020000000001000000000000000000000000000000</Fmmu>
 							<Fmmu>0000000000000000001400010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010140200181402</BootStrapData>
 							<SuName>Term 90 (EL6751)</SuName>
 							<DcMode>53796e6368726f6e0000000000000000534d2d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
 							<DcMode>444353594e430000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000090d00300000000070100000000000000000000000000000000000000000000000000000000000000</DcMode>
-							<Pdo Name="Moteur Q2 (EPOS)_IN" Index="#x1a00" Flags="#x0011" SyncMan="3">
-								<Entry Name="TxPDO_1" Index="#x6000" Sub="#x01" Flags="#x00000100">
-									<Type>ARRAY [0..1] OF BYTE</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Moteur Q2 (EPOS)_OUT" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
-								<Entry Name="RxPDO_1" Index="#x7000" Sub="#x01" Flags="#x00000100">
-									<Type>ARRAY [0..1] OF BYTE</Type>
-								</Entry>
-								<Entry Name="RxPDO_2" Index="#x7000" Sub="#x02" Flags="#x00000100">
-									<Type>ARRAY [0..1] OF BYTE</Type>
-								</Entry>
-								<Entry Name="RxPDO_3" Index="#x7000" Sub="#x03" Flags="#x00000100">
-									<Type>ARRAY [0..4] OF BYTE</Type>
-								</Entry>
-								<Entry Name="RxPDO_4" Index="#x7000" Sub="#x04" Flags="#x00000100">
-									<Type>ARRAY [0..4] OF BYTE</Type>
-								</Entry>
-							</Pdo>
 							<Pdo Name="Device 4 (EL6751)" Index="#x1a80" Flags="#x0011" SyncMan="3">
-								<Entry Name="Moteur Q2 (EPOS)_NodeState" Index="#xa000" Sub="#x01" Flags="#x00000100">
-									<DefaultDataMask>1f1f</DefaultDataMask>
-									<Type>USINT</Type>
-								</Entry>
 								<Entry Name="Device 4 (EL6751)_Error" Index="#xf100" Sub="#x01" Flags="#x00000100">
 									<Type>USINT</Type>
 								</Entry>
@@ -1605,11 +1556,8 @@ Bit1: Value bigger/equal Limit2]]>
 								<Entry Name="Device 4 (EL6751)_DiagFlag" Index="#xf100" Sub="#x02" Flags="#x00000100">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Moteur Q2 (EPOS)_DiagFlag" Index="#xa000" Sub="#x02" Flags="#x00000100">
-									<Type>BIT</Type>
-								</Entry>
 								<Entry>
-									<Type>ARRAY [0..5] OF BIT</Type>
+									<Type>ARRAY [0..6] OF BIT</Type>
 								</Entry>
 							</Pdo>
 							<CoeProfile ProfileNo="5001"/>
@@ -3181,10 +3129,10 @@ Bit1: Value bigger/equal Limit2]]>
 						<EtherCATDeviceName>TIID^Device 2 (EtherCAT)^Grande armoire^Term 89 (EL6751)</EtherCATDeviceName>
 					</Ecat>
 				</AddressInfo>
-				<Image Id="4" AddrType="2" ImageType="3">
+				<Image Id="4" AddrType="4" ImageType="3">
 					<Name>Image</Name>
 				</Image>
-				<Box BoxType="5003" Id="45">
+				<Box Disabled="true" BoxType="5003" Id="45">
 					<Name>Moteur Q1 (EPOS)</Name>
 					<ImageId>41</ImageId>
 					<Vars VarGrpType="1">
@@ -3338,10 +3286,10 @@ Slave-Mode:
 						<EtherCATDeviceName>TIID^Device 2 (EtherCAT)^Grande armoire^Term 90 (EL6751)</EtherCATDeviceName>
 					</Ecat>
 				</AddressInfo>
-				<Image Id="5" AddrType="2" ImageType="3">
+				<Image Id="5" AddrType="4" ImageType="3">
 					<Name>Image</Name>
 				</Image>
-				<Box BoxType="5003" Id="10">
+				<Box Disabled="true" BoxType="5003" Id="10">
 					<Name>Moteur Q2 (EPOS)</Name>
 					<ImageId>41</ImageId>
 					<Vars VarGrpType="1">
