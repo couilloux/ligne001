@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{B1E792BE-AA5F-4E3C-8C82-674BF9C0715B}") = "Ligne Gotec", "Ligne Gotec\Ligne Gotec.tsproj", "{334643FE-5C0A-45FA-AF5B-129915E10B91}"
 EndProject
+Project("{FD9F1D59-E000-42F3-8744-88DE1BE93C06}") = "TwinCAT Measurement Project1", "TwinCAT Measurement Project1\TwinCAT Measurement Project1.tcmproj", "{1C054C3B-A324-4B97-87EC-364692ABFD36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|TwinCAT CE7 (ARMV7) = Debug|TwinCAT CE7 (ARMV7)
@@ -49,6 +51,12 @@ Global
 		{0C03A489-DF93-4391-BE57-32D8410EAB39}.Release|TwinCAT RT (x64).Build.0 = Release|TwinCAT RT (x64)
 		{0C03A489-DF93-4391-BE57-32D8410EAB39}.Release|TwinCAT RT (x86).ActiveCfg = Release|TwinCAT RT (x86)
 		{0C03A489-DF93-4391-BE57-32D8410EAB39}.Release|TwinCAT RT (x86).Build.0 = Release|TwinCAT RT (x86)
+		{1C054C3B-A324-4B97-87EC-364692ABFD36}.Debug|TwinCAT CE7 (ARMV7).ActiveCfg = Debug|TwinCAT CE7 (ARMV7)
+		{1C054C3B-A324-4B97-87EC-364692ABFD36}.Debug|TwinCAT RT (x64).ActiveCfg = Debug|TwinCAT RT (x64)
+		{1C054C3B-A324-4B97-87EC-364692ABFD36}.Debug|TwinCAT RT (x86).ActiveCfg = Debug|TwinCAT RT (x86)
+		{1C054C3B-A324-4B97-87EC-364692ABFD36}.Release|TwinCAT CE7 (ARMV7).ActiveCfg = Release|TwinCAT CE7 (ARMV7)
+		{1C054C3B-A324-4B97-87EC-364692ABFD36}.Release|TwinCAT RT (x64).ActiveCfg = Release|TwinCAT RT (x64)
+		{1C054C3B-A324-4B97-87EC-364692ABFD36}.Release|TwinCAT RT (x86).ActiveCfg = Release|TwinCAT RT (x86)
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

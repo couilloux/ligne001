@@ -14,6 +14,7 @@ STRUCT
 	ST2_CONTRE_PRESSION				:BOOL:=0;			(*Contre pression d'air TRUE: avec contre pression FALSE: sans contre pression*)
 	ST2_TEMPS_POMPAGE				:TIME:= T#10S;		(*Temps d'amorcage *)
 	ST2_TEMPS_MESURE				:TIME:= T#5S;		(*Temps de mesure *)
+	ST2_TEMPS_MESURE_PERTE_PRESSION	:TIME:= T#2S;		(*Temps de mesure perte pression - PAS PROGRAMME *)
 		
 (* Station 3 étanchéité ******************************************************************************************************)
 	ST3_TEMPS_MISE_SOUS_PRESSION	:TIME:= T#5S;		(*Temps de mise sous pression*)
@@ -25,12 +26,14 @@ STRUCT
 	ST4_TEMPS_MESURE_DEBIT_MAX		:TIME:= T#10S;		(*Temps de mesure de Qmax*)
 	ST4_TEMPS_REGLAGE_PRESSION		:TIME:= T#10S;		(*Temps de réglage de la pression *)
 	ST4_TEMPS_MESURE_DEBIT			:TIME:= T#10S;		(*Temps de mesure de Qtravail *)
+	ST4_PRESSION_CONSIGNE			:REAL:= 4.0;		(*Presssion de consigne pour le débit de travail*)
 	
 (* Station 5 Débit Grands*****************************************************************************************************)
 
 (* Station 6 Pmax ************************************************************************************************************)	
 	ST6_TEMPS_POMPAGE				:TIME:= T#10S;		(*Temps amorcage de la pompe *)
 	ST6_TEMPS_MESURE				:TIME:= T#5S;		(*Temps de mesure de Pmax *)
+	ST6_TEMPS_MESURE_PERTE_PRESSION	:TIME:= T#1S;		(*Temps de mesure perte de pression max - PAS PROGRAMME *)
 	
 (* Station 7 Sechage *********************************************************************************************************)
 	ST7_TEMPS_SECHAGE				:TIME:= T#2S;		(*Temps séchage pompe station 7 *)
