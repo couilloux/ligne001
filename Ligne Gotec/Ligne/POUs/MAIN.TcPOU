@@ -3,10 +3,13 @@
   <POU Name="MAIN" Id="{f2a6ae65-a33b-4129-ab40-ef1a2ef726d5}">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	ST4_VIDANGE_BALANCE: VIDANGE_BALANCE;
+	ST5_VIDANGE_BALANCE: VIDANGE_BALANCE;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[SAFETY();
+      <ST><![CDATA[(*Appel les différents modules généraux*)
+SAFETY();
 GEMMA();
 CONVEYOR();
 AIS();
@@ -14,6 +17,7 @@ AIS();
 ST4_MOTOR();
 ST5_MOTOR();
 
+(*Appel les différents modules pour les stations*)
 (*ST1_HT();*)
 (*ST2_ASPIRATION();*)
 (*ST3_ETANCHEITE();*)
@@ -21,6 +25,21 @@ ST4_DEBIT_PETIT();
 (*ST6_PMAX();*)
 (*ST7_SECHAGE();*)
 (*ST9_DECHARGEMENT();*)
+
+(*Gestion de la vidange de la balance ST4*)
+ST4_VIDANGE_BALANCE(
+PROG_STEP:= PROG_STEPS.ST4,
+POIDS:= ST4_POIDS, 
+POIDS_LIMIT:= 2000, 
+POMPE=> ST4_VIDANGE);
+
+(*Gestion de la vidange de la balance ST5*)
+ST5_VIDANGE_BALANCE(
+PROG_STEP:= PROG_STEPS.ST5,
+POIDS:= ST5_POIDS, 
+POIDS_LIMIT:= 2000, 
+POMPE=> ST5_VIDANGE);
+
 ]]></ST>
     </Implementation>
     <ObjectProperties />

@@ -9,7 +9,7 @@ END_VAR
 VAR
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[CONVERT_MASS_TO_FLOW:=Mass/TIME_TO_DWORD(Delay)*60000;]]></ST>
+      <ST><![CDATA[CONVERT_MASS_TO_FLOW:=Mass/TIME_TO_DWORD(Delay)*60*60;]]></ST>
     </Implementation>
     <ObjectProperties />
   </POU>

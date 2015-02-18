@@ -15,6 +15,8 @@ VAR
 	TAMPO_VIDANGE_TON: TON;
 	START_TAMPO_MESURE_DEBIT_MAX: BOOL;
 	TAMPO_MESURE_DEBIT_MAX_TON: TON;
+	POIDS_QMAX_DEBUT: REAL;
+	POIDS_Q_DEBUT: REAL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(*******************************************************
@@ -47,6 +49,7 @@ CASE STEP OF
 	START_TAMPO_MESURE_DEBIT_MAX:= FALSE;
 	START_TAMPO_VIDANGE:= FALSE;
 	START_TAMPO_REGLAGE:= FALSE;
+
 	
 	STEP := STEP + 10;
 	
@@ -59,6 +62,8 @@ CASE STEP OF
 20: (*Descend le vérin du dessus*)
 
 	ST4_4V4 := TRUE;
+	POIDS_QMAX_DEBUT	:= 0;
+	POIDS_Q_DEBUT		:= 0;
 	STEP := STEP + 10;
 	
 30: (*Attend vérin dessus sorti*)
@@ -113,11 +118,12 @@ CASE STEP OF
 120: (*Démarre la tampo pour la mesure de Qmax*)
 
 	START_TAMPO_MESURE_DEBIT_MAX := TRUE;
+	POIDS_QMAX_DEBUT := ST4_POIDS;
 	STEP := STEP + 10;
 	
 130: (*Attend fin tampo mesure de Qmax ***********************************************************)
-
 	IF TAMPO_MESURE_DEBIT_MAX_TON.Q THEN
+		ST4_QMAX := CONVERT_MASS_TO_FLOW(ST4_POIDS - POIDS_QMAX_DEBUT, PUMP_PARAMS.ST4_TEMPS_MESURE_DEBIT_MAX);(*Calcul du début max*)
 		START_TAMPO_MESURE_DEBIT_MAX := FALSE;
 		ST4_4V12 := TRUE;
 		ST4_4V13 := FALSE;
@@ -139,11 +145,13 @@ CASE STEP OF
 160: (*Démarre la tampo pour la mesure de debit*************************************************)
 
 	START_TAMPO_MESURE_DEBIT := TRUE;
+	POIDS_Q_DEBUT := ST4_POIDS;
 	STEP := STEP + 10;
 	
 170: (*Attend fin tampo amorcage - MESURE EN COURT*)
 
 	IF TAMPO_MESURE_DEBIT_TON.Q THEN
+		ST4_Q := CONVERT_MASS_TO_FLOW(ST4_POIDS - POIDS_Q_DEBUT, PUMP_PARAMS.ST4_TEMPS_MESURE_DEBIT);(*Calcul du début max*)
 		START_TAMPO_MESURE_DEBIT := FALSE;
 		STEP := 300;
 	END_IF;

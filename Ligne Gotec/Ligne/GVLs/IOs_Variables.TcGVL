@@ -13,7 +13,7 @@ VAR_GLOBAL
 	PROG_STEPS:PROG_STEPS;
 	
 	GEN_0B1 				AT%I*:BOOL;		(*Présence AIR*)
-	GEN_PRESENCE_POMPE 		AT%I*:BOOL; (* Une pompe est présente sur la palette à l'entrée du banc*)
+	GEN_PRESENCE_POMPE 		AT%I*:BOOL;		(* Une pompe est présente sur la palette à l'entrée du banc*)
 	
 	GEN_1V1 				AT%Q*:BOOL;		(*Vanne AIR*)
 	GEN_CONVOYEUR			AT%Q*:BOOL;		(*Relais convoyeur*)
@@ -129,7 +129,8 @@ VAR_GLOBAL
 	ST4_PRESSURE	:REAL; 					(*Pression aspiration*)
 	
 	ST4_POIDS 			AT%I*:REAL;		(*Poids balance*)	
-	ST4_DEBIT_CALCULE	:REAL;			(*Débit calculé*)
+	ST4_QMAX	:REAL;			(*Débit max calculé*)
+	ST4_Q		:REAL;			(*Débit travail calculé*)
 	
 	ST4_COURANT	:REAL;			(*Courant*)
 	

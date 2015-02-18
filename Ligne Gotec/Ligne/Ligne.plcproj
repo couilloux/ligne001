@@ -65,6 +65,9 @@
     <Compile Include="POUs\CONVOYER\JIG.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\EAU\VIDANGE_BALANCE.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\EH\EH_FLOMETER.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -136,6 +139,7 @@
     <Folder Include="POUs\Functions\" />
     <Folder Include="POUs\MAXON" />
     <Folder Include="POUs\AIs" />
+    <Folder Include="POUs\EAU" />
     <Folder Include="POUs\STATIONS" />
     <Folder Include="POUs\SAFETY" />
     <Folder Include="POUs\WIKA\" />

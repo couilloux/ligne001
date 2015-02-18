@@ -71,6 +71,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"25"</v>
+              <v n="TextDefault">"Release OPERATORS"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"12"</v>
               <v n="TextDefault">"ST2_VACUUM"</v>
               <l n="LanguageTexts" t="ArrayList" />
