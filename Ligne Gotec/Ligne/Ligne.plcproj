@@ -226,6 +226,9 @@
     <LibraryReference Include="Maxon,1.0.0.0,Maxon Motor">
       <Namespace>Maxon</Namespace>
     </LibraryReference>
+    <LibraryReference Include="Tc2_ControllerToolbox,3.4.1.0,Beckhoff Automation GmbH">
+      <Namespace>Tc2_ControllerToolbox</Namespace>
+    </LibraryReference>
     <LibraryReference Include="Tc2_Utilities,3.3.8.0,Beckhoff Automation GmbH">
       <Namespace>Tc2_Utilities</Namespace>
     </LibraryReference>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
-  <POU Name="TO_PC" Id="{799be633-1fa2-4ceb-a24c-32312cb41abc}">
+  <POU Name="TO_PC" Id="{c21c18cb-b53b-40ce-9ed6-8ab5ade25ab7}">
     <Declaration><![CDATA[PROGRAM TO_PC
 VAR
 

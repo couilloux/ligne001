@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
-  <POU Name="EMS_Start" Id="{c3e91596-8672-4902-b857-6f89842e7b5b}">
+  <POU Name="EMS_Start" Id="{f3c94d32-fb74-4136-8023-c9b72581c2fa}">
     <Declaration><![CDATA[PROGRAM EMS_Start
 VAR
 	RESET: BOOL;
@@ -1160,22 +1160,12 @@ END_VAR]]></Declaration>
         </XmlArchive>
       </SFC>
     </Implementation>
-    <Action Name="Step5_Action" Id="{20913055-fb41-44b8-bdfc-b70a259fe406}">
-      <Implementation>
-        <ST><![CDATA[EMS_RESET:=TRUE;]]></ST>
-      </Implementation>
-    </Action>
-    <Action Name="Step4_Action" Id="{5ab81576-f187-4d5a-8a61-cd3ec997fb76}">
-      <Implementation>
-        <ST><![CDATA[EMS_ACK:=FALSE;]]></ST>
-      </Implementation>
-    </Action>
-    <Action Name="Step6_Action" Id="{8a079c24-cc92-4ee8-a579-12ffe99100b5}">
+    <Action Name="Step6_Action" Id="{54cbd996-9837-4455-8288-acb9e17edec3}">
       <Implementation>
         <ST><![CDATA[EMS_RESET:=FALSE;]]></ST>
       </Implementation>
     </Action>
-    <Action Name="Init_Action" Id="{8e92a162-e3b9-4948-abc6-c3f57190bd23}">
+    <Action Name="Init_Action" Id="{6fedaa9b-6abf-4943-9ee5-6636ece742a0}">
       <Implementation>
         <ST><![CDATA[
 	EMS_RUN:=FALSE;
@@ -1185,14 +1175,24 @@ END_VAR]]></Declaration>
 	RESET:=FALSE;]]></ST>
       </Implementation>
     </Action>
-    <Action Name="Step2_Action" Id="{ab97de92-f771-4732-9165-a27aaeac48d0}">
+    <Action Name="Step3_Action" Id="{7bfbdd1a-171b-48d0-8d36-f79e12baba30}">
+      <Implementation>
+        <ST><![CDATA[EMS_ACK:=TRUE;]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="Step4_Action" Id="{7ce90ad8-6611-4727-89e7-340dac477079}">
+      <Implementation>
+        <ST><![CDATA[EMS_ACK:=FALSE;]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="Step2_Action" Id="{ac393796-8c44-4540-8f32-914c4bae301c}">
       <Implementation>
         <ST><![CDATA[EMS_RUN:=TRUE;]]></ST>
       </Implementation>
     </Action>
-    <Action Name="Step3_Action" Id="{b1faf266-8366-4b8c-b0c2-07a3b905f0de}">
+    <Action Name="Step5_Action" Id="{cfef42bf-04c6-4e47-99f0-db2c8a06d4da}">
       <Implementation>
-        <ST><![CDATA[EMS_ACK:=TRUE;]]></ST>
+        <ST><![CDATA[EMS_RESET:=TRUE;]]></ST>
       </Implementation>
     </Action>
     <ObjectProperties>

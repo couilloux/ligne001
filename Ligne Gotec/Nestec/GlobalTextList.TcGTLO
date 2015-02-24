@@ -6,9 +6,9 @@
         <o xml:space="preserve" t="GlobalTextListObject">
           <l n="TextList" t="ArrayList" />
           <l n="Languages" t="ArrayList" />
-          <v n="GuidInit">{0be1eb91-3e51-4242-b781-40d555247f84}</v>
-          <v n="GuidReInit">{380d3ff3-190b-45a3-ac92-1c7c6eb589e0}</v>
-          <v n="GuidExitX">{6289187f-083a-4f9d-8ceb-d3076d5dfa88}</v>
+          <v n="GuidInit">{840f0f15-abbe-4d13-afca-7ae714936f25}</v>
+          <v n="GuidReInit">{a278c777-0877-48f9-b874-c54f2fd9c314}</v>
+          <v n="GuidExitX">{ad1a746c-07eb-48e9-9a94-cd3039b1d9a9}</v>
         </o>
       </Data>
       <TypeList>

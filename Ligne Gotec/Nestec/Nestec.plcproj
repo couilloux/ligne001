@@ -2,14 +2,15 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2594c2dc-ee6c-4c60-a25a-3844bd6e23ce}</ProjectGuid>
+    <ProjectGuid>{91ce122a-e63f-4056-97a8-726e1bf7637a}</ProjectGuid>
     <Name>Nestec</Name>
-    <Application>{95d40e6f-2ce4-4ce4-911f-9d31f70ff87c}</Application>
-    <TypeSystem>{b57d74ea-2634-4c7d-a869-f289ac03ce65}</TypeSystem>
-    <Implicit_Task_Info>{6e188b10-04f9-4d74-8af2-60bdc3ab3527}</Implicit_Task_Info>
-    <Implicit_KindOfTask>{c98e745f-022c-4aec-ac2f-3f63819b7967}</Implicit_KindOfTask>
-    <Implicit_Jitter_Distribution>{be7c4792-d053-4277-86ce-16401d70bf1f}</Implicit_Jitter_Distribution>
+    <Application>{a08077ba-a4fb-49a7-8462-9ca5dea520fa}</Application>
+    <TypeSystem>{88bdc226-28fe-405f-9dd7-884ffa4e0689}</TypeSystem>
+    <Implicit_Task_Info>{a071484b-775d-46d4-b819-6305e367870b}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{72f59778-d564-4909-b3d1-6c6ebf0459a4}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{4dcbf1e3-e7bd-4ffa-8543-b6a7c5bbb06f}</Implicit_Jitter_Distribution>
     <FileVersion>0.0.0.0</FileVersion>
+    <LibraryReferences>{89aadb1d-7c54-448b-ac4b-d5df2727824a}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Data types" />
@@ -48,6 +49,10 @@
     <Compile Include="Visualizations\Visu1.TcVIS" />
   </ItemGroup>
   <ItemGroup>
+    <LibraryReference Include="Tc2_ControllerToolbox,newest,Beckhoff Automation GmbH">
+      <Namespace>Tc2_ControllerToolbox</Namespace>
+      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
+    </LibraryReference>
     <LibraryReference Include="Tc2_Standard,newest,Beckhoff Automation GmbH">
       <Namespace>Tc2_Standard</Namespace>
       <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
@@ -68,9 +73,11 @@
       <Namespace>Tc3_Module</Namespace>
       <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
     </LibraryReference>
-    <LibraryReference Include="TcFloatPC,1.0.0.0,Beckhoff">
-      <Namespace>TcFloatPC</Namespace>
-      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
-    </LibraryReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Nestec.tmc">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ProjectExtensions />
 </Project>

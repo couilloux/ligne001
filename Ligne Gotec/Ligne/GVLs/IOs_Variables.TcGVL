@@ -125,8 +125,9 @@ VAR_GLOBAL
 	ST4_4P1			AT%I*:PRESSURE_SENSOR; 	(*Valeurs du capteur*)
 	ST4_VACUUM		:REAL; 					(*Pression aspiration*)
 	
-	ST4_4P2			AT%I*:PRESSURE_SENSOR; 	(*Valeurs du capteur*)
-	ST4_PRESSURE	:REAL; 					(*Pression aspiration*)
+	ST4_4P2					AT%I*:PRESSURE_SENSOR; 	(*Valeurs du capteur*)
+	ST4_PRESSURE			:REAL; 					(*Pression*)
+	ST4_PRESSURE_FILTERED	:REAL; 					(*Pression fitré*)
 	
 	ST4_POIDS 			AT%I*:REAL;		(*Poids balance*)	
 	ST4_QMAX	:REAL;			(*Débit max calculé*)

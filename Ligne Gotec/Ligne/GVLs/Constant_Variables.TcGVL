@@ -18,7 +18,7 @@ VAR_GLOBAL CONSTANT
 	
 	TEMPS_SORTIE_VERIN							:TIME:= T#3S;			(*Temps durant lequel on pompe de l'air pour vidanger la pompe*)
 	
-	TEMPS_CHANGEMENT_PRESSION					:TIME:= T#3S;			(*Temps pour la mise sous pression du débit de travail avant réglage*)
+	TEMPS_CHANGEMENT_PRESSION					:TIME:= T#2S;			(*Temps pour la mise sous pression du débit de travail avant réglage*)
 
 	(********************
 	*
@@ -28,9 +28,9 @@ VAR_GLOBAL CONSTANT
 	MOTOR_ST4_ADDRESS							:STRING:= '10.10.10.31.4.1';	(*Adresse moteur ST4*)
 	MOTOR_ST5_ADDRESS							:STRING:= '10.10.10.31.5.1';	(*Adresse moteur ST5*)
 	MOTOR_ST4_INITIAL_POS						:DINT:=30000;					(*Initial position of the motor*)
-	MOTOR_ST4_POSITION_MAX						:DINT:=38000;					(*Butée soft du moteur*)
+	MOTOR_ST4_POSITION_MAX						:DINT:=37000;					(*Butée soft du moteur*)
 	MOTOR_ST5_INITIAL_POS						:DINT:=30000;					(*Initial position of the motor*)
-	MOTOR_ST5_POSITION_MAX						:DINT:=36000;					(*Butée soft du moteur*)
+	MOTOR_ST5_POSITION_MAX						:DINT:=37000;					(*Butée soft du moteur*)
 	
 
 

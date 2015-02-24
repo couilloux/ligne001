@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
-  <Task Name="Slow" Id="{12006d10-e4c8-48bd-8445-bb4e9bd3fdd2}">
+  <Task Name="Slow" Id="{6b5bd22c-843c-459f-8b0e-af8f4274d02d}">
     <!--CycleTime in micro seconds.-->
     <CycleTime>100000</CycleTime>
     <Priority>21</Priority>
     <PouCall>
       <Name>CALCULATE_FLOW</Name>
     </PouCall>
-    <TaskFBGuid>{d5c77d4a-5909-4b87-a0e7-75888029d817}</TaskFBGuid>
-    <Fb_init>{7090be39-9000-4b69-9787-a251818f3fab}</Fb_init>
-    <Fb_exit>{6c0d32dd-e92e-4e79-9ea4-bf6653e610ef}</Fb_exit>
-    <CycleUpdate>{15e18399-088f-4086-94dc-227a0898d016}</CycleUpdate>
-    <PostCycleUpdate>{82db1ce9-8626-4c95-99f2-8aacbd424c89}</PostCycleUpdate>
+    <TaskFBGuid>{55db7fda-3473-4fd3-aa97-1cd0ff5858f8}</TaskFBGuid>
+    <Fb_init>{abcf5003-4de4-4526-a958-3550b27c5f43}</Fb_init>
+    <Fb_exit>{f60405fd-1474-46a1-9bcd-3be4b4c3a9bc}</Fb_exit>
+    <CycleUpdate>{67d45ed3-8e15-4608-98e9-a653daca34a6}</CycleUpdate>
+    <PostCycleUpdate>{18a5e1f2-2195-4241-a20f-0343b689c81b}</PostCycleUpdate>
   </Task>
 </TcPlcObject>

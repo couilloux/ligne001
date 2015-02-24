@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
-  <POU Name="PUMP_POWER" Id="{6fcbdc2b-c625-4bc1-acc8-dec1412c9505}">
+  <POU Name="PUMP_POWER" Id="{7736fa49-7bbe-42c0-8b4b-dd20ce02697d}">
     <Declaration><![CDATA[FUNCTION_BLOCK PUMP_POWER
 
 VAR_INPUT

@@ -24,7 +24,7 @@ STRUCT
 (* Station 4 Débit petit *****************************************************************************************************)
 	ST4_TEMPS_POMPAGE				:TIME:= T#10S;		(*Temps amorcage de la pompe *)
 	ST4_TEMPS_MESURE_DEBIT_MAX		:TIME:= T#10S;		(*Temps de mesure de Qmax*)
-	ST4_TEMPS_REGLAGE_PRESSION		:TIME:= T#10S;		(*Temps de réglage de la pression *)
+	ST4_TEMPS_REGLAGE_PRESSION		:TIME:= T#30S;		(*Temps de réglage de la pression *)
 	ST4_TEMPS_MESURE_DEBIT			:TIME:= T#10S;		(*Temps de mesure de Qtravail *)
 	ST4_PRESSION_CONSIGNE			:REAL:= 7.0;		(*Presssion de consigne pour le débit de travail*)
 	

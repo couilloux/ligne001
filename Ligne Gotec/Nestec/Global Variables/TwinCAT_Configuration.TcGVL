@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
-  <GVL Name="TwinCAT_Configuration" Id="{bc293cc1-0ba0-49b8-91c2-ca3ab61e0cb3}">
+  <GVL Name="TwinCAT_Configuration" Id="{9162a80e-a264-4864-b664-ed65435a014b}">
     <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
 (* Generated automatically by TwinCAT - (read only) *)
 VAR_CONFIG

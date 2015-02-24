@@ -11,6 +11,10 @@ VAR
 	ST6_6P1_CONVERT: WIKA_GET_VALUES;
 	ST4_GetPositionIs: FB_GetPositionIs;
 	ST5_GetPositionIs: FB_GetPositionIs;
+	
+	FB_CTRL_PT3_ST4_PRESSURE: FB_CTRL_PT3;
+	eMode_PRESSION: E_CTRL_MODE;
+	stParams_PRESSION: ST_CTRL_PT3_PARAMS;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(**********************************************************************
@@ -19,6 +23,7 @@ END_VAR]]></Declaration>
 *
 *
 *************************************************************************)
+
 
 (*STATION 1***************************************************************************)
 ST2_2P1_CONVERT(
@@ -36,6 +41,15 @@ Pressure=> ST4_VACUUM,);
 ST4_4P2_CONVERT(
 INPUTS:= ST4_4P2.VALUE, 
 Pressure=> ST4_PRESSURE,);
+
+(*Filtres 3 ème ordre*)
+FB_CTRL_PT3_ST4_PRESSURE(
+	fIn:= ST4_PRESSURE,
+	fManValue:= 0,
+	eMode:= eMode_PRESSION,
+	bHold:= FALSE ,
+	stParams:= stParams_PRESSION,
+	fOut=> ST4_PRESSURE_FILTERED );
 
 ST4_COURANT:=ST4_Multimeter_value/1000.0;
 
@@ -66,6 +80,19 @@ ST5_GetPositionIs(
 ST6_6P1_CONVERT(
 INPUTS:= ST6_6P1.VALUE, 
 Pressure=> ST6_PRESSURE,);
+
+(*PARAMETRES FILTRES*********************************************************************)
+
+(* init parameter struct *)
+stParams_PRESSION.tCtrlCycleTime		:= T#10MS;
+stParams_PRESSION.tTaskCycleTime		:= T#10MS;
+stParams_PRESSION.tT1					:= T#600MS;
+stParams_PRESSION.tT2					:= T#600MS;
+stParams_PRESSION.tT3					:= T#600MS;
+stParams_PRESSION.fKp					:= 1;
+
+(* set the mode to ACTIVE --> normal operation *)
+eMode_PRESSION							:= eCTRL_MODE_ACTIVE;
 ]]></ST>
     </Implementation>
     <ObjectProperties />

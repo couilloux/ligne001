@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
-  <GVL Name="Global_IOs" Id="{afffcbd1-c53e-49dd-a74e-85306748f32f}">
+  <GVL Name="Global_IOs" Id="{5be79b69-8f05-4a91-a8ae-711a71c9fa10}">
     <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
 VAR_GLOBAL
 

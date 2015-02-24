@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
-  <POU Name="test" Id="{bf950da5-4074-45ce-b9a4-8d912738d147}">
+  <POU Name="test" Id="{66f9d291-24a8-47b5-aac5-707c6d3eab85}">
     <Declaration><![CDATA[PROGRAM test
 VAR
 	TP_BTN1: TP;
