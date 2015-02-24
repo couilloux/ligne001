@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="getFlowrate" Id="{30502cc9-fbdc-4874-bad3-8bc1e66aa28d}">
+    <Declaration><![CDATA[PROGRAM getFlowrate
+VAR
+
+	flowrate: LREAL;
+	poids_old: REAL;
+
+END_VAR
+
+
+
+VAR
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+flowrate := (Weight_Station1-poids_old)/20*3600/1000.0/1000.0;
+
+poids_old := Weight_Station1;
+
+
+
+
+flowrate := (Weight_Station2-poids_old)/20*3600/1000.0/1000.0;
+
+poids_old := Weight_Station2;
+
+
+
+
+flowrate := (Weight_Station3-poids_old)/20*3600/1000.0/1000.0;
+
+poids_old := Weight_Station3;
+
+
+
+
+
+flowrate := (Weight_Station4-poids_old)/20*3600/1000.0/1000.0;
+
+poids_old := Weight_Station4;
+
+
+
+
+
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

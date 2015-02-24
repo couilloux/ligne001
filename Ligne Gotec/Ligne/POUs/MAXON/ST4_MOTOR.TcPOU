@@ -3171,7 +3171,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3188,7 +3188,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3205,7 +3205,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3370,7 +3370,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3387,7 +3387,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3404,7 +3404,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3555,7 +3555,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3572,7 +3572,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3589,7 +3589,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3606,7 +3606,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3757,7 +3757,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3774,7 +3774,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3791,7 +3791,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3940,7 +3940,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3957,7 +3957,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -3974,7 +3974,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4090,7 +4090,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4107,7 +4107,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4124,7 +4124,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4141,7 +4141,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4158,7 +4158,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4175,7 +4175,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4192,7 +4192,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4209,7 +4209,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4381,7 +4381,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4398,7 +4398,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4415,7 +4415,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4432,7 +4432,7 @@ END_VAR]]></Declaration>
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4617,7 +4617,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4634,7 +4634,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4651,7 +4651,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4802,7 +4802,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4819,7 +4819,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4836,7 +4836,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4853,7 +4853,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4870,7 +4870,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4887,7 +4887,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4904,7 +4904,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -4921,7 +4921,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5080,7 +5080,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5097,7 +5097,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5114,7 +5114,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5131,7 +5131,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5148,7 +5148,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5301,7 +5301,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5318,7 +5318,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5335,7 +5335,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5352,7 +5352,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5369,7 +5369,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5386,7 +5386,7 @@ MoveToPosition(
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5576,7 +5576,7 @@ FLAGS.MOTOR_ST4_INIT_OK:=TRUE;
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5593,7 +5593,7 @@ FLAGS.MOTOR_ST4_INIT_OK:=TRUE;
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5610,7 +5610,7 @@ FLAGS.MOTOR_ST4_INIT_OK:=TRUE;
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
@@ -5627,7 +5627,7 @@ FLAGS.MOTOR_ST4_INIT_OK:=TRUE;
                               <v n="Address">""</v>
                               <o n="Flags" t="Flags">
                                 <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
+                                <v n="Fixed">true</v>
                               </o>
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>

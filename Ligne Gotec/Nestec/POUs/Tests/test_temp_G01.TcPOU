@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="test_temp_G01" Id="{bcb4b7cd-5b6c-42d8-aad9-15690843af49}">
+    <Declaration><![CDATA[PROGRAM test_temp_G01
+
+VAR
+	Temperature_G01_1:REAL;
+	Temperature_G01_2:REAL;
+	Temperature_G01_3:REAL;
+	Temperature_G01_4:REAL;
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+Temperature_G01_1:= Temp_Station1/10.0;
+Temperature_G01_2:= Temp_Station2/10.0;
+Temperature_G01_3:= Temp_Station3/10.0;
+Temperature_G01_4:= Temp_Station4/10.0;
+
+IF Temp1_error=TRUE THEN
+
+Temperature_G01_1:=-9999;
+
+END_IF
+
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

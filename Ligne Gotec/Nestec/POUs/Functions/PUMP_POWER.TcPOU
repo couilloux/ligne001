@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="PUMP_POWER" Id="{6fcbdc2b-c625-4bc1-acc8-dec1412c9505}">
+    <Declaration><![CDATA[FUNCTION_BLOCK PUMP_POWER
+
+VAR_INPUT
+	PUMP_STATUS	:INT;
+	EMS_OK			:BOOL;
+END_VAR
+
+VAR_OUTPUT
+	POWER			:BOOL;
+	POWER_LED	:BOOL;
+END_VAR
+
+VAR
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF PUMP_STATUS=1 AND EMS_OK THEN
+
+POWER:=TRUE;
+POWER_LED:=TRUE;
+
+ELSE
+
+POWER:=FALSE;
+POWER_LED:=FALSE;
+
+END_IF;]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <GVL Name="TwinCAT_Configuration" Id="{bc293cc1-0ba0-49b8-91c2-ca3ab61e0cb3}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+(* Generated automatically by TwinCAT - (read only) *)
+VAR_CONFIG
+	.EMS_RESET AT %QX8.0 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 13 (EL6900)^Module 2 (FSOE)^Standard In Vars RxPDO 1^Standard In Var 3} *)
+	.EMS_RUN AT %QX12.0 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 13 (EL6900)^Module 2 (FSOE)^Standard In Vars RxPDO 1^Standard In Var 1} *)
+	.EMS_ACK AT %QX12.1 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 13 (EL6900)^Module 2 (FSOE)^Standard In Vars RxPDO 1^Standard In Var 2} *)
+	.EMS_FB_ERR AT %IX76.0 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 13 (EL6900)^Module 2 (FSOE)^Standard Out Vars TxPDO 1^Standard Out Var 1} *)
+	.EMS_COM_ERR AT %IX76.1 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 13 (EL6900)^Module 2 (FSOE)^Standard Out Vars TxPDO 1^Standard Out Var 2} *)
+	.EMS_OUT_ERR AT %IX76.2 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 13 (EL6900)^Module 2 (FSOE)^Standard Out Vars TxPDO 1^Standard Out Var 3} *)
+	.EMS_STATE AT %IB92 : USINT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 13 (EL6900)^Module 2 (FSOE)^FB Info Data^Info FB 1^State} *)
+	.EMS_OK AT %IX88.0 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 13 (EL6900)^Module 2 (FSOE)^Standard Out Vars TxPDO 1^Standard Out Var 4} *)
+	.BTN_S3 AT %IX56.0 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 24 (EL1002)^Channel 1^S3} *)
+	.BTN_S4 AT %IX56.1 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 25 (EL1002)^Channel 1^S4} *)
+	.BTN_S5 AT %IX56.2 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 41 (EL1002)^Channel 1^S5} *)
+	.BTN_S6 AT %IX56.3 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 42 (EL1002)^Channel 1^S6} *)
+	.Weight_Station1 AT %IB96 : REAL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 9 (EL3356-0010)^RMB Value (Real)^Value (Real)} *)
+	.Weight_Station2 AT %IB100 : REAL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 10 (EL3356-0010)^RMB Value (Real)^Value (Real)} *)
+	.Weight_Station3 AT %IB104 : REAL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 58 (EL3356-0010)^RMB Value (Real)^Value (Real)} *)
+	.Weight_Station4 AT %IB108 : REAL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 59 (EL3356-0010)^RMB Value (Real)^Value (Real)} *)
+	.Temp_Station1 AT %IB16 : INT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 11 (EL3312)^TC Inputs Channel 1^Value} *)
+	.Temp1_error AT %IX56.4 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 11 (EL3312)^TC Inputs Channel 1^Status^Error} *)
+	.Temp_Station2 AT %IB18 : INT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 11 (EL3312)^TC Inputs Channel 2^Value} *)
+	.Temp2_error AT %IX56.5 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 11 (EL3312)^TC Inputs Channel 2^Status^Error} *)
+	.Temp_Station3 AT %IB20 : INT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 60 (EL3312)^TC Inputs Channel 1^Value} *)
+	.Temp3_error AT %IX56.6 : BOOL;
+	.Temp_Station4 AT %IB22 : INT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 60 (EL3312)^TC Inputs Channel 2^Value} *)
+	.Temp4_error AT %IX56.7 : BOOL;
+	.Vacuum_Station1 AT %IB60 : INT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 12 (EL3054)^AI Standard Channel 1^Value_Suction_Poste1} *)
+	.Vacuum_Station2 AT %IB62 : INT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 12 (EL3054)^AI Standard Channel 2^Value_Suction_Poste2} *)
+	.Vacuum_Station3 AT %IB64 : INT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 62 (EL3054)^AI Standard Channel 1^Value_Suction_Poste3} *)
+	.Vacuum_Station4 AT %IB66 : INT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 62 (EL3054)^AI Standard Channel 2^Value_Suction_Poste4} *)
+	.Pressure_Station1 AT %IB68 : INT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 12 (EL3054)^AI Standard Channel 3^Value_Pressure_Poste1} *)
+	.Pressure_Station2 AT %IB70 : INT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 12 (EL3054)^AI Standard Channel 4^Value_Pressure_Poste2} *)
+	.Pressure_Station3 AT %IB72 : INT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 62 (EL3054)^AI Standard Channel 3^Value_Pressure_Poste3} *)
+	.Pressure_Station4 AT %IB74 : INT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 62 (EL3054)^AI Standard Channel 4^Value_Pressure_Poste4} *)
+	.Temperature_entree_1 AT %IB80 : REAL;
+	.Temperature_entree_2 AT %IB84 : REAL;
+	.Alim_1 AT %QX4.0 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 16 (EL2622)^Channel 1^Output_L_Alim1;TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 16 (EL2622)^Channel 2^Output_N_Alim1} *)
+	.Alim_2 AT %QX4.1 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 17 (EL2622)^Channel 1^Output_L_Alim2;TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 17 (EL2622)^Channel 2^Output_N_Alim2} *)
+	.Alim_3 AT %QX4.2 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 63 (EL2622)^Channel 1^Output_L_Alim3;TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 63 (EL2622)^Channel 2^Output_N_Alim3} *)
+	.Alim_4 AT %QX4.3 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 65 (EL2622)^Channel 1^Output_L_Alim4;TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 65 (EL2622)^Channel 2^Output_N_Alim4} *)
+	.Mot_1 AT %QX4.4 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 18 (EL2622)^Channel 1^Output_L_Mot1;TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 18 (EL2622)^Channel 2^Output_N_Mot1} *)
+	.Mot_2 AT %QX4.5 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 19 (EL2622)^Channel 1^Output_L_Mot2;TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 19 (EL2622)^Channel 2^Output_N_Mot2} *)
+	.Mot_3 AT %QX4.6 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 64 (EL2622)^Channel 1^Output_L_Mot3;TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 64 (EL2622)^Channel 2^Output_N_Mot3} *)
+	.Mot_4 AT %QX4.7 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 66 (EL2622)^Channel 1^Output_L_Mot4;TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 66 (EL2622)^Channel 2^Output_N_Mot4} *)
+	.Solenoid_W13 AT %QX0.0 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 27 (EL2002)^Channel 1^W13} *)
+	.Solenoid_W14 AT %QX0.1 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 27 (EL2002)^Channel 2^W14} *)
+	.Solenoid_W15 AT %QX0.2 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 28 (EL2002)^Channel 1^W15} *)
+	.Solenoid_W16 AT %QX0.3 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 28 (EL2002)^Channel 2^W16} *)
+	.Solenoid_W17 AT %QX0.4 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 44 (EL2002)^Channel 1^W17} *)
+	.Solenoid_W18 AT %QX0.5 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 44 (EL2002)^Channel 2^W18} *)
+	.Solenoid_W19 AT %QX0.6 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 45 (EL2002)^Channel 1^W19} *)
+	.Solenoid_W20 AT %QX0.7 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 45 (EL2002)^Channel 2^W20} *)
+	.Light_H1 AT %QX1.0 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 32 (EL2004)^Channel 1^H1} *)
+	.Light_H2 AT %QX1.1 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 32 (EL2004)^Channel 3^H2} *)
+	.Light_H3 AT %QX1.2 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 46 (EL2004)^Channel 1^H3} *)
+	.Light_H4 AT %QX1.3 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire droite (EK1100)^Term 46 (EL2004)^Channel 3^H4} *)
+	.ST1_Multimeter_mode AT %QB16 : SINT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 39 (EL3681)^SAI Range^Control^Mode} *)
+	.ST2_Multimeter_mode AT %QB20 : SINT;
+	.ST3_Multimeter_mode AT %QB21 : SINT;
+	.ST4_Multimeter_mode AT %QB22 : SINT;
+	.ST1_Multimeter_range AT %QB17 : SINT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 39 (EL3681)^SAI Range^Control^Range} *)
+	.ST2_Multimeter_range AT %QB23 : SINT;
+	.ST3_Multimeter_range AT %QB24 : SINT;
+	.ST4_Multimeter_range AT %QB25 : SINT;
+	.ST1_Multimeter_value AT %IB112 : DINT;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT)^Armoire gauche (EK1100)^Term 39 (EL3681)^SAI Inputs^Value} *)
+	.ST2_Multimeter_value AT %IB116 : DINT;
+	.ST3_Multimeter_value AT %IB120 : DINT;
+	.ST4_Multimeter_value AT %IB124 : DINT;
+END_VAR]]></Declaration>
+    <ObjectProperties />
+  </GVL>
+</TcPlcObject>

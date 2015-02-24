@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2594c2dc-ee6c-4c60-a25a-3844bd6e23ce}</ProjectGuid>
+    <Name>Nestec</Name>
+    <Application>{95d40e6f-2ce4-4ce4-911f-9d31f70ff87c}</Application>
+    <TypeSystem>{b57d74ea-2634-4c7d-a869-f289ac03ce65}</TypeSystem>
+    <Implicit_Task_Info>{6e188b10-04f9-4d74-8af2-60bdc3ab3527}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{c98e745f-022c-4aec-ac2f-3f63819b7967}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{be7c4792-d053-4277-86ce-16401d70bf1f}</Implicit_Jitter_Distribution>
+    <FileVersion>0.0.0.0</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Data types" />
+    <Folder Include="Global Variables" />
+    <Folder Include="POUs" />
+    <Folder Include="POUs\EMS" />
+    <Folder Include="POUs\Flowrate management" />
+    <Folder Include="POUs\Functions" />
+    <Folder Include="POUs\PC" />
+    <Folder Include="POUs\Tests" />
+    <Folder Include="Visualizations" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global Variables\Global_Constantes.TcGVL" />
+    <Compile Include="Global Variables\Global_IOs.TcGVL" />
+    <Compile Include="Global Variables\TwinCAT_Configuration.TcGVL" />
+    <Compile Include="Global Variables\Variable_Configuration.TcGVL" />
+    <Compile Include="GlobalImagePool.TcIPO" />
+    <Compile Include="GlobalTextList.TcGTLO" />
+    <Compile Include="POUs\EMS\EMS_Start.TcPOU" />
+    <Compile Include="POUs\Flowrate management\CALCULATE_FLOW.TcPOU" />
+    <Compile Include="POUs\Flowrate management\FLOWMETER.TcPOU" />
+    <Compile Include="POUs\Functions\PUMP_POWER.TcPOU" />
+    <Compile Include="POUs\Functions\STATION_MODE.TcPOU" />
+    <Compile Include="POUs\MAIN.TcPOU" />
+    <Compile Include="POUs\PC\TO_PC.TcPOU" />
+    <Compile Include="POUs\Tests\getFlowrate.TcPOU" />
+    <Compile Include="POUs\Tests\test.TcPOU" />
+    <Compile Include="POUs\Tests\test_pressure.TcPOU" />
+    <Compile Include="POUs\Tests\test_sonde_temp_G01.TcPOU" />
+    <Compile Include="POUs\Tests\test_temp_G01.TcPOU" />
+    <Compile Include="POUs\Tests\test_vacuum.TcPOU" />
+    <Compile Include="Slow.TcTTO" />
+    <Compile Include="Standard.TcTTO" />
+    <Compile Include="Visualization Manager.TcVMO" />
+    <Compile Include="Visualizations\Visu1.TcVIS" />
+  </ItemGroup>
+  <ItemGroup>
+    <LibraryReference Include="Tc2_Standard,newest,Beckhoff Automation GmbH">
+      <Namespace>Tc2_Standard</Namespace>
+      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
+    </LibraryReference>
+    <LibraryReference Include="Tc2_System,newest,Beckhoff Automation GmbH">
+      <Namespace>Tc2_System</Namespace>
+      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
+    </LibraryReference>
+    <LibraryReference Include="Tc2_Utilities,newest,Beckhoff Automation GmbH">
+      <Namespace>Tc2_Utilities</Namespace>
+      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
+    </LibraryReference>
+    <LibraryReference Include="Tc3_Interfaces,3.3.0.0,Beckhoff Automation GmbH">
+      <Namespace>Tc3_Interfaces</Namespace>
+      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
+    </LibraryReference>
+    <LibraryReference Include="Tc3_Module,3.3.6.0,Beckhoff Automation GmbH">
+      <Namespace>Tc3_Module</Namespace>
+      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
+    </LibraryReference>
+    <LibraryReference Include="TcFloatPC,1.0.0.0,Beckhoff">
+      <Namespace>TcFloatPC</Namespace>
+      <PublishSymbolsInContainer>True</PublishSymbolsInContainer>
+    </LibraryReference>
+  </ItemGroup>
+</Project>

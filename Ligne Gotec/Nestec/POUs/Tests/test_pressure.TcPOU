@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="test_pressure" Id="{594816e4-fa95-4648-b2b4-a3ed998c1506}">
+    <Declaration><![CDATA[ PROGRAM test_pressure
+
+
+VAR
+	Pressure_post1:REAL;
+	Pressure_post2:REAL;
+	Pressure_post3:REAL;
+	Pressure_post4:REAL;
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+Pressure_post1:= (Pressure_Station1 - 4.0)* 24.7/16.0/2000.0;
+Pressure_post2:= (Pressure_Station2 - 4.0)* 24.0/16.0/2000.0;
+Pressure_post3:= (Pressure_Station3 - 4.0)* 24.2/16.0/2000.0;
+Pressure_post4:= (Pressure_Station4 - 4.0)* 24.7/16.0/2000.0;
+
+
+
+
+
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

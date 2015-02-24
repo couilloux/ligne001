@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <GVL Name="Global_IOs" Id="{afffcbd1-c53e-49dd-a74e-85306748f32f}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+(**************************************
+*
+* PC variables 
+*
+***************************************)
+
+(*FROM PC*)
+	PC_ST1_PUMP_STATUS	:INT;(*0 OFF // 1 ON*)
+	PC_ST2_PUMP_STATUS	:INT;
+	PC_ST3_PUMP_STATUS	:INT;
+	PC_ST4_PUMP_STATUS	:INT;
+
+	PC_ST1_MODE			:INT;(*0 débit/pression // 1 pression max // 2 aspiration*)
+	PC_ST2_MODE			:INT;
+	PC_ST3_MODE			:INT;
+	PC_ST4_MODE			:INT;
+
+	PC_RESET_EMS			:BOOL; (*TO reset Emergency start*)
+
+	PC_INIT					:BOOL;
+
+(*TO PC*)
+	PC_ST1_PRESSURE		:REAL;
+	PC_ST2_PRESSURE		:REAL;
+	PC_ST3_PRESSURE		:REAL;
+	PC_ST4_PRESSURE		:REAL;
+
+	PC_ST1_SUCTION		:REAL;
+	PC_ST2_SUCTION		:REAL;
+	PC_ST3_SUCTION		:REAL;
+	PC_ST4_SUCTION		:REAL;
+
+	PC_ST1_FLOWRATE		:REAL;
+	PC_ST2_FLOWRATE		:REAL;
+	PC_ST3_FLOWRATE		:REAL;
+	PC_ST4_FLOWRATE		:REAL;
+
+	PC_ST1_TEMP			:REAL;
+	PC_ST2_TEMP			:REAL;
+	PC_ST3_TEMP			:REAL;
+	PC_ST4_TEMP			:REAL;
+
+	PC_ST1_TEMP_ERROR	:BOOL;
+	PC_ST2_TEMP_ERROR	:BOOL;
+	PC_ST3_TEMP_ERROR	:BOOL;
+	PC_ST4_TEMP_ERROR	:BOOL;
+
+	PC_ST1_CURRENT		:REAL;
+	PC_ST2_CURRENT		:REAL;
+	PC_ST3_CURRENT		:REAL;
+	PC_ST4_CURRENT		:REAL;
+
+	PC_ST1_POWER			:REAL;
+	PC_ST2_POWER			:REAL;
+	PC_ST3_POWER			:REAL;
+	PC_ST4_POWER			:REAL;
+
+	PC_ST1_BTN			:BOOL;
+	PC_ST2_BTN			:BOOL;
+	PC_ST3_BTN			:BOOL;
+	PC_ST4_BTN			:BOOL;
+
+	PC_EMS_OK				:BOOL; (*EMS is SAFE*)
+
+
+
+
+
+
+(**************************************
+*
+* EMERGECY STOP
+*
+***************************************)
+
+	EMS_RESET		AT%Q*: BOOL;
+	EMS_RUN		AT%Q*: BOOL;
+	EMS_ACK 		AT%Q*: BOOL;
+
+	EMS_FB_ERR	AT%I*: BOOL;
+	EMS_COM_ERR	AT%I*: BOOL;
+	EMS_OUT_ERR	AT%I*: BOOL;
+
+	(*1: State RUN
+	2: State STOP
+	3: State SAFE
+	4: State ERROR
+	5: State RESET
+	6: State START
+	8: State DELAYOUT
+	*)
+	EMS_STATE		AT%I*:USINT;
+
+	EMS_OK			AT%I*:BOOL;	(*Emergency stop is OK*)
+
+(**************************************
+*
+* Inputs
+*
+***************************************)
+
+	BTN_S3 AT%I*: BOOL;
+	BTN_S4 AT%I*: BOOL;
+	BTN_S5 AT%I*: BOOL;
+	BTN_S6 AT%I*: BOOL;
+
+	Weight_Station1 AT%I*:REAL;
+	Weight_Station2 AT%I*:REAL;
+	Weight_Station3 AT%I*:REAL;
+	Weight_Station4 AT%I*:REAL;
+
+
+	Temp_Station1 AT%I*:INT;
+	Temp1_error   AT%I*:BOOL;
+	Temp_Station2 AT%I*:INT;
+	Temp2_error   AT%I*:BOOL;
+	Temp_Station3 AT%I*:INT;
+	Temp3_error   AT%I*:BOOL;
+	Temp_Station4 AT%I*:INT;
+	Temp4_error   AT%I*:BOOL;
+
+
+	Vacuum_Station1 AT%I*:INT;
+	Vacuum_Station2 AT%I*:INT;
+	Vacuum_Station3 AT%I*:INT;
+	Vacuum_Station4 AT%I*:INT;
+
+
+	Pressure_Station1 AT%I*:INT;
+	Pressure_Station2 AT%I*:INT;
+	Pressure_Station3 AT%I*:INT;
+	Pressure_Station4 AT%I*:INT;
+
+
+	Temperature_entree_1 AT%I*:REAL;
+	Temperature_entree_2 AT%I*:REAL;
+
+
+
+(**************************************
+*
+* Outputs
+*
+***************************************)
+
+	Alim_1 AT%Q*: BOOL;
+	Alim_2 AT%Q*: BOOL;
+	Alim_3 AT%Q*: BOOL;
+	Alim_4 AT%Q*: BOOL;
+
+
+	Mot_1 AT%Q*: BOOL;
+	Mot_2 AT%Q*: BOOL;
+	Mot_3 AT%Q*: BOOL;
+	Mot_4 AT%Q*: BOOL;
+
+
+	Solenoid_W13 AT%Q*: BOOL;
+	Solenoid_W14 AT%Q*: BOOL;
+	Solenoid_W15 AT%Q*: BOOL;
+	Solenoid_W16 AT%Q*: BOOL;
+	Solenoid_W17 AT%Q*: BOOL;
+	Solenoid_W18 AT%Q*: BOOL;
+	Solenoid_W19 AT%Q*: BOOL;
+	Solenoid_W20 AT%Q*: BOOL;
+
+
+	Light_H1 AT%Q*: BOOL;
+	Light_H2 AT%Q*: BOOL;
+	Light_H3 AT%Q*: BOOL;
+	Light_H4 AT%Q*: BOOL;
+
+(**************************************
+*
+* Multimeter IOs
+*
+***************************************)
+
+	ST1_Multimeter_mode	AT%Q*:SINT := 3;
+	ST2_Multimeter_mode	AT%Q*:SINT := 3;
+	ST3_Multimeter_mode	AT%Q*:SINT := 3;
+	ST4_Multimeter_mode	AT%Q*:SINT := 3;
+
+(*
+0 0x00 DC voltage
+1 0x01 AC voltage
+2 0x02 DC current
+3 0x03 AC current
+*)
+
+	ST1_Multimeter_range AT%Q* :SINT := 1;
+	ST2_Multimeter_range AT%Q* :SINT := 1;
+	ST3_Multimeter_range AT%Q* :SINT := 1;
+	ST4_Multimeter_range AT%Q* :SINT := 1;
+
+
+(*
+255 0xFF 300 mV / 100 mA
+0 0x00  3 V / 1 A 
+1 0x01 30 V / 10 A 
+2 0x02 300 V (voltage only)  
+*)
+
+
+	ST1_Multimeter_value AT%I*:DINT;
+	ST2_Multimeter_value AT%I*:DINT;
+	ST3_Multimeter_value AT%I*:DINT;
+	ST4_Multimeter_value AT%I*:DINT;
+
+
+
+END_VAR
+]]></Declaration>
+    <ObjectProperties />
+  </GVL>
+</TcPlcObject>

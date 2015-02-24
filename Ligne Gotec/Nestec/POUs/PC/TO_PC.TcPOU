@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="TO_PC" Id="{799be633-1fa2-4ceb-a24c-32312cb41abc}">
+    <Declaration><![CDATA[PROGRAM TO_PC
+VAR
+
+	R_TRIG_S3: R_TRIG;
+
+
+	R_TRIG_S4: R_TRIG;
+	R_TRIG_S5: R_TRIG;
+	R_TRIG_S6: R_TRIG;
+	R_BTN_S4: BOOL;
+	R_BTN_S6: BOOL;
+	R_BTN_S5: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*TO PC*)
+
+	PC_ST1_PRESSURE:=Pressure_Station1/32767.0*25.0+0.05;
+	PC_ST2_PRESSURE:=(Pressure_Station2-190)/32767.0*25.0;
+	PC_ST3_PRESSURE:=(Pressure_Station3-25)/32767.0*25.0;
+	PC_ST4_PRESSURE:=Pressure_Station4/32767.0*25.0+0.05;
+
+	PC_ST1_SUCTION:=Vacuum_Station1/32767.0*4.0-1.0;
+	PC_ST2_SUCTION:=Vacuum_Station2/32767.0*4.0-1.0;
+	PC_ST3_SUCTION:=Vacuum_Station3/32767.0*4.0-1.0;
+	PC_ST4_SUCTION:=Vacuum_Station4/32767.0*4.0-1.0;
+
+	PC_ST1_FLOWRATE:=MAIN.FLOWMETER_ST1.DEBIT;
+	PC_ST2_FLOWRATE:=MAIN.FLOWMETER_ST2.DEBIT;
+	PC_ST3_FLOWRATE:=MAIN.FLOWMETER_ST3.DEBIT;
+	PC_ST4_FLOWRATE:=MAIN.FLOWMETER_ST4.DEBIT;
+
+	PC_ST1_TEMP:=Temp_Station1/10.0;
+	PC_ST2_TEMP:=Temp_Station2/10.0;
+	PC_ST3_TEMP:=Temp_Station3/10.0;
+	PC_ST4_TEMP:=Temp_Station4/10.0;
+
+	PC_ST1_TEMP_ERROR	:=Temp1_error; (*TRUE IF AN ERROR OCCURE / THE SENSOR IS NOT CONNECTED*)
+	PC_ST2_TEMP_ERROR	:=Temp2_error;
+	PC_ST3_TEMP_ERROR	:=Temp3_error;
+	PC_ST4_TEMP_ERROR	:=Temp4_error;
+
+	PC_ST1_CURRENT := ST1_Multimeter_value/1000.0/1000.0;(*représentation en Ampères*)
+	PC_ST2_CURRENT := ST2_Multimeter_value/1000.0/1000.0;;
+	PC_ST3_CURRENT := ST3_Multimeter_value/1000.0/1000.0;;
+	PC_ST4_CURRENT := ST4_Multimeter_value/1000.0/1000.0;;
+
+	PC_ST1_POWER;
+	PC_ST2_POWER;
+	PC_ST3_POWER;
+	PC_ST4_POWER;
+
+(*GESTION BOUTONS*)
+
+IF R_BTN_S3 AND PC_ST1_BTN=0 THEN
+PC_ST1_BTN:=1;
+ELSIF R_BTN_S3 AND PC_ST1_BTN=1 THEN
+PC_ST1_BTN:=0;
+END_IF
+
+IF R_BTN_S4 AND PC_ST2_BTN=0 THEN
+PC_ST2_BTN:=1;
+ELSIF R_BTN_S4 AND PC_ST2_BTN=1 THEN
+PC_ST2_BTN:=0;
+END_IF
+
+IF R_BTN_S5 AND PC_ST3_BTN=0 THEN
+PC_ST3_BTN:=1;
+ELSIF R_BTN_S5 AND PC_ST3_BTN=1 THEN
+PC_ST3_BTN:=0;
+END_IF
+
+IF R_BTN_S6 AND PC_ST4_BTN=0 THEN
+PC_ST4_BTN:=1;
+ELSIF R_BTN_S6 AND PC_ST4_BTN=1 THEN
+PC_ST4_BTN:=0;
+END_IF
+
+	PC_EMS_OK			:=EMS_OK;
+
+
+(*****************************************************
+*
+* PC INIT
+*
+*******************************************************)
+IF PC_INIT THEN
+PC_ST1_BTN:=FALSE;
+PC_ST2_BTN:=FALSE;
+PC_ST3_BTN:=FALSE;
+PC_ST4_BTN:=FALSE;
+END_IF;
+
+(*****************************************************
+*
+* Edges Detections
+*
+*******************************************************)
+R_TRIG_S3(CLK:= BTN_S3, Q=> R_BTN_S3);
+R_TRIG_S4(CLK:= BTN_S4, Q=> R_BTN_S4);
+R_TRIG_S5(CLK:= BTN_S5, Q=> R_BTN_S5);
+R_TRIG_S6(CLK:= BTN_S6, Q=> R_BTN_S6);]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

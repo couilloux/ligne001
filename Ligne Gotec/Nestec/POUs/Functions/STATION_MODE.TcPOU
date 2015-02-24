@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="STATION_MODE" Id="{71af1d25-f720-46db-a8bc-7ff3c9b1f1f5}">
+    <Declaration><![CDATA[FUNCTION_BLOCK STATION_MODE
+
+VAR_INPUT
+	mode :INT;
+END_VAR
+
+VAR_OUTPUT
+	vacuum_valve 	:BOOL;
+	pressure_valve	:BOOL;
+END_VAR
+
+VAR
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+CASE mode OF
+
+0:(*Débit*)
+vacuum_valve	:= 	TRUE;
+pressure_valve	:=	TRUE;
+
+1:(*Pmax*)
+vacuum_valve	:= 	TRUE;
+pressure_valve	:=	FALSE;
+
+2:(*Aspiration*)
+vacuum_valve	:= 	FALSE;
+pressure_valve	:=	TRUE;
+
+ELSE
+
+vacuum_valve	:= 	FALSE;
+pressure_valve	:=	FALSE;
+
+END_CASE;]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="FLOWMETER" Id="{d9228586-780f-4af3-a67c-4e209f9ac6ec}">
+    <Declaration><![CDATA[FUNCTION_BLOCK FLOWMETER
+
+(***************************************
+-1 	-> purge
+-99 	-> OFF
+xxx	-> en cours de mesure
+***************************************)
+
+VAR_INPUT
+
+	ON				:BOOL; (*active/desactive la gestion du débit/purge*)
+	POIDS			:REAL; (*poids actuel*)
+	POIDS_BAS		:REAL; (*en grammes / Limite bas*)
+	POIDS_HAUT	:REAL; (*limite haut*)
+	FLOWRATE		:REAL; (*débit instantané*)
+	PC_MODE		:INT; (*mode de la station*)
+
+END_VAR
+
+VAR_OUTPUT
+
+	DEBIT			:REAL; (*Valeur du débit en ml/min*)
+	PURGE			:BOOL; (*commande de la pompe de vidange*)
+
+END_VAR
+
+VAR
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF ON=TRUE THEN
+
+	IF (POIDS < POIDS_HAUT) AND NOT PURGE AND  PC_MODE=0 THEN
+
+		(*calcule ici le débit*)
+		IF FLOWRATE > 10 THEN
+			DEBIT:=FLOWRATE;
+		ELSE
+			DEBIT:=0;
+		END_IF;
+
+	ELSIF POIDS < POIDS_BAS THEN
+
+		PURGE:=FALSE;
+
+	ELSIF  (POIDS > POIDS_HAUT) OR PC_MODE<>0  THEN
+
+		PURGE:=TRUE;
+		DEBIT:=-1; (*-1 indique la purge*)
+
+
+	END_IF;
+
+
+ELSE
+
+PURGE:=FALSE;
+DEBIT:=-99.0;
+
+END_IF;]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

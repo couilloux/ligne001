@@ -17,6 +17,9 @@ VAR
 	TAMPO_MESURE_DEBIT_MAX_TON: TON;
 	POIDS_QMAX_DEBUT: REAL;
 	POIDS_Q_DEBUT: REAL;
+	P_ERREUR: REAL;
+	START_TAMPO_PRESSION: BOOL;
+	TAMPO_PRESSION_TON: TON;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(*******************************************************
@@ -49,7 +52,8 @@ CASE STEP OF
 	START_TAMPO_MESURE_DEBIT_MAX:= FALSE;
 	START_TAMPO_VIDANGE:= FALSE;
 	START_TAMPO_REGLAGE:= FALSE;
-
+	START_TAMPO_PRESSION:= FALSE;
+	
 	
 	STEP := STEP + 10;
 	
@@ -62,8 +66,10 @@ CASE STEP OF
 20: (*Descend le vérin du dessus*)
 
 	ST4_4V4 := TRUE;
-	POIDS_QMAX_DEBUT	:= 0;
+	POIDS_QMAX_DEBUT	:= 0;	(*Met à 0 les différentes variables pour le calcul et résultat des débits*)
 	POIDS_Q_DEBUT		:= 0;
+	ST4_Q				:= 0;
+	ST4_QMAX			:= 0;
 	STEP := STEP + 10;
 	
 30: (*Attend vérin dessus sorti*)
@@ -123,38 +129,68 @@ CASE STEP OF
 	
 130: (*Attend fin tampo mesure de Qmax ***********************************************************)
 	IF TAMPO_MESURE_DEBIT_MAX_TON.Q THEN
-		ST4_QMAX := CONVERT_MASS_TO_FLOW(ST4_POIDS - POIDS_QMAX_DEBUT, PUMP_PARAMS.ST4_TEMPS_MESURE_DEBIT_MAX);(*Calcul du début max*)
+		ST4_QMAX := CONVERT_MASS_TO_FLOW(ST4_POIDS - POIDS_QMAX_DEBUT, PUMP_PARAMS.ST4_TEMPS_MESURE_DEBIT_MAX);(*Calcul du débit max*)
+		
+		QMAX_ARRAY[INDEX_QMAX_ARRAY]:=ST4_QMAX; (*Array des derniers résultats*)
+		INDEX_QMAX_ARRAY := INDEX_QMAX_ARRAY+1;
+		
 		START_TAMPO_MESURE_DEBIT_MAX := FALSE;
 		ST4_4V12 := TRUE;
 		ST4_4V13 := FALSE;
 		STEP := STEP + 10;
 	END_IF;
 	
-140: (*Démarre la tampo pour le réglage*)
+140: (*Démarre la tampo pour la mise sous pression*)
+
+	START_TAMPO_PRESSION := TRUE;
+	STEP := STEP + 10;
+	
+150: (*Attend fin tampo mise sous pression*)
+
+	IF TAMPO_PRESSION_TON.Q THEN
+		START_TAMPO_PRESSION := FALSE;
+		STEP := STEP + 10;
+	END_IF;
+	
+160: (*Démarre la tampo pour le réglage*)
 
 	START_TAMPO_REGLAGE := TRUE;
 	STEP := STEP + 10;
 	
-150: (*Attend fin tampo réglage*)
+170: (*Attend fin tampo réglage*)
+
+	(*Réglage pression*)
+	P_ERREUR:=PUMP_PARAMS.ST4_PRESSION_CONSIGNE - ST4_PRESSURE;
+	FLAGS.MOTOR_ST4_POSITION := FLAGS.MOTOR_ST4_POSITION + REAL_TO_INT(P_ERREUR*7);(* P_ERREUR*GAIN *)
 
 	IF TAMPO_REGLAGE_TON.Q THEN
 		START_TAMPO_REGLAGE := FALSE;
 		STEP := STEP + 10;
 	END_IF;
 	
-160: (*Démarre la tampo pour la mesure de debit*************************************************)
+180: (*Démarre la tampo pour la mesure de debit*************************************************)
 
 	START_TAMPO_MESURE_DEBIT := TRUE;
 	POIDS_Q_DEBUT := ST4_POIDS;
 	STEP := STEP + 10;
+
 	
-170: (*Attend fin tampo amorcage - MESURE EN COURT*)
+190: (*Attend fin tampo amorcage - MESURE EN COURT*)
+
+	(*Réglage pression*)
+	P_ERREUR:=PUMP_PARAMS.ST4_PRESSION_CONSIGNE - ST4_PRESSURE;
+	FLAGS.MOTOR_ST4_POSITION := FLAGS.MOTOR_ST4_POSITION + REAL_TO_INT(P_ERREUR*7);(* P_ERREUR*GAIN *)
 
 	IF TAMPO_MESURE_DEBIT_TON.Q THEN
-		ST4_Q := CONVERT_MASS_TO_FLOW(ST4_POIDS - POIDS_Q_DEBUT, PUMP_PARAMS.ST4_TEMPS_MESURE_DEBIT);(*Calcul du début max*)
+		ST4_Q := CONVERT_MASS_TO_FLOW(ST4_POIDS - POIDS_Q_DEBUT, PUMP_PARAMS.ST4_TEMPS_MESURE_DEBIT);(*Calcul du débit de travail*)
+		
+		Q_ARRAY[INDEX_Q_ARRAY]:=ST4_Q; (*Array des derniers résultats*)
+		INDEX_Q_ARRAY := INDEX_Q_ARRAY+1;
+		
 		START_TAMPO_MESURE_DEBIT := FALSE;
 		STEP := 300;
 	END_IF;
+	
 	
 
 (**************************************************************************)	
@@ -207,6 +243,7 @@ END_CASE;
 TAMPO_AMORCAGE_TON(IN:= START_TAMPO_AMORCAGE, PT:= PUMP_PARAMS.ST4_TEMPS_POMPAGE);
 TAMPO_REGLAGE_TON(IN:= START_TAMPO_REGLAGE, PT:= PUMP_PARAMS.ST4_TEMPS_REGLAGE_PRESSION);
 TAMPO_VIDANGE_TON(IN:= START_TAMPO_VIDANGE, PT:= TEMPS_VIDANGE_POMPE);
+TAMPO_PRESSION_TON(IN:= START_TAMPO_PRESSION, PT:= TEMPS_CHANGEMENT_PRESSION);
 TAMPO_MESURE_DEBIT_TON(IN:= START_TAMPO_MESURE_DEBIT, PT:= PUMP_PARAMS.ST4_TEMPS_MESURE_DEBIT);
 TAMPO_MESURE_DEBIT_MAX_TON(IN:= START_TAMPO_MESURE_DEBIT_MAX, PT:= PUMP_PARAMS.ST4_TEMPS_MESURE_DEBIT_MAX);
 JIG_STATUS_R_TRIG(CLK:= CONVEYOR.JIG_ST4.STATUS);

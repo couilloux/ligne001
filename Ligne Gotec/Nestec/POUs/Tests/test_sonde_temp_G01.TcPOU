@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="test_sonde_temp_G01" Id="{5cce16c1-511b-425a-8a3d-f4a6fdbed2a4}">
+    <Declaration><![CDATA[PROGRAM test_sonde_temp_G01
+
+
+VAR
+
+	Temp_St1: REAL;
+	Temp_St2: REAL;
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+
+
+Temp_St1:= (-30.76) * LN(Temperature_entree_1) + 308.76;
+Temp_St2:= (-30.76) * LN(Temperature_entree_2) + 308.76;
+
+
+
+
+
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

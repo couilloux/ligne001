@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="test" Id="{bf950da5-4074-45ce-b9a4-8d912738d147}">
+    <Declaration><![CDATA[PROGRAM test
+VAR
+	TP_BTN1: TP;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+TP_BTN1(IN:= BTN_S3, PT:= t#3s, Q=> Light_H1);
+
+Light_H2 := (TP_BTN1.ET > t#1s) AND (TP_BTN1.ET < t#2s);
+
+
+
+
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

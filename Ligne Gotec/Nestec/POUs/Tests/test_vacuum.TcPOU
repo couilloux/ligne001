@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="test_vacuum" Id="{aef989de-6a1d-444b-9105-4f22692472fc}">
+    <Declaration><![CDATA[PROGRAM test_vacuum
+
+VAR
+	Vacuum_post1:REAL;
+	Vacuum_post2:REAL;
+	Vacuum_post3:REAL;
+	Vacuum_post4:REAL;
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+Vacuum_post1:= ((Vacuum_Station1 - 8.0)* 3.8/16.0/2000)-1;
+Vacuum_post2:= ((Vacuum_Station2 - 8.0)* 4.0/16.0/2000)-1;
+Vacuum_post3:= ((Vacuum_Station3 - 8.0)* 4.0/16.0/2000)-1;
+Vacuum_post4:= ((Vacuum_Station4 - 8.0)* 4.0/16.0/2000)-1;
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

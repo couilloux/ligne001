@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="MAIN" Id="{c8e59933-2f9c-4df9-bc00-79f8b0035c26}">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+
+	STATION_MODE_ST1: STATION_MODE;
+	PUMP_POWER_ST1: PUMP_POWER;
+	FLOWMETER_ST1: FLOWMETER;
+
+
+
+	FLOWMETER_ST4: FLOWMETER;
+	FLOWMETER_ST3: FLOWMETER;
+	FLOWMETER_ST2: FLOWMETER;
+	STATION_MODE_ST2: STATION_MODE;
+	STATION_MODE_ST3: STATION_MODE;
+	STATION_MODE_ST4: STATION_MODE;
+	PUMP_POWER_ST2: PUMP_POWER;
+	PUMP_POWER_ST3: PUMP_POWER;
+	PUMP_POWER_ST4: PUMP_POWER;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(******************************************************
+*
+* Test
+*
+****************************************************)
+
+
+(******************************************************
+*
+* Emergency tread
+*
+****************************************************)
+
+EMS_Start();
+
+(*****************************************************
+*
+* Stations
+*
+*******************************************************)
+(* gestion des électrovannes*)
+STATION_MODE_ST1(
+	mode:= PC_ST1_MODE,
+	vacuum_valve=>Solenoid_W13 ,
+	pressure_valve=>Solenoid_W14 );
+STATION_MODE_ST2(
+	mode:= PC_ST2_MODE,
+	vacuum_valve=>Solenoid_W15 ,
+	pressure_valve=>Solenoid_W16 );
+STATION_MODE_ST3(
+	mode:= PC_ST3_MODE,
+	vacuum_valve=>Solenoid_W17,
+	pressure_valve=>Solenoid_W18 );
+STATION_MODE_ST4(
+	mode:= PC_ST4_MODE,
+	vacuum_valve=>Solenoid_W19 ,
+	pressure_valve=>Solenoid_W20 );
+
+(*gestion de l'alimentation des pompes*)
+PUMP_POWER_ST1(
+	PUMP_STATUS:= PC_ST1_PUMP_STATUS,
+	EMS_OK:= EMS_OK,
+	POWER=> Alim_1,
+	POWER_LED=> Light_H1);
+PUMP_POWER_ST2(
+	PUMP_STATUS:= PC_ST2_PUMP_STATUS,
+	EMS_OK:= EMS_OK,
+	POWER=> Alim_2,
+	POWER_LED=> Light_H2);
+PUMP_POWER_ST3(
+	PUMP_STATUS:= PC_ST3_PUMP_STATUS,
+	EMS_OK:= EMS_OK,
+	POWER=> Alim_3,
+	POWER_LED=> Light_H3);
+PUMP_POWER_ST4(
+	PUMP_STATUS:= PC_ST4_PUMP_STATUS,
+	EMS_OK:= EMS_OK,
+	POWER=> Alim_4,
+	POWER_LED=> Light_H4);
+
+(* FLOWMETER *)
+FLOWMETER_ST1(
+	ON:= TRUE,
+	POIDS			:= Weight_Station1,
+	POIDS_BAS		:= 900,
+	POIDS_HAUT	:= 2300,
+	PC_MODE 		:= PC_ST1_MODE,
+	FLOWRATE		:=CALCULATE_FLOW.FLOW_1_FILTERED,
+	DEBIT			=> PC_ST1_FLOWRATE,
+	PURGE			=> Mot_1);
+FLOWMETER_ST2(
+	ON:= TRUE,
+	POIDS			:= Weight_Station2,
+	POIDS_BAS		:= 800,
+	POIDS_HAUT	:= 2100,
+	PC_MODE 		:= PC_ST2_MODE,
+	FLOWRATE		:=CALCULATE_FLOW.FLOW_2_FILTERED,
+	DEBIT			=> PC_ST2_FLOWRATE,
+	PURGE			=> Mot_2);
+FLOWMETER_ST3(
+	ON:= TRUE,
+	POIDS			:= Weight_Station3,
+	POIDS_BAS		:= 1200,
+	POIDS_HAUT	:= 2300,
+	PC_MODE 		:= PC_ST3_MODE,
+	FLOWRATE		:=CALCULATE_FLOW.FLOW_3_FILTERED,
+	DEBIT			=> PC_ST3_FLOWRATE,
+	PURGE			=> Mot_3);
+FLOWMETER_ST4(
+	ON:= TRUE,
+	POIDS			:= Weight_Station4,
+	POIDS_BAS		:= 1000,
+	POIDS_HAUT	:= 2300,
+	PC_MODE 		:= PC_ST4_MODE,
+	FLOWRATE		:=CALCULATE_FLOW.FLOW_4_FILTERED,
+	DEBIT			=> PC_ST4_FLOWRATE,
+	PURGE			=> Mot_4);
+
+(*****************************************************
+*
+* PC tread
+*
+*******************************************************)
+TO_PC();
+
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

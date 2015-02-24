@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="CALCULATE_FLOW" Id="{8df04cf3-4bd6-4988-8410-09d0cf8f7131}">
+    <Declaration><![CDATA[PROGRAM CALCULATE_FLOW
+
+VAR
+
+	FLOW		:REAL;
+	POIDS_1_OLD: REAL;
+	FLOW_1: REAL;
+
+	FB_CTRL_PT3_POIDS_1: FB_CTRL_PT3;
+
+	eMode_POIDS_1: E_CTRL_MODE;
+	stParams_POIDS_1: ST_CTRL_PT3_PARAMS;
+
+	POIDS_1_FILTERED: REAL;
+	FLOW_1_FILTERED: REAL;
+	POIDS_1_FILTERED_OLD: REAL;
+	FLOW_2: REAL;
+	FLOW_3: REAL;
+	FLOW_4: REAL;
+	POIDS_2_OLD: REAL;
+	POIDS_3_OLD: REAL;
+	POIDS_4_OLD: REAL;
+	FLOW_2_FILTERED: REAL;
+	FLOW_3_FILTERED: REAL;
+	FLOW_4_FILTERED: REAL;
+	POIDS_2_FILTERED: REAL;
+	POIDS_3_FILTERED: REAL;
+	POIDS_4_FILTERED: REAL;
+	POIDS_2_FILTERED_OLD: REAL;
+	POIDS_3_FILTERED_OLD: REAL;
+	POIDS_4_FILTERED_OLD: REAL;
+	FB_CTRL_PT3_POIDS_2:  FB_CTRL_PT3;
+	FB_CTRL_PT3_POIDS_3:  FB_CTRL_PT3;
+	FB_CTRL_PT3_POIDS_4:  FB_CTRL_PT3;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*PARAMETRES FILTRES*)
+
+	(* init parameter struct *)
+	stParams_POIDS_1.tCtrlCycleTime			:= T#100ms;
+	stParams_POIDS_1.tTaskCycleTime			:= T#100ms;
+	stParams_POIDS_1.tT1					:= T#1s000ms;
+	stParams_POIDS_1.tT2					:= T#1s000ms;
+	stParams_POIDS_1.tT3					:= T#1s000ms;
+	stParams_POIDS_1.fKp					:= 1;
+
+	(* set the mode to ACTIVE --> normal operation *)
+	eMode_POIDS_1							:= eCTRL_MODE_ACTIVE;
+
+
+(*calcule du débit en fonction de la différence de poids*)
+FLOW_1 := (Weight_Station1-POIDS_1_OLD)*600;
+FLOW_2 := (Weight_Station2-POIDS_2_OLD)*600;
+FLOW_3 := (Weight_Station3-POIDS_3_OLD)*600;
+FLOW_4 := (Weight_Station4-POIDS_4_OLD)*600;
+
+
+
+(*Filtres 3 ème ordre*)
+FB_CTRL_PT3_POIDS_1(
+	fIn:= Weight_Station1,
+	fManValue:= 0,
+	eMode:= eMode_POIDS_1,
+	bHold:= FALSE ,
+	stParams:= stParams_POIDS_1,
+	fOut=> POIDS_1_FILTERED );
+FB_CTRL_PT3_POIDS_2(
+	fIn:= Weight_Station2,
+	fManValue:= 0,
+	eMode:= eMode_POIDS_1,
+	bHold:= FALSE ,
+	stParams:= stParams_POIDS_1,
+	fOut=> POIDS_2_FILTERED );
+FB_CTRL_PT3_POIDS_3(
+	fIn:= Weight_Station3,
+	fManValue:= 0,
+	eMode:= eMode_POIDS_1,
+	bHold:= FALSE ,
+	stParams:= stParams_POIDS_1,
+	fOut=> POIDS_3_FILTERED );
+FB_CTRL_PT3_POIDS_4(
+	fIn:= Weight_Station4,
+	fManValue:= 0,
+	eMode:= eMode_POIDS_1,
+	bHold:= FALSE ,
+	stParams:= stParams_POIDS_1,
+	fOut=> POIDS_4_FILTERED );
+
+FLOW_1_FILTERED := (POIDS_1_FILTERED-POIDS_1_FILTERED_OLD)*600;
+FLOW_2_FILTERED := (POIDS_2_FILTERED-POIDS_2_FILTERED_OLD)*600;
+FLOW_3_FILTERED := (POIDS_3_FILTERED-POIDS_3_FILTERED_OLD)*600;
+FLOW_4_FILTERED := (POIDS_4_FILTERED-POIDS_4_FILTERED_OLD)*600;
+
+
+
+
+POIDS_1_OLD := Weight_Station1;
+POIDS_2_OLD := Weight_Station2;
+POIDS_3_OLD := Weight_Station3;
+POIDS_4_OLD := Weight_Station4;
+
+POIDS_1_FILTERED_OLD:=POIDS_1_FILTERED;
+POIDS_2_FILTERED_OLD:=POIDS_2_FILTERED;
+POIDS_3_FILTERED_OLD:=POIDS_3_FILTERED;
+POIDS_4_FILTERED_OLD:=POIDS_4_FILTERED;]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>
