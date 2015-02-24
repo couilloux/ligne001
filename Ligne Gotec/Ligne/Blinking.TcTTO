@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <Task Name="Blinking" Id="{d791cf49-a451-4eb5-83b9-a1452bb1ff0e}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>450000</CycleTime>
+    <Priority>23</Priority>
+    <TaskFBGuid>{206975ff-bb31-46ed-87fd-7d742aee65e8}</TaskFBGuid>
+    <Fb_init>{2de3a646-0193-4d64-9c4c-0867c19a1598}</Fb_init>
+    <Fb_exit>{611a2641-14fb-4d7e-8d4e-340370757192}</Fb_exit>
+    <CycleUpdate>{6142d259-89f7-4bef-a444-54d3e3facabe}</CycleUpdate>
+    <PostCycleUpdate>{a145fde3-17b4-43f8-8762-8526e377324c}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>
