@@ -113,6 +113,9 @@
     <Compile Include="POUs\STATIONS\ST6_PMAX.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\STATIONS\ST8_IMPRESSION.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\STATIONS\ST9_DECHARGEMENT.TcPOU">
       <SubType>Code</SubType>
     </Compile>

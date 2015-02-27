@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="ST8_IMPRESSION" Id="{74eea811-8023-4d68-88f8-590f4d0df1a4}">
+    <Declaration><![CDATA[PROGRAM ST8_IMPRESSION
+VAR
+	STEP: INT := 0;
+	JIG_STATUS_R_TRIG: R_TRIG;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*******************************************************
+*
+* Station 8 - Impression
+*
+*
+*********************************************************)
+IF NOT(GEMMA.STEP='F1') THEN
+	STEP:=0;
+END_IF;
+
+
+CASE STEP OF
+
+0: (*Init*)
+	
+	ST8_PRET_A_IMPRIMER := FALSE;
+	FLAGS.ST8_RELEASE_CARRIER := FALSE;
+	
+	STEP := STEP + 10;
+	
+10: (*Attend une palette / flanc montant du status*)
+
+	IF JIG_STATUS_R_TRIG.Q THEN
+		STEP := 100;
+	END_IF;
+
+	
+(**************************************************************************)
+100: (*Pompre prête*)
+	
+	ST8_PRET_A_IMPRIMER := TRUE;
+	STEP := STEP + 10;
+	
+110: (*Attend fin de l'impression de l'étiquette*)
+
+	IF ST8_IMPRESSION_OK THEN
+		ST8_PRET_A_IMPRIMER := FALSE;
+		STEP := 300;
+	END_IF;
+	
+
+(**************************************************************************)	
+
+
+300: (*Libère la palette*)
+
+	FLAGS.ST8_RELEASE_CARRIER := TRUE;
+	STEP := 0;
+
+
+ELSE
+    (*default case*);
+END_CASE;
+
+(*FBs*)
+JIG_STATUS_R_TRIG(CLK:= CONVEYOR.JIG_ST8.STATUS);
+PROG_STEPS.ST8:=STEP;]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

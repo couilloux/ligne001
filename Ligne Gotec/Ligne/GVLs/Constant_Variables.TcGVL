@@ -54,11 +54,12 @@ VAR_GLOBAL
 	ST1_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 	ST2_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 	ST3_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
-	ST4_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
-	ST5_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
+	ST4_5_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive les posages ST4 et ST5*)
+	ST4_JIG_DISABLED							:BOOL:=TRUE;			(*via la variable GRAND_DEBIT*)
+	ST5_JIG_DISABLED							:BOOL:=TRUE;			(*via la variable GRAND_DEBIT*)
 	ST6_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 	ST7_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
-	ST8_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
+	ST8_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
 	ST9_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 
 END_VAR
