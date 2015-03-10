@@ -11,6 +11,7 @@ END_VAR
 VAR_INPUT
 	NEXT_JIG_STATUS:BOOL; (*Status of the next jig*)
 	CARRIER_PRESENT:BOOL; (*CARRIER IS PRESENT *)
+	CARRIER_WAIT_PRESENT:BOOL; (*CARRIER IS PRESENT *)
 	RELEASE_CARRIER:BOOL; (*Ask the function to release the carrier *)
 	JIG_DISABLED: BOOL; (*Disable the JIG *)
 END_VAR
@@ -19,6 +20,7 @@ VAR_OUTPUT
 	STATUS: BOOL := FALSE; (* 0-> JIG FREE   1-> JIB BUSY *)
 	CYLINDER_STOP: BOOL :=FALSE; (* STOP the carrier at this position *)
 	CYLINDER_LOCK: BOOL:=FALSE; (* LOCK the carrier at this position *)
+	CYLINDER_WAIT: BOOL:=FALSE; (* vérin pour bloquer les palettes avant le poste*)
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(************************************************************************************************************************************
@@ -39,6 +41,7 @@ CASE STEP OF
 	START_RELEASE_TIMER:=FALSE;
 	CYLINDER_STOP:=FALSE;
 	CYLINDER_LOCK:=FALSE;
+	CYLINDER_WAIT:=FALSE;
 
 1: (*Wait for a carrier*)
 	CYLINDER_STOP:=TRUE;
@@ -58,12 +61,17 @@ CASE STEP OF
 	END_IF;
 
 3: (*Delay after release of the carrier*)
-	IF TIMER_RELEASE.Q THEN
+	IF TIMER_RELEASE.Q AND CARRIER_WAIT_PRESENT THEN
 		CYLINDER_STOP:=TRUE;
 		START_RELEASE_TIMER:=0;
 		STATUS:=0;
 		STEP:=1;
 	END_IF;
+
+
+
+
+
 
 
 ELSE

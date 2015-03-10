@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="PRESSURE_REGULATOR" Id="{a50045fb-9fcc-4535-9513-631d35e66fe3}">
+    <Declaration><![CDATA[FUNCTION_BLOCK PRESSURE_REGULATOR
+VAR_INPUT
+	COURANT			: LREAL;
+	PRESSION_CONSIGNE : REAL;
+	PRESSION_MESURE : REAL;
+	MOTOR_POSITION_MAX :FLOAT;
+	MOTOR_INITIAL_POSITION: LREAL;
+	GEMMA	:STRING;
+END_VAR
+VAR_OUTPUT
+	MOTOR_POSITION 	: DINT;
+END_VAR
+VAR
+	P_ERREUR:REAL;
+	GAIN:REAL:=4.0;
+	
+
+	eMode						: E_CTRL_MODE;
+	stCTRL_PI_PARAMS			: ST_CTRL_PI_PARAMS;
+
+	eErrorId					: E_CTRL_ERRORCODES;
+	bError						: BOOL;
+	bARWactive					: BOOL;
+
+	(* controller  *)
+	fbCTRL_PI					: FB_CTRL_PI;
+
+	fOut: LREAL;
+	bHold: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[	
+
+	(* init parameter struct *)
+	stCTRL_PI_PARAMS.tCtrlCycleTime		:= T#10MS;
+	stCTRL_PI_PARAMS.tTaskCycleTime		:= T#10MS;
+	stCTRL_PI_PARAMS.tTn				:= T#100MS;									(* derivative gain Tv				*)
+	stCTRL_PI_PARAMS.fKp				:= 10;										(* proportional gain Kp				*)
+	stCTRL_PI_PARAMS.fOutMaxLimit		:= MOTOR_POSITION_MAX;		  				(* maximum output limit				*)
+	stCTRL_PI_PARAMS.fOutMinLimit		:= 0;										(* minimum output limit				*)
+
+	(* set the mode to ACTIVE --> normal operation *)
+	eMode							:= eCTRL_MODE_ACTIVE;
+
+	(*Fixe la valeur d'entrée initiale pour le moteur en A1*)
+	IF GEMMA = 'A1' THEN
+		bHold :=TRUE;
+	ELSE
+		bHold :=FALSE;
+	END_IF
+
+	(*Controller pour la pression*)
+	fbCTRL_PI(		fSetpointValue		:= PRESSION_CONSIGNE,
+					fActualValue		:= PRESSION_MESURE,
+					fManSyncValue		:= MOTOR_INITIAL_POSITION,
+					bSync				:= bHold,
+					eMode				:= eMode,
+					bHold				:= bHold,
+					stParams			:= stCTRL_PI_PARAMS,
+					fOut				=> fOut,
+					bARWactive			=> bARWactive,
+					eErrorId			=> eErrorId,
+					bError				=> bError
+	);
+	
+MOTOR_POSITION := LREAL_TO_DINT(fOut);
+
+
+(*	
+P_ERREUR:=PRESSION_CONSIGNE - PRESSION_MESURE;
+
+IF COURANT > 10.0 THEN
+	MOTOR_POSITION := MOTOR_POSITION + REAL_TO_INT(P_ERREUR*GAIN);(* P_ERREUR*GAIN *)
+END_IF;*)
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

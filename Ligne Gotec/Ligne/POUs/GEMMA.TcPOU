@@ -2459,7 +2459,17 @@ DELAY_STARTING_AIR(IN:=START_AIR , PT:=DELAY_START_AIR);]]></ST>
 *
 ****************************************************************************)
 STEP := 'A1';
-]]></ST>
+
+(*Réglage pression**********************************************)
+PRESSURE_REGULATOR_ST4(
+GEMMA				:= GEMMA.STEP,
+COURANT				:= ST4_COURANT, 
+PRESSION_CONSIGNE	:= PUMP_PARAMS.ST4_PRESSION_CONSIGNE, 
+PRESSION_MESURE		:= ST4_PRESSURE_FILTERED,
+MOTOR_POSITION_MAX	:= MOTOR_ST4_POSITION_MAX,
+MOTOR_INITIAL_POSITION := MOTOR_ST4_INITIAL_POS,
+MOTOR_POSITION		=> FLAGS.MOTOR_ST4_POSITION
+);]]></ST>
       </Implementation>
     </Action>
     <Action Name="A4_Action" Id="{9cd56dcb-5c8e-47aa-8797-cf3b6f27d093}">

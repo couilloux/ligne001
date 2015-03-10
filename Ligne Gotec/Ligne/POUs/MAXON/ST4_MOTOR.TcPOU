@@ -4507,14 +4507,15 @@ END_VAR]]></Declaration>
     <Action Name="Step13_Action" Id="{86cf10b8-7a87-4ef2-b969-08524a2ff05f}">
       <Implementation>
         <ST><![CDATA[(*Limitation deplacement Moteur*)
-IF FLAGS.MOTOR_ST4_POSITION>MOTOR_ST4_POSITION_MAX THEN
+(*IF FLAGS.MOTOR_ST4_POSITION>MOTOR_ST4_POSITION_MAX THEN
 	POSITION:=MOTOR_ST4_POSITION_MAX;
 ELSIF FLAGS.MOTOR_ST4_POSITION<0 THEN
 	POSITION:=0;
 ELSE
 	POSITION:=FLAGS.MOTOR_ST4_POSITION;
-END_IF
+END_IF*)
 
+POSITION:=FLAGS.MOTOR_ST4_POSITION;
 
 MoveToPosition(
 	ADSNetId:= MOTOR_ST4_ADDRESS,
@@ -4914,7 +4915,7 @@ MoveToPosition(
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"1000"</v>
+                              <v n="Operand">"1500"</v>
                               <v n="Type">"INT"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>

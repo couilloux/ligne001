@@ -327,7 +327,7 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"ST4_PRESSURE"</v>
+                      <v n="Value">"ST4_PRESSURE_FILTERED"</v>
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
@@ -2191,10 +2191,10 @@
               <d n="FbMethods" t="CaseInsensitiveHashtable" ckt="String" cvt="Guid">
                 <v>FB_Init</v>
                 <v>2f903468-2c99-43bd-83f1-fb6708e99837</v>
-                <v>FB_Exit</v>
-                <v>6d7e59d2-bf6a-42c6-ae51-ed980ddaabb6</v>
                 <v>FB_Reinit</v>
                 <v>5f9ee20a-7a42-4abb-9931-30cedea88ba5</v>
+                <v>FB_Exit</v>
+                <v>6d7e59d2-bf6a-42c6-ae51-ed980ddaabb6</v>
               </d>
               <v n="FbName">"NotImportant"</v>
               <v n="FbGuid">{aeb046c7-958d-456a-a60f-66d18b01bd46}</v>
