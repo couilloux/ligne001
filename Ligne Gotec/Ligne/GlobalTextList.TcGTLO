@@ -51,6 +51,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"37"</v>
+              <v n="TextDefault">"DELTA"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"5"</v>
               <v n="TextDefault">"EM ACK"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -86,6 +91,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"36"</v>
+              <v n="TextDefault">"PRESSION_DEBUT"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"32"</v>
               <v n="TextDefault">"Prêt à imprimer"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -101,6 +111,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"38"</v>
+              <v n="TextDefault">"ST3_DELTA_P"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"35"</v>
+              <v n="TextDefault">"ST3_PRESSION"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"21"</v>
               <v n="TextDefault">"ST4 Position moteur"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -108,6 +128,11 @@
             <o>
               <v n="TextID">"19"</v>
               <v n="TextDefault">"ST4_CURRENT"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"34"</v>
+              <v n="TextDefault">"ST4_PRESSION"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
