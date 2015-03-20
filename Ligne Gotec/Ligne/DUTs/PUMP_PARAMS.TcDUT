@@ -5,7 +5,7 @@
 STRUCT
 	
 (* Général *******************************************************************************************************************)
-	GEN_GRAND_DEBIT					:BOOL:=FALSE;		(*FALSE / ST4 petit débit     TRUE / ST5 grand débit*)	
+	GEN_GRAND_DEBIT					:BOOL:=TRUE;		(*FALSE / ST4 petit débit     TRUE / ST5 grand débit*)	
 	
 (* Station 1 Haute tension ***************************************************************************************************)
 	ST1_HT_NO_PROG					:INT:=1;			(*Numéro de programme de l'appareil de test HT*)
@@ -29,6 +29,11 @@ STRUCT
 	ST4_PRESSION_CONSIGNE			:REAL:= 7.0;		(*Presssion de consigne pour le débit de travail*)
 	
 (* Station 5 Débit Grands*****************************************************************************************************)
+	ST5_TEMPS_POMPAGE				:TIME:= T#10S;		(*Temps amorcage de la pompe *)
+	ST5_TEMPS_MESURE_DEBIT_MAX		:TIME:= T#10S;		(*Temps de mesure de Qmax*)
+	ST5_TEMPS_REGLAGE_PRESSION		:TIME:= T#30S;		(*Temps de réglage de la pression *)
+	ST5_TEMPS_MESURE_DEBIT			:TIME:= T#10S;		(*Temps de mesure de Qtravail *)
+	ST5_PRESSION_CONSIGNE			:REAL:= 7.0;		(*Presssion de consigne pour le débit de travail*)
 
 (* Station 6 Pmax ************************************************************************************************************)	
 	ST6_TEMPS_POMPAGE				:TIME:= T#10S;		(*Temps amorcage de la pompe *)

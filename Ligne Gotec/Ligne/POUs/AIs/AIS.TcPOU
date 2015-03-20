@@ -13,6 +13,7 @@ VAR
 	ST5_GetPositionIs: FB_GetPositionIs;
 	
 	FB_CTRL_PT3_ST4_PRESSURE: FB_CTRL_PT3;
+	FB_CTRL_PT3_ST5_PRESSURE: FB_CTRL_PT3;
 	eMode_PRESSION: E_CTRL_MODE;
 	stParams_PRESSION: ST_CTRL_PT3_PARAMS;
 END_VAR]]></Declaration>
@@ -68,6 +69,15 @@ Pressure=> ST5_VACUUM,);
 ST5_5P2_CONVERT(
 INPUTS:= ST5_5P2.VALUE, 
 Pressure=> ST5_PRESSURE,);
+
+(*Filtres 3 ème ordre*)
+FB_CTRL_PT3_ST5_PRESSURE(
+	fIn:= ST5_PRESSURE,
+	fManValue:= 0,
+	eMode:= eMode_PRESSION,
+	bHold:= FALSE ,
+	stParams:= stParams_PRESSION,
+	fOut=> ST5_PRESSURE_FILTERED );
 
 ST5_COURANT:=ST5_Multimeter_value/1000.0;
 

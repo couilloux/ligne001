@@ -4767,7 +4767,7 @@ FLAGS.MOTOR_ST5_INIT_OK:=TRUE;
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"800"</v>
+                              <v n="Operand">"1500"</v>
                               <v n="Type">"INT"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>

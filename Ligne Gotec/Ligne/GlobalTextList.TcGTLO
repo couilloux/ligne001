@@ -171,6 +171,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"39"</v>
+              <v n="TextDefault">"ST5_Q"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"40"</v>
+              <v n="TextDefault">"ST5_QMAX"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"16"</v>
               <v n="TextDefault">"ST5_VACUUM"</v>
               <l n="LanguageTexts" t="ArrayList" />

@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="ST5_GRAND_PETIT" Id="{30b75cf2-1bfd-46e5-932c-67942fd48db5}">
+    <Declaration><![CDATA[PROGRAM ST5_GRAND_PETIT
+VAR
+	STEP: INT := 0;
+	JIG_STATUS_R_TRIG: R_TRIG;
+	START_TAMPO_AMORCAGE: BOOL;
+	TAMPO_AMORCAGE_TON: TON;
+	START_TAMPO_REGLAGE: BOOL;
+	TAMPO_REGLAGE_TON: TON;
+	START_TAMPO_MESURE_DEBIT: BOOL;
+	TAMPO_MESURE_DEBIT_TON: TON;
+	START_TAMPO_VIDANGE: BOOL;
+	TAMPO_VIDANGE_TON: TON;
+	START_TAMPO_MESURE_DEBIT_MAX: BOOL;
+	TAMPO_MESURE_DEBIT_MAX_TON: TON;
+	POIDS_QMAX_DEBUT: REAL;
+	POIDS_Q_DEBUT: REAL;
+	P_ERREUR: REAL;
+	START_TAMPO_PRESSION: BOOL;
+	TAMPO_PRESSION_TON: TON;
+		TAMPO_SORTIE_VERIN_HAUT_TON: TON;
+	START_TAMPO_VERIN_HAUT: BOOL;
+	TAMPO_SORTIE_VERIN_BAS_TON: TON;
+	START_TAMPO_VERIN_BAS: BOOL;
+	TAMPO_SORTIE_VERIN_ELEC_TON: TON;
+	START_TAMPO_VERIN_ELEC: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*******************************************************
+*
+* Station 5 - Grands débits
+*
+*
+*********************************************************)
+IF NOT(GEMMA.STEP='F1') THEN
+	STEP:=0;
+END_IF;
+
+
+CASE STEP OF
+
+0: (*Init*)
+
+	ST5_5V4 := FALSE;
+	ST5_5V5 := FALSE;
+	ST5_5V6 := FALSE;
+
+	ST5_5V10 := FALSE;
+	ST5_5V12 := FALSE;
+	ST5_5V13 := FALSE;
+	
+	
+	FLAGS.ST5_RELEASE_CARRIER := FALSE;
+	START_TAMPO_AMORCAGE := FALSE;
+	START_TAMPO_MESURE_DEBIT:= FALSE;
+	START_TAMPO_MESURE_DEBIT_MAX:= FALSE;
+	START_TAMPO_VIDANGE:= FALSE;
+	START_TAMPO_REGLAGE:= FALSE;
+	START_TAMPO_PRESSION:= FALSE;
+	START_TAMPO_VERIN_ELEC := FALSE;
+	START_TAMPO_VERIN_HAUT := FALSE;
+	START_TAMPO_VERIN_BAS := FALSE;
+	
+	
+	STEP := STEP + 10;
+	
+10: (*Attend une palette / flanc montant du status*)
+
+	IF JIG_STATUS_R_TRIG.Q THEN
+		STEP := STEP + 10;
+	END_IF;
+	
+20: (*Descend le vérin du dessus*)
+
+	ST5_5V4 := TRUE;
+	START_TAMPO_VERIN_HAUT := TRUE;
+	POIDS_QMAX_DEBUT	:= 0;	(*Met à 0 les différentes variables pour le calcul et résultat des débits*)
+	POIDS_Q_DEBUT		:= 0;
+	ST5_Q				:= 0;
+	ST5_QMAX			:= 0;
+	STEP := STEP + 10;
+	
+30: (*Attend vérin dessus sorti*)
+
+	IF TAMPO_SORTIE_VERIN_HAUT_TON.Q THEN
+		START_TAMPO_VERIN_HAUT := FALSE;
+		STEP := STEP + 10;
+	END_IF;
+
+40: (*Monte le vérin du dessous*)
+
+	ST5_5V5 := TRUE;
+	START_TAMPO_VERIN_BAS := TRUE;
+	STEP := STEP + 10;
+	
+50: (*Attend vérin dessus sorti*)
+
+	IF TAMPO_SORTIE_VERIN_BAS_TON.Q THEN
+		START_TAMPO_VERIN_BAS := FALSE;
+		STEP := STEP + 10;
+	END_IF;
+	
+60: (*Sort le vérin électrique*)
+
+	ST5_5V6 := TRUE;
+	START_TAMPO_VERIN_ELEC := TRUE;
+	STEP := STEP + 10;
+	
+70: (*Attend vérin électrique sortie*)
+
+	IF TAMPO_SORTIE_VERIN_ELEC_TON.Q THEN
+		START_TAMPO_VERIN_ELEC := FALSE;
+		STEP := STEP + 10;
+	END_IF;
+
+80: (*Allume la pompe*)
+
+	ST5_POWER := TRUE;
+	ST5_5V10 := TRUE;
+	ST5_5V13 := TRUE;
+	STEP := 100;
+	
+	
+(**************************************************************************)
+100: (*Démarre la tampo pour l'amorcage*)
+
+	START_TAMPO_AMORCAGE := TRUE;
+	STEP := STEP + 10;
+	
+110: (*Attend fin tampo amorcage*)
+
+	IF TAMPO_AMORCAGE_TON.Q THEN
+		START_TAMPO_AMORCAGE := FALSE;
+		STEP := STEP + 10;
+	END_IF;
+	
+120: (*Démarre la tampo pour la mesure de Qmax*)
+
+	START_TAMPO_MESURE_DEBIT_MAX := TRUE;
+	POIDS_QMAX_DEBUT := ST5_POIDS;
+	STEP := STEP + 10;
+	
+130: (*Attend fin tampo mesure de Qmax ***********************************************************)
+	IF TAMPO_MESURE_DEBIT_MAX_TON.Q THEN
+		ST5_QMAX := CONVERT_MASS_TO_FLOW(ST5_POIDS - POIDS_QMAX_DEBUT, PUMP_PARAMS.ST5_TEMPS_MESURE_DEBIT_MAX);(*Calcul du débit max*)
+		
+		QMAX5_ARRAY[INDEX_QMAX5_ARRAY]:=ST5_QMAX; (*Array des derniers résultats*)
+		INDEX_QMAX5_ARRAY := INDEX_QMAX5_ARRAY+1;
+		
+		START_TAMPO_MESURE_DEBIT_MAX := FALSE;
+		ST5_5V12 := TRUE;
+		ST5_5V13 := FALSE;
+		STEP := STEP + 10;
+	END_IF;
+	
+140: (*Démarre la tampo pour la mise sous pression*)
+
+	START_TAMPO_PRESSION := TRUE;
+	STEP := STEP + 10;
+	
+150: (*Attend fin tampo mise sous pression*)
+
+	IF TAMPO_PRESSION_TON.Q THEN
+		START_TAMPO_PRESSION := FALSE;
+		STEP := STEP + 10;
+	END_IF;
+	
+160: (*Démarre la tampo pour le réglage*)
+
+	START_TAMPO_REGLAGE := TRUE;
+	STEP := STEP + 10;
+	
+170: (*Attend fin tampo réglage*)
+
+(*Réglage pression**********************************************)
+PRESSURE_REGULATOR_ST5(
+GEMMA				:= GEMMA.STEP,
+COURANT				:= ST5_COURANT, 
+PRESSION_CONSIGNE	:= PUMP_PARAMS.ST5_PRESSION_CONSIGNE, 
+PRESSION_MESURE		:= ST5_PRESSURE_FILTERED,
+MOTOR_POSITION_MAX	:= MOTOR_ST5_POSITION_MAX,
+MOTOR_INITIAL_POSITION := MOTOR_ST5_INITIAL_POS,
+MOTOR_POSITION		=> FLAGS.MOTOR_ST5_POSITION
+);
+	
+
+	IF TAMPO_REGLAGE_TON.Q THEN
+		START_TAMPO_REGLAGE := FALSE;
+		STEP := STEP + 10;
+	END_IF;
+	
+180: (*Démarre la tampo pour la mesure de debit*************************************************)
+
+	START_TAMPO_MESURE_DEBIT := TRUE;
+	POIDS_Q_DEBUT := ST5_POIDS;
+	STEP := STEP + 10;
+
+	
+190: (*Attend fin tampo amorcage - MESURE EN COURT*)
+
+(*Réglage pression***********************************************)
+PRESSURE_REGULATOR_ST5( 
+GEMMA				:= GEMMA.STEP,
+COURANT				:= ST5_COURANT, 
+PRESSION_CONSIGNE	:= PUMP_PARAMS.ST5_PRESSION_CONSIGNE, 
+PRESSION_MESURE		:= ST5_PRESSURE_FILTERED,
+MOTOR_POSITION_MAX	:= MOTOR_ST5_POSITION_MAX,
+MOTOR_INITIAL_POSITION := MOTOR_ST5_INITIAL_POS,
+MOTOR_POSITION		=> FLAGS.MOTOR_ST5_POSITION
+);
+
+	IF TAMPO_MESURE_DEBIT_TON.Q THEN
+		ST5_Q := CONVERT_MASS_TO_FLOW(ST5_POIDS - POIDS_Q_DEBUT, PUMP_PARAMS.ST5_TEMPS_MESURE_DEBIT);(*Calcul du débit de travail*)
+		
+		Q5_ARRAY[INDEX_Q5_ARRAY]:=ST5_Q; (*Array des derniers résultats*)
+		INDEX_Q5_ARRAY := INDEX_Q5_ARRAY+1;
+		
+		START_TAMPO_MESURE_DEBIT := FALSE;
+		STEP := 300;
+	END_IF;
+	
+	
+
+(**************************************************************************)	
+
+300: (*Descend le vérin du dessous*)
+
+	ST5_5V5 := FALSE;
+	ST5_5V10 := FALSE;	(* ferme la vanne avant la pompe*)
+	ST5_5V12 := FALSE;
+	ST5_5V13 := TRUE;
+	STEP := STEP + 10;
+
+310: (*Démarre la tampo de vidange de la pompe*)
+
+	START_TAMPO_VIDANGE := TRUE;
+	STEP := STEP + 10;
+	
+320: (*Attend fin tampo amorcage*)
+
+	IF TAMPO_VIDANGE_TON.Q THEN
+		START_TAMPO_VIDANGE := FALSE;
+		ST5_5V13 := FALSE;
+		ST5_POWER := FALSE;
+		STEP := STEP + 10;
+	END_IF;
+
+330: (*Rentre le vérin électrique*)
+
+	ST5_5V6 := FALSE;
+	STEP := STEP + 10;
+	
+	
+340: (*Monte le vérin du dessus*)
+
+	ST5_5V4 := FALSE;
+	STEP := STEP + 10;
+
+350: (*Libère la palette*)
+
+	FLAGS.ST5_RELEASE_CARRIER := TRUE;
+	STEP := 0;
+
+
+ELSE
+    (*default case*);
+END_CASE;
+
+(*FBs*)
+TAMPO_SORTIE_VERIN_HAUT_TON(IN:= START_TAMPO_VERIN_HAUT, PT:= TEMPS_SORTIE_VERIN);
+TAMPO_SORTIE_VERIN_BAS_TON(IN:= START_TAMPO_VERIN_BAS, PT:= TEMPS_SORTIE_VERIN);
+TAMPO_SORTIE_VERIN_ELEC_TON(IN:= START_TAMPO_VERIN_ELEC, PT:= TEMPS_SORTIE_VERIN);
+
+TAMPO_AMORCAGE_TON(IN:= START_TAMPO_AMORCAGE, PT:= PUMP_PARAMS.ST5_TEMPS_POMPAGE);
+TAMPO_REGLAGE_TON(IN:= START_TAMPO_REGLAGE, PT:= PUMP_PARAMS.ST5_TEMPS_REGLAGE_PRESSION);
+TAMPO_VIDANGE_TON(IN:= START_TAMPO_VIDANGE, PT:= TEMPS_VIDANGE_POMPE);
+TAMPO_PRESSION_TON(IN:= START_TAMPO_PRESSION, PT:= TEMPS_CHANGEMENT_PRESSION);
+TAMPO_MESURE_DEBIT_TON(IN:= START_TAMPO_MESURE_DEBIT, PT:= PUMP_PARAMS.ST5_TEMPS_MESURE_DEBIT);
+TAMPO_MESURE_DEBIT_MAX_TON(IN:= START_TAMPO_MESURE_DEBIT_MAX, PT:= PUMP_PARAMS.ST5_TEMPS_MESURE_DEBIT_MAX);
+JIG_STATUS_R_TRIG(CLK:= CONVEYOR.JIG_ST5.STATUS);
+PROG_STEPS.ST5:=STEP;]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

@@ -30,7 +30,7 @@ VAR_GLOBAL CONSTANT
 	MOTOR_ST4_INITIAL_POS						:DINT:=30000;					(*Initial position of the motor*)
 	MOTOR_ST4_POSITION_MAX						:DINT:=35000;					(*Butée soft du moteur*)
 	MOTOR_ST5_INITIAL_POS						:DINT:=30000;					(*Initial position of the motor*)
-	MOTOR_ST5_POSITION_MAX						:DINT:=37000;					(*Butée soft du moteur*)
+	MOTOR_ST5_POSITION_MAX						:DINT:=35000;					(*Butée soft du moteur*)
 	
 
 
@@ -54,10 +54,10 @@ VAR_GLOBAL
 	ST1_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 	ST2_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 	ST3_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
-	ST4_5_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive les posages ST4 et ST5*)
+	ST4_5_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive les posages ST4 et ST5*)
 	ST4_JIG_DISABLED							:BOOL:=TRUE;			(*via la variable GRAND_DEBIT*)
 	ST5_JIG_DISABLED							:BOOL:=TRUE;			(*via la variable GRAND_DEBIT*)
-	ST6_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
+	ST6_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 	ST7_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 	ST8_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
 	ST9_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)

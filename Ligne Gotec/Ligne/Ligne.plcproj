@@ -110,6 +110,9 @@
     <Compile Include="POUs\STATIONS\ST4_DEBIT_PETIT.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\STATIONS\ST5_GRAND_PETIT.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\STATIONS\ST7_SECHAGE.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -137,6 +140,10 @@
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
     <Compile Include="VISUs\ST4.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="VISUs\ST5.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
