@@ -59,13 +59,19 @@
     <Compile Include="POUs\AIs\AIS.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\AIs\ST45_TO_HMI.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\CONVOYER\CONVEYOR.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\CONVOYER\JIG.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\EAU\VIDANGE_BALANCE.TcPOU">
+    <Compile Include="POUs\EAU\VIDANGE_BALANCE_ST4.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\EAU\VIDANGE_BALANCE_ST5.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\EH\EH_FLOMETER.TcPOU">

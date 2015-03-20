@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="ST45_TO_HMI" Id="{ba42c27a-cf2a-42f9-8353-a4d5efdfd031}">
+    <Declaration><![CDATA[PROGRAM ST45_TO_HMI
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF PUMP_PARAMS.GEN_GRAND_DEBIT THEN
+	
+	ST45_QMAX			:=	ST5_QMAX;
+	ST45_Q				:=	ST5_Q;
+	ST45_PRESSURE		:=	ST5_PRESSURE_FILTERED;
+	ST45_VACUUM			:=	ST5_VACUUM;
+	ST45_POIDS			:=	ST5_POIDS;
+	
+	ST45_COURANT		:=	ST5_COURANT;
+	
+ELSE
+	
+	ST45_QMAX			:=	ST4_QMAX;
+	ST45_Q				:=	ST4_Q;
+	ST45_PRESSURE		:=	ST4_PRESSURE_FILTERED;
+	ST45_VACUUM			:=	ST4_VACUUM;
+	ST45_POIDS			:=	ST4_POIDS;
+	
+	ST45_COURANT		:=	ST4_COURANT;
+	
+END_IF]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

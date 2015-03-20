@@ -21,19 +21,13 @@ STRUCT
 	ST3_TEMPS_STABILISATION			:TIME:= T#10S;		(*Temps de stabilisation de la pression*)
 	ST3_TEMPS_MESURE				:TIME:= T#15S;		(*Temps de mesure de la chutte de	 pression*)
 	
-(* Station 4 Débit petit *****************************************************************************************************)
-	ST4_TEMPS_POMPAGE				:TIME:= T#10S;		(*Temps amorcage de la pompe *)
-	ST4_TEMPS_MESURE_DEBIT_MAX		:TIME:= T#10S;		(*Temps de mesure de Qmax*)
-	ST4_TEMPS_REGLAGE_PRESSION		:TIME:= T#30S;		(*Temps de réglage de la pression *)
-	ST4_TEMPS_MESURE_DEBIT			:TIME:= T#10S;		(*Temps de mesure de Qtravail *)
-	ST4_PRESSION_CONSIGNE			:REAL:= 7.0;		(*Presssion de consigne pour le débit de travail*)
-	
-(* Station 5 Débit Grands*****************************************************************************************************)
-	ST5_TEMPS_POMPAGE				:TIME:= T#10S;		(*Temps amorcage de la pompe *)
-	ST5_TEMPS_MESURE_DEBIT_MAX		:TIME:= T#10S;		(*Temps de mesure de Qmax*)
-	ST5_TEMPS_REGLAGE_PRESSION		:TIME:= T#30S;		(*Temps de réglage de la pression *)
-	ST5_TEMPS_MESURE_DEBIT			:TIME:= T#10S;		(*Temps de mesure de Qtravail *)
-	ST5_PRESSION_CONSIGNE			:REAL:= 7.0;		(*Presssion de consigne pour le débit de travail*)
+
+(* Station 4-5 Débit *****************************************************************************************************)
+	ST45_TEMPS_POMPAGE				:TIME:= T#10S;		(*Temps amorcage de la pompe *)
+	ST45_TEMPS_MESURE_DEBIT_MAX		:TIME:= T#10S;		(*Temps de mesure de Qmax*)
+	ST45_TEMPS_REGLAGE_PRESSION		:TIME:= T#30S;		(*Temps de réglage de la pression *)
+	ST45_TEMPS_MESURE_DEBIT			:TIME:= T#10S;		(*Temps de mesure de Qtravail *)
+	ST45_PRESSION_CONSIGNE			:REAL:= 7.0;		(*Presssion de consigne pour le débit de travail*)
 
 (* Station 6 Pmax ************************************************************************************************************)	
 	ST6_TEMPS_POMPAGE				:TIME:= T#10S;		(*Temps amorcage de la pompe *)

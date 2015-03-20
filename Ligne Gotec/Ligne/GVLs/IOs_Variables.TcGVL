@@ -109,12 +109,25 @@ VAR_GLOBAL
 	ST3_PRESSION	:REAL;		(*Capteur de pression différentiel - Valeur réel en mBar*)
 	
 	ST3_DELTA_P	:REAL;			(*Mesure de la chutte de pression*)
+
+(************************************************************************************************
+*
+*Pote 4 et 5  - Débits - Variables pour HMI
+*
+**********************************************************************************************)	
+	ST45_QMAX		:REAL;			(*Débit max calculé*)
+	ST45_Q			:REAL;			(*Débit travail calculé*)
+	ST45_PRESSURE	:REAL; 			(*Pression fitré*)
+	ST45_VACUUM		:REAL; 			(*Pression aspiration*)
+	ST45_POIDS		:REAL;			(*Poids sur la balance*)
+	
+	ST45_COURANT	:REAL;			(*Courant*)
 	
 (************************************************************************************************
 *
 *Pote 4 - Débit (petit)
 *
-***********************************************************************************************)	
+**********************************************************************************************)	
 	ST4_4B1 	AT%I*:BOOL;		(*Capteur palette en attente*)
 	ST4_4B2 	AT%I*:BOOL;		(*Capteur palette présente*)
 	ST4_4B4 	AT%I*:BOOL;		(*Capteur vérin Hydro TOP*)

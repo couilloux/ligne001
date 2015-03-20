@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
-  <POU Name="VIDANGE_BALANCE" Id="{e23430fa-6103-4450-a221-f9bf8c45dd2b}">
-    <Declaration><![CDATA[FUNCTION_BLOCK VIDANGE_BALANCE
+  <POU Name="VIDANGE_BALANCE_ST4" Id="{e23430fa-6103-4450-a221-f9bf8c45dd2b}">
+    <Declaration><![CDATA[FUNCTION_BLOCK VIDANGE_BALANCE_ST4
 VAR_INPUT
 	POIDS: REAL;
 	POIDS_LIMIT: REAL;

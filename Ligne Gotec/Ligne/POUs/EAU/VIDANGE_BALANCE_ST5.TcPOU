@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <POU Name="VIDANGE_BALANCE_ST5" Id="{a86b8e28-461f-428b-bff2-5a1acd6fcd59}">
+    <Declaration><![CDATA[FUNCTION_BLOCK VIDANGE_BALANCE_ST5
+VAR_INPUT
+	POIDS: REAL;
+	POIDS_LIMIT: REAL;
+	PROG_STEP: INT;
+	MODE:INT;
+END_VAR
+VAR_OUTPUT
+	POMPE: BOOL;
+END_VAR
+VAR
+	POMPE_START: BOOL;
+	POMPE_STOP: BOOL;
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+
+CASE MODE OF
+1: (*Mode normal*)
+  	ST5_5V14 := FALSE;
+	ST5_5V15 := TRUE;
+	ST5_5V16 := FALSE;
+	IF ((POIDS+200) > POIDS_LIMIT) AND (GEMMA.STEP='F1' OR GEMMA.STEP='A1')  AND PROG_STEP<=10 THEN (*Hystérésis de 200g*)
+		POMPE	:= TRUE; 
+	ELSIF (POIDS < POIDS_LIMIT) AND (GEMMA.STEP='F1' OR GEMMA.STEP='A1') AND PROG_STEP<=10 THEN
+		POMPE 	:= FALSE;
+	ELSE
+		POMPE 	:= FALSE;
+	END_IF;
+
+2:  (*Mode Vidange du réservoir d'eau*)   
+    ST5_5V14 := TRUE;
+	ST5_5V15 := TRUE;
+	ST5_5V16 := TRUE;
+2:  (*Mode Remplissage du réservoir d'eau depuis le banc déminéralisateur*)   
+    ST5_5V14 := FALSE;
+	ST5_5V15 := TRUE;
+	ST5_5V16 := FALSE;
+
+END_CASE;
+
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>
