@@ -46,6 +46,7 @@ CASE STEP OF
 	ST4_4V4 := FALSE;
 	ST4_4V5 := FALSE;
 	ST4_4V6 := FALSE;
+	ST4_4V7 := FALSE;
 
 	ST4_4V10 := FALSE;
 	ST4_4V12 := FALSE;
@@ -105,6 +106,9 @@ CASE STEP OF
 60: (*Sort le vérin électrique*)
 
 	ST4_4V6 := TRUE;
+	IF PUMP_PARAMS.GEN_BYPASS THEN
+		ST4_4V7 := TRUE;
+	END_IF
 	START_TAMPO_VERIN_ELEC := TRUE;
 	STEP := STEP + 10;
 	
@@ -250,6 +254,7 @@ MOTOR_POSITION		=> FLAGS.MOTOR_ST4_POSITION
 330: (*Rentre le vérin électrique*)
 
 	ST4_4V6 := FALSE;
+	ST4_4V7 := FALSE;
 	STEP := STEP + 10;
 	
 	

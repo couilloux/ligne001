@@ -40,6 +40,7 @@ CASE STEP OF
 	ST6_6V5 := FALSE;
 	ST6_6V6 := FALSE;
 	ST6_6V6 := FALSE;
+	ST6_6V7 := FALSE;
 	ST6_6V10 := FALSE;
 	ST6_6V11 := FALSE;
 	
@@ -89,6 +90,9 @@ CASE STEP OF
 60: (*Sort le vérin électrique*)
 
 	ST6_6V6 := TRUE;
+	IF PUMP_PARAMS.GEN_BYPASS THEN
+		ST6_6V7 := TRUE;
+	END_IF
 	START_TAMPO_VERIN_ELEC := TRUE;
 	STEP := STEP + 10;
 	
@@ -172,6 +176,7 @@ CASE STEP OF
 330: (*Rentre le vérin électrique*)
 
 	ST6_6V6 := FALSE;
+	ST6_6V7 := FALSE;
 	STEP := STEP + 10;
 	
 	

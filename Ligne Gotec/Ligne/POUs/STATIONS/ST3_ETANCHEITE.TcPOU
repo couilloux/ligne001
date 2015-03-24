@@ -76,6 +76,9 @@ CASE STEP OF
 40: (*Monte le vérin du dessous*)
 
 	ST3_3V5 := TRUE;
+	IF PUMP_PARAMS.GEN_BYPASS THEN
+		ST3_3V7 := TRUE;
+	END_IF
 	START_TAMPO_VERIN_BAS := TRUE;
 	STEP := STEP + 10;
 	
@@ -83,7 +86,7 @@ CASE STEP OF
 
 	IF TAMPO_SORTIE_VERIN_BAS_TON.Q THEN
 		START_TAMPO_VERIN_BAS := FALSE;
-		(*STEP := 100;*)
+		STEP := 100;
 	END_IF;
 	
 	
@@ -161,6 +164,7 @@ CASE STEP OF
 300: (*Descend le vérin du dessous*)
 
 	ST3_3V5 := FALSE;
+	ST3_3V7 := FALSE;
 	STEP := STEP + 10;
 	
 310: (*Monte le vérin du dessus*)

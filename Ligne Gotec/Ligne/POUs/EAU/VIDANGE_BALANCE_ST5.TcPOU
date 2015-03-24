@@ -23,9 +23,11 @@ END_VAR
 
 CASE MODE OF
 1: (*Mode normal*)
+
   	ST5_5V14 := FALSE;
-	ST5_5V15 := TRUE;
+	ST5_5V15 := FALSE;
 	ST5_5V16 := FALSE;
+	
 	IF ((POIDS+200) > POIDS_LIMIT) AND (GEMMA.STEP='F1' OR GEMMA.STEP='A1')  AND PROG_STEP<=10 THEN (*Hystérésis de 200g*)
 		POMPE	:= TRUE; 
 	ELSIF (POIDS < POIDS_LIMIT) AND (GEMMA.STEP='F1' OR GEMMA.STEP='A1') AND PROG_STEP<=10 THEN
@@ -38,7 +40,7 @@ CASE MODE OF
     ST5_5V14 := TRUE;
 	ST5_5V15 := TRUE;
 	ST5_5V16 := TRUE;
-2:  (*Mode Remplissage du réservoir d'eau depuis le banc déminéralisateur*)   
+3:  (*Mode Remplissage du réservoir d'eau depuis le banc déminéralisateur*)   
     ST5_5V14 := FALSE;
 	ST5_5V15 := TRUE;
 	ST5_5V16 := FALSE;

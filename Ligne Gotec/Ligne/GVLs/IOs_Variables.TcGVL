@@ -19,6 +19,7 @@ VAR_GLOBAL
 	GEN_CONVOYEUR			AT%Q*:BOOL;		(*Relais convoyeur*)
 	
 	
+	
 
 (************************************************************************************************
 *
@@ -148,6 +149,8 @@ VAR_GLOBAL
 	
 	ST4_COURANT	:REAL;			(*Courant*)
 	
+	ST4_DIGMESA	AT%I*:BOOL;		(*Digmesa*)
+	
 	ST4_4V1 	AT%Q*:BOOL;		(*Vérin palette attente*)
 	ST4_4V2 	AT%Q*:BOOL;		(*Vérin palette bloquage*)
 	ST4_4V3 	AT%Q*:BOOL;		(*Vérin palette stop*)
@@ -206,6 +209,9 @@ VAR_GLOBAL
 	ST5_VIDANGE	AT%Q*:BOOL;		(*Vidange balance*)
 	
 	ST5_Niveau_Reservoir 	AT%I*:INT;
+	
+	ST5_MODE_VIDANGE	:INT;	(*Mode de vidange 1-Mode normal 2-Vidange du réseroir 3-Remplissage depuis le banc déminéralisateur*)
+	
 	
 
 (************************************************************************************************

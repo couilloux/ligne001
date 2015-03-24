@@ -21,9 +21,9 @@ ST5_MOTOR();
 (*Appel les différents modules pour les stations*)
 (*ST1_HT();*)
 (*ST2_ASPIRATION();*)
-(*ST3_ETANCHEITE();*)
+ST3_ETANCHEITE();
 (*ST4_DEBIT_PETIT();*)
-ST6_PMAX();
+(*ST6_PMAX();*)
 (*ST7_SECHAGE();*)
 (*ST8_IMPRESSION();*)
 (*ST9_DECHARGEMENT();*)
@@ -37,6 +37,7 @@ POMPE=> ST4_VIDANGE);
 
 (*Gestion de la vidange de la balance ST5*)
 ST5_VIDANGE_BALANCE(
+MODE:= ST5_MODE_VIDANGE, 
 PROG_STEP:= PROG_STEPS.ST5,
 POIDS:= ST5_POIDS, 
 POIDS_LIMIT:= 2000, 

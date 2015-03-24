@@ -84,6 +84,9 @@ CASE STEP OF
 60: (*Sort le vérin électrique*)
 
 	ST2_2V6 := TRUE;
+	IF PUMP_PARAMS.GEN_BYPASS THEN
+		ST2_2V7 := TRUE;
+	END_IF
 	START_TAMPO_VERIN_ELEC := TRUE;
 	STEP := STEP + 10;
 	
@@ -149,6 +152,7 @@ CASE STEP OF
 300: (*Rentre le vérin électrique*)
 
 	ST2_2V6 := FALSE;
+	ST2_2V7 := TRUE;
 	STEP := STEP + 10;
 	
 310: (*Descend le vérin du dessous*)

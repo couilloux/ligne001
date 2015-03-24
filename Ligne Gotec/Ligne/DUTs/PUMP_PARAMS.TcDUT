@@ -5,7 +5,9 @@
 STRUCT
 	
 (* Général *******************************************************************************************************************)
-	GEN_GRAND_DEBIT					:BOOL:=TRUE;		(*FALSE / ST4 petit débit     TRUE / ST5 grand débit*)	
+	GEN_GRAND_DEBIT					:BOOL:=TRUE;		(*FALSE / ST4 petit débit     TRUE / ST5 grand débit*)
+	GEN_BYPASS						:BOOL:=TRUE;		(*FALSE / N'utilise pas le contrôle du bypass      TRUE / Utilise le contrôle du by-pass*)
+		
 	
 (* Station 1 Haute tension ***************************************************************************************************)
 	ST1_HT_NO_PROG					:INT:=1;			(*Numéro de programme de l'appareil de test HT*)
