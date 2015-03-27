@@ -15,7 +15,6 @@ VAR_GLOBAL CONSTANT
 	DELAY_START_AIR								:TIME:= T#2S;			(*Time to let air starting before starting convoyer *)
 
 	TEMPS_VIDANGE_POMPE							:TIME:= T#2S;			(*Temps durant lequel on pompe de l'air pour vidanger la pompe*)
-	TEMPS_VIDANGE_RESERVOIR						:TIME:= T#30S;			(*Temps durant lequel on continue de vider le réservoir d'eau pour être sur qu'il est vide*)
 	
 	TEMPS_SORTIE_VERIN							:TIME:= T#3S;			(*Temps durant lequel on pompe de l'air pour vidanger la pompe*)
 	
@@ -32,9 +31,6 @@ VAR_GLOBAL CONSTANT
 	MOTOR_ST4_POSITION_MAX						:DINT:=35000;					(*Butée soft du moteur*)
 	MOTOR_ST5_INITIAL_POS						:DINT:=30000;					(*Initial position of the motor*)
 	MOTOR_ST5_POSITION_MAX						:DINT:=35000;					(*Butée soft du moteur*)
-	
-	RESERVOIR_EAU_MAX							:INT:=5000;						(*Niveau haut du réservoir d'eau*)
-	RESERVOIR_EAU_MIN							:INT:=14000;					(*Niveau bas du réservoir d'eau*)
 	
 
 

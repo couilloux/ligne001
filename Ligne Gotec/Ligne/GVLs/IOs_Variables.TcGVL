@@ -208,10 +208,10 @@ VAR_GLOBAL
 	ST5_POWER	AT%Q*:BOOL;		(*Alimentation électrique pompe*)
 	ST5_VIDANGE	AT%Q*:BOOL;		(*Vidange balance*)
 	
-	ST5_Niveau_Reservoir 	AT%I*:INT; (*Niveau réservoir - valeur du capteur*)
+	ST5_Niveau_Reservoir 	AT%I*:INT;
 	
-	ST5_MODE_VIDANGE		:INT;	(*Mode de vidange 1-Mode normal 2-Vidange du réseroir 3-Remplissage depuis le banc déminéralisateur*)
-	ST5_NIVEAU_EAU			:INT;	(*Niveau du réservoir 0-100%*)
+	ST5_MODE_VIDANGE	:INT;	(*Mode de vidange 1-Mode normal 2-Vidange du réseroir 3-Remplissage depuis le banc déminéralisateur*)
+	
 	
 
 (************************************************************************************************

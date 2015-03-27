@@ -15,8 +15,6 @@ VAR
 	POMPE_START: BOOL;
 	POMPE_STOP: BOOL;
 
-	TAMPO_VIDANGE_TON: TON;
-	START_TAMPO_VIDANGE: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -42,32 +40,12 @@ CASE MODE OF
     ST5_5V14 := TRUE;
 	ST5_5V15 := TRUE;
 	ST5_5V16 := TRUE;
-	
-	IF ST5_NIVEAU_EAU>2 THEN
-		POMPE	:= TRUE; 
-		START_TAMPO_VIDANGE := FALSE;
-	ELSIF ST5_NIVEAU_EAU<0 AND NOT START_TAMPO_VIDANGE THEN
-		 START_TAMPO_VIDANGE := TRUE;
-	END_IF
-	(*Continue de pomper encore 30 secondes depuis le niveau bas*)
-	IF TAMPO_VIDANGE_TON.Q THEN
-		POMPE	:= FALSE;
-	END_IF
-	
 3:  (*Mode Remplissage du réservoir d'eau depuis le banc déminéralisateur*)   
     ST5_5V14 := FALSE;
 	ST5_5V15 := TRUE;
 	ST5_5V16 := FALSE;
-	
-	IF ST5_NIVEAU_EAU<98 THEN
-		POMPE	:= TRUE; 
-	ELSIF ST5_NIVEAU_EAU>100 THEN
-		POMPE	:= FALSE; 
-	END_IF
 
 END_CASE;
-
-TAMPO_VIDANGE_TON(IN:= START_TAMPO_VIDANGE, PT:=TEMPS_VIDANGE_RESERVOIR);
 
 
 ]]></ST>

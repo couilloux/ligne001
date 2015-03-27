@@ -86,8 +86,6 @@ ST5_GetPositionIs(
 	NodeId:= 1, 
 	Read:= TRUE, 
 	PositionIs=> FLAGS.MOTOR_ST5_ACTUAL_POSITION);
-	
-ST5_NIVEAU_EAU := ST5_Niveau_Reservoir * 100 /(RESERVOIR_EAU_MAX-RESERVOIR_EAU_MIN) + 100*RESERVOIR_EAU_MIN/(RESERVOIR_EAU_MIN-RESERVOIR_EAU_MAX);
 
 (*STATION 6***************************************************************************)
 ST6_6P1_CONVERT(
