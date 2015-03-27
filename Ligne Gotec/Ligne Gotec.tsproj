@@ -51,7 +51,7 @@
 		<ImageData Id="1007">424de6000000000000007600000028000000100000000e000000010004000000000070000000120b0000120b0000100000001000000000000000000080000080000000808000800000008000800080800000c0c0c000808080000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff005dd55d88888888dd5dd5d577777778dd55d55d77888778dd5d55d577888778dd55d55d77888778dddddddd77777778dddddddd77777778dd9b9b9b77777778ddb9b9b977777778dd9b9b9b77777778ddb9b9b977797778dd9b9b9b77797778ddb9b9b9777a7778dd9b9b9b77777778dd</ImageData>
 		<ImageData Id="1008">424de6000000000000007600000028000000100000000e000000010004000000000070000000ea0e0000ea0e000000000000000000000000000000008000008000000080800080000000800080008080000080808000c0c0c0000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff00777f7f7f77f77f777fff7f7f7ff77f77777f878f77f77f777fff7f7ff7f7ff77777f7f7f77f77f77fffffffffffffffff8888888888888888877777777777777777887888888888777788786ccccc66778788786ccccc6677f78878666666687887ff7fffffffff7ff77777777777777</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{19BC4D0B-A8AC-427B-810F-55309956AFEF}">
+	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{C8840833-C5C7-4F48-ABB8-A7D04CF0196A}">
 		<System>
 			<Licenses>
 				<Target BkhfOrder="VE2161436"/>
@@ -1488,7 +1488,7 @@ Bit1: Value bigger/equal Limit2]]>
 					<Box BoxType="9094" Id="89">
 						<Name>Term 89 (EL6751)</Name>
 						<ImageId>1005</ImageId>
-						<EtherCAT SlaveType="5" AdsServerAddress="0a0a0a1f04010000" PdiType="#x0c08" ExecIo="true" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00000002" ProductCode="#x1a5f3052" RevisionNo="#x00130000" InfoDataAddr="true" InfoDataNetId="true" OwnAddrExtern="true" TimeoutStateChange1="5000" TimeoutStateChange3="10000" TimeoutStateChange4="1000" TimeoutMailbox2="2000" GenerateOwnNetId="true" InitializeOwnNetId="true" PortPhys="51" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6751 CANopen Master" Desc="EL6751" PortABoxInfo="#x0100000b">
+						<EtherCAT SlaveType="5" AdsServerAddress="0a0a0a1f04011104" PdiType="#x0c08" ExecIo="true" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00000002" ProductCode="#x1a5f3052" RevisionNo="#x00130000" InfoDataAddr="true" InfoDataNetId="true" OwnAddrExtern="true" TimeoutStateChange1="5000" TimeoutStateChange3="10000" TimeoutStateChange4="1000" TimeoutMailbox2="2000" GenerateOwnNetId="true" InitializeOwnNetId="true" PortPhys="51" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6751 CANopen Master" Desc="EL6751" PortABoxInfo="#x0100000b">
 							<SyncMan>00182e0226000100010000002800ce052e02001826010000</SyncMan>
 							<SyncMan>2e1a2e0222000100020000002800ce052e022e1a22010000</SyncMan>
 							<SyncMan>001000002600000003000000000000000000001026010000</SyncMan>
@@ -4080,16 +4080,12 @@ Revision: Rev 0.2
 		<MappingInfo Identifier="{00000000-0011-0101-1000-010110000403}" Id="#x03070010"/>
 		<MappingInfo Identifier="{00000000-0011-0101-1000-010130000403}" Id="#x03070020"/>
 		<OwnerA Name="TIID^Device 2 (EtherCAT)">
-			<OwnerB Name="TIID^Device 2 (EtherCAT)^Grande armoire^Term 11 (EL2904)">
-				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionOutputs^Message_5 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
-			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 113 (EL6900)">
 				<Link VarA="Grande armoire^Term 11 (EL2904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^Message_5 TxPDO"/>
+				<Link VarA="Grande armoire^Term 11 (EL2904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^Message_5 RxPDO"/>
+				<Link VarA="Petite armoire^Term 114 (EL1904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^Message_24 TxPDO"/>
 				<Link VarA="Petite armoire^Term 114 (EL1904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^Message_24 RxPDO"/>
 				<Link VarA="Petite armoire^Term 115 (EL1904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^Message_4 RxPDO"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 114 (EL1904)">
-				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionInputs^Message_24 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Petite armoire^Term 115 (EL1904)">
 				<Link VarA="Petite armoire^Term 113 (EL6900)^ConnectionInputs^Message_4 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
