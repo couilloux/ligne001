@@ -308,6 +308,8 @@ VAR_GLOBAL
 	ST9_9V6 	AT%Q*:BOOL;		(*Vérin descend*)
 	ST9_9V7 	AT%Q*:BOOL;		(*Vérin monte*)
 	
+	ST9_DECHARGE 	AT%Q*:BOOL;		(*TRUE - décharge / FALSE - pas décharge*)
+	
 	
 (************************************************************************************************
 *

@@ -2115,8 +2115,6 @@
                 <v>64531eed-2b5a-472a-9e72-7edf45850bf4</v>
                 <v>ContainsPoint</v>
                 <v>59962457-6381-43e6-b167-fe8225410e80</v>
-                <v>FB_Reinit</v>
-                <v>4d343749-b752-4127-a0e0-d6522514d89e</v>
                 <v>SetStaticState</v>
                 <v>4c997793-3139-432d-8288-63f6c4677a6c</v>
                 <v>Update</v>
@@ -2155,6 +2153,8 @@
                 <v>23a216d9-8c68-4e52-a56d-2fccba859009</v>
                 <v>GetSurroundingRect</v>
                 <v>fac4a518-11c3-457c-9acd-53fa81575f15</v>
+                <v>ElementInfo</v>
+                <v>944abf24-4021-4f46-bf0d-24225351a504</v>
                 <v>GetResult</v>
                 <v>3432fcf5-8acc-45e1-9dd1-e8fc4f317168</v>
                 <v>GetLocalUsergroup</v>
@@ -2165,8 +2165,8 @@
                 <v>dcd29299-da5c-4dc6-8a62-d4a221a7eeff</v>
                 <v>SetDialogInterface</v>
                 <v>7526c425-9575-437a-bbfb-0c5d4de0a5ac</v>
-                <v>Destruct</v>
-                <v>7c043056-ecce-475f-97bb-8ad71b1dbc80</v>
+                <v>FB_Reinit</v>
+                <v>4d343749-b752-4127-a0e0-d6522514d89e</v>
                 <v>FB_Exit</v>
                 <v>b8f5fd21-e6d4-4dc4-a81c-bcfd40431f99</v>
                 <v>GetInitializeVersion</v>
@@ -2177,8 +2177,8 @@
                 <v>142220c0-0edf-4299-9101-52ae158e9f32</v>
                 <v>HandleInput</v>
                 <v>eb838387-3969-4912-93ee-0dc55c0804fc</v>
-                <v>ElementInfo</v>
-                <v>944abf24-4021-4f46-bf0d-24225351a504</v>
+                <v>Destruct</v>
+                <v>7c043056-ecce-475f-97bb-8ad71b1dbc80</v>
               </d>
               <v n="FbName">"NotImportant"</v>
               <v n="FbGuid">{db88331f-2472-46e5-a98c-0766e31c235f}</v>
@@ -2191,10 +2191,10 @@
               <d n="FbMethods" t="CaseInsensitiveHashtable" ckt="String" cvt="Guid">
                 <v>FB_Init</v>
                 <v>97863c25-9dbd-454e-a510-4652ba5b37ec</v>
-                <v>FB_Exit</v>
-                <v>cd779ee9-6413-420a-9b86-ad8957eb01a7</v>
                 <v>FB_Reinit</v>
                 <v>6c4fd554-ad3f-48be-8696-44d620879b6a</v>
+                <v>FB_Exit</v>
+                <v>cd779ee9-6413-420a-9b86-ad8957eb01a7</v>
               </d>
               <v n="FbName">"NotImportant"</v>
               <v n="FbGuid">{af0c0206-0ca8-4979-9cc5-264124e4da38}</v>

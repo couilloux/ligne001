@@ -141,7 +141,7 @@ CASE STEP OF
 140: (*Démarre la tampo pour la mesure de perte de pression*)
 
 	START_TAMPO_MESURE_PERTES := TRUE;
-	ST6_POWER := TRUE;
+	ST6_POWER := FALSE;
 	STEP := STEP + 10;
 	
 150: (*Attend fin tampo mesure - MESURE EN COURT perte de pression*)

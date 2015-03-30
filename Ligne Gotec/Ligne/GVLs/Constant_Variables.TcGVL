@@ -2,11 +2,11 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
   <GVL Name="Constant_Variables" Id="{ff0b3272-6d28-4b02-8961-a1802b01a609}">
     <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
-VAR_GLOBAL CONSTANT
+VAR_GLOBAL
 	(********************
 	*
 	* Times
-	*
+	*  
 	************************)
 
 	CARRIER_RELEASE_DELAY						:TIME:= T#2S;			(*Temps de rentrée du vérin de blocage des vérins*)
@@ -55,16 +55,16 @@ VAR_GLOBAL
 	* Activation des Posages
 	*
 	************************)
-	ST1_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
-	ST2_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
+	ST1_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
+	ST2_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
 	ST3_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
-	ST4_5_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive les posages ST4 et ST5*)
-	ST4_JIG_DISABLED							:BOOL:=TRUE;			(*via la variable GRAND_DEBIT*)
-	ST5_JIG_DISABLED							:BOOL:=TRUE;			(*via la variable GRAND_DEBIT*)
-	ST6_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
-	ST7_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
-	ST8_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
-	ST9_JIG_DISABLED							:BOOL:=TRUE;			(*Désactive le posage*)
+	ST4_5_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive les posages ST4 et ST5*)
+	ST6_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
+	ST7_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
+	ST8_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
+	ST9_JIG_DISABLED							:BOOL:=FALSE;			(*Désactive le posage*)
+	ST4_JIG_DISABLED							:BOOL;					(*via la variable GRAND_DEBIT*)
+	ST5_JIG_DISABLED							:BOOL;					(*via la variable GRAND_DEBIT*)
 
 END_VAR
 ]]></Declaration>

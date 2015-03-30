@@ -36,7 +36,11 @@ CASE STEP OF
 10: (*Attend une palette / flanc montant du status*)
 
 	IF JIG_STATUS_R_TRIG.Q THEN
-		STEP := STEP + 10;
+		IF ST9_DECHARGE THEN
+			STEP := STEP + 10;
+		ELSE
+			STEP := 120;
+		END_IF;
 	END_IF;
 	
 20: (*Descend le vérin*)
@@ -104,7 +108,7 @@ CASE STEP OF
 	END_IF;
 	
 120: (*Libère la pompe*)
-
+	
 	ST9_9V6 := TRUE;
 	STEP := STEP + 10;
 	
@@ -135,6 +139,7 @@ CASE STEP OF
 170: (*Attend vérin en haut*)
 
 	IF ST9_9B41 THEN
+		FLAGS.ST9_RELEASE_CARRIER := TRUE;
 		STEP := 0;
 	END_IF;
 

@@ -19,14 +19,15 @@ ST4_MOTOR();
 ST5_MOTOR();
 
 (*Appel les différents modules pour les stations*)
-(*ST1_HT();*)
-(*ST2_ASPIRATION();*)
+ST1_HT();
+ST2_ASPIRATION();
 ST3_ETANCHEITE();
-(*ST4_DEBIT_PETIT();*)
-(*ST6_PMAX();*)
-(*ST7_SECHAGE();*)
-(*ST8_IMPRESSION();*)
-(*ST9_DECHARGEMENT();*)
+ST4_DEBIT_PETIT();
+ST5_GRAND_PETIT();
+ST6_PMAX();
+ST7_SECHAGE();
+ST8_IMPRESSION();
+ST9_DECHARGEMENT();
 
 (*Gestion de la vidange de la balance ST4*)
 ST4_VIDANGE_BALANCE(

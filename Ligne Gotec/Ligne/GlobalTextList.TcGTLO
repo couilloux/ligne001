@@ -56,6 +56,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"50"</v>
+              <v n="TextDefault">"Disable"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"5"</v>
               <v n="TextDefault">"EM ACK"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -68,6 +73,11 @@
             <o>
               <v n="TextID">"4"</v>
               <v n="TextDefault">"EM RUN"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"49"</v>
+              <v n="TextDefault">"Enable"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -106,8 +116,23 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"41"</v>
+              <v n="TextDefault">"ST1"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"42"</v>
+              <v n="TextDefault">"ST2"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"12"</v>
               <v n="TextDefault">"ST2_VACUUM"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"43"</v>
+              <v n="TextDefault">"ST3"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -123,6 +148,11 @@
             <o>
               <v n="TextID">"21"</v>
               <v n="TextDefault">"ST4 Position moteur"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"44"</v>
+              <v n="TextDefault">"ST4-5"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -186,13 +216,43 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"45"</v>
+              <v n="TextDefault">"ST6"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"20"</v>
               <v n="TextDefault">"ST6_PRESSURE"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"46"</v>
+              <v n="TextDefault">"ST7"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"47"</v>
+              <v n="TextDefault">"ST8"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"31"</v>
               <v n="TextDefault">"ST8 Impression OK"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"48"</v>
+              <v n="TextDefault">"ST9"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"51"</v>
+              <v n="TextDefault">"ST9 Décharge"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"52"</v>
+              <v n="TextDefault">"ST9 décharge"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
