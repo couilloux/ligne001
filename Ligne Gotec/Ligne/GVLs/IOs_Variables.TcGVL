@@ -210,7 +210,7 @@ VAR_GLOBAL
 	
 	ST5_Niveau_Reservoir 	AT%I*:INT; (*Niveau réservoir - valeur du capteur*)
 	
-	ST5_MODE_VIDANGE		:INT:=1;	(*Mode de vidange 1-Mode normal 2-Vidange du réseroir 3-Remplissage depuis le banc déminéralisateur*)
+	ST5_MODE_VIDANGE		:INT;	(*Mode de vidange 1-Mode normal 2-Vidange du réseroir 3-Remplissage depuis le banc déminéralisateur*)
 	ST5_NIVEAU_EAU			:INT;	(*Niveau du réservoir 0-100%*)
 	
 
