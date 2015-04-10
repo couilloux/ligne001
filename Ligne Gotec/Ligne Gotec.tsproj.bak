@@ -51,10 +51,10 @@
 		<ImageData Id="1007">424de6000000000000007600000028000000100000000e000000010004000000000070000000120b0000120b0000100000001000000000000000000080000080000000808000800000008000800080800000c0c0c000808080000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff005dd55d88888888dd5dd5d577777778dd55d55d77888778dd5d55d577888778dd55d55d77888778dddddddd77777778dddddddd77777778dd9b9b9b77777778ddb9b9b977777778dd9b9b9b77777778ddb9b9b977797778dd9b9b9b77797778ddb9b9b9777a7778dd9b9b9b77777778dd</ImageData>
 		<ImageData Id="1008">424de6000000000000007600000028000000100000000e000000010004000000000070000000ea0e0000ea0e000000000000000000000000000000008000008000000080800080000000800080008080000080808000c0c0c0000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff00777f7f7f77f77f777fff7f7f7ff77f77777f878f77f77f777fff7f7ff7f7ff77777f7f7f77f77f77fffffffffffffffff8888888888888888877777777777777777887888888888777788786ccccc66778788786ccccc6677f78878666666687887ff7fffffffff7ff77777777777777</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{80C26AA6-E976-4A4B-986C-6F4ED5D82BE7}">
+	<Project ProjectGUID="{334643FE-5C0A-45FA-AF5B-129915E10B91}" ModifiedGUID="{F0E25BE4-BDB9-4B86-AD73-D6A55440BF47}">
 		<System>
 			<Licenses>
-				<Target BkhfOrder="VE2161436"/>
+				<Target BkhfOrder="VE2167684"/>
 			</Licenses>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="349">
@@ -1488,7 +1488,7 @@ Bit1: Value bigger/equal Limit2]]>
 					<Box BoxType="9094" Id="89">
 						<Name>Term 89 (EL6751)</Name>
 						<ImageId>1005</ImageId>
-						<EtherCAT SlaveType="5" AdsServerAddress="0a0a0a1f04011104" PdiType="#x0c08" ExecIo="true" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00000002" ProductCode="#x1a5f3052" RevisionNo="#x00130000" InfoDataAddr="true" InfoDataNetId="true" OwnAddrExtern="true" TimeoutStateChange1="5000" TimeoutStateChange3="10000" TimeoutStateChange4="1000" TimeoutMailbox2="2000" GenerateOwnNetId="true" InitializeOwnNetId="true" PortPhys="51" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6751 CANopen Master" Desc="EL6751" PortABoxInfo="#x0100000b">
+						<EtherCAT SlaveType="5" AdsServerAddress="0a0a0a1f04010000" PdiType="#x0c08" ExecIo="true" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00000002" ProductCode="#x1a5f3052" RevisionNo="#x00130000" InfoDataAddr="true" InfoDataNetId="true" OwnAddrExtern="true" TimeoutStateChange1="5000" TimeoutStateChange3="10000" TimeoutStateChange4="1000" TimeoutMailbox2="2000" GenerateOwnNetId="true" InitializeOwnNetId="true" PortPhys="51" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6751 CANopen Master" Desc="EL6751" PortABoxInfo="#x0100000b">
 							<SyncMan>00182e0226000100010000002800ce052e02001826010000</SyncMan>
 							<SyncMan>2e1a2e0222000100020000002800ce052e022e1a22010000</SyncMan>
 							<SyncMan>001000002600000003000000000000000000001026010000</SyncMan>
