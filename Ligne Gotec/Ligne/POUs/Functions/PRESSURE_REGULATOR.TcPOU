@@ -14,35 +14,60 @@ VAR_OUTPUT
 	MOTOR_POSITION 	: DINT;
 END_VAR
 VAR
+	gainScheduled_Kp			: REAL;
+	gainScheduled_Ki			: REAL;
+	gainScheduled_Kd			: REAL;
 	P_ERREUR:REAL;
 	GAIN:REAL:=4.0;
 	
 
 	eMode						: E_CTRL_MODE;
-	stCTRL_PI_PARAMS			: ST_CTRL_PI_PARAMS;
+	stCTRL_PID_PARAMS			: ST_CTRL_PID_PARAMS;
 
 	eErrorId					: E_CTRL_ERRORCODES;
 	bError						: BOOL;
 	bARWactive					: BOOL;
 
 	(* controller  *)
-	fbCTRL_PI					: FB_CTRL_PI;
+	fbCTRL_PID					: FB_CTRL_PID;
 
 	fOut: LREAL;
 	bHold: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[	
+      <ST><![CDATA[IF PRESSION_CONSIGNE>PID_HighPressure.q THEN
+	gainScheduled_Kp:=PID_HighPressure.Kp;
+	gainScheduled_Ki:=PID_HighPressure.Ki;
+	gainScheduled_Kd:=PID_HighPressure.Kd;
+ELSIF PRESSION_CONSIGNE<=PID_HighPressure.q AND PRESSION_CONSIGNE>PID_MiddlePressure.q THEN
+	(*Calcule les paramètres du régulateur avec une interpolation linéaire entre un PID prévu pour les hautes pressions et un PID pour les moyennes pressions*)
+	gainScheduled_Kp:=(PID_HighPressure.q-PRESSION_CONSIGNE)/(PID_HighPressure.q-PID_MiddlePressure.q)*PID_MiddlePressure.Kp+(PRESSION_CONSIGNE-PID_MiddlePressure.q)/(PID_HighPressure.q-PID_MiddlePressure.q)*PID_HighPressure.Kp;
+	gainScheduled_Ki:=(PID_HighPressure.q-PRESSION_CONSIGNE)/(PID_HighPressure.q-PID_MiddlePressure.q)*PID_MiddlePressure.Ki+(PRESSION_CONSIGNE-PID_MiddlePressure.q)/(PID_HighPressure.q-PID_MiddlePressure.q)*PID_HighPressure.Ki;
+	gainScheduled_Kd:=(PID_HighPressure.q-PRESSION_CONSIGNE)/(PID_HighPressure.q-PID_MiddlePressure.q)*PID_MiddlePressure.Kd+(PRESSION_CONSIGNE-PID_MiddlePressure.q)/(PID_HighPressure.q-PID_MiddlePressure.q)*PID_HighPressure.Kd;
+ELSIF PRESSION_CONSIGNE<=PID_MiddlePressure.q AND PRESSION_CONSIGNE>PID_LowPressure.q THEN
+	(*Calcule les paramètres du régulateur avec une interpolation linéaire entre un PID prévu pour les moyennes pressions et un PID pour les basses pressions*)
+	gainScheduled_Kp:=(PID_MiddlePressure.q-PRESSION_CONSIGNE)/(PID_MiddlePressure.q-PID_LowPressure.q)*PID_LowPressure.Kp+(PRESSION_CONSIGNE-PID_LowPressure.q)/(PID_MiddlePressure.q-PID_LowPressure.q)*PID_MiddlePressure.Kp;
+	gainScheduled_Ki:=(PID_MiddlePressure.q-PRESSION_CONSIGNE)/(PID_MiddlePressure.q-PID_LowPressure.q)*PID_LowPressure.Ki+(PRESSION_CONSIGNE-PID_LowPressure.q)/(PID_MiddlePressure.q-PID_LowPressure.q)*PID_MiddlePressure.Ki;
+	gainScheduled_Kd:=(PID_MiddlePressure.q-PRESSION_CONSIGNE)/(PID_MiddlePressure.q-PID_LowPressure.q)*PID_LowPressure.Kd+(PRESSION_CONSIGNE-PID_LowPressure.q)/(PID_MiddlePressure.q-PID_LowPressure.q)*PID_MiddlePressure.Kd;
+ELSE (*PRESSION_CONSIGNE<PID_LowPressure.q*)
+	gainScheduled_Kp:=PID_LowPressure.Kp;
+	gainScheduled_Ki:=PID_LowPressure.Ki;
+	gainScheduled_Kd:=PID_LowPressure.Kd;	
+END_IF 
 
 	(* init parameter struct *)
-	stCTRL_PI_PARAMS.tCtrlCycleTime		:= T#10MS;
-	stCTRL_PI_PARAMS.tTaskCycleTime		:= T#10MS;
-	stCTRL_PI_PARAMS.tTn				:= T#100MS;									(* derivative gain Tv				*)
-	stCTRL_PI_PARAMS.fKp				:= 10;										(* proportional gain Kp				*)
-	stCTRL_PI_PARAMS.fOutMaxLimit		:= MOTOR_POSITION_MAX;		  				(* maximum output limit				*)
-	stCTRL_PI_PARAMS.fOutMinLimit		:= 0;										(* minimum output limit				*)
-
+	stCTRL_PID_PARAMS.tCtrlCycleTime		:= T#10MS;
+	stCTRL_PID_PARAMS.tTaskCycleTime		:= T#10MS;
+	stCTRL_PID_PARAMS.tTn					:= REAL_TO_TIME(gainScheduled_Ki);			(* integral gain tTn				*)
+	stCTRL_PID_PARAMS.tTv					:= REAL_TO_TIME(gainScheduled_Kd);			(* derivative gain tTv				*)
+	stCTRL_PID_PARAMS.tTd					:= stCTRL_PID_PARAMS.tTv/5;					(* filter parameter for the real derivative gain part *)
+	stCTRL_PID_PARAMS.fKp					:= gainScheduled_Kp;						(* proportional gain Kp				*)
+	stCTRL_PID_PARAMS.fOutMaxLimit			:= MOTOR_POSITION_MAX;		  				(* maximum output limit				*)
+	stCTRL_PID_PARAMS.fOutMinLimit			:= 0;										(* minimum output limit				*)
+	stCTRL_PID_PARAMS.bPInTheFeedbackPath 	:= FALSE;									(* let it to false for a standart PID transfert function *)
+    stCTRL_PID_PARAMS.bDInTheFeedbackPath 	:= FALSE;
+    stCTRL_PID_PARAMS.bARWOnIPartOnly   	:= TRUE;									(* anti-reset windup *)
 	(* set the mode to ACTIVE --> normal operation *)
 	eMode							:= eCTRL_MODE_ACTIVE;
 
@@ -54,13 +79,13 @@ END_VAR
 	END_IF
 
 	(*Controller pour la pression*)
-	fbCTRL_PI(		fSetpointValue		:= PRESSION_CONSIGNE,
+	fbCTRL_PID(		fSetpointValue		:= PRESSION_CONSIGNE,
 					fActualValue		:= PRESSION_MESURE,
 					fManSyncValue		:= MOTOR_INITIAL_POSITION,
 					bSync				:= bHold,
 					eMode				:= eMode,
 					bHold				:= bHold,
-					stParams			:= stCTRL_PI_PARAMS,
+					stParams			:= stCTRL_PID_PARAMS,
 					fOut				=> fOut,
 					bARWactive			=> bARWactive,
 					eErrorId			=> eErrorId,
@@ -68,6 +93,7 @@ END_VAR
 	);
 	
 MOTOR_POSITION := LREAL_TO_DINT(fOut);
+
 
 
 (*	

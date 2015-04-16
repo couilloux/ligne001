@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
+  <GVL Name="PID_parameters" Id="{5255c6bc-27f7-4b17-8952-b9371e43ff41}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	PID_LowPressure		:GainScheduled_PID_parameters	:= (q:=0.8,Kp:=5,Ki:=1,Kd:=3); 
+	(*PID_LowPressure		:GainScheduled_PID_parameters	:= (q:=0.8,Kp:=15,Ki:=0.5,Kd:=3); PERFECT WITH 24V PUMP AT 0.8 BARS *)
+	PID_HighPressure	:GainScheduled_PID_parameters	:= (q:=8,Kp:=0.5,Ki:=1,Kd:=30); (*GOOD WITH 230V ET150 PUMP BETWEEN 8 AND 10BARS*)
+	(*PID_HighPressure	:GainScheduled_PID_parameters	:= (q:=10,Kp:=1,Ki:=1,Kd:=0); PERFECT WITH 230V ET150 PUMP AT 10BARS *)
+	PID_MiddlePressure	:GainScheduled_PID_parameters	:= (q:=4,Kp:=2,Ki:=1,Kd:=5);
+	
+END_VAR]]></Declaration>
+    <ObjectProperties />
+  </GVL>
+</TcPlcObject>

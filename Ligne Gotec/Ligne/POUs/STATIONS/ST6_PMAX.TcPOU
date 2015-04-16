@@ -19,6 +19,7 @@ VAR
 	START_TAMPO_VERIN_ELEC: BOOL;
 	START_TAMPO_MESURE_PERTES: BOOL;
 	TAMPO_MESURE_PERTES_TON: TON;
+	TEMPS_VIDA: TIME;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(*******************************************************

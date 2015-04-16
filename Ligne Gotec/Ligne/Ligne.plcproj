@@ -26,6 +26,9 @@
     <Compile Include="DUTs\FLOWMETER_VALUES.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\GainScheduled_PID_parameters.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\PRESSURE_SENSOR.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -51,6 +54,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GVLs\IOs_Variables.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\PID_parameters.TcGVL">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">

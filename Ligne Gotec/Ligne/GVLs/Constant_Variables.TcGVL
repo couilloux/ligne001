@@ -9,12 +9,12 @@ VAR_GLOBAL
 	*  
 	************************)
 
-	CARRIER_RELEASE_DELAY						:TIME:= T#2S;			(*Temps de rentrée du vérin de blocage des vérins*)
+	CARRIER_RELEASE_DELAY						:TIME:= T#400MS;			(*Temps de rentrée du vérin de blocage des vérins*)
 	PULSE_RELEASE_JIG_OP						:TIME:= T#250MS;		(*Duration of the pulse to release a carrier on the Operators jig*)
 	DELAY_EJECT_CARRIERS						:TIME:= T#5S;			(*Time for release all the carriers present in the tunel during the initialisation *)
 	DELAY_START_AIR								:TIME:= T#2S;			(*Time to let air starting before starting convoyer *)
 
-	TEMPS_VIDANGE_POMPE							:TIME:= T#2S;			(*Temps durant lequel on pompe de l'air pour vidanger la pompe*)
+	TEMPS_VIDANGE_POMPE							:TIME:= T#5S;			(*Temps durant lequel on pompe de l'air pour vidanger la pompe*)
 	TEMPS_VIDANGE_RESERVOIR						:TIME:= T#30S;			(*Temps durant lequel on continue de vider le réservoir d'eau pour être sur qu'il est vide*)
 	
 	TEMPS_SORTIE_VERIN							:TIME:= T#3S;			(*Temps durant lequel on pompe de l'air pour vidanger la pompe*)
