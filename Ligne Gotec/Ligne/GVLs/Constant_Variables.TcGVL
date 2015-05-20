@@ -8,8 +8,7 @@ VAR_GLOBAL
 	* Times
 	*  
 	************************)
-
-	CARRIER_RELEASE_DELAY						:TIME:= T#400MS;			(*Temps de rentrée du vérin de blocage des vérins*)
+	CARRIER_RELEASE_DELAY						:TIME:= T#600MS;			(*Temps de rentrée du vérin de blocage des vérins*)
 	PULSE_RELEASE_JIG_OP						:TIME:= T#250MS;		(*Duration of the pulse to release a carrier on the Operators jig*)
 	DELAY_EJECT_CARRIERS						:TIME:= T#5S;			(*Time for release all the carriers present in the tunel during the initialisation *)
 	DELAY_START_AIR								:TIME:= T#2S;			(*Time to let air starting before starting convoyer *)
@@ -18,7 +17,7 @@ VAR_GLOBAL
 	TEMPS_VIDANGE_RESERVOIR						:TIME:= T#30S;			(*Temps durant lequel on continue de vider le réservoir d'eau pour être sur qu'il est vide*)
 	
 	TEMPS_SORTIE_VERIN							:TIME:= T#3S;			(*Temps durant lequel on pompe de l'air pour vidanger la pompe*)
-	
+	TEMPS_RENTREE_VERIN							:TIME:= T#1S;			(*Temps laissé au vérin pour rentrer avant que la palette soit libérée*)
 	TEMPS_CHANGEMENT_PRESSION					:TIME:= T#4S;			(*Temps pour la mise sous pression du débit de travail avant réglage*)
 
 	(********************
@@ -28,15 +27,21 @@ VAR_GLOBAL
 	************************)
 	MOTOR_ST4_ADDRESS							:STRING:= '10.10.10.31.4.1';	(*Adresse moteur ST4*)
 	MOTOR_ST5_ADDRESS							:STRING:= '10.10.10.31.5.1';	(*Adresse moteur ST5*)
-	MOTOR_ST4_INITIAL_POS						:DINT:=30000;					(*Initial position of the motor*)
+	MOTOR_ST4_INITIAL_POS						:DINT:=25000;					(*Initial position of the motor*)
 	MOTOR_ST4_POSITION_MAX						:DINT:=35000;					(*Butée soft du moteur*)
-	MOTOR_ST5_INITIAL_POS						:DINT:=30000;					(*Initial position of the motor*)
+	MOTOR_ST5_INITIAL_POS						:DINT:=25000;					(*Initial position of the motor*)
 	MOTOR_ST5_POSITION_MAX						:DINT:=35000;					(*Butée soft du moteur*)
 	
 	RESERVOIR_EAU_MAX							:INT:=5000;						(*Niveau haut du réservoir d'eau*)
 	RESERVOIR_EAU_MIN							:INT:=14000;					(*Niveau bas du réservoir d'eau*)
 	
-
+	(********************
+	*
+	* Weigthing
+	*
+	************************)
+	
+	BALANCE_POIDS_LIMITE								:INT:=2000;
 
 END_VAR
 

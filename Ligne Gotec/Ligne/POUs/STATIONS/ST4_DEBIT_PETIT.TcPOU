@@ -118,8 +118,14 @@ CASE STEP OF
 		START_TAMPO_VERIN_ELEC := FALSE;
 		STEP := STEP + 10;
 	END_IF;
-
-80: (*Allume la pompe*)
+	
+80: (*Si la balance est trop pleine, attend qu'elle soit vidée suffisament avant d'allumer la pompe*)
+	
+	IF ST4_POIDS<BALANCE_POIDS_LIMITE THEN
+		STEP:=STEP + 10;
+	END_IF
+		
+90: (*Allume la pompe*)
 
 	ST4_POWER := TRUE;
 	ST4_4V10 := TRUE;

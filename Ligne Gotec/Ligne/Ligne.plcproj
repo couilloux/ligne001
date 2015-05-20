@@ -26,7 +26,7 @@
     <Compile Include="DUTs\FLOWMETER_VALUES.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\GainScheduled_PID_parameters.TcDUT">
+    <Compile Include="DUTs\GAIN_SCHEDULED_PID.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\PRESSURE_SENSOR.TcDUT">

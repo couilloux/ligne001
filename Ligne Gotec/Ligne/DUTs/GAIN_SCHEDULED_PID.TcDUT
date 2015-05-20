@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
-  <DUT Name="GainScheduled_PID_parameters" Id="{6ad1baab-7f08-4cb1-b68d-92afca30af89}">
-    <Declaration><![CDATA[TYPE GainScheduled_PID_parameters :
+  <DUT Name="GAIN_SCHEDULED_PID" Id="{6ad1baab-7f08-4cb1-b68d-92afca30af89}">
+    <Declaration><![CDATA[TYPE GAIN_SCHEDULED_PID :
 STRUCT
 	q			:REAL; 	(*gain scheduled parameter for which this PID is optimized*)
 	Kp			:REAL;	(*constant for proportional part of the PID*)

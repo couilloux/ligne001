@@ -101,6 +101,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"53"</v>
+              <v n="TextDefault">"Grand Débit"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"54"</v>
+              <v n="TextDefault">"Petit Débit"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"36"</v>
               <v n="TextDefault">"PRESSION_DEBUT"</v>
               <l n="LanguageTexts" t="ArrayList" />

@@ -36,25 +36,46 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF PRESSION_CONSIGNE>PID_HighPressure.q THEN
-	gainScheduled_Kp:=PID_HighPressure.Kp;
-	gainScheduled_Ki:=PID_HighPressure.Ki;
-	gainScheduled_Kd:=PID_HighPressure.Kd;
-ELSIF PRESSION_CONSIGNE<=PID_HighPressure.q AND PRESSION_CONSIGNE>PID_MiddlePressure.q THEN
-	(*Calcule les paramètres du régulateur avec une interpolation linéaire entre un PID prévu pour les hautes pressions et un PID pour les moyennes pressions*)
-	gainScheduled_Kp:=(PID_HighPressure.q-PRESSION_CONSIGNE)/(PID_HighPressure.q-PID_MiddlePressure.q)*PID_MiddlePressure.Kp+(PRESSION_CONSIGNE-PID_MiddlePressure.q)/(PID_HighPressure.q-PID_MiddlePressure.q)*PID_HighPressure.Kp;
-	gainScheduled_Ki:=(PID_HighPressure.q-PRESSION_CONSIGNE)/(PID_HighPressure.q-PID_MiddlePressure.q)*PID_MiddlePressure.Ki+(PRESSION_CONSIGNE-PID_MiddlePressure.q)/(PID_HighPressure.q-PID_MiddlePressure.q)*PID_HighPressure.Ki;
-	gainScheduled_Kd:=(PID_HighPressure.q-PRESSION_CONSIGNE)/(PID_HighPressure.q-PID_MiddlePressure.q)*PID_MiddlePressure.Kd+(PRESSION_CONSIGNE-PID_MiddlePressure.q)/(PID_HighPressure.q-PID_MiddlePressure.q)*PID_HighPressure.Kd;
-ELSIF PRESSION_CONSIGNE<=PID_MiddlePressure.q AND PRESSION_CONSIGNE>PID_LowPressure.q THEN
-	(*Calcule les paramètres du régulateur avec une interpolation linéaire entre un PID prévu pour les moyennes pressions et un PID pour les basses pressions*)
-	gainScheduled_Kp:=(PID_MiddlePressure.q-PRESSION_CONSIGNE)/(PID_MiddlePressure.q-PID_LowPressure.q)*PID_LowPressure.Kp+(PRESSION_CONSIGNE-PID_LowPressure.q)/(PID_MiddlePressure.q-PID_LowPressure.q)*PID_MiddlePressure.Kp;
-	gainScheduled_Ki:=(PID_MiddlePressure.q-PRESSION_CONSIGNE)/(PID_MiddlePressure.q-PID_LowPressure.q)*PID_LowPressure.Ki+(PRESSION_CONSIGNE-PID_LowPressure.q)/(PID_MiddlePressure.q-PID_LowPressure.q)*PID_MiddlePressure.Ki;
-	gainScheduled_Kd:=(PID_MiddlePressure.q-PRESSION_CONSIGNE)/(PID_MiddlePressure.q-PID_LowPressure.q)*PID_LowPressure.Kd+(PRESSION_CONSIGNE-PID_LowPressure.q)/(PID_MiddlePressure.q-PID_LowPressure.q)*PID_MiddlePressure.Kd;
-ELSE (*PRESSION_CONSIGNE<PID_LowPressure.q*)
-	gainScheduled_Kp:=PID_LowPressure.Kp;
-	gainScheduled_Ki:=PID_LowPressure.Ki;
-	gainScheduled_Kd:=PID_LowPressure.Kd;	
-END_IF 
+      <ST><![CDATA[IF PUMP_PARAMS.GEN_GRAND_DEBIT=FALSE THEN (*USING STATION 4*)
+	IF PRESSION_CONSIGNE>ST4_PID_HighPressure.q THEN
+		(*Utilise le régulateur pour les hautes pression*)
+		gainScheduled_Kp:=ST4_PID_HighPressure.Kp;
+		gainScheduled_Ki:=ST4_PID_HighPressure.Ki;
+		gainScheduled_Kd:=ST4_PID_HighPressure.Kd;
+	ELSIF PRESSION_CONSIGNE<=ST4_PID_HighPressure.q AND PRESSION_CONSIGNE>ST4_PID_MiddlePressure.q THEN
+		(*Calcule les paramètres du régulateur avec une interpolation linéaire entre un PID prévu pour les hautes pressions et un PID pour les moyennes pressions*)
+		gainScheduled_Kp:=(ST4_PID_HighPressure.q-PRESSION_CONSIGNE)/(ST4_PID_HighPressure.q-ST4_PID_MiddlePressure.q)*ST4_PID_MiddlePressure.Kp+(PRESSION_CONSIGNE-ST4_PID_MiddlePressure.q)/(ST4_PID_HighPressure.q-ST4_PID_MiddlePressure.q)*ST4_PID_HighPressure.Kp;
+		gainScheduled_Ki:=(ST4_PID_HighPressure.q-PRESSION_CONSIGNE)/(ST4_PID_HighPressure.q-ST4_PID_MiddlePressure.q)*ST4_PID_MiddlePressure.Ki+(PRESSION_CONSIGNE-ST4_PID_MiddlePressure.q)/(ST4_PID_HighPressure.q-ST4_PID_MiddlePressure.q)*ST4_PID_HighPressure.Ki;
+		gainScheduled_Kd:=(ST4_PID_HighPressure.q-PRESSION_CONSIGNE)/(ST4_PID_HighPressure.q-ST4_PID_MiddlePressure.q)*ST4_PID_MiddlePressure.Kd+(PRESSION_CONSIGNE-ST4_PID_MiddlePressure.q)/(ST4_PID_HighPressure.q-ST4_PID_MiddlePressure.q)*ST4_PID_HighPressure.Kd;
+	ELSIF PRESSION_CONSIGNE<=ST4_PID_MiddlePressure.q AND PRESSION_CONSIGNE>ST4_PID_LowPressure.q THEN
+		(*Calcule les paramètres du régulateur avec une interpolation linéaire entre un PID prévu pour les moyennes pressions et un PID pour les basses pressions*)
+		gainScheduled_Kp:=(ST4_PID_MiddlePressure.q-PRESSION_CONSIGNE)/(ST4_PID_MiddlePressure.q-ST4_PID_LowPressure.q)*ST4_PID_LowPressure.Kp+(PRESSION_CONSIGNE-ST4_PID_LowPressure.q)/(ST4_PID_MiddlePressure.q-ST4_PID_LowPressure.q)*ST4_PID_MiddlePressure.Kp;
+		gainScheduled_Ki:=(ST4_PID_MiddlePressure.q-PRESSION_CONSIGNE)/(ST4_PID_MiddlePressure.q-ST4_PID_LowPressure.q)*ST4_PID_LowPressure.Ki+(PRESSION_CONSIGNE-ST4_PID_LowPressure.q)/(ST4_PID_MiddlePressure.q-ST4_PID_LowPressure.q)*ST4_PID_MiddlePressure.Ki;
+		gainScheduled_Kd:=(ST4_PID_MiddlePressure.q-PRESSION_CONSIGNE)/(ST4_PID_MiddlePressure.q-ST4_PID_LowPressure.q)*ST4_PID_LowPressure.Kd+(PRESSION_CONSIGNE-ST4_PID_LowPressure.q)/(ST4_PID_MiddlePressure.q-ST4_PID_LowPressure.q)*ST4_PID_MiddlePressure.Kd;
+	ELSE (*PRESSION_CONSIGNE<ST4_PID_LowPressure.q*)
+		(*Utilise le régulateur pour les basses pressions*)
+		gainScheduled_Kp:=ST4_PID_LowPressure.Kp;
+		gainScheduled_Ki:=ST4_PID_LowPressure.Ki;
+		gainScheduled_Kd:=ST4_PID_LowPressure.Kd;	
+	END_IF 
+ELSE (*USING STATION 5*)
+	(*Utilise le régulateur pour les pressions moyennes*)
+	IF PRESSION_CONSIGNE>ST5_PID_MiddlePressure.q THEN
+		gainScheduled_Kp:=ST5_PID_MiddlePressure.Kp;
+		gainScheduled_Ki:=ST5_PID_MiddlePressure.Ki;
+		gainScheduled_Kd:=ST5_PID_MiddlePressure.Kd;	
+	ELSIF PRESSION_CONSIGNE<=ST5_PID_MiddlePressure.q AND PRESSION_CONSIGNE>ST5_PID_LowPressure.q THEN
+		(*Calcule les paramètres du régulateur avec une interpolation linéaire entre un PID prévu pour les moyennes pressions et un PID pour les basses pressions*)
+		gainScheduled_Kp:=(ST5_PID_MiddlePressure.q-PRESSION_CONSIGNE)/(ST5_PID_MiddlePressure.q-ST5_PID_LowPressure.q)*ST5_PID_LowPressure.Kp+(PRESSION_CONSIGNE-ST5_PID_LowPressure.q)/(ST5_PID_MiddlePressure.q-ST5_PID_LowPressure.q)*ST5_PID_MiddlePressure.Kp;
+		gainScheduled_Ki:=(ST5_PID_MiddlePressure.q-PRESSION_CONSIGNE)/(ST5_PID_MiddlePressure.q-ST5_PID_LowPressure.q)*ST5_PID_LowPressure.Ki+(PRESSION_CONSIGNE-ST5_PID_LowPressure.q)/(ST5_PID_MiddlePressure.q-ST5_PID_LowPressure.q)*ST5_PID_MiddlePressure.Ki;
+		gainScheduled_Kd:=(ST5_PID_MiddlePressure.q-PRESSION_CONSIGNE)/(ST5_PID_MiddlePressure.q-ST5_PID_LowPressure.q)*ST5_PID_LowPressure.Kd+(PRESSION_CONSIGNE-ST5_PID_LowPressure.q)/(ST5_PID_MiddlePressure.q-ST5_PID_LowPressure.q)*ST5_PID_MiddlePressure.Kd;
+	ELSE (*PRESSION_CONSIGNE<ST5_PID_LowPressure.q*)
+		(*Utilise le régulateur pour les basses pressions*)
+		gainScheduled_Kp:=ST5_PID_LowPressure.Kp;
+		gainScheduled_Ki:=ST5_PID_LowPressure.Ki;
+		gainScheduled_Kd:=ST5_PID_LowPressure.Kd;
+	END_IF
+END_IF
 
 	(* init parameter struct *)
 	stCTRL_PID_PARAMS.tCtrlCycleTime		:= T#10MS;

@@ -107,7 +107,9 @@ VAR_GLOBAL
 	ST3_3V12 	AT%Q*:BOOL;		(*Vanne de blocage d'air pour le DELTA*)
 	
 	ST3_3P1 	AT%I*:INT;		(*Capteur de pression différentiel*)
+	ST3_3P2		AT%I*:INT;		(*Capteur de pression absolue pour détecter les grandes fuites*)
 	ST3_PRESSION	:REAL;		(*Capteur de pression différentiel - Valeur réel en mBar*)
+	ST3_PRESSION_ABS:REAL;		(*Capteur de pression absolue - valeur réel en mBar*)
 	
 	ST3_DELTA_P	:REAL;			(*Mesure de la chutte de pression*)
 
@@ -210,7 +212,7 @@ VAR_GLOBAL
 	
 	ST5_Niveau_Reservoir 	AT%I*:INT; (*Niveau réservoir - valeur du capteur*)
 	
-	ST5_MODE_VIDANGE		:INT;	(*Mode de vidange 1-Mode normal 2-Vidange du réseroir 3-Remplissage depuis le banc déminéralisateur*)
+	ST5_MODE_VIDANGE		:INT:=1;(*Mode de vidange 1-Mode normal 2-Vidange du réseroir 3-Remplissage depuis le banc déminéralisateur*)
 	ST5_NIVEAU_EAU			:INT;	(*Niveau du réservoir 0-100%*)
 	
 

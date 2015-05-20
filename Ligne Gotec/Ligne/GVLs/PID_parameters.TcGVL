@@ -2,13 +2,22 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.26">
   <GVL Name="PID_parameters" Id="{5255c6bc-27f7-4b17-8952-b9371e43ff41}">
     <Declaration><![CDATA[VAR_GLOBAL
-	PID_LowPressure		:GainScheduled_PID_parameters	:= (q:=0.8,Kp:=5,Ki:=1,Kd:=3); 
-	(*PID_LowPressure		:GainScheduled_PID_parameters	:= (q:=0.8,Kp:=15,Ki:=0.5,Kd:=3); PERFECT WITH 24V PUMP AT 0.8 BARS *)
-	PID_HighPressure	:GainScheduled_PID_parameters	:= (q:=8,Kp:=0.5,Ki:=1,Kd:=30); (*GOOD WITH 230V ET150 PUMP BETWEEN 8 AND 10BARS*)
-	(*PID_HighPressure	:GainScheduled_PID_parameters	:= (q:=10,Kp:=1,Ki:=1,Kd:=0); PERFECT WITH 230V ET150 PUMP AT 10BARS *)
-	PID_MiddlePressure	:GainScheduled_PID_parameters	:= (q:=4,Kp:=2,Ki:=1,Kd:=5);
+	(* q is the gain scheduling parameter, here the operating pressure *)
+	ST4_PID_LowPressure		:GAIN_SCHEDULED_PID	:= (q:=0.8,Kp:=3,Ki:=1.4,Kd:=15); 
+	ST4_PID_HighPressure	:GAIN_SCHEDULED_PID	:= (q:=8,Kp:=0.5,Ki:=1.6,Kd:=30); 
+	ST4_PID_MiddlePressure	:GAIN_SCHEDULED_PID	:= (q:=4,Kp:=1.35,Ki:=5.25,Kd:=35);
 	
-END_VAR]]></Declaration>
+	ST5_PID_MiddlePressure	:GAIN_SCHEDULED_PID	:= (q:=1.5,Kp:=0.5,Ki:=1.7,Kd:=2); 
+	ST5_PID_LowPressure		:GAIN_SCHEDULED_PID	:= (q:=0.7,Kp:=0.5,Ki:=1.7,Kd:=2); 
+	
+END_VAR
+
+(***** backup *****
+	ST4_PID_LowPressure		:GAIN_SCHEDULED_PID	:= (q:=0.8,Kp:=3,Ki:=1.4,Kd:=15); 
+	ST4_PID_HighPressure	:GAIN_SCHEDULED_PID	:= (q:=8,Kp:=0.5,Ki:=1.6,Kd:=30); 
+	ST4_PID_MiddlePressure	:GAIN_SCHEDULED_PID	:= (q:=4,Kp:=1.35,Ki:=5.25,Kd:=35);
+*)
+]]></Declaration>
     <ObjectProperties />
   </GVL>
 </TcPlcObject>

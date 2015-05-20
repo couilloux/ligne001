@@ -3720,8 +3720,6 @@
                 <v>98b977e5-dab1-4e10-9191-22b50d6d772b</v>
                 <v>ContainsPoint</v>
                 <v>1a688def-a190-4950-9b7f-dee5f70cd452</v>
-                <v>FB_Reinit</v>
-                <v>929f23be-5bd4-4491-adea-3f5098a0dc21</v>
                 <v>SetStaticState</v>
                 <v>256a0f48-beca-439b-9ab6-23b7f2abaae7</v>
                 <v>Update</v>
@@ -3760,6 +3758,8 @@
                 <v>86cba7ba-2b08-478d-9a52-055cfa94a6ab</v>
                 <v>GetSurroundingRect</v>
                 <v>71ed7f85-1094-48cd-a846-90b1929bd406</v>
+                <v>ElementInfo</v>
+                <v>7f056002-4de8-46c7-a49b-4d88456bfeca</v>
                 <v>GetResult</v>
                 <v>49e2d9a5-c230-4ec4-a7a3-7789349ff476</v>
                 <v>GetLocalUsergroup</v>
@@ -3770,8 +3770,8 @@
                 <v>b8eee221-9f20-4539-84e7-de8e67621687</v>
                 <v>SetDialogInterface</v>
                 <v>a69b5c97-3822-4002-87ba-a88894fbd8f3</v>
-                <v>Destruct</v>
-                <v>2375ca82-c367-4218-92f7-669888fb23ea</v>
+                <v>FB_Reinit</v>
+                <v>929f23be-5bd4-4491-adea-3f5098a0dc21</v>
                 <v>FB_Exit</v>
                 <v>50160982-ebec-407c-843c-52779555a624</v>
                 <v>GetInitializeVersion</v>
@@ -3782,8 +3782,8 @@
                 <v>32a3d180-046f-4548-bd52-d09e85f5bc14</v>
                 <v>HandleInput</v>
                 <v>a5d17522-6b9f-4898-b5f2-41181e94b564</v>
-                <v>ElementInfo</v>
-                <v>7f056002-4de8-46c7-a49b-4d88456bfeca</v>
+                <v>Destruct</v>
+                <v>2375ca82-c367-4218-92f7-669888fb23ea</v>
               </d>
               <v n="FbName">"NotImportant"</v>
               <v n="FbGuid">{813f2506-94fd-469a-9988-98ea7a6fd1cb}</v>
@@ -3843,7 +3843,7 @@
             </o>
             <v n="DialogDut">{dc517e9d-8411-46bc-8596-6f2b8f9b7798}</v>
           </o>
-          <v n="LastUsedIdForIdentifier">88</v>
+          <v n="LastUsedIdForIdentifier">99</v>
           <o n="TextDocument" t="TextDocument">
             <a n="TextLines" cet="TextLine">
               <o>
