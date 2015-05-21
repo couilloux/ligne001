@@ -104,6 +104,9 @@
     <Compile Include="POUs\MAXON\ST5_MOTOR.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\MAXON\ST5_MOTOR_1.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\SAFETY\SAFETY.TcPOU">
       <SubType>Code</SubType>
     </Compile>

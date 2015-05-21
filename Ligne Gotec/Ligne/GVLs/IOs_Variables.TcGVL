@@ -111,7 +111,9 @@ VAR_GLOBAL
 	ST3_PRESSION	:REAL;		(*Capteur de pression différentiel - Valeur réel en mBar*)
 	ST3_PRESSION_ABS:REAL;		(*Capteur de pression absolue - valeur réel en mBar*)
 	
-	ST3_DELTA_P	:REAL;			(*Mesure de la chutte de pression*)
+	ST3_DELTA_P	:REAL;			(*Mesure de la chutte de pression en mbar*)
+	ST3_DELTA_P_ABS: REAL;		(*Mesure grossière de la chute de pression en mbar*)
+	ST3_PRESSION_FIN_ABS: REAL; 
 
 (************************************************************************************************
 *

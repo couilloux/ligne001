@@ -2543,7 +2543,7 @@ MOTOR_POSITION		=> FLAGS.MOTOR_ST4_POSITION
 	ST5_5V1 	:=FALSE;		(*Vérin palette attente*)
 	ST5_5V2 	:=FALSE;		(*Vérin palette bloquage*)
 	ST5_5V3 	:=FALSE;		(*Vérin palette stop*)
-	ST5_5V4 	:=FALSE;		(*Vérin Hydro TOP*)
+	ST5_5V4 	:=TRUE;			(*Vérin Hydro TOP*)
 	ST5_5V5		:=FALSE;		(*Vérin hydro BOTTOM*)
 	ST5_5V6		:=FALSE;		(*Vérin électrique*)
 	

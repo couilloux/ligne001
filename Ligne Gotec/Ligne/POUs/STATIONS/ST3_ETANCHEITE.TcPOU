@@ -20,8 +20,6 @@ VAR
 	TAMPO_DEPRESSION_TON: TON;
 	START_TAMPO_DEPRESSION: BOOL;
 	PRESSION_DEBUT_ABS: REAL;
-	PRESSION_FIN_ABS: REAL;
-	ST3_DELTA_P_ABS: REAL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(*******************************************************
@@ -131,7 +129,6 @@ CASE STEP OF
 	START_TAMPO_MESURE := TRUE;
 	ST3_3V12 := FALSE;
 	PRESSION_DEBUT := ST3_PRESSION; (* Mesure de la pression différentielle au début du test *)
-	PRESSION_DEBUT_ABS := ST3_PRESSION_ABS; (* Mesure de la pression par rapport à l'atmosphère au début du test *)
 	
 	STEP := STEP + 10;	
 
@@ -140,9 +137,8 @@ CASE STEP OF
 	IF TAMPO_MESURE.Q THEN
 		START_TAMPO_MESURE := FALSE;
 		PRESSION_FIN := ST3_PRESSION; (* Mesure de la pression à la fin du test *)
-		PRESSION_FIN_ABS := ST3_PRESSION_ABS; (* Mesure de la pression par rapport à l'atmosphère à la fin du test *)
+		ST3_PRESSION_FIN_ABS := ST3_PRESSION_ABS; (* Mesure de la pression par rapport à l'atmosphère à la fin du test *)
 		ST3_DELTA_P := PRESSION_FIN - PRESSION_DEBUT; (* Calcule de la chutte de pression *)
-		ST3_DELTA_P_ABS := PRESSION_FIN_ABS - PRESSION_DEBUT_ABS; (* Calcule de la chutte de pression *)
 		STEP := STEP + 10;
 	END_IF;
 	
